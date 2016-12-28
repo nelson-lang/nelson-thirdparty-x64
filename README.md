@@ -1,1 +1,3 @@
-"# nelson-thirdparty-x64" 
+Third party Windows x64 for NelSon
+
+Allan CORNET 2016
