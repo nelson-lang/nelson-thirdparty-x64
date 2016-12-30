@@ -55,6 +55,13 @@ copy %QTDIR64%\bin\Qt5Network.dll ..\NelSon\bin\%PLATFORM_NELSON%\Qt5Network.dll
 copy %QTDIR64%\bin\Qt5CLucene.dll ..\NelSon\bin\%PLATFORM_NELSON%\Qt5CLucene.dll
 copy %QTDIR64%\bin\assistant.exe ..\NelSon\bin\%PLATFORM_NELSON%\assistant.exe
 
+mkdir ..\NelSon\bin\%PLATFORM_NELSON%\sqldrivers
+copy %QTDIR64%\plugins\sqldrivers\qsqlite.dll ..\NelSon\bin\%PLATFORM_NELSON%\sqldrivers\qsqlite.dll
+copy %QTDIR64%\plugins\sqldrivers\qsqlmysql.dll ..\NelSon\bin\%PLATFORM_NELSON%\sqldrivers\qsqlmysql.dll
+copy %QTDIR64%\plugins\sqldrivers\qsqlodbc.dll ..\NelSon\bin\%PLATFORM_NELSON%\sqldrivers\qsqlodbc.dll
+copy %QTDIR64%\plugins\sqldrivers\qsqlpsql.dll ..\NelSon\bin\%PLATFORM_NELSON%\sqldrivers\qsqlpsql.dll
+
+
 rem libxml2  dependencies
 copy .\zlib\bin\zlib1.dll ..\NelSon\bin\%PLATFORM_NELSON%\zlib1.dll
 copy .\libxml2\bin\libxml2-2.dll ..\NelSon\bin\%PLATFORM_NELSON%\libxml2-2.dll
