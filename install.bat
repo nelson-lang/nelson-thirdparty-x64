@@ -46,6 +46,7 @@ copy %QTDIR64%\bin\Qt5Core.dll    ..\NelSon\bin\%PLATFORM_NELSON%\Qt5Core.dll
 copy %QTDIR64%\bin\Qt5Gui.dll    ..\NelSon\bin\%PLATFORM_NELSON%\Qt5Gui.dll
 copy %QTDIR64%\bin\Qt5PrintSupport.dll    ..\NelSon\bin\%PLATFORM_NELSON%\Qt5PrintSupport.dll
 copy %QTDIR64%\bin\Qt5Widgets.dll    ..\NelSon\bin\%PLATFORM_NELSON%\Qt5Widgets.dll
+copy %QTDIR64%\bin\Qt5Qml.dll    ..\NelSon\bin\%PLATFORM_NELSON%\Qt5Qml.dll
 
 copy %QTDIR64%\bin\qhelpgenerator.exe ..\NelSon\bin\%PLATFORM_NELSON%\qhelpgenerator.exe
 copy %QTDIR64%\bin\qcollectiongenerator.exe ..\NelSon\bin\%PLATFORM_NELSON%\qcollectiongenerator.exe
