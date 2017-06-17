@@ -63,6 +63,7 @@ xcopy /E /Y %QTDIR64%\plugins ..\NelSon\bin\%PLATFORM_NELSON%\plugins\
 del ..\NelSon\bin\%PLATFORM_NELSON%\plugins\*.pdb /s
 del ..\NelSon\bin\%PLATFORM_NELSON%\plugins\*d.dll /s
 
+
 rmdir ..\NelSon\bin\%PLATFORM_NELSON%\plugins\bearer /s /Q
 rmdir ..\NelSon\bin\%PLATFORM_NELSON%\plugins\designer /s /Q
 rmdir ..\NelSon\bin\%PLATFORM_NELSON%\plugins\qmltooling /s /Q
@@ -77,6 +78,9 @@ rmdir ..\NelSon\bin\%PLATFORM_NELSON%\plugins\generic /s /Q
 xcopy /E /Y %QTDIR64%\qml ..\NelSon\bin\%PLATFORM_NELSON%\qml\
 del ..\NelSon\bin\%PLATFORM_NELSON%\qml\*.pdb /s
 del ..\NelSon\bin\%PLATFORM_NELSON%\qml\*d.dll /s
+copy %QTDIR64%\qml\QtCanvas3D\qtcanvas3d.dll  ..\NelSon\bin\%PLATFORM_NELSON%\qml\QtCanvas3D\
+
+
 
 rmdir ..\NelSon\bin\%PLATFORM_NELSON%\qml\QtBluetooth /s /Q
 rmdir ..\NelSon\bin\%PLATFORM_NELSON%\qml\QtLocation /s /Q
