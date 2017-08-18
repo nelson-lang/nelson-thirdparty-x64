@@ -30,8 +30,6 @@ rem ICU library
 copy icu\bin\icuuc56.dll ..\NelSon\bin\%PLATFORM_NELSON%\icuuc59.dll
 copy icu\bin\icudt56.dll ..\NelSon\bin\%PLATFORM_NELSON%\icudt59.dll
 
-copy libffi\bin\libffi.dll ..\NelSon\bin\%PLATFORM_NELSON%\libffi.dll
-
 rem libxml2  dependencies
 copy .\zlib\bin\zlib1.dll ..\NelSon\bin\%PLATFORM_NELSON%\zlib1.dll
 copy .\libxml2\bin\libxml2-2.dll ..\NelSon\bin\%PLATFORM_NELSON%\libxml2-2.dll
@@ -41,8 +39,8 @@ mkdir ..\NelSon\tools\gettext
 xcopy /E /Y gettext ..\NelSon\tools\gettext 
 
 rem vc runtime
-copy .\vc14-runtime\*.dll ..\NelSon\bin\%PLATFORM_NELSON%\*.dll
-copy .\vc14-runtime\*.exe  ..\NelSon\bin\%PLATFORM_NELSON%\*.exe
+copy .\vc14.1-runtime\*.dll ..\NelSon\bin\%PLATFORM_NELSON%\*.dll
+copy .\vc14.1-runtime\*.exe  ..\NelSon\bin\%PLATFORM_NELSON%\*.exe
 
 rem intel runtime
 copy .\intel-runtime\*.dll ..\NelSon\bin\%PLATFORM_NELSON%\*.dll
