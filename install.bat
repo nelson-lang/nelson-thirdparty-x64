@@ -48,6 +48,11 @@ copy .\intel-runtime\*.dll ..\NelSon\bin\%PLATFORM_NELSON%\*.dll
 rem openblas
 copy .\openblas\bin\*.dll ..\NelSon\bin\%PLATFORM_NELSON%\*.dll
 
+rem MKL blas, lapack, FFTW wrapper
+mkdir ..\NelSon\bin\%PLATFORM_NELSON%\mkl
+copy .\mkl\*.* ..\NelSon\bin\%PLATFORM_NELSON%\mkl\*.*
+
+
 rem QT dependencies
 
 copy %QTDIR64%\bin\qhelpgenerator.exe ..\NelSon\bin\%PLATFORM_NELSON%\qhelpgenerator.exe
