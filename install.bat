@@ -143,3 +143,4 @@ copy .\fftw\bin\*.* ..\NelSon\bin\%PLATFORM_NELSON%\fftw\*.*
 rem mpi library
 copy .\mpi\bin\*.dll ..\NelSon\bin\%PLATFORM_NELSON%\*.*
 copy .\mpi\License\license_sdk.rtf ..\NelSon\bin\license_sdk.rtf
+copy .\mpi\MSMpiSetup.exe ..\NelSon\bin\MSMpiSetup.exe
