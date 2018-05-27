@@ -158,4 +158,4 @@ rem libffi library
 copy .\libffi\bin\*.dll ..\NelSon\bin\%PLATFORM_NELSON%\*.*
 
 rem clang-format
-copy .\clang-format\*.exe ..\NelSon\tools\clang-format\*.exe
+copy .\clang-format\*.exe ..\NelSon\tools\clang_format\*.exe
