@@ -34,7 +34,7 @@ copy icu\bin\icuuc63.dll ..\NelSon\bin\%PLATFORM_NELSON%\icuuc63.dll
 copy icu\bin\icudt63.dll ..\NelSon\bin\%PLATFORM_NELSON%\icudt63.dll
 
 rem libxml2  dependencies
-copy .\zlib\bin\zlib1.dll ..\NelSon\bin\%PLATFORM_NELSON%\zlib1.dll
+copy .\zlib\bin\zlib.dll ..\NelSon\bin\%PLATFORM_NELSON%\zlib.dll
 copy .\libxml2\bin\libxml2-2.dll ..\NelSon\bin\%PLATFORM_NELSON%\libxml2-2.dll
 copy .\libxml2\bin\libiconv-2.dll ..\NelSon\bin\%PLATFORM_NELSON%\libiconv-2.dll
 
