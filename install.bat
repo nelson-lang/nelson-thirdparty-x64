@@ -36,6 +36,7 @@ copy boost\LICENSE_1_0.txt ..\NelSon\bin\%PLATFORM_NELSON%\LICENSE_1_0.txt
 rem ICU library
 copy icu\bin\icuuc63.dll ..\NelSon\bin\%PLATFORM_NELSON%\icuuc63.dll
 copy icu\bin\icudt63.dll ..\NelSon\bin\%PLATFORM_NELSON%\icudt63.dll
+copy icu\bin\icuin63.dll ..\NelSon\bin\%PLATFORM_NELSON%\icuin63.dll
 
 rem libxml2  dependencies
 copy .\zlib\bin\zlib.dll ..\NelSon\bin\%PLATFORM_NELSON%\zlib.dll
