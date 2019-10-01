@@ -40,8 +40,8 @@ copy icu\bin\icuin64.dll ..\NelSon\bin\%PLATFORM_NELSON%\icuin64.dll
 
 rem libxml2  dependencies
 copy .\zlib\bin\zlib.dll ..\NelSon\bin\%PLATFORM_NELSON%\zlib.dll
-copy .\libxml2\bin\libxml2-2.dll ..\NelSon\bin\%PLATFORM_NELSON%\libxml2-2.dll
-copy .\libxml2\bin\libiconv-2.dll ..\NelSon\bin\%PLATFORM_NELSON%\libiconv-2.dll
+copy .\libxml2\bin\libxml2.dll ..\NelSon\bin\%PLATFORM_NELSON%\libxml2.dll
+copy .\libxml2\bin\libiconv.dll ..\NelSon\bin\%PLATFORM_NELSON%\libiconv.dll
 
 mkdir ..\NelSon\tools\gettext
 xcopy /E /Y gettext ..\NelSon\tools\gettext 
