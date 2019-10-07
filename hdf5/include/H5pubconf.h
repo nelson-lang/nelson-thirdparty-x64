@@ -47,46 +47,46 @@
 
 /* Define to a macro mangling the given C identifier (in lower and upper
    case), which must not contain underscores, for linking with Fortran. */
-#define H5_FC_FUNC(name,NAME) NAME
+#define H5_FC_FUNC(name,NAME) name ## _
 
 /* As FC_FUNC, but for C identifiers containing underscores. */
-#define H5_FC_FUNC_(name,NAME) NAME
+#define H5_FC_FUNC_(name,NAME) name ## _
 
 /* Define if Fortran C_LONG_DOUBLE is different from C_DOUBLE */
-#define H5_FORTRAN_C_LONG_DOUBLE_IS_UNIQUE 0
+#define H5_FORTRAN_C_LONG_DOUBLE_IS_UNIQUE 
 
 /* Define if we have Fortran C_LONG_DOUBLE */
-#define H5_FORTRAN_HAVE_C_LONG_DOUBLE 1
+#define H5_FORTRAN_HAVE_C_LONG_DOUBLE 
 
 /* Define if we have Fortran intrinsic C_SIZEOF */
-#define H5_FORTRAN_HAVE_C_SIZEOF 1
+/* #undef H5_FORTRAN_HAVE_C_SIZEOF */
 
 /* Define if we have Fortran intrinsic SIZEOF */
-#define H5_FORTRAN_HAVE_SIZEOF 1
+/* #undef H5_FORTRAN_HAVE_SIZEOF */
 
 /* Define if we have Fortran intrinsic STORAGE_SIZE */
-#define H5_FORTRAN_HAVE_STORAGE_SIZE 1
+/* #undef H5_FORTRAN_HAVE_STORAGE_SIZE */
 
 /* Determine the size of C long double */
-#define H5_FORTRAN_SIZEOF_LONG_DOUBLE 8
+/* #undef H5_FORTRAN_SIZEOF_LONG_DOUBLE */
 
 /* Define Fortran compiler ID */
-#define H5_Fortran_COMPILER_ID Intel
+#define H5_Fortran_COMPILER_ID 
 
 /* Define valid Fortran INTEGER KINDs */
-#define H5_H5CONFIG_F_IKIND INTEGER, DIMENSION(1:num_ikinds) :: ikind = (/1,2,4,8/)
+/* #undef H5_H5CONFIG_F_IKIND */
 
 /* Define number of valid Fortran INTEGER KINDs */
-#define H5_H5CONFIG_F_NUM_IKIND INTEGER, PARAMETER :: num_ikinds = 4
+/* #undef H5_H5CONFIG_F_NUM_IKIND */
 
 /* Define number of valid Fortran REAL KINDs */
-#define H5_H5CONFIG_F_NUM_RKIND INTEGER, PARAMETER :: num_rkinds = 3
+/* #undef H5_H5CONFIG_F_NUM_RKIND */
 
 /* Define valid Fortran REAL KINDs */
-#define H5_H5CONFIG_F_RKIND INTEGER, DIMENSION(1:num_rkinds) :: rkind = (/4,8,16/)
+/* #undef H5_H5CONFIG_F_RKIND */
 
 /* Define valid Fortran REAL KINDs Sizeof */
-#define H5_H5CONFIG_F_RKIND_SIZEOF INTEGER, DIMENSION(1:num_rkinds) :: rkind_sizeof = (/4,8,16/)
+/* #undef H5_H5CONFIG_F_RKIND_SIZEOF */
 
 /* Define to 1 if you have the `alarm' function. */
 /* #undef H5_HAVE_ALARM */
@@ -267,6 +267,9 @@
 /* Define if we have parallel support */
 /* #undef H5_HAVE_PARALLEL */
 
+/* Define if both pread and pwrite exist. */
+/* #undef H5_HAVE_PREADWRITE */
+
 /* Define to 1 if you have the <pthread.h> header file. */
 /* #undef H5_HAVE_PTHREAD_H */
 
@@ -446,7 +449,7 @@
 
 /* Define if your system can convert long double to (unsigned) long long
    values correctly. */
-/* #undef H5_LDOUBLE_TO_LLONG_ACCURATE */
+#define H5_LDOUBLE_TO_LLONG_ACCURATE 1
 
 /* Define if your system converts long double to (unsigned) long values with
    special algorithm. */
@@ -454,11 +457,14 @@
 
 /* Define if your system can convert (unsigned) long long to long double
    values correctly. */
-/* #undef H5_LLONG_TO_LDOUBLE_CORRECT */
+#define H5_LLONG_TO_LDOUBLE_CORRECT 1
 
 /* Define if your system can convert (unsigned) long to long double values
    with special algorithm. */
 /* #undef H5_LONG_TO_LDOUBLE_SPECIAL */
+
+/* Define if your system is power6 and cannot convert some long double values. */
+/* #undef H5_DISABLE_SOME_LDOUBLE_CONV */
 
 /* Define to the sub-directory where libtool stores uninstalled libraries. */
 /* #undef H5_LT_OBJDIR */
@@ -466,11 +472,8 @@
 /* Define to enable internal memory allocation sanity checking. */
 /* #undef H5_MEMORY_ALLOC_SANITY_CHECK */
 
-/* Define if the metadata trace file code is to be compiled in */
-/* #undef H5_METADATA_TRACE_FILE */
-
 /* Define if we can violate pointer alignment restrictions */
-/* #undef H5_NO_ALIGNMENT_RESTRICTIONS */
+#define H5_NO_ALIGNMENT_RESTRICTIONS 1
 
 /* Define if deprecated public API symbols are disabled */
 /* #undef H5_NO_DEPRECATED_SYMBOLS */
@@ -485,7 +488,7 @@
 #define H5_PACKAGE_NAME "HDF5"
 
 /* Define to the full name and version of this package. */
-#define H5_PACKAGE_STRING "HDF5 1.10.4"
+#define H5_PACKAGE_STRING "HDF5 1.10.5"
 
 /* Define to the one symbol short name of this package. */
 #define H5_PACKAGE_TARNAME "hdf5"
@@ -494,13 +497,13 @@
 #define H5_PACKAGE_URL "http://www.hdfgroup.org"
 
 /* Define to the version of this package. */
-#define H5_PACKAGE_VERSION "1.10.4"
+#define H5_PACKAGE_VERSION "1.10.5"
 
 /* Determine the maximum decimal precision in C */
-#define H5_PAC_C_MAX_REAL_PRECISION 15
+/* #undef H5_PAC_C_MAX_REAL_PRECISION */
 
 /* Define Fortran Maximum Real Decimal Precision */
-#define H5_PAC_FC_MAX_REAL_PRECISION 33
+/* #undef H5_PAC_FC_MAX_REAL_PRECISION */
 
 /* Width for printf() for type `long long' or `__int64', use `ll' */
 #define H5_PRINTF_LL_WIDTH "I64"
@@ -602,6 +605,9 @@
 /* The size of `short', as computed by sizeof. */
 #define H5_SIZEOF_SHORT 2
 
+/* The size of `time_t', as computed by sizeof. */
+#define H5_SIZEOF_TIME_T 8
+
 /* The size of `uint16_t', as computed by sizeof. */
 #define H5_SIZEOF_UINT16_T 2
 
@@ -678,7 +684,7 @@
 /* #undef H5_USING_MEMCHECKER */
 
 /* Version number of package */
-#define H5_VERSION "1.10.4"
+#define H5_VERSION "1.10.5"
 
 /* Data accuracy is prefered to speed during data conversions */
 #define H5_WANT_DATA_ACCURACY 1
