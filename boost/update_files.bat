@@ -1,7 +1,7 @@
 set VC_VERSION=vc142
-set BOOST_VERSION=x64-1_77
-set SRC=D:\Developpements\boost\boost_1_77_0_x64\lib64-msvc-14.2
-set DST=D:\Developpements\github\nelson-thirdparty-x64\boost\lib
+set BOOST_VERSION=x64-1_78
+set SRC=E:\Developpements\boost_1_78_0-64\lib64-msvc-14.2
+set DST=E:\Developpements\github\nelson-thirdparty-x64\boost\lib
 mkdir %DST%
 copy %SRC%\boost_chrono-%VC_VERSION%-mt-%BOOST_VERSION%.dll %DST%
 copy %SRC%\boost_chrono-%VC_VERSION%-mt-%BOOST_VERSION%.lib %DST%
