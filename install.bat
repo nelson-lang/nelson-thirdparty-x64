@@ -1,6 +1,6 @@
 set PLATFORM_NELSON=x64
 set BOOST_NELSON=x64-1_78
-set VC_VERSION=vc142
+set VC_VERSION=vc143
 set QTDIR=%QTDIR64%
 
 rem release mode
