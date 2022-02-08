@@ -1,0 +1,9 @@
+Package: szip
+Version: 2.1.1
+Port-Version: 7
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 4f19f4934bb48403fb8c85a53516590e4540acd4eacb47986b3173964ceee3a7
+Description: Szip compression software, providing lossless compression of scientific data
+Type: Port

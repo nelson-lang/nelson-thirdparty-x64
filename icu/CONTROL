@@ -1,0 +1,9 @@
+Package: icu
+Version: 69.1
+Port-Version: 18
+Depends: icu
+Architecture: x64-windows
+Multi-Arch: same
+Abi: a69a08682cfe1c4df51df988878bbd0fd8eb6fd2d05f68420344f59eafad00da
+Description: Mature and widely used Unicode and localization library.
+Type: Port

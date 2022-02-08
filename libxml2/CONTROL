@@ -1,0 +1,9 @@
+Package: libxml2
+Version: 2.9.12
+Port-Version: 4
+Depends: libiconv, liblzma, vcpkg-cmake, vcpkg-cmake-config, zlib
+Architecture: x64-windows
+Multi-Arch: same
+Abi: b1fa4b1075959ec8a58b45b54e4c9c21e14e3cd6075d6d211e8485316f28abd7
+Description: Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).
+Type: Port

@@ -1,0 +1,8 @@
+Package: portaudio
+Version: 19.7
+Port-Version: 3
+Architecture: x64-windows
+Multi-Arch: same
+Abi: d96d82291446c6a4b0095587dba97aa1d8f61a2583da19ad8650756d2c8c542a
+Description: PortAudio Portable Cross-platform Audio I/O API PortAudio is a free, cross-platform, open-source, audio I/O library.  It lets you write simple audio programs in 'C' or C++ that will compile and run on many platforms including Windows, Macintosh OS X, and Unix (OSS/ALSA). It is intended to promote the exchange of audio software between developers on different platforms. Many applications use PortAudio for Audio I/O.
+Type: Port

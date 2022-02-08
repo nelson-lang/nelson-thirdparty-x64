@@ -1,0 +1,8 @@
+Package: libiconv
+Version: 1.16
+Port-Version: 11
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 53ea1b9c0688d96fea31eac07be9f5981617c3bbd0d092fce641c9c82b799bc0
+Description: GNU Unicode text conversion
+Type: Port

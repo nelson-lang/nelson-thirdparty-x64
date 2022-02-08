@@ -1,0 +1,7 @@
+Package: libogg
+Version: 1.3.5
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 9d7b27842faa0743f66cf0e059e206b56f8641f39aa792fd073d63187cf9db14
+Description: Ogg is a multimedia container format, and the native file and stream format for the Xiph.org multimedia codecs.
+Type: Port

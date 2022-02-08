@@ -1,0 +1,9 @@
+Package: pcre
+Version: 8.45
+Port-Version: 2
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 6fc8057ac5d0cb30fb54359dd9bbe1a6cc83f7233979aa79966401982fd56738
+Description: Perl Compatible Regular Expressions
+Type: Port
