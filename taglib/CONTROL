@@ -1,0 +1,9 @@
+Package: taglib
+Version: 1.12.0
+Port-Version: 1
+Depends: zlib
+Architecture: x64-windows
+Multi-Arch: same
+Abi: bd758ee42dc75cf8046625f04ae987e080ce0787e6f725a7e0664a5151395fdd
+Description: TagLib Audio Meta-Data Library
+Type: Port

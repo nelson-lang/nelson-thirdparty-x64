@@ -1,0 +1,8 @@
+Package: opus
+Version: 1.3.1
+Port-Version: 6
+Architecture: x64-windows
+Multi-Arch: same
+Abi: 8f336eb4a2df9413bf13f38ca4e69a04494c9c2d85274d2a6f49ba9f2357a760
+Description: Totally open, royalty-free, highly versatile audio codec
+Type: Port
