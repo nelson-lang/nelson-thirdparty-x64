@@ -1,0 +1,26 @@
+Package: hdf5
+Version: 1.12.1
+Port-Version: 4
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: x64-windows
+Multi-Arch: same
+Abi: b1a2e591f34a0e3772fcc4751163a36519842a3f650d012a9265bd33bae7499e
+Description: HDF5 is a data model, library, and file format for storing and managing data
+Type: Port
+Default-Features: szip, zlib
+
+Package: hdf5
+Feature: szip
+Depends: szip
+Architecture: x64-windows
+Multi-Arch: same
+Description: Build with szip
+Type: Port
+
+Package: hdf5
+Feature: zlib
+Depends: zlib
+Architecture: x64-windows
+Multi-Arch: same
+Description: Build with zlib
+Type: Port
