@@ -1,16 +1,18 @@
-Package: libsndfile
-Version: 1.0.31
+Package: sndfile
+Version: 0
+Port-Version: 1
+Depends: libsndfile
 Architecture: x64-windows
 Multi-Arch: same
-Abi: d7ee6cd2dfa1b0cf72a55ea6ea4cb43aa65674561f0c8e0b0257afa62c104f30
-Description: Library to read, write and manipulate many soundfile types. Authored by Eric de Castro Lopo
+Abi: dc25b5469bbeb185b2afaf70c0e583db1bd69d7075f5a2960527d158908fa648
+Description: x Library to read, write and manipulate many soundfile types.
 Type: Port
 Default-Features: external-libs
 
-Package: libsndfile
+Package: sndfile
 Feature: external-libs
-Depends: libflac, libvorbis, opus
+Depends: libsndfile
 Architecture: x64-windows
 Multi-Arch: same
-Description: Default feature. Enables Ogg Vorbis, FLAC and Ogg Opus formats support.
+Description: Support Ogg Vorbis and FLAC audio files
 Type: Port
