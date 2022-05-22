@@ -116,6 +116,8 @@ copy %QTDIR%\bin\Qt?QmlWorkerScript.dll ..\NelSon\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QmlModels.dll ..\NelSon\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2Impls.dll ..\NelSon\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2Impl.dll ..\NelSon\bin\%PLATFORM_NELSON%\
+rem QT 6 required
+copy %QTDIR%\bin\Qt?QuickLayouts.dll ..\NelSon\bin\%PLATFORM_NELSON%\
 
 rem vc runtime
 copy .\vc14.3-runtime\*.dll ..\NelSon\bin\%PLATFORM_NELSON%\*.dll
