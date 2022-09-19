@@ -2,7 +2,7 @@ set PLATFORM_NELSON=x64
 set BOOST_NELSON=x64-1_78
 set VC_VERSION=vc143
 set QTDIR=%QTDIR64%
-set NELSON_DIR=%NELSON_DIR%
+set NELSON_DIR=..\nelson
 
 rem release mode
 copy boost\lib\boost_filesystem-%VC_VERSION%-mt-%BOOST_NELSON%.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\boost_filesystem-%VC_VERSION%-mt-%BOOST_NELSON%.dll
