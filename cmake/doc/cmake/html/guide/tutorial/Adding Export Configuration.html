@@ -1,29 +1,31 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-  <title>Step 11: Adding Export Configuration &mdash; CMake 3.22.1 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <title>Step 11: Adding Export Configuration &mdash; CMake 3.26.3 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cmake.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Step 12: Packaging Debug and Release" href="Packaging Debug and Release.html" />
-    <link rel="prev" title="Step 10: Adding Generator Expressions" href="Adding Generator Expressions.html" />
-  
+    <link rel="next" title="Step 12: Packaging Debug and Release" href="Packaging%20Debug%20and%20Release.html" />
+    <link rel="prev" title="Step 10: Selecting Static or Shared Libraries" href="Selecting%20Static%20or%20Shared%20Libraries.html" />
  
 
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -31,10 +33,10 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="Packaging Debug and Release.html" title="Step 12: Packaging Debug and Release"
+          <a href="Packaging%20Debug%20and%20Release.html" title="Step 12: Packaging Debug and Release"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Adding Generator Expressions.html" title="Step 10: Adding Generator Expressions"
+          <a href="Selecting%20Static%20or%20Shared%20Libraries.html" title="Step 10: Selecting Static or Shared Libraries"
              accesskey="P">previous</a> |</li>
   <li>
     <img src="../../_static/cmake-logo-16.png" alt=""
@@ -44,10 +46,11 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CMake Tutorial</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">CMake Tutorial</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Step 11: Adding Export Configuration</a></li> 
       </ul>
     </div>  
 
@@ -56,11 +59,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="step-11-adding-export-configuration">
-<span id="guide:tutorial/Adding Export Configuration"></span><h1>Step 11: Adding Export Configuration<a class="headerlink" href="#step-11-adding-export-configuration" title="Permalink to this headline">¶</a></h1>
-<p>During <a class="reference internal" href="Installing and Testing.html#guide:tutorial/Installing and Testing" title="tutorial/Installing and Testing"><code class="xref cmake cmake-guide docutils literal notranslate"><span class="pre">Installing</span> <span class="pre">and</span> <span class="pre">Testing</span></code></a> of the tutorial we added the
+  <section id="step-11-adding-export-configuration">
+<span id="guide:tutorial/Adding Export Configuration"></span><h1>Step 11: Adding Export Configuration<a class="headerlink" href="#step-11-adding-export-configuration" title="Permalink to this heading">¶</a></h1>
+<p>During <a class="reference internal" href="Installing%20and%20Testing.html#guide:tutorial/Installing and Testing" title="tutorial/Installing and Testing"><code class="xref cmake cmake-guide docutils literal notranslate"><span class="pre">Installing</span> <span class="pre">and</span> <span class="pre">Testing</span></code></a> of the tutorial we added the
 ability for CMake to install the library and headers of the project. During
-<a class="reference internal" href="Packaging an Installer.html#guide:tutorial/Packaging an Installer" title="tutorial/Packaging an Installer"><code class="xref cmake cmake-guide docutils literal notranslate"><span class="pre">Packaging</span> <span class="pre">an</span> <span class="pre">Installer</span></code></a> we added the ability to package up
+<a class="reference internal" href="Packaging%20an%20Installer.html#guide:tutorial/Packaging an Installer" title="tutorial/Packaging an Installer"><code class="xref cmake cmake-guide docutils literal notranslate"><span class="pre">Packaging</span> <span class="pre">an</span> <span class="pre">Installer</span></code></a> we added the ability to package up
 this information so it could be distributed to other people.</p>
 <p>The next step is to add the necessary information so that other CMake projects
 can use our project, be it from a build directory, a local install or when
@@ -78,8 +81,9 @@ in <code class="docutils literal notranslate"><span class="pre">MathFunctions/CM
 <span class="w">  </span><span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="nb">installable_libs</span><span class="w"> </span><span class="nb">SqrtLibrary</span><span class="nf">)</span><span class="w"></span>
 <span class="nf">endif()</span><span class="w"></span>
 <span class="nf">install(</span><span class="no">TARGETS</span><span class="w"> </span><span class="o">${</span><span class="nt">installable_libs</span><span class="o">}</span><span class="w"></span>
-<span class="w">        </span><span class="no">DESTINATION</span><span class="w"> </span><span class="nb">lib</span><span class="w"></span>
-<span class="w">        </span><span class="no">EXPORT</span><span class="w"> </span><span class="nb">MathFunctionsTargets</span><span class="nf">)</span><span class="w"></span>
+<span class="w">        </span><span class="no">EXPORT</span><span class="w"> </span><span class="nb">MathFunctionsTargets</span><span class="w"></span>
+<span class="w">        </span><span class="no">DESTINATION</span><span class="w"> </span><span class="nb">lib</span><span class="nf">)</span><span class="w"></span>
+<span class="c"># install include headers</span>
 <span class="nf">install(</span><span class="no">FILES</span><span class="w"> </span><span class="nb">MathFunctions.h</span><span class="w"> </span><span class="no">DESTINATION</span><span class="w"> </span><span class="nb">include</span><span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
@@ -168,7 +172,7 @@ but prepended with a <code class="docutils literal notranslate"><span class="pre
 <span class="nf">)</span><span class="w"></span>
 
 <span class="nf">include(</span><span class="nb">CMakePackageConfigHelpers</span><span class="nf">)</span><span class="w"></span>
-<span class="c"># generate the config file that is includes the exports</span>
+<span class="c"># generate the config file that includes the exports</span>
 <span class="nf">configure_package_config_file(</span><span class="o">${</span><span class="nt">CMAKE_CURRENT_SOURCE_DIR</span><span class="o">}</span><span class="na">/Config.cmake.in</span><span class="w"></span>
 <span class="w">  </span><span class="s">&quot;${CMAKE_CURRENT_BINARY_DIR}/MathFunctionsConfig.cmake&quot;</span><span class="w"></span>
 <span class="w">  </span><span class="no">INSTALL_DESTINATION</span><span class="w"> </span><span class="s">&quot;lib/cmake/example&quot;</span><span class="w"></span>
@@ -179,7 +183,7 @@ but prepended with a <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 <p>The <span class="target" id="index-0-command:write_basic_package_version_file"></span><a class="reference internal" href="../../module/CMakePackageConfigHelpers.html#command:write_basic_package_version_file" title="write_basic_package_version_file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">write_basic_package_version_file()</span></code></a> is next.  This command writes
-a file which is used by the &quot;find_package&quot; document the version and
+a file which is used by <span class="target" id="index-1-command:find_package"></span><a class="reference internal" href="../../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a>, documenting the version and
 compatibility of the desired package.  Here, we use the <code class="docutils literal notranslate"><span class="pre">Tutorial_VERSION_*</span></code>
 variables and say that it is compatible with <code class="docutils literal notranslate"><span class="pre">AnyNewerVersion</span></code>, which
 denotes that this version or any higher one are compatible with the requested
@@ -217,23 +221,28 @@ the following to the bottom of the top level <code class="docutils literal notra
 </pre></div>
 </div>
 </div>
-<p>With this export call we now generate a <code class="docutils literal notranslate"><span class="pre">Targets.cmake</span></code>, allowing the
+<p>With this export call we now generate a <code class="docutils literal notranslate"><span class="pre">MathFunctionsTargets.cmake</span></code>, allowing the
 configured <code class="docutils literal notranslate"><span class="pre">MathFunctionsConfig.cmake</span></code> in the build directory to be used by
 other projects, without needing it to be installed.</p>
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="Adding Generator Expressions.html"
-                        title="previous chapter">Step 10: Adding Generator Expressions</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="Packaging Debug and Release.html"
-                        title="next chapter">Step 12: Packaging Debug and Release</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="Selecting%20Static%20or%20Shared%20Libraries.html"
+                          title="previous chapter">Step 10: Selecting Static or Shared Libraries</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="Packaging%20Debug%20and%20Release.html"
+                          title="next chapter">Step 12: Packaging Debug and Release</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -245,12 +254,12 @@ other projects, without needing it to be installed.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -262,10 +271,10 @@ other projects, without needing it to be installed.</p>
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="Packaging Debug and Release.html" title="Step 12: Packaging Debug and Release"
+          <a href="Packaging%20Debug%20and%20Release.html" title="Step 12: Packaging Debug and Release"
              >next</a> |</li>
         <li class="right" >
-          <a href="Adding Generator Expressions.html" title="Step 10: Adding Generator Expressions"
+          <a href="Selecting%20Static%20or%20Shared%20Libraries.html" title="Step 10: Selecting Static or Shared Libraries"
              >previous</a> |</li>
   <li>
     <img src="../../_static/cmake-logo-16.png" alt=""
@@ -275,15 +284,17 @@ other projects, without needing it to be installed.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="index.html" >CMake Tutorial</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="index.html" >CMake Tutorial</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Step 11: Adding Export Configuration</a></li> 
       </ul>
     </div>
+
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2021 Kitware, Inc. and Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

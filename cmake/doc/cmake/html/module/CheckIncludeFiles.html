@@ -1,29 +1,31 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-  <title>CheckIncludeFiles &mdash; CMake 3.22.1 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>CheckIncludeFiles &mdash; CMake 3.26.3 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CheckIPOSupported" href="CheckIPOSupported.html" />
     <link rel="prev" title="CheckIncludeFile" href="CheckIncludeFile.html" />
-  
  
 
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,10 +46,11 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CheckIncludeFiles</a></li> 
       </ul>
     </div>  
 
@@ -56,13 +59,13 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="checkincludefiles">
-<span id="module:CheckIncludeFiles"></span><h1>CheckIncludeFiles<a class="headerlink" href="#checkincludefiles" title="Permalink to this headline">¶</a></h1>
+  <section id="checkincludefiles">
+<span id="module:CheckIncludeFiles"></span><h1>CheckIncludeFiles<a class="headerlink" href="#checkincludefiles" title="Permalink to this heading">¶</a></h1>
 <p>Provides a macro to check if a list of one or more header files can
 be included together.</p>
-<dl class="command">
-<dt id="command:check_include_files">
-<code class="sig-name descname">CHECK_INCLUDE_FILES</code><a class="headerlink" href="#command:check_include_files" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:check_include_files">
+<span class="sig-name descname"><span class="pre">CHECK_INCLUDE_FILES</span></span><a class="headerlink" href="#command:check_include_files" title="Permalink to this definition">¶</a></dt>
 <dd><div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">CHECK_INCLUDE_FILES(</span><span class="s">&quot;&lt;includes&gt;&quot;</span><span class="w"> </span><span class="nv">&lt;variable&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">LANGUAGE</span><span class="w"> </span><span class="nv">&lt;language&gt;</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
@@ -100,20 +103,25 @@ command. See policy <span class="target" id="index-0-policy:CMP0075"></span><a c
 </dl>
 <p>See modules <span class="target" id="index-0-module:CheckIncludeFile"></span><a class="reference internal" href="CheckIncludeFile.html#module:CheckIncludeFile" title="CheckIncludeFile"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">CheckIncludeFile</span></code></a> and <span class="target" id="index-0-module:CheckIncludeFileCXX"></span><a class="reference internal" href="CheckIncludeFileCXX.html#module:CheckIncludeFileCXX" title="CheckIncludeFileCXX"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">CheckIncludeFileCXX</span></code></a>
 to check for a single header file in <code class="docutils literal notranslate"><span class="pre">C</span></code> or <code class="docutils literal notranslate"><span class="pre">CXX</span></code> languages.</p>
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="CheckIncludeFile.html"
-                        title="previous chapter">CheckIncludeFile</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="CheckIPOSupported.html"
-                        title="next chapter">CheckIPOSupported</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="CheckIncludeFile.html"
+                          title="previous chapter">CheckIncludeFile</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="CheckIPOSupported.html"
+                          title="next chapter">CheckIPOSupported</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -125,12 +133,12 @@ to check for a single header file in <code class="docutils literal notranslate">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -155,15 +163,17 @@ to check for a single header file in <code class="docutils literal notranslate">
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CheckIncludeFiles</a></li> 
       </ul>
     </div>
+
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2021 Kitware, Inc. and Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

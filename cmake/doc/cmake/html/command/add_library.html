@@ -1,29 +1,31 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-  <title>add_library &mdash; CMake 3.22.1 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>add_library &mdash; CMake 3.26.3 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="add_link_options" href="add_link_options.html" />
     <link rel="prev" title="add_executable" href="add_executable.html" />
-  
  
 
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,10 +46,11 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">add_library</a></li> 
       </ul>
     </div>  
 
@@ -56,9 +59,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="add-library">
-<span id="command:add_library"></span><h1><a class="toc-backref" href="#id1">add_library</a><a class="headerlink" href="#add-library" title="Permalink to this headline">¶</a></h1>
-<div class="contents topic" id="contents">
+  <section id="add-library">
+<span id="command:add_library"></span><h1><a class="toc-backref" href="#id1" role="doc-backlink">add_library</a><a class="headerlink" href="#add-library" title="Permalink to this heading">¶</a></h1>
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#add-library" id="id1">add_library</a></p>
@@ -68,13 +71,14 @@
 <li><p><a class="reference internal" href="#interface-libraries" id="id4">Interface Libraries</a></p></li>
 <li><p><a class="reference internal" href="#imported-libraries" id="id5">Imported Libraries</a></p></li>
 <li><p><a class="reference internal" href="#alias-libraries" id="id6">Alias Libraries</a></p></li>
+<li><p><a class="reference internal" href="#see-also" id="id7">See Also</a></p></li>
 </ul>
 </li>
 </ul>
-</div>
+</nav>
 <p>Add a library to the project using the specified source files.</p>
-<div class="section" id="normal-libraries">
-<h2><a class="toc-backref" href="#id2">Normal Libraries</a><a class="headerlink" href="#normal-libraries" title="Permalink to this headline">¶</a></h2>
+<section id="normal-libraries">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Normal Libraries</a><a class="headerlink" href="#normal-libraries" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">STATIC</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="no">MODULE</span><span class="p">]</span><span class="w"></span>
 <span class="w">            </span><span class="p">[</span><span class="no">EXCLUDE_FROM_ALL</span><span class="p">]</span><span class="w"></span>
 <span class="w">            </span><span class="p">[</span><span class="nv">&lt;source&gt;...</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
@@ -131,18 +135,18 @@ buildsystem properties.</p>
 <p>See also <span class="target" id="index-0-prop_sf:HEADER_FILE_ONLY"></span><a class="reference internal" href="../prop_sf/HEADER_FILE_ONLY.html#prop_sf:HEADER_FILE_ONLY" title="HEADER_FILE_ONLY"><code class="xref cmake cmake-prop_sf docutils literal notranslate"><span class="pre">HEADER_FILE_ONLY</span></code></a> on what to do if some sources are
 pre-processed, and you want to have the original sources reachable from
 within IDE.</p>
-</div>
-<div class="section" id="object-libraries">
-<h2><a class="toc-backref" href="#id3">Object Libraries</a><a class="headerlink" href="#object-libraries" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="object-libraries">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Object Libraries</a><a class="headerlink" href="#object-libraries" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="no">OBJECT</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;source&gt;...</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Creates an <a class="reference internal" href="../manual/cmake-buildsystem.7.html#object-libraries"><span class="std std-ref">Object Library</span></a>.  An object library
 compiles source files but does not archive or link their object files into a
-library.  Instead other targets created by <span class="target" id="index-0-command:add_library"></span><a class="reference internal" href="#command:add_library" title="add_library"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_library()</span></code></a> or
+library.  Instead other targets created by <code class="docutils literal notranslate"><span class="pre">add_library</span></code> or
 <span class="target" id="index-0-command:add_executable"></span><a class="reference internal" href="add_executable.html#command:add_executable" title="add_executable"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_executable()</span></code></a> may reference the objects using an expression of the
-form <code class="docutils literal notranslate"><span class="pre">$&lt;TARGET_OBJECTS:objlib&gt;</span></code> as a source, where <code class="docutils literal notranslate"><span class="pre">objlib</span></code> is the
-object library name.  For example:</p>
+form <span class="target" id="index-0-genex:TARGET_OBJECTS"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#genex:TARGET_OBJECTS" title="TARGET_OBJECTS"><code class="xref cmake cmake-genex docutils literal notranslate"><span class="pre">$&lt;TARGET_OBJECTS:objlib&gt;</span></code></a> as a source, where
+<code class="docutils literal notranslate"><span class="pre">objlib</span></code> is the object library name.  For example:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="p">...</span><span class="w"> </span><span class="o">$&lt;</span><span class="no">TARGET_OBJECTS</span><span class="o">:</span><span class="nb">objlib</span><span class="o">&gt;</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
 <span class="nf">add_executable(</span><span class="p">...</span><span class="w"> </span><span class="o">$&lt;</span><span class="no">TARGET_OBJECTS</span><span class="o">:</span><span class="nb">objlib</span><span class="o">&gt;</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
 </pre></div>
@@ -155,13 +159,13 @@ They may contain custom commands generating such sources, but not
 <code class="docutils literal notranslate"><span class="pre">PRE_BUILD</span></code>, <code class="docutils literal notranslate"><span class="pre">PRE_LINK</span></code>, or <code class="docutils literal notranslate"><span class="pre">POST_BUILD</span></code> commands.  Some native build
 systems (such as Xcode) may not like targets that have only object files, so
 consider adding at least one real source file to any target that references
-<code class="docutils literal notranslate"><span class="pre">$&lt;TARGET_OBJECTS:objlib&gt;</span></code>.</p>
+<span class="target" id="index-1-genex:TARGET_OBJECTS"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#genex:TARGET_OBJECTS" title="TARGET_OBJECTS"><code class="xref cmake cmake-genex docutils literal notranslate"><span class="pre">$&lt;TARGET_OBJECTS:objlib&gt;</span></code></a>.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.12: </span>Object libraries can be linked to with <span class="target" id="index-0-command:target_link_libraries"></span><a class="reference internal" href="target_link_libraries.html#command:target_link_libraries" title="target_link_libraries"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_link_libraries()</span></code></a>.</p>
 </div>
-</div>
-<div class="section" id="interface-libraries">
-<h2><a class="toc-backref" href="#id4">Interface Libraries</a><a class="headerlink" href="#interface-libraries" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="interface-libraries">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Interface Libraries</a><a class="headerlink" href="#interface-libraries" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="no">INTERFACE</span><span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
@@ -198,6 +202,7 @@ properties can be installed using the <span class="target" id="index-0-command:i
 later by calls to <span class="target" id="index-2-command:target_sources"></span><a class="reference internal" href="target_sources.html#command:target_sources" title="target_sources"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_sources()</span></code></a> with the <code class="docutils literal notranslate"><span class="pre">PRIVATE</span></code> or
 <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> keywords.</p>
 <p>If an interface library has source files (i.e. the <span class="target" id="index-0-prop_tgt:SOURCES"></span><a class="reference internal" href="../prop_tgt/SOURCES.html#prop_tgt:SOURCES" title="SOURCES"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">SOURCES</span></code></a>
+target property is set), or header sets (i.e. the <span class="target" id="index-0-prop_tgt:HEADER_SETS"></span><a class="reference internal" href="../prop_tgt/HEADER_SETS.html#prop_tgt:HEADER_SETS" title="HEADER_SETS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">HEADER_SETS</span></code></a>
 target property is set), it will appear in the generated buildsystem
 as a build target much like a target defined by the
 <span class="target" id="index-0-command:add_custom_target"></span><a class="reference internal" href="add_custom_target.html#command:add_custom_target" title="add_custom_target"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_custom_target()</span></code></a> command.  It does not compile any sources,
@@ -214,9 +219,9 @@ to the library type only.  Sources listed after it in the <code class="docutils 
 call are <code class="docutils literal notranslate"><span class="pre">PRIVATE</span></code> to the interface library and do not appear in its
 <span class="target" id="index-0-prop_tgt:INTERFACE_SOURCES"></span><a class="reference internal" href="../prop_tgt/INTERFACE_SOURCES.html#prop_tgt:INTERFACE_SOURCES" title="INTERFACE_SOURCES"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">INTERFACE_SOURCES</span></code></a> target property.</p>
 </div>
-</div>
-<div class="section" id="imported-libraries">
-<span id="add-library-imported-libraries"></span><h2><a class="toc-backref" href="#id5">Imported Libraries</a><a class="headerlink" href="#imported-libraries" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="imported-libraries">
+<span id="add-library-imported-libraries"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">Imported Libraries</a><a class="headerlink" href="#imported-libraries" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;type&gt;</span><span class="w"> </span><span class="no">IMPORTED</span><span class="w"> </span><span class="p">[</span><span class="no">GLOBAL</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
@@ -271,9 +276,9 @@ specify usage requirements in <code class="docutils literal notranslate"><span c
 </dl>
 <p>See documentation of the <code class="docutils literal notranslate"><span class="pre">IMPORTED_*</span></code> and <code class="docutils literal notranslate"><span class="pre">INTERFACE_*</span></code> properties
 for more information.</p>
-</div>
-<div class="section" id="alias-libraries">
-<h2><a class="toc-backref" href="#id6">Alias Libraries</a><a class="headerlink" href="#alias-libraries" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="alias-libraries">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Alias Libraries</a><a class="headerlink" href="#alias-libraries" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="no">ALIAS</span><span class="w"> </span><span class="nv">&lt;target&gt;</span><span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
@@ -297,33 +302,47 @@ to modify properties of <code class="docutils literal notranslate"><span class="
 operand of <span class="target" id="index-1-command:set_property"></span><a class="reference internal" href="set_property.html#command:set_property" title="set_property"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">set_property()</span></code></a>, <span class="target" id="index-0-command:set_target_properties"></span><a class="reference internal" href="set_target_properties.html#command:set_target_properties" title="set_target_properties"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">set_target_properties()</span></code></a>,
 <span class="target" id="index-4-command:target_link_libraries"></span><a class="reference internal" href="target_link_libraries.html#command:target_link_libraries" title="target_link_libraries"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_link_libraries()</span></code></a> etc.  An <code class="docutils literal notranslate"><span class="pre">ALIAS</span></code> target may not be
 installed or exported.</p>
-</div>
-</div>
+</section>
+<section id="see-also">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">See Also</a><a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><span class="target" id="index-1-command:add_executable"></span><a class="reference internal" href="add_executable.html#command:add_executable" title="add_executable"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_executable()</span></code></a></p></li>
+</ul>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">add_library</a><ul>
 <li><a class="reference internal" href="#normal-libraries">Normal Libraries</a></li>
 <li><a class="reference internal" href="#object-libraries">Object Libraries</a></li>
 <li><a class="reference internal" href="#interface-libraries">Interface Libraries</a></li>
 <li><a class="reference internal" href="#imported-libraries">Imported Libraries</a></li>
 <li><a class="reference internal" href="#alias-libraries">Alias Libraries</a></li>
+<li><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="add_executable.html"
-                        title="previous chapter">add_executable</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="add_link_options.html"
-                        title="next chapter">add_link_options</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="add_executable.html"
+                          title="previous chapter">add_executable</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="add_link_options.html"
+                          title="next chapter">add_link_options</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -335,12 +354,12 @@ installed or exported.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -365,15 +384,17 @@ installed or exported.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">add_library</a></li> 
       </ul>
     </div>
+
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2021 Kitware, Inc. and Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

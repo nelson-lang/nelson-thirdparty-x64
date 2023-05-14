@@ -1,29 +1,31 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-  <title>install &mdash; CMake 3.22.1 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>install &mdash; CMake 3.26.3 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="link_directories" href="link_directories.html" />
     <link rel="prev" title="include_regular_expression" href="include_regular_expression.html" />
-  
  
 
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,10 +46,11 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">install</a></li> 
       </ul>
     </div>  
 
@@ -56,11 +59,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="install">
-<span id="command:install"></span><h1>install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h1>
+  <section id="install">
+<span id="command:install"></span><h1>install<a class="headerlink" href="#install" title="Permalink to this heading">¶</a></h1>
 <p>Specify rules to run at install time.</p>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<section id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
 <pre class="literal-block">install(<a class="reference internal" href="#targets">TARGETS</a> &lt;target&gt;... [...])
 install(<a class="reference internal" href="#imported-runtime-artifacts">IMPORTED_RUNTIME_ARTIFACTS</a> &lt;target&gt;... [...])
 install({<a class="reference internal" href="#files">FILES</a> | <a class="reference internal" href="#programs">PROGRAMS</a>} &lt;file&gt;... [...])
@@ -69,9 +72,9 @@ install(<a class="reference internal" href="#script">SCRIPT</a> &lt;file&gt; [..
 install(<a class="reference internal" href="#code">CODE</a> &lt;code&gt; [...])
 install(<a class="reference internal" href="#export">EXPORT</a> &lt;export-name&gt; [...])
 install(<a class="reference internal" href="#runtime-dependency-set">RUNTIME_DEPENDENCY_SET</a> &lt;set-name&gt; [...])</pre>
-</div>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
 <p>This command generates installation rules for a project.  Install rules
 specified by calls to the <code class="docutils literal notranslate"><span class="pre">install()</span></code> command within a source directory
 are executed in order during installation.</p>
@@ -83,7 +86,7 @@ policy <span class="target" id="index-0-policy:CMP0082"></span><a class="referen
 </div>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 3.22: </span>The environment variable <span class="target" id="index-0-envvar:CMAKE_INSTALL_MODE"></span><a class="reference internal" href="../envvar/CMAKE_INSTALL_MODE.html#envvar:CMAKE_INSTALL_MODE" title="CMAKE_INSTALL_MODE"><code class="xref cmake cmake-envvar docutils literal notranslate"><span class="pre">CMAKE_INSTALL_MODE</span></code></a> can override the
-default copying behavior of <span class="target" id="index-0-command:install"></span><a class="reference internal" href="#command:install" title="install"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install()</span></code></a>.</p>
+default copying behavior of <code class="docutils literal notranslate"><span class="pre">install()</span></code>.</p>
 </div>
 <p>There are multiple signatures for this command.  Some of them define
 installation options for files and targets.  Options common to
@@ -127,7 +130,7 @@ Release configurations, do the following:</p>
 <p>Note that <code class="docutils literal notranslate"><span class="pre">CONFIGURATIONS</span></code> appears BEFORE <code class="docutils literal notranslate"><span class="pre">RUNTIME</span> <span class="pre">DESTINATION</span></code>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code></dt><dd><p>Specify an installation component name with which the install rule
-is associated, such as &quot;runtime&quot; or &quot;development&quot;.  During
+is associated, such as <code class="docutils literal notranslate"><span class="pre">Runtime</span></code> or <code class="docutils literal notranslate"><span class="pre">Development</span></code>.  During
 component-specific installation only install rules associated with
 the given component name will be executed.  During a full installation
 all components are installed unless marked with <code class="docutils literal notranslate"><span class="pre">EXCLUDE_FROM_ALL</span></code>.
@@ -162,13 +165,13 @@ directories will be created with the permissions specified. Otherwise,
 they will be created according to the uname rules on Unix-like platforms.
 Windows platforms are unaffected.</p>
 </div>
-</div>
-<div class="section" id="installing-targets">
-<h2>Installing Targets<a class="headerlink" href="#installing-targets" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="installing-targets">
+<h2>Installing Targets<a class="headerlink" href="#installing-targets" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate" id="targets"><span id="install-targets"></span><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">TARGETS</span><span class="w"> </span><span class="nb">targets...</span><span class="w"> </span><span class="p">[</span><span class="no">EXPORT</span><span class="w"> </span><span class="nv">&lt;export-name&gt;</span><span class="p">]</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">RUNTIME_DEPENDENCIES</span><span class="w"> </span><span class="nb">args...</span><span class="p">|</span><span class="no">RUNTIME_DEPENDENCY_SET</span><span class="w"> </span><span class="nv">&lt;set-name&gt;</span><span class="p">]</span><span class="w"></span>
 <span class="w">        </span><span class="p">[[</span><span class="no">ARCHIVE</span><span class="p">|</span><span class="no">LIBRARY</span><span class="p">|</span><span class="no">RUNTIME</span><span class="p">|</span><span class="no">OBJECTS</span><span class="p">|</span><span class="no">FRAMEWORK</span><span class="p">|</span><span class="no">BUNDLE</span><span class="p">|</span><span class="w"></span>
-<span class="w">          </span><span class="no">PRIVATE_HEADER</span><span class="p">|</span><span class="no">PUBLIC_HEADER</span><span class="p">|</span><span class="no">RESOURCE</span><span class="p">]</span><span class="w"></span>
+<span class="w">          </span><span class="no">PRIVATE_HEADER</span><span class="p">|</span><span class="no">PUBLIC_HEADER</span><span class="p">|</span><span class="no">RESOURCE</span><span class="p">|</span><span class="no">FILE_SET</span><span class="w"> </span><span class="nv">&lt;set-name&gt;</span><span class="p">|</span><span class="no">CXX_MODULES_BMI</span><span class="p">]</span><span class="w"></span>
 <span class="w">         </span><span class="p">[</span><span class="no">DESTINATION</span><span class="w"> </span><span class="nv">&lt;dir&gt;</span><span class="p">]</span><span class="w"></span>
 <span class="w">         </span><span class="p">[</span><span class="no">PERMISSIONS</span><span class="w"> </span><span class="nb">permissions...</span><span class="p">]</span><span class="w"></span>
 <span class="w">         </span><span class="p">[</span><span class="no">CONFIGURATIONS</span><span class="w"> </span><span class="p">[</span><span class="nb">Debug</span><span class="p">|</span><span class="nb">Release</span><span class="p">|...]]</span><span class="w"></span>
@@ -238,31 +241,54 @@ into the appropriate locations inside the framework folder. See
 <dt><code class="docutils literal notranslate"><span class="pre">RESOURCE</span></code></dt><dd><p>Similar to <code class="docutils literal notranslate"><span class="pre">PUBLIC_HEADER</span></code> and <code class="docutils literal notranslate"><span class="pre">PRIVATE_HEADER</span></code>, but for
 <code class="docutils literal notranslate"><span class="pre">RESOURCE</span></code> files. See <span class="target" id="index-0-prop_tgt:RESOURCE"></span><a class="reference internal" href="../prop_tgt/RESOURCE.html#prop_tgt:RESOURCE" title="RESOURCE"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">RESOURCE</span></code></a> for details.</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">FILE_SET</span> <span class="pre">&lt;set&gt;</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.23.</span></p>
+</div>
+<p>File sets are defined by the <span class="target" id="index-0-command:target_sources"></span><a class="reference internal" href="target_sources.html#command:target_sources" title="target_sources"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_sources(FILE_SET)</span></code></a> command.
+If the file set <code class="docutils literal notranslate"><span class="pre">&lt;set&gt;</span></code> exists and is <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> or <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code>, any
+files in the set are installed under the destination (see below).
+The directory structure relative to the file set's base directories is
+preserved. For example, a file added to the file set as
+<code class="docutils literal notranslate"><span class="pre">/blah/include/myproj/here.h</span></code> with a base directory <code class="docutils literal notranslate"><span class="pre">/blah/include</span></code>
+would be installed to <code class="docutils literal notranslate"><span class="pre">myproj/here.h</span></code> below the destination.</p>
+</dd>
 </dl>
+<p><code class="docutils literal notranslate"><span class="pre">CXX_MODULES_BMI</span></code></p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Experimental. Gated by <code class="docutils literal notranslate"><span class="pre">CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API</span></code></p>
+</div>
+<p>Any module files from C++ modules from <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> sources in a file set of
+type <code class="docutils literal notranslate"><span class="pre">CXX_MODULES</span></code> will be installed to the given <code class="docutils literal notranslate"><span class="pre">DESTINATION</span></code>. All
+modules are placed directly in the destination as no directory structure is
+derived from the names of the modules. An empty <code class="docutils literal notranslate"><span class="pre">DESTINATION</span></code> may be used
+to suppress installing these files (for use in generic code).</p>
+</div></blockquote>
 <p>For each of these arguments given, the arguments following them only apply
 to the target or file type specified in the argument. If none is given, the
-installation properties apply to all target types. If only one is given then
-only targets of that type will be installed (which can be used to install
-just a DLL or just an import library.)</p>
+installation properties apply to all target types.</p>
 <p>For regular executables, static libraries and shared libraries, the
 <code class="docutils literal notranslate"><span class="pre">DESTINATION</span></code> argument is not required.  For these target types, when
 <code class="docutils literal notranslate"><span class="pre">DESTINATION</span></code> is omitted, a default destination will be taken from the
 appropriate variable from <span class="target" id="index-0-module:GNUInstallDirs"></span><a class="reference internal" href="../module/GNUInstallDirs.html#module:GNUInstallDirs" title="GNUInstallDirs"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">GNUInstallDirs</span></code></a>, or set to a built-in
-default value if that variable is not defined.  The same is true for the
-public and private headers associated with the installed targets through the
-<span class="target" id="index-2-prop_tgt:PUBLIC_HEADER"></span><a class="reference internal" href="../prop_tgt/PUBLIC_HEADER.html#prop_tgt:PUBLIC_HEADER" title="PUBLIC_HEADER"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">PUBLIC_HEADER</span></code></a> and <span class="target" id="index-1-prop_tgt:PRIVATE_HEADER"></span><a class="reference internal" href="../prop_tgt/PRIVATE_HEADER.html#prop_tgt:PRIVATE_HEADER" title="PRIVATE_HEADER"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">PRIVATE_HEADER</span></code></a> target properties.
-A destination must always be provided for module libraries, Apple bundles and
-frameworks.  A destination can be omitted for interface and object libraries,
-but they are handled differently (see the discussion of this topic toward the
-end of this section).</p>
+default value if that variable is not defined.  The same is true for file
+sets, and the public and private headers associated with the installed
+targets through the <span class="target" id="index-2-prop_tgt:PUBLIC_HEADER"></span><a class="reference internal" href="../prop_tgt/PUBLIC_HEADER.html#prop_tgt:PUBLIC_HEADER" title="PUBLIC_HEADER"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">PUBLIC_HEADER</span></code></a> and <span class="target" id="index-1-prop_tgt:PRIVATE_HEADER"></span><a class="reference internal" href="../prop_tgt/PRIVATE_HEADER.html#prop_tgt:PRIVATE_HEADER" title="PRIVATE_HEADER"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">PRIVATE_HEADER</span></code></a>
+target properties. A destination must always be provided for module libraries,
+Apple bundles and frameworks.  A destination can be omitted for interface and
+object libraries, but they are handled differently (see the discussion of this
+topic toward the end of this section).</p>
+<p>For shared libraries on DLL platforms, if neither <code class="docutils literal notranslate"><span class="pre">RUNTIME</span></code> nor <code class="docutils literal notranslate"><span class="pre">ARCHIVE</span></code>
+destinations are specified, both the <code class="docutils literal notranslate"><span class="pre">RUNTIME</span></code> and <code class="docutils literal notranslate"><span class="pre">ARCHIVE</span></code> components are
+installed to their default destinations. If either a <code class="docutils literal notranslate"><span class="pre">RUNTIME</span></code> or <code class="docutils literal notranslate"><span class="pre">ARCHIVE</span></code>
+destination is specified, the component is installed to that destination, and
+the other component is not installed. If both <code class="docutils literal notranslate"><span class="pre">RUNTIME</span></code> and <code class="docutils literal notranslate"><span class="pre">ARCHIVE</span></code>
+destinations are specified, then both components are installed to their
+respective destinations.</p>
 <p>The following table shows the target types with their associated variables and
 built-in defaults that apply when no destination is given:</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 44%" />
-<col style="width: 31%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Target Type</p></th>
 <th class="head"><p>GNUInstallDirs Variable</p></th>
@@ -290,11 +316,16 @@ built-in defaults that apply when no destination is given:</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_INCLUDEDIR}</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">include</span></code></p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FILE_SET</span></code> (type <code class="docutils literal notranslate"><span class="pre">HEADERS</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">${CMAKE_INSTALL_INCLUDEDIR}</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">include</span></code></p></td>
+</tr>
 </tbody>
 </table>
 <p>Projects wishing to follow the common practice of installing headers into a
-project-specific subdirectory will need to provide a destination rather than
-rely on the above.</p>
+project-specific subdirectory may prefer using file sets with appropriate
+paths and base directories. Otherwise, they must provide a <code class="docutils literal notranslate"><span class="pre">DESTINATION</span></code>
+instead of being able to rely on the above (see next example below).</p>
 <p>To make packages compliant with distribution filesystem layout policies, if
 projects must specify a <code class="docutils literal notranslate"><span class="pre">DESTINATION</span></code>, it is recommended that they use a
 path that begins with the appropriate <span class="target" id="index-1-module:GNUInstallDirs"></span><a class="reference internal" href="../module/GNUInstallDirs.html#module:GNUInstallDirs" title="GNUInstallDirs"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">GNUInstallDirs</span></code></a> variable.
@@ -302,7 +333,7 @@ This allows package maintainers to control the install destination by setting
 the appropriate cache variables.  The following example shows a static library
 being installed to the default destination provided by
 <span class="target" id="index-2-module:GNUInstallDirs"></span><a class="reference internal" href="../module/GNUInstallDirs.html#module:GNUInstallDirs" title="GNUInstallDirs"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">GNUInstallDirs</span></code></a>, but with its headers installed to a project-specific
-subdirectory that follows the above recommendation:</p>
+subdirectory without using file sets:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">mylib</span><span class="w"> </span><span class="no">STATIC</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
 <span class="nf">set_target_properties(</span><span class="nb">mylib</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">PUBLIC_HEADER</span><span class="w"> </span><span class="nb">mylib.h</span><span class="nf">)</span><span class="w"></span>
 <span class="nf">include(</span><span class="nb">GNUInstallDirs</span><span class="nf">)</span><span class="w"></span>
@@ -382,12 +413,16 @@ top level:</p>
 install the export file itself, call <a class="reference internal" href="#install-export">install(EXPORT)</a>, documented below.
 See documentation of the <span class="target" id="index-0-prop_tgt:EXPORT_NAME"></span><a class="reference internal" href="../prop_tgt/EXPORT_NAME.html#prop_tgt:EXPORT_NAME" title="EXPORT_NAME"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">EXPORT_NAME</span></code></a> target property to change
 the name of the exported target.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">EXPORT</span></code> is used and the targets include <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> or <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code>
+file sets, all of them must be specified with <code class="docutils literal notranslate"><span class="pre">FILE_SET</span></code> arguments. All
+<code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> or <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code> file sets associated with a target are included
+in the export.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">INCLUDES</span> <span class="pre">DESTINATION</span></code></dt><dd><p>This option specifies a list of directories which will be added to the
 <span class="target" id="index-0-prop_tgt:INTERFACE_INCLUDE_DIRECTORIES"></span><a class="reference internal" href="../prop_tgt/INTERFACE_INCLUDE_DIRECTORIES.html#prop_tgt:INTERFACE_INCLUDE_DIRECTORIES" title="INTERFACE_INCLUDE_DIRECTORIES"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">INTERFACE_INCLUDE_DIRECTORIES</span></code></a> target property of the
 <code class="docutils literal notranslate"><span class="pre">&lt;targets&gt;</span></code> when exported by the <a class="reference internal" href="#install-export">install(EXPORT)</a> command. If a
 relative path is specified, it is treated as relative to the
-<code class="docutils literal notranslate"><span class="pre">$&lt;INSTALL_PREFIX&gt;</span></code>.</p>
+<span class="target" id="index-0-genex:INSTALL_PREFIX"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#genex:INSTALL_PREFIX" title="INSTALL_PREFIX"><code class="xref cmake cmake-genex docutils literal notranslate"><span class="pre">$&lt;INSTALL_PREFIX&gt;</span></code></a>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">RUNTIME_DEPENDENCY_SET</span></code></dt><dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.21.</span></p>
@@ -468,9 +503,9 @@ targets from other directories are up-to-date.  You can use
 to ensure that such out-of-directory targets are built before the
 subdirectory-specific install rules are run.</p>
 </div>
-</div>
-<div class="section" id="installing-imported-runtime-artifacts">
-<h2>Installing Imported Runtime Artifacts<a class="headerlink" href="#installing-imported-runtime-artifacts" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="installing-imported-runtime-artifacts">
+<h2>Installing Imported Runtime Artifacts<a class="headerlink" href="#installing-imported-runtime-artifacts" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded" id="imported-runtime-artifacts">
 <span id="install-imported-runtime-artifacts"></span><p><span class="versionmodified added">New in version 3.21.</span></p>
 </div>
@@ -501,10 +536,16 @@ entire directory is installed.</p>
 imported executable, shared library, and module library <code class="docutils literal notranslate"><span class="pre">targets</span></code> to be
 added to the <code class="docutils literal notranslate"><span class="pre">&lt;set-name&gt;</span></code> runtime dependency set. This set can then be
 installed with an <a class="reference internal" href="#install-runtime-dependency-set">install(RUNTIME_DEPENDENCY_SET)</a> command.</p>
+</section>
+<section id="installing-files">
+<h2>Installing Files<a class="headerlink" href="#installing-files" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note" id="programs">
+<span id="files"></span><span id="install-programs"></span><span id="install-files"></span><p class="admonition-title">Note</p>
+<p>If installing header files, consider using file sets defined by
+<span class="target" id="index-1-command:target_sources"></span><a class="reference internal" href="target_sources.html#command:target_sources" title="target_sources"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_sources(FILE_SET)</span></code></a> instead. File sets associate
+headers with a target and they install as part of the target.</p>
 </div>
-<div class="section" id="installing-files">
-<h2>Installing Files<a class="headerlink" href="#installing-files" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cmake notranslate" id="programs"><span id="files"></span><span id="install-programs"></span><span id="install-files"></span><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="o">&lt;</span><span class="no">FILES</span><span class="p">|</span><span class="no">PROGRAMS</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">files...</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="o">&lt;</span><span class="no">FILES</span><span class="p">|</span><span class="no">PROGRAMS</span><span class="o">&gt;</span><span class="w"> </span><span class="nb">files...</span><span class="w"></span>
 <span class="w">        </span><span class="no">TYPE</span><span class="w"> </span><span class="nv">&lt;type&gt;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="no">DESTINATION</span><span class="w"> </span><span class="nv">&lt;dir&gt;</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">PERMISSIONS</span><span class="w"> </span><span class="nb">permissions...</span><span class="p">]</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">CONFIGURATIONS</span><span class="w"> </span><span class="p">[</span><span class="nb">Debug</span><span class="p">|</span><span class="nb">Release</span><span class="p">|...]]</span><span class="w"></span>
@@ -536,11 +577,6 @@ the supported file types and their corresponding variables and built-in
 defaults.  Projects can provide a <code class="docutils literal notranslate"><span class="pre">DESTINATION</span></code> argument instead of a
 file type if they wish to explicitly define the install destination.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 41%" />
-<col style="width: 30%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">TYPE</span></code> Argument</p></th>
 <th class="head"><p>GNUInstallDirs Variable</p></th>
@@ -604,7 +640,8 @@ file type if they wish to explicitly define the install destination.</p>
 </table>
 <p>Projects wishing to follow the common practice of installing headers into a
 project-specific subdirectory will need to provide a destination rather than
-rely on the above.</p>
+rely on the above. Using file sets for headers instead of <code class="docutils literal notranslate"><span class="pre">install(FILES)</span></code>
+would be even better (see <span class="target" id="index-2-command:target_sources"></span><a class="reference internal" href="target_sources.html#command:target_sources" title="target_sources"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_sources(FILE_SET)</span></code></a>).</p>
 <p>Note that some of the types' built-in defaults use the <code class="docutils literal notranslate"><span class="pre">DATAROOT</span></code> directory as
 a prefix. The <code class="docutils literal notranslate"><span class="pre">DATAROOT</span></code> prefix is calculated similarly to the types, with
 <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_DATAROOTDIR</span></code> as the variable and <code class="docutils literal notranslate"><span class="pre">share</span></code> as the built-in
@@ -615,10 +652,11 @@ projects must specify a <code class="docutils literal notranslate"><span class="
 path that begins with the appropriate <span class="target" id="index-4-module:GNUInstallDirs"></span><a class="reference internal" href="../module/GNUInstallDirs.html#module:GNUInstallDirs" title="GNUInstallDirs"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">GNUInstallDirs</span></code></a> variable.
 This allows package maintainers to control the install destination by setting
 the appropriate cache variables.  The following example shows how to follow
-this advice while installing headers to a project-specific subdirectory:</p>
+this advice while installing an image to a project-specific documentation
+subdirectory:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">GNUInstallDirs</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">install(</span><span class="no">FILES</span><span class="w"> </span><span class="nb">mylib.h</span><span class="w"></span>
-<span class="w">        </span><span class="no">DESTINATION</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_INSTALL_INCLUDEDIR</span><span class="o">}</span><span class="na">/myproj</span><span class="w"></span>
+<span class="nf">install(</span><span class="no">FILES</span><span class="w"> </span><span class="nb">logo.png</span><span class="w"></span>
+<span class="w">        </span><span class="no">DESTINATION</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_INSTALL_DOCDIR</span><span class="o">}</span><span class="na">/myproj</span><span class="w"></span>
 <span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
@@ -632,10 +670,17 @@ use &quot;generator expressions&quot; with the syntax <code class="docutils lite
 use &quot;generator expressions&quot; with the syntax <code class="docutils literal notranslate"><span class="pre">$&lt;...&gt;</span></code>.  See the
 <span class="target" id="index-3-manual:cmake-generator-expressions(7)"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#manual:cmake-generator-expressions(7)" title="cmake-generator-expressions(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake-generator-expressions(7)</span></code></a> manual for available expressions.</p>
 </div>
+</section>
+<section id="installing-directories">
+<h2>Installing Directories<a class="headerlink" href="#installing-directories" title="Permalink to this heading">¶</a></h2>
+<div class="admonition note" id="directory">
+<span id="install-directory"></span><p class="admonition-title">Note</p>
+<p>To install a directory sub-tree of headers, consider using file sets
+defined by <span class="target" id="index-3-command:target_sources"></span><a class="reference internal" href="target_sources.html#command:target_sources" title="target_sources"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_sources(FILE_SET)</span></code></a> instead. File sets not only
+preserve directory structure, they also associate headers with a target
+and install as part of the target.</p>
 </div>
-<div class="section" id="installing-directories">
-<h2>Installing Directories<a class="headerlink" href="#installing-directories" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-cmake notranslate" id="directory"><span id="install-directory"></span><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">DIRECTORY</span><span class="w"> </span><span class="nb">dirs...</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">DIRECTORY</span><span class="w"> </span><span class="nb">dirs...</span><span class="w"></span>
 <span class="w">        </span><span class="no">TYPE</span><span class="w"> </span><span class="nv">&lt;type&gt;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="no">DESTINATION</span><span class="w"> </span><span class="nv">&lt;dir&gt;</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">FILE_PERMISSIONS</span><span class="w"> </span><span class="nb">permissions...</span><span class="p">]</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">DIRECTORY_PERMISSIONS</span><span class="w"> </span><span class="nb">permissions...</span><span class="p">]</span><span class="w"></span>
@@ -681,11 +726,11 @@ files and directories are installed whether or not they are matched.
 The <code class="docutils literal notranslate"><span class="pre">FILES_MATCHING</span></code> option may be given before the first match option
 to disable installation of files (but not directories) not matched by
 any expression.  For example, the code</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">DIRECTORY</span><span class="w"> </span><span class="na">src/</span><span class="w"> </span><span class="no">DESTINATION</span><span class="w"> </span><span class="na">include/myproj</span><span class="w"></span>
-<span class="w">        </span><span class="no">FILES_MATCHING</span><span class="w"> </span><span class="no">PATTERN</span><span class="w"> </span><span class="s">&quot;*.h&quot;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">DIRECTORY</span><span class="w"> </span><span class="na">src/</span><span class="w"> </span><span class="no">DESTINATION</span><span class="w"> </span><span class="na">doc/myproj</span><span class="w"></span>
+<span class="w">        </span><span class="no">FILES_MATCHING</span><span class="w"> </span><span class="no">PATTERN</span><span class="w"> </span><span class="s">&quot;*.png&quot;</span><span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p>will extract and install header files from a source tree.</p>
+<p>will extract and install images from a source tree.</p>
 <p>Some options may follow a <code class="docutils literal notranslate"><span class="pre">PATTERN</span></code> or <code class="docutils literal notranslate"><span class="pre">REGEX</span></code> expression as described
 under <a class="reference internal" href="string.html#regex-specification"><span class="std std-ref">string(REGEX)</span></a> and are applied
 only to files or directories matching them.  The <code class="docutils literal notranslate"><span class="pre">EXCLUDE</span></code> option will
@@ -713,11 +758,6 @@ corresponding variables and built-in defaults.  Projects can provide a
 <code class="docutils literal notranslate"><span class="pre">DESTINATION</span></code> argument instead of a file type if they wish to explicitly
 define the install destination.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 28%" />
-<col style="width: 41%" />
-<col style="width: 30%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">TYPE</span></code> Argument</p></th>
 <th class="head"><p>GNUInstallDirs Variable</p></th>
@@ -798,9 +838,9 @@ use &quot;generator expressions&quot; with the syntax <code class="docutils lite
 <p><span class="versionmodified added">New in version 3.5: </span>The list of <code class="docutils literal notranslate"><span class="pre">dirs...</span></code> given to <code class="docutils literal notranslate"><span class="pre">DIRECTORY</span></code> may use
 &quot;generator expressions&quot; too.</p>
 </div>
-</div>
-<div class="section" id="custom-installation-logic">
-<h2>Custom Installation Logic<a class="headerlink" href="#custom-installation-logic" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="custom-installation-logic">
+<h2>Custom Installation Logic<a class="headerlink" href="#custom-installation-logic" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate" id="script"><span id="code"></span><span id="install-script"></span><span id="install-code"></span><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="p">[[</span><span class="no">SCRIPT</span><span class="w"> </span><span class="nv">&lt;file&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">CODE</span><span class="w"> </span><span class="nv">&lt;code&gt;</span><span class="p">]]</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">ALL_COMPONENTS</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="no">COMPONENT</span><span class="w"> </span><span class="nv">&lt;component&gt;</span><span class="p">]</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">EXCLUDE_FROM_ALL</span><span class="p">]</span><span class="w"> </span><span class="p">[...]</span><span class="nf">)</span><span class="w"></span>
@@ -828,13 +868,14 @@ option.</p>
 name, not the file's contents).  See the
 <span class="target" id="index-5-manual:cmake-generator-expressions(7)"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#manual:cmake-generator-expressions(7)" title="cmake-generator-expressions(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake-generator-expressions(7)</span></code></a> manual for available expressions.</p>
 </div>
-</div>
-<div class="section" id="installing-exports">
-<h2>Installing Exports<a class="headerlink" href="#installing-exports" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="installing-exports">
+<h2>Installing Exports<a class="headerlink" href="#installing-exports" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate" id="export"><span id="install-export"></span><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">EXPORT</span><span class="w"> </span><span class="nv">&lt;export-name&gt;</span><span class="w"> </span><span class="no">DESTINATION</span><span class="w"> </span><span class="nv">&lt;dir&gt;</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">NAMESPACE</span><span class="w"> </span><span class="nv">&lt;namespace&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[[</span><span class="no">FILE</span><span class="w"> </span><span class="nv">&lt;name&gt;</span><span class="p">.</span><span class="nb">cmake</span><span class="p">]|</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="no">NAMESPACE</span><span class="w"> </span><span class="nv">&lt;namespace&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">FILE</span><span class="w"> </span><span class="nv">&lt;name&gt;</span><span class="p">.</span><span class="nb">cmake</span><span class="p">]</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">PERMISSIONS</span><span class="w"> </span><span class="nb">permissions...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">CONFIGURATIONS</span><span class="w"> </span><span class="p">[</span><span class="nb">Debug</span><span class="p">|</span><span class="nb">Release</span><span class="p">|...]]</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="no">CONFIGURATIONS</span><span class="w"> </span><span class="p">[</span><span class="nb">Debug</span><span class="p">|</span><span class="nb">Release</span><span class="p">|...]</span><span class="w"></span>
+<span class="w">        </span><span class="p">[</span><span class="no">CXX_MODULES_DIRECTORY</span><span class="w"> </span><span class="nv">&lt;directory&gt;</span><span class="p">]</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">EXPORT_LINK_INTERFACE_LIBRARIES</span><span class="p">]</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">COMPONENT</span><span class="w"> </span><span class="nv">&lt;component&gt;</span><span class="p">]</span><span class="w"></span>
 <span class="w">        </span><span class="p">[</span><span class="no">EXCLUDE_FROM_ALL</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
@@ -882,7 +923,7 @@ RPM, typically handle this by listing the <code class="docutils literal notransl
 of the <code class="docutils literal notranslate"><span class="pre">Development</span></code> component in the package metadata, ensuring that the
 library is always installed if the headers and CMake export file are present.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.7: </span>In addition to cmake language files, the <code class="docutils literal notranslate"><span class="pre">EXPORT_ANDROID_MK</span></code> mode maybe
+<p><span class="versionmodified added">New in version 3.7: </span>In addition to cmake language files, the <code class="docutils literal notranslate"><span class="pre">EXPORT_ANDROID_MK</span></code> mode may be
 used to specify an export to the android ndk build system.  This mode
 accepts the same options as the normal export mode.  The Android
 NDK supports the use of prebuilt libraries, both static and shared. This
@@ -890,6 +931,18 @@ allows cmake to build the libraries of a project and make them available
 to an ndk build system complete with transitive dependencies, include flags
 and defines required to use the libraries.</p>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">CXX_MODULES_DIRECTORY</span></code></p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Experimental. Gated by <code class="docutils literal notranslate"><span class="pre">CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API</span></code></p>
+</div>
+<p>Specify a subdirectory to store C++ module information for targets in the
+export set. This directory will be populated with files which add the
+necessary target property information to the relevant targets. Note that
+without this information, none of the C++ modules which are part of the
+targets in the export set will support being imported in consuming targets.</p>
+</div></blockquote>
 <p>The <code class="docutils literal notranslate"><span class="pre">EXPORT</span></code> form is useful to help outside projects use targets built
 and installed by the current project.  For example, the code</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">TARGETS</span><span class="w"> </span><span class="nb">myexe</span><span class="w"> </span><span class="no">EXPORT</span><span class="w"> </span><span class="nb">myproj</span><span class="w"> </span><span class="no">DESTINATION</span><span class="w"> </span><span class="nb">bin</span><span class="nf">)</span><span class="w"></span>
@@ -914,9 +967,9 @@ those generated by <span class="target" id="index-1-command:install_targets"></s
 <span class="target" id="index-1-command:install_files"></span><a class="reference internal" href="install_files.html#command:install_files" title="install_files"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install_files()</span></code></a>, and <span class="target" id="index-1-command:install_programs"></span><a class="reference internal" href="install_programs.html#command:install_programs" title="install_programs"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install_programs()</span></code></a> commands
 is not defined.</p>
 </div>
-</div>
-<div class="section" id="installing-runtime-dependencies">
-<h2>Installing Runtime Dependencies<a class="headerlink" href="#installing-runtime-dependencies" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="installing-runtime-dependencies">
+<h2>Installing Runtime Dependencies<a class="headerlink" href="#installing-runtime-dependencies" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded" id="runtime-dependency-set">
 <span id="install-runtime-dependency-set"></span><p><span class="versionmodified added">New in version 3.21.</span></p>
 </div>
@@ -973,18 +1026,18 @@ support <span class="target" id="index-6-manual:cmake-generator-expressions(7)">
 <li><p><code class="docutils literal notranslate"><span class="pre">POST_INCLUDE_FILES</span> <span class="pre">&lt;files&gt;</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">POST_EXCLUDE_FILES</span> <span class="pre">&lt;files&gt;</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="generated-installation-script">
-<h2>Generated Installation Script<a class="headerlink" href="#generated-installation-script" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="generated-installation-script">
+<h2>Generated Installation Script<a class="headerlink" href="#generated-installation-script" title="Permalink to this heading">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Use of this feature is not recommended. Please consider using the
-<code class="docutils literal notranslate"><span class="pre">--install</span></code> argument of <span class="target" id="index-0-manual:cmake(1)"></span><a class="reference internal" href="../manual/cmake.1.html#manual:cmake(1)" title="cmake(1)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake(1)</span></code></a> instead.</p>
+<a class="reference internal" href="../manual/cmake.1.html#cmdoption-cmake-install"><code class="xref std std-option docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--install</span></code></a> instead.</p>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">install()</span></code> command generates a file, <code class="docutils literal notranslate"><span class="pre">cmake_install.cmake</span></code>, inside
 the build directory, which is used internally by the generated install target
-and by CPack. You can also invoke this script manually with <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-P</span></code>. This
-script accepts several variables:</p>
+and by CPack. You can also invoke this script manually with
+<a class="reference internal" href="../manual/cmake.1.html#cmdoption-cmake-P"><code class="xref std std-option docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-P</span></code></a>. This script accepts several variables:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">COMPONENT</span></code></dt><dd><p>Set this variable to install only a single CPack component as opposed to all
 of them. For example, if you only want to install the <code class="docutils literal notranslate"><span class="pre">Development</span></code>
@@ -999,17 +1052,19 @@ to change the installation prefix on UNIX systems. See <span class="target" id="
 details.</p>
 </dd>
 </dl>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">install</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#introduction">Introduction</a></li>
@@ -1025,12 +1080,17 @@ details.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="include_regular_expression.html"
-                        title="previous chapter">include_regular_expression</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="link_directories.html"
-                        title="next chapter">link_directories</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="include_regular_expression.html"
+                          title="previous chapter">include_regular_expression</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="link_directories.html"
+                          title="next chapter">link_directories</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1042,12 +1102,12 @@ details.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1072,15 +1132,17 @@ details.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">install</a></li> 
       </ul>
     </div>
+
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2021 Kitware, Inc. and Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

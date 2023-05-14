@@ -1,29 +1,31 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-  <title>if &mdash; CMake 3.22.1 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>if &mdash; CMake 3.26.3 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="include" href="include.html" />
     <link rel="prev" title="get_property" href="get_property.html" />
-  
  
 
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,10 +46,11 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">if</a></li> 
       </ul>
     </div>  
 
@@ -56,11 +59,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="if">
-<span id="command:if"></span><h1>if<a class="headerlink" href="#if" title="Permalink to this headline">¶</a></h1>
+  <section id="if">
+<span id="command:if"></span><h1>if<a class="headerlink" href="#if" title="Permalink to this heading">¶</a></h1>
 <p>Conditionally execute a group of commands.</p>
-<div class="section" id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
+<section id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">if(</span><span class="nv">&lt;condition&gt;</span><span class="nf">)</span><span class="w"></span>
 <span class="w">  </span><span class="nv">&lt;commands&gt;</span><span class="w"></span>
 <span class="nf">elseif(</span><span class="nv">&lt;condition&gt;</span><span class="nf">)</span><span class="w"> </span><span class="c"># optional block, can be repeated</span>
@@ -81,25 +84,30 @@ an optional <code class="docutils literal notranslate"><span class="pre">&lt;con
 If used, it must be a verbatim
 repeat of the argument of the opening
 <code class="docutils literal notranslate"><span class="pre">if</span></code> command.</p>
-</div>
-<div class="section" id="condition-syntax">
-<span id="id1"></span><h2>Condition Syntax<a class="headerlink" href="#condition-syntax" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="condition-syntax">
+<span id="id1"></span><h2>Condition Syntax<a class="headerlink" href="#condition-syntax" title="Permalink to this heading">¶</a></h2>
 <p>The following syntax applies to the <code class="docutils literal notranslate"><span class="pre">condition</span></code> argument of
 the <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elseif</span></code> and <span class="target" id="index-0-command:while"></span><a class="reference internal" href="while.html#command:while" title="while"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">while()</span></code></a> clauses.</p>
-<p>Compound conditions are evaluated in the following order of precedence:
-Innermost parentheses are evaluated first. Next come unary tests such
-as <a class="reference internal" href="#exists">EXISTS</a>, <a class="reference internal" href="#command">COMMAND</a>, and <a class="reference internal" href="#defined">DEFINED</a>.  Then binary tests such as
-<a class="reference internal" href="#equal">EQUAL</a>, <a class="reference internal" href="#less">LESS</a>, <a class="reference internal" href="#less-equal">LESS_EQUAL</a>, <a class="reference internal" href="#greater">GREATER</a>, <a class="reference internal" href="#greater-equal">GREATER_EQUAL</a>,
-<a class="reference internal" href="#strequal">STREQUAL</a>, <a class="reference internal" href="#strless">STRLESS</a>, <a class="reference internal" href="#strless-equal">STRLESS_EQUAL</a>, <a class="reference internal" href="#strgreater">STRGREATER</a>,
-<a class="reference internal" href="#strgreater-equal">STRGREATER_EQUAL</a>, <a class="reference internal" href="#version-equal">VERSION_EQUAL</a>, <a class="reference internal" href="#version-less">VERSION_LESS</a>,
+<p>Compound conditions are evaluated in the following order of precedence:</p>
+<ol class="arabic simple">
+<li><p>Parentheses.</p></li>
+<li><p>Unary tests such as <a class="reference internal" href="#exists">EXISTS</a>, <a class="reference internal" href="#command">COMMAND</a>, and <a class="reference internal" href="#defined">DEFINED</a>.</p></li>
+<li><p>Binary tests such as <a class="reference internal" href="#equal">EQUAL</a>, <a class="reference internal" href="#less">LESS</a>, <a class="reference internal" href="#less-equal">LESS_EQUAL</a>, <a class="reference internal" href="#greater">GREATER</a>,
+<a class="reference internal" href="#greater-equal">GREATER_EQUAL</a>, <a class="reference internal" href="#strequal">STREQUAL</a>, <a class="reference internal" href="#strless">STRLESS</a>, <a class="reference internal" href="#strless-equal">STRLESS_EQUAL</a>,
+<a class="reference internal" href="#strgreater">STRGREATER</a>, <a class="reference internal" href="#strgreater-equal">STRGREATER_EQUAL</a>, <a class="reference internal" href="#version-equal">VERSION_EQUAL</a>, <a class="reference internal" href="#version-less">VERSION_LESS</a>,
 <a class="reference internal" href="#version-less-equal">VERSION_LESS_EQUAL</a>, <a class="reference internal" href="#version-greater">VERSION_GREATER</a>, <a class="reference internal" href="#version-greater-equal">VERSION_GREATER_EQUAL</a>,
-and <a class="reference internal" href="#matches">MATCHES</a>.  Then the boolean operators in the order <a class="reference internal" href="#not">NOT</a>,  <a class="reference internal" href="#and">AND</a>,
-and finally <a class="reference internal" href="#or">OR</a>.</p>
-<div class="section" id="basic-expressions">
-<h3>Basic Expressions<a class="headerlink" href="#basic-expressions" title="Permalink to this headline">¶</a></h3>
+<a class="reference internal" href="#path-equal">PATH_EQUAL</a>, and <a class="reference internal" href="#matches">MATCHES</a>.</p></li>
+<li><p>Unary logical operator <a class="reference internal" href="#not">NOT</a>.</p></li>
+<li><p>Binary logical operators <a class="reference internal" href="#and">AND</a> and <a class="reference internal" href="#or">OR</a>, from left to right,
+without any short-circuit.</p></li>
+</ol>
+<section id="basic-expressions">
+<h3>Basic Expressions<a class="headerlink" href="#basic-expressions" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">if(&lt;constant&gt;)</span></code></dt><dd><p>True if the constant is <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">ON</span></code>, <code class="docutils literal notranslate"><span class="pre">YES</span></code>, <code class="docutils literal notranslate"><span class="pre">TRUE</span></code>, <code class="docutils literal notranslate"><span class="pre">Y</span></code>,
-or a non-zero number.  False if the constant is <code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">OFF</span></code>,
+or a non-zero number (including floating point numbers).
+False if the constant is <code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">OFF</span></code>,
 <code class="docutils literal notranslate"><span class="pre">NO</span></code>, <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, <code class="docutils literal notranslate"><span class="pre">N</span></code>, <code class="docutils literal notranslate"><span class="pre">IGNORE</span></code>, <code class="docutils literal notranslate"><span class="pre">NOTFOUND</span></code>, the empty string,
 or ends in the suffix <code class="docutils literal notranslate"><span class="pre">-NOTFOUND</span></code>.  Named boolean constants are
 case-insensitive.  If the argument is not one of these specific
@@ -109,8 +117,9 @@ further below) and one of the following two forms applies.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">if(&lt;variable&gt;)</span></code></dt><dd><p>True if given a variable that is defined to a value that is not a false
 constant.  False otherwise, including if the variable is undefined.
 Note that macro arguments are not variables.
-Environment variables also cannot be tested this way, e.g.
-<code class="docutils literal notranslate"><span class="pre">if(ENV{some_var})</span></code> will always evaluate to false.</p>
+<a class="reference internal" href="../manual/cmake-language.7.html#cmake-language-environment-variables"><span class="std std-ref">Environment Variables</span></a> also
+cannot be tested this way, e.g. <code class="docutils literal notranslate"><span class="pre">if(ENV{some_var})</span></code> will always evaluate
+to false.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">if(&lt;string&gt;)</span></code></dt><dd><p>A quoted string always evaluates to false unless:</p>
 <ul class="simple">
@@ -121,9 +130,9 @@ behavior.</p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="logic-operators">
-<h3>Logic Operators<a class="headerlink" href="#logic-operators" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="logic-operators">
+<h3>Logic Operators<a class="headerlink" href="#logic-operators" title="Permalink to this heading">¶</a></h3>
 <dl class="simple" id="not">
 <dt><code class="docutils literal notranslate"><span class="pre">if(NOT</span> <span class="pre">&lt;condition&gt;)</span></code></dt><dd><p>True if the condition is not true.</p>
 </dd>
@@ -141,9 +150,9 @@ Where there are nested parenthesis the innermost are evaluated as part
 of evaluating the condition that contains them.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="existence-checks">
-<h3>Existence Checks<a class="headerlink" href="#existence-checks" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="existence-checks">
+<h3>Existence Checks<a class="headerlink" href="#existence-checks" title="Permalink to this heading">¶</a></h3>
 <dl id="command">
 <dt><code class="docutils literal notranslate"><span class="pre">if(COMMAND</span> <span class="pre">command-name)</span></code></dt><dd><p>True if the given name is a command, macro or function that can be
 invoked.</p>
@@ -164,7 +173,17 @@ or <span class="target" id="index-0-command:add_custom_target"></span><a class="
 <dl id="defined">
 <dt><code class="docutils literal notranslate"><span class="pre">if(DEFINED</span> <span class="pre">&lt;name&gt;|CACHE{&lt;name&gt;}|ENV{&lt;name&gt;})</span></code></dt><dd><p>True if a variable, cache variable or environment variable
 with given <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> is defined. The value of the variable
-does not matter. Note that macro arguments are not variables.</p>
+does not matter. Note the following caveats:</p>
+<ul class="simple">
+<li><p>Macro arguments are not variables.</p></li>
+<li><p>It is not possible to test directly whether a <cite>&lt;name&gt;</cite> is a non-cache
+variable.  The expression <code class="docutils literal notranslate"><span class="pre">if(DEFINED</span> <span class="pre">someName)</span></code> will evaluate to true
+if either a cache or non-cache variable <code class="docutils literal notranslate"><span class="pre">someName</span></code> exists.  In
+comparison, the expression <code class="docutils literal notranslate"><span class="pre">if(DEFINED</span> <span class="pre">CACHE{someName})</span></code> will only
+evaluate to true if a cache variable <code class="docutils literal notranslate"><span class="pre">someName</span></code> exists.  Both expressions
+need to be tested if you need to know whether a non-cache variable exists:
+<code class="docutils literal notranslate"><span class="pre">if(DEFINED</span> <span class="pre">someName</span> <span class="pre">AND</span> <span class="pre">NOT</span> <span class="pre">DEFINED</span> <span class="pre">CACHE{someName})</span></code>.</p></li>
+</ul>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.14: </span>Added support for <code class="docutils literal notranslate"><span class="pre">CACHE{&lt;name&gt;}</span></code> variables.</p>
 </div>
@@ -174,15 +193,16 @@ does not matter. Note that macro arguments are not variables.</p>
 </div>
 </dd>
 </dl>
-</div>
-<div class="section" id="file-operations">
-<h3>File Operations<a class="headerlink" href="#file-operations" title="Permalink to this headline">¶</a></h3>
-<dl class="simple" id="exists">
+</section>
+<section id="file-operations">
+<h3>File Operations<a class="headerlink" href="#file-operations" title="Permalink to this heading">¶</a></h3>
+<dl id="exists">
 <dt><code class="docutils literal notranslate"><span class="pre">if(EXISTS</span> <span class="pre">path-to-file-or-directory)</span></code></dt><dd><p>True if the named file or directory exists.  Behavior is well-defined
 only for explicit full paths (a leading <code class="docutils literal notranslate"><span class="pre">~/</span></code> is not expanded as
 a home directory and is considered a relative path).
 Resolves symbolic links, i.e. if the named file or directory is a
 symbolic link, returns true if the target of the symbolic link exists.</p>
+<p>False if the given path is an empty string.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">if(file1</span> <span class="pre">IS_NEWER_THAN</span> <span class="pre">file2)</span></code></dt><dd><p>True if <code class="docutils literal notranslate"><span class="pre">file1</span></code> is newer than <code class="docutils literal notranslate"><span class="pre">file2</span></code> or if one of the two files doesn't
 exist.  Behavior is well-defined only for full paths.  If the file
@@ -191,8 +211,9 @@ true, so that any dependent build operations will occur in the event
 of a tie.  This includes the case of passing the same file name for
 both file1 and file2.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">if(IS_DIRECTORY</span> <span class="pre">path-to-directory)</span></code></dt><dd><p>True if the given name is a directory.  Behavior is well-defined only
+<dt><code class="docutils literal notranslate"><span class="pre">if(IS_DIRECTORY</span> <span class="pre">path)</span></code></dt><dd><p>True if <code class="docutils literal notranslate"><span class="pre">path</span></code> is a directory.  Behavior is well-defined only
 for full paths.</p>
+<p>False if the given path is an empty string.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">if(IS_SYMLINK</span> <span class="pre">file-name)</span></code></dt><dd><p>True if the given name is a symbolic link.  Behavior is well-defined
 only for full paths.</p>
@@ -210,9 +231,9 @@ evaluates to true.</p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="comparisons">
-<h3>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="comparisons">
+<h3>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this heading">¶</a></h3>
 <dl id="matches">
 <dt><code class="docutils literal notranslate"><span class="pre">if(&lt;variable|string&gt;</span> <span class="pre">MATCHES</span> <span class="pre">regex)</span></code></dt><dd><p>True if the given string or variable's value matches the given regular
 expression.  See <a class="reference internal" href="string.html#regex-specification"><span class="std std-ref">Regex Specification</span></a> for regex format.</p>
@@ -279,9 +300,9 @@ than or equal to the string or variable on the right.</p>
 </div>
 </dd>
 </dl>
-</div>
-<div class="section" id="version-comparisons">
-<h3>Version Comparisons<a class="headerlink" href="#version-comparisons" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="version-comparisons">
+<h3>Version Comparisons<a class="headerlink" href="#version-comparisons" title="Permalink to this heading">¶</a></h3>
 <dl class="simple" id="version-less">
 <dt><code class="docutils literal notranslate"><span class="pre">if(&lt;variable|string&gt;</span> <span class="pre">VERSION_LESS</span> <span class="pre">&lt;variable|string&gt;)</span></code></dt><dd><p>Component-wise integer version number comparison (version format is
 <code class="docutils literal notranslate"><span class="pre">major[.minor[.patch[.tweak]]]</span></code>, omitted components are treated as zero).
@@ -321,10 +342,40 @@ component effectively truncates the string at that point.</p>
 </div>
 </dd>
 </dl>
+</section>
+<section id="path-comparisons">
+<h3>Path Comparisons<a class="headerlink" href="#path-comparisons" title="Permalink to this heading">¶</a></h3>
+<dl id="path-equal">
+<dt><code class="docutils literal notranslate"><span class="pre">if(&lt;variable|string&gt;</span> <span class="pre">PATH_EQUAL</span> <span class="pre">&lt;variable|string&gt;)</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
 </div>
+<p>Compares the two paths component-by-component.  Only if every component of
+both paths match will the two paths compare equal.  Multiple path separators
+are effectively collapsed into a single separator, but note that backslashes
+are not converted to forward slashes.  No other
+<a class="reference internal" href="cmake_path.html#normalization"><span class="std std-ref">path normalization</span></a> is performed.</p>
+<p>Component-wise comparison is superior to string-based comparison due to the
+handling of multiple path separators.  In the following example, the
+expression evaluates to true using <code class="docutils literal notranslate"><span class="pre">PATH_EQUAL</span></code>, but false with
+<code class="docutils literal notranslate"><span class="pre">STREQUAL</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># comparison is TRUE</span>
+<span class="nf">if</span> <span class="nf">(</span><span class="s">&quot;/a//b/c&quot;</span><span class="w"> </span><span class="no">PATH_EQUAL</span><span class="w"> </span><span class="s">&quot;/a/b/c&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="nf">endif()</span><span class="w"></span>
+
+<span class="c"># comparison is FALSE</span>
+<span class="nf">if</span> <span class="nf">(</span><span class="s">&quot;/a//b/c&quot;</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;/a/b/c&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="w">   </span><span class="p">...</span><span class="w"></span>
+<span class="nf">endif()</span><span class="w"></span>
+</pre></div>
 </div>
-<div class="section" id="variable-expansion">
-<h2>Variable Expansion<a class="headerlink" href="#variable-expansion" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="cmake_path.html#path-compare"><span class="std std-ref">cmake_path(COMPARE)</span></a> for more details.</p>
+</dd>
+</dl>
+</section>
+</section>
+<section id="variable-expansion">
+<h2>Variable Expansion<a class="headerlink" href="#variable-expansion" title="Permalink to this heading">¶</a></h2>
 <p>The if command was written very early in CMake's history, predating
 the <code class="docutils literal notranslate"><span class="pre">${}</span></code> variable evaluation syntax, and for convenience evaluates
 variables named by its arguments as shown in the above signatures.
@@ -386,17 +437,27 @@ See policy <span class="target" id="index-2-policy:CMP0054"></span><a class="ref
 <a class="reference internal" href="../manual/cmake-language.7.html#variable-references"><span class="std std-ref">Variable References</span></a>.  Their values must be referenced as
 <code class="docutils literal notranslate"><span class="pre">$ENV{&lt;name&gt;}</span></code> or <code class="docutils literal notranslate"><span class="pre">$CACHE{&lt;name&gt;}</span></code> wherever the above-documented
 condition syntax accepts <code class="docutils literal notranslate"><span class="pre">&lt;variable|string&gt;</span></code>.</p>
-</div>
-</div>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p><span class="target" id="index-1-command:else"></span><a class="reference internal" href="else.html#command:else" title="else"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">else()</span></code></a></p></li>
+<li><p><span class="target" id="index-0-command:elseif"></span><a class="reference internal" href="elseif.html#command:elseif" title="elseif"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">elseif()</span></code></a></p></li>
+<li><p><span class="target" id="index-1-command:endif"></span><a class="reference internal" href="endif.html#command:endif" title="endif"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">endif()</span></code></a></p></li>
+</ul>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">if</a><ul>
 <li><a class="reference internal" href="#synopsis">Synopsis</a></li>
 <li><a class="reference internal" href="#condition-syntax">Condition Syntax</a><ul>
@@ -406,19 +467,26 @@ condition syntax accepts <code class="docutils literal notranslate"><span class=
 <li><a class="reference internal" href="#file-operations">File Operations</a></li>
 <li><a class="reference internal" href="#comparisons">Comparisons</a></li>
 <li><a class="reference internal" href="#version-comparisons">Version Comparisons</a></li>
+<li><a class="reference internal" href="#path-comparisons">Path Comparisons</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#variable-expansion">Variable Expansion</a></li>
+<li><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="get_property.html"
-                        title="previous chapter">get_property</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="include.html"
-                        title="next chapter">include</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="get_property.html"
+                          title="previous chapter">get_property</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="include.html"
+                          title="next chapter">include</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -430,12 +498,12 @@ condition syntax accepts <code class="docutils literal notranslate"><span class=
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -460,15 +528,17 @@ condition syntax accepts <code class="docutils literal notranslate"><span class=
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">if</a></li> 
       </ul>
     </div>
+
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2021 Kitware, Inc. and Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

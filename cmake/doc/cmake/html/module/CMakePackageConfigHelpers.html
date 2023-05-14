@@ -1,29 +1,31 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-  <title>CMakePackageConfigHelpers &mdash; CMake 3.22.1 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>CMakePackageConfigHelpers &mdash; CMake 3.26.3 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CMakePrintHelpers" href="CMakePrintHelpers.html" />
     <link rel="prev" title="CMakeGraphVizOptions" href="CMakeGraphVizOptions.html" />
-  
  
 
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,10 +46,11 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMakePackageConfigHelpers</a></li> 
       </ul>
     </div>  
 
@@ -56,17 +59,17 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="cmakepackageconfighelpers">
-<span id="module:CMakePackageConfigHelpers"></span><h1>CMakePackageConfigHelpers<a class="headerlink" href="#cmakepackageconfighelpers" title="Permalink to this headline">¶</a></h1>
+  <section id="cmakepackageconfighelpers">
+<span id="module:CMakePackageConfigHelpers"></span><h1>CMakePackageConfigHelpers<a class="headerlink" href="#cmakepackageconfighelpers" title="Permalink to this heading">¶</a></h1>
 <p>Helpers functions for creating config files that can be included by other
 projects to find and use a package.</p>
 <p>Adds the <span class="target" id="index-0-command:configure_package_config_file"></span><a class="reference internal" href="#command:configure_package_config_file" title="configure_package_config_file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">configure_package_config_file()</span></code></a> and
 <span class="target" id="index-0-command:write_basic_package_version_file"></span><a class="reference internal" href="#command:write_basic_package_version_file" title="write_basic_package_version_file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">write_basic_package_version_file()</span></code></a> commands.</p>
-<div class="section" id="generating-a-package-configuration-file">
-<h2>Generating a Package Configuration File<a class="headerlink" href="#generating-a-package-configuration-file" title="Permalink to this headline">¶</a></h2>
-<dl class="command">
-<dt id="command:configure_package_config_file">
-<code class="sig-name descname">configure_package_config_file</code><a class="headerlink" href="#command:configure_package_config_file" title="Permalink to this definition">¶</a></dt>
+<section id="generating-a-package-configuration-file">
+<h2>Generating a Package Configuration File<a class="headerlink" href="#generating-a-package-configuration-file" title="Permalink to this heading">¶</a></h2>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:configure_package_config_file">
+<span class="sig-name descname"><span class="pre">configure_package_config_file</span></span><a class="headerlink" href="#command:configure_package_config_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a config file for a project:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>configure_package_config_file(&lt;input&gt; &lt;output&gt;
   INSTALL_DESTINATION &lt;path&gt;
@@ -156,12 +159,12 @@ users are not specifying components erroneously.  When using the
 into the <code class="docutils literal notranslate"><span class="pre">FooConfig.cmake</span></code> file.</p>
 <p>For an example see below the documentation for
 <span class="target" id="index-1-command:write_basic_package_version_file"></span><a class="reference internal" href="#command:write_basic_package_version_file" title="write_basic_package_version_file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">write_basic_package_version_file()</span></code></a>.</p>
-</div>
-<div class="section" id="generating-a-package-version-file">
-<h2>Generating a Package Version File<a class="headerlink" href="#generating-a-package-version-file" title="Permalink to this headline">¶</a></h2>
-<dl class="command">
-<dt id="command:write_basic_package_version_file">
-<code class="sig-name descname">write_basic_package_version_file</code><a class="headerlink" href="#command:write_basic_package_version_file" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="generating-a-package-version-file">
+<h2>Generating a Package Version File<a class="headerlink" href="#generating-a-package-version-file" title="Permalink to this heading">¶</a></h2>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:write_basic_package_version_file">
+<span class="sig-name descname"><span class="pre">write_basic_package_version_file</span></span><a class="headerlink" href="#command:write_basic_package_version_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create a version file for a project:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>write_basic_package_version_file(&lt;filename&gt;
   [VERSION &lt;major.minor.patch&gt;]
@@ -217,9 +220,9 @@ compatible on any architecture.</p>
 packages with no binaries.</p>
 </div>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.19: </span><code class="docutils literal notranslate"><span class="pre">COMPATIBILITY_MODE</span></code> <code class="docutils literal notranslate"><span class="pre">AnyNewerVersion</span></code>, <code class="docutils literal notranslate"><span class="pre">SameMajorVersion</span></code> and
-<code class="docutils literal notranslate"><span class="pre">SameMinorVersion</span></code> handle the version range if any is specified
-(see <span class="target" id="index-1-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> command for the details).
+<p><span class="versionmodified added">New in version 3.19: </span>The version file generated by <code class="docutils literal notranslate"><span class="pre">AnyNewerVersion</span></code>, <code class="docutils literal notranslate"><span class="pre">SameMajorVersion</span></code> and
+<code class="docutils literal notranslate"><span class="pre">SameMinorVersion</span></code> arguments of <code class="docutils literal notranslate"><span class="pre">COMPATIBILITY</span></code> handle the version range
+if any is specified (see <span class="target" id="index-1-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> command for the details).
 <code class="docutils literal notranslate"><span class="pre">ExactVersion</span></code> mode is incompatible with version ranges and will display an
 author warning if one is specified.</p>
 </div>
@@ -229,20 +232,22 @@ resulting version file.  Depending on the <code class="docutils literal notransl
 Please note that these files are internal to CMake and you should not call
 <span class="target" id="index-4-command:configure_file"></span><a class="reference internal" href="../command/configure_file.html#command:configure_file" title="configure_file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">configure_file()</span></code></a> on them yourself, but they can be used as starting
 point to create more sophisticted custom <code class="docutils literal notranslate"><span class="pre">ConfigVersion.cmake</span></code> files.</p>
-</div>
-<div class="section" id="example-generating-package-files">
-<h2>Example Generating Package Files<a class="headerlink" href="#example-generating-package-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="example-generating-package-files">
+<h2>Example Generating Package Files<a class="headerlink" href="#example-generating-package-files" title="Permalink to this heading">¶</a></h2>
 <p>Example using both <span class="target" id="index-1-command:configure_package_config_file"></span><a class="reference internal" href="#command:configure_package_config_file" title="configure_package_config_file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">configure_package_config_file()</span></code></a> and
 <code class="docutils literal notranslate"><span class="pre">write_basic_package_version_file()</span></code>:</p>
 <p><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="no">INCLUDE_INSTALL_DIR</span><span class="w"> </span><span class="na">include/</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="no">CACHE</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set(</span><span class="no">LIB_INSTALL_DIR</span><span class="w"> </span><span class="na">lib/</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="no">CACHE</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set(</span><span class="no">SYSCONFIG_INSTALL_DIR</span><span class="w"> </span><span class="na">etc/foo/</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="no">CACHE</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">GNUInstallDirs</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set(</span><span class="no">INCLUDE_INSTALL_DIR</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_INSTALL_INCLUDEDIR</span><span class="o">}</span><span class="na">/Foo</span><span class="w"></span>
+<span class="w">    </span><span class="no">CACHE</span><span class="w"> </span><span class="no">PATH</span><span class="w"> </span><span class="s">&quot;Location of header files&quot;</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set(</span><span class="no">SYSCONFIG_INSTALL_DIR</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_INSTALL_SYSCONFDIR</span><span class="o">}</span><span class="na">/foo</span><span class="w"></span>
+<span class="w">    </span><span class="no">CACHE</span><span class="w"> </span><span class="no">PATH</span><span class="w"> </span><span class="s">&quot;Location of configuration files&quot;</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
 <span class="c">#...</span>
 <span class="nf">include(</span><span class="nb">CMakePackageConfigHelpers</span><span class="nf">)</span><span class="w"></span>
 <span class="nf">configure_package_config_file(</span><span class="nb">FooConfig.cmake.in</span><span class="w"></span>
 <span class="w">  </span><span class="o">${</span><span class="nt">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="na">/FooConfig.cmake</span><span class="w"></span>
-<span class="w">  </span><span class="no">INSTALL_DESTINATION</span><span class="w"> </span><span class="o">${</span><span class="nt">LIB_INSTALL_DIR</span><span class="o">}</span><span class="na">/Foo/cmake</span><span class="w"></span>
+<span class="w">  </span><span class="no">INSTALL_DESTINATION</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_INSTALL_LIBDIR</span><span class="o">}</span><span class="na">/cmake/Foo</span><span class="w"></span>
 <span class="w">  </span><span class="no">PATH_VARS</span><span class="w"> </span><span class="no">INCLUDE_INSTALL_DIR</span><span class="w"> </span><span class="no">SYSCONFIG_INSTALL_DIR</span><span class="nf">)</span><span class="w"></span>
 <span class="nf">write_basic_package_version_file(</span><span class="w"></span>
 <span class="w">  </span><span class="o">${</span><span class="nt">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="na">/FooConfigVersion.cmake</span><span class="w"></span>
@@ -250,7 +255,7 @@ point to create more sophisticted custom <code class="docutils literal notransla
 <span class="w">  </span><span class="no">COMPATIBILITY</span><span class="w"> </span><span class="nb">SameMajorVersion</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
 <span class="nf">install(</span><span class="no">FILES</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="na">/FooConfig.cmake</span><span class="w"></span>
 <span class="w">              </span><span class="o">${</span><span class="nt">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="na">/FooConfigVersion.cmake</span><span class="w"></span>
-<span class="w">        </span><span class="no">DESTINATION</span><span class="w"> </span><span class="o">${</span><span class="nt">LIB_INSTALL_DIR</span><span class="o">}</span><span class="na">/Foo/cmake</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
+<span class="w">        </span><span class="no">DESTINATION</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_INSTALL_LIBDIR</span><span class="o">}</span><span class="na">/cmake/Foo</span><span class="w"> </span><span class="nf">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">FooConfig.cmake.in</span></code>:</p>
@@ -264,17 +269,19 @@ set_and_check(FOO_SYSCONFIG_DIR &quot;@PACKAGE_SYSCONFIG_INSTALL_DIR@&quot;)
 check_required_components(Foo)
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">CMakePackageConfigHelpers</a><ul>
 <li><a class="reference internal" href="#generating-a-package-configuration-file">Generating a Package Configuration File</a></li>
 <li><a class="reference internal" href="#generating-a-package-version-file">Generating a Package Version File</a></li>
@@ -283,12 +290,17 @@ check_required_components(Foo)
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="CMakeGraphVizOptions.html"
-                        title="previous chapter">CMakeGraphVizOptions</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="CMakePrintHelpers.html"
-                        title="next chapter">CMakePrintHelpers</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="CMakeGraphVizOptions.html"
+                          title="previous chapter">CMakeGraphVizOptions</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="CMakePrintHelpers.html"
+                          title="next chapter">CMakePrintHelpers</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -300,12 +312,12 @@ check_required_components(Foo)
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -330,15 +342,17 @@ check_required_components(Foo)
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMakePackageConfigHelpers</a></li> 
       </ul>
     </div>
+
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2021 Kitware, Inc. and Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

@@ -1,29 +1,31 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-  <title>FindMatlab &mdash; CMake 3.22.1 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>FindMatlab &mdash; CMake 3.26.3 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindMFC" href="FindMFC.html" />
     <link rel="prev" title="FindLua51" href="FindLua51.html" />
-  
  
 
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,10 +46,11 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">FindMatlab</a></li> 
       </ul>
     </div>  
 
@@ -56,8 +59,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="findmatlab">
-<span id="module:FindMatlab"></span><h1>FindMatlab<a class="headerlink" href="#findmatlab" title="Permalink to this headline">¶</a></h1>
+  <section id="findmatlab">
+<span id="module:FindMatlab"></span><h1>FindMatlab<a class="headerlink" href="#findmatlab" title="Permalink to this heading">¶</a></h1>
 <p>Finds Matlab or Matlab Compiler Runtime (MCR) and provides Matlab tools,
 libraries and compilers to CMake.</p>
 <p>This package primary purpose is to find the libraries associated with Matlab
@@ -128,12 +131,18 @@ the <span class="target" id="index-1-command:find_package"></span><a class="refe
 <span class="target" id="index-0-command:matlab_add_unit_test"></span><a class="reference internal" href="#command:matlab_add_unit_test" title="matlab_add_unit_test"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">matlab_add_unit_test()</span></code></a>. By default, the Matlab unit test framework
 will be used (&gt;= 2013a) to run this script, but regular <code class="docutils literal notranslate"><span class="pre">.m</span></code> files
 returning an exit code can be used as well (0 indicating a success).</p>
-<div class="section" id="module-input-variables">
-<h2>Module Input Variables<a class="headerlink" href="#module-input-variables" title="Permalink to this headline">¶</a></h2>
+<section id="module-input-variables">
+<h2>Module Input Variables<a class="headerlink" href="#module-input-variables" title="Permalink to this heading">¶</a></h2>
 <p>Users or projects may set the following variables to configure the module
 behavior:</p>
-<dl class="simple">
-<dt><span class="target" id="index-2-variable:Matlab_ROOT_DIR"></span><a class="reference internal" href="#variable:Matlab_ROOT_DIR" title="Matlab_ROOT_DIR"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">Matlab_ROOT_DIR</span></code></a></dt><dd><p>the root of the Matlab installation.</p>
+<dl>
+<dt><span class="target" id="index-0-variable:&lt;PackageName&gt;_ROOT"></span><a class="reference internal" href="../variable/PackageName_ROOT.html#variable:&lt;PackageName&gt;_ROOT" title="&lt;PackageName&gt;_ROOT"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">Matlab_ROOT</span></code></a></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.25.</span></p>
+</div>
+<p>Default value for <span class="target" id="index-2-variable:Matlab_ROOT_DIR"></span><a class="reference internal" href="#variable:Matlab_ROOT_DIR" title="Matlab_ROOT_DIR"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">Matlab_ROOT_DIR</span></code></a>, the root of the Matlab
+installation.</p>
+</dd>
+<dt><span class="target" id="index-3-variable:Matlab_ROOT_DIR"></span><a class="reference internal" href="#variable:Matlab_ROOT_DIR" title="Matlab_ROOT_DIR"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">Matlab_ROOT_DIR</span></code></a></dt><dd><p>The root of the Matlab installation.</p>
 </dd>
 <dt><span class="target" id="index-1-variable:MATLAB_FIND_DEBUG"></span><a class="reference internal" href="#variable:MATLAB_FIND_DEBUG" title="MATLAB_FIND_DEBUG"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">MATLAB_FIND_DEBUG</span></code></a></dt><dd><p>outputs debug information</p>
 </dd>
@@ -141,9 +150,9 @@ behavior:</p>
 versions.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="imported-targets">
-<h2>Imported targets<a class="headerlink" href="#imported-targets" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="imported-targets">
+<h2>Imported targets<a class="headerlink" href="#imported-targets" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.22.</span></p>
 </div>
@@ -164,11 +173,11 @@ is requested.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">Matlab::MatlabDataArray</span></code></dt><dd><p>Matlab C++ data array library, always available for R2018a and newer.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="variables-defined-by-the-module">
-<h2>Variables defined by the module<a class="headerlink" href="#variables-defined-by-the-module" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="result-variables">
-<h3>Result variables<a class="headerlink" href="#result-variables" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="variables-defined-by-the-module">
+<h2>Variables defined by the module<a class="headerlink" href="#variables-defined-by-the-module" title="Permalink to this heading">¶</a></h2>
+<section id="result-variables">
+<h3>Result variables<a class="headerlink" href="#result-variables" title="Permalink to this heading">¶</a></h3>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Matlab_FOUND</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">TRUE</span></code> if the Matlab installation is found, <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>
 otherwise. All variable below are defined if Matlab is found.</p>
@@ -213,9 +222,9 @@ Available only if the component <code class="docutils literal notranslate"><span
 Available only if the component <code class="docutils literal notranslate"><span class="pre">MCC_COMPILER</span></code> is requested.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="cached-variables">
-<h3>Cached variables<a class="headerlink" href="#cached-variables" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="cached-variables">
+<h3>Cached variables<a class="headerlink" href="#cached-variables" title="Permalink to this heading">¶</a></h3>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">Matlab_MEX_EXTENSION</span></code></dt><dd><p>the extension of the mex files for the current platform (given by Matlab).</p>
 </dd>
@@ -223,19 +232,19 @@ Available only if the component <code class="docutils literal notranslate"><span
 is changed by the user, the result variables are recomputed.</p>
 </dd>
 </dl>
-</div>
-</div>
-<div class="section" id="provided-macros">
-<h2>Provided macros<a class="headerlink" href="#provided-macros" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="provided-macros">
+<h2>Provided macros<a class="headerlink" href="#provided-macros" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt><span class="target" id="index-1-command:matlab_get_version_from_release_name"></span><a class="reference internal" href="#command:matlab_get_version_from_release_name" title="matlab_get_version_from_release_name"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">matlab_get_version_from_release_name()</span></code></a></dt><dd><p>returns the version from the release name</p>
 </dd>
 <dt><span class="target" id="index-1-command:matlab_get_release_name_from_version"></span><a class="reference internal" href="#command:matlab_get_release_name_from_version" title="matlab_get_release_name_from_version"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">matlab_get_release_name_from_version()</span></code></a></dt><dd><p>returns the release name from the Matlab version</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="provided-functions">
-<h2>Provided functions<a class="headerlink" href="#provided-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="provided-functions">
+<h2>Provided functions<a class="headerlink" href="#provided-functions" title="Permalink to this heading">¶</a></h2>
 <dl class="simple">
 <dt><span class="target" id="index-0-command:matlab_add_mex"></span><a class="reference internal" href="#command:matlab_add_mex" title="matlab_add_mex"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">matlab_add_mex()</span></code></a></dt><dd><p>adds a target compiling a MEX file.</p>
 </dd>
@@ -255,9 +264,9 @@ useful for the searching all possible Matlab installation.</p>
 installation path.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="known-issues">
-<h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="known-issues">
+<h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this heading">¶</a></h2>
 <dl>
 <dt><strong>Symbol clash in a MEX target</strong></dt><dd><p>By default, every symbols inside a MEX
 file defined with the command <span class="target" id="index-1-command:matlab_add_mex"></span><a class="reference internal" href="#command:matlab_add_mex" title="matlab_add_mex"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">matlab_add_mex()</span></code></a> have hidden
@@ -280,28 +289,28 @@ performed by a command such as <code class="docutils literal notranslate"><span 
 the test script (or via a fixture).</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="reference">
-<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
-<dl class="variable">
-<dt id="variable:Matlab_ROOT_DIR">
-<code class="sig-name descname">Matlab_ROOT_DIR</code><a class="headerlink" href="#variable:Matlab_ROOT_DIR" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">¶</a></h2>
+<dl class="cmake variable">
+<dt class="sig sig-object cmake" id="variable:Matlab_ROOT_DIR">
+<span class="sig-name descname"><span class="pre">Matlab_ROOT_DIR</span></span><a class="headerlink" href="#variable:Matlab_ROOT_DIR" title="Permalink to this definition">¶</a></dt>
 <dd><p>The root folder of the Matlab installation. If set before the call to
 <span class="target" id="index-3-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a>, the module will look for the components in that
 path. If not set, then an automatic search of Matlab
 will be performed. If set, it should point to a valid version of Matlab.</p>
 </dd></dl>
 
-<dl class="variable">
-<dt id="variable:MATLAB_FIND_DEBUG">
-<code class="sig-name descname">MATLAB_FIND_DEBUG</code><a class="headerlink" href="#variable:MATLAB_FIND_DEBUG" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake variable">
+<dt class="sig sig-object cmake" id="variable:MATLAB_FIND_DEBUG">
+<span class="sig-name descname"><span class="pre">MATLAB_FIND_DEBUG</span></span><a class="headerlink" href="#variable:MATLAB_FIND_DEBUG" title="Permalink to this definition">¶</a></dt>
 <dd><p>If set, the lookup of Matlab and the intermediate configuration steps are
 outputted to the console.</p>
 </dd></dl>
 
-<dl class="variable">
-<dt id="variable:MATLAB_ADDITIONAL_VERSIONS">
-<code class="sig-name descname">MATLAB_ADDITIONAL_VERSIONS</code><a class="headerlink" href="#variable:MATLAB_ADDITIONAL_VERSIONS" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake variable">
+<dt class="sig sig-object cmake" id="variable:MATLAB_ADDITIONAL_VERSIONS">
+<span class="sig-name descname"><span class="pre">MATLAB_ADDITIONAL_VERSIONS</span></span><a class="headerlink" href="#variable:MATLAB_ADDITIONAL_VERSIONS" title="Permalink to this definition">¶</a></dt>
 <dd><p>If set, specifies additional versions of Matlab that may be looked for.
 The variable should be a list of strings, organized by pairs of release
 name and versions, such as follows:</p>
@@ -324,21 +333,21 @@ Matlab are installed. The priority is set according to the ordering in
 this list.</p>
 </dd></dl>
 
-<dl class="command">
-<dt id="command:matlab_get_version_from_release_name">
-<code class="sig-name descname">matlab_get_version_from_release_name</code><a class="headerlink" href="#command:matlab_get_version_from_release_name" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:matlab_get_version_from_release_name">
+<span class="sig-name descname"><span class="pre">matlab_get_version_from_release_name</span></span><a class="headerlink" href="#command:matlab_get_version_from_release_name" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the version of Matlab (17.58) from a release name (R2017k)</p>
 </dd></dl>
 
-<dl class="command">
-<dt id="command:matlab_get_release_name_from_version">
-<code class="sig-name descname">matlab_get_release_name_from_version</code><a class="headerlink" href="#command:matlab_get_release_name_from_version" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:matlab_get_release_name_from_version">
+<span class="sig-name descname"><span class="pre">matlab_get_release_name_from_version</span></span><a class="headerlink" href="#command:matlab_get_release_name_from_version" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the release name (R2017k) from the version of Matlab (17.58)</p>
 </dd></dl>
 
-<dl class="command">
-<dt id="command:matlab_extract_all_installed_versions_from_registry">
-<code class="sig-name descname">matlab_extract_all_installed_versions_from_registry</code><a class="headerlink" href="#command:matlab_extract_all_installed_versions_from_registry" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:matlab_extract_all_installed_versions_from_registry">
+<span class="sig-name descname"><span class="pre">matlab_extract_all_installed_versions_from_registry</span></span><a class="headerlink" href="#command:matlab_extract_all_installed_versions_from_registry" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function parses the registry and founds the Matlab versions that are
 installed. The found versions are returned in <cite>matlab_versions</cite>.
 Set <cite>win64</cite> to <cite>TRUE</cite> if the 64 bit version of Matlab should be looked for
@@ -353,9 +362,9 @@ installation referenced in the registry,</p>
 </div>
 </dd></dl>
 
-<dl class="command">
-<dt id="command:matlab_get_all_valid_matlab_roots_from_registry">
-<code class="sig-name descname">matlab_get_all_valid_matlab_roots_from_registry</code><a class="headerlink" href="#command:matlab_get_all_valid_matlab_roots_from_registry" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:matlab_get_all_valid_matlab_roots_from_registry">
+<span class="sig-name descname"><span class="pre">matlab_get_all_valid_matlab_roots_from_registry</span></span><a class="headerlink" href="#command:matlab_get_all_valid_matlab_roots_from_registry" title="Permalink to this definition">¶</a></dt>
 <dd><p>Populates the Matlab root with valid versions of Matlab or
 Matlab Runtime (MCR).
 The returned matlab_roots is organized in triplets
@@ -374,9 +383,9 @@ indicates either <code class="docutils literal notranslate"><span class="pre">MA
 </dl>
 </dd></dl>
 
-<dl class="command">
-<dt id="command:matlab_get_mex_suffix">
-<code class="sig-name descname">matlab_get_mex_suffix</code><a class="headerlink" href="#command:matlab_get_mex_suffix" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:matlab_get_mex_suffix">
+<span class="sig-name descname"><span class="pre">matlab_get_mex_suffix</span></span><a class="headerlink" href="#command:matlab_get_mex_suffix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the extension of the mex files (the suffixes).
 This function should not be called before the appropriate Matlab root has
 been found.</p>
@@ -393,9 +402,9 @@ been found.</p>
 </dl>
 </dd></dl>
 
-<dl class="command">
-<dt id="command:matlab_get_version_from_matlab_run">
-<code class="sig-name descname">matlab_get_version_from_matlab_run</code><a class="headerlink" href="#command:matlab_get_version_from_matlab_run" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:matlab_get_version_from_matlab_run">
+<span class="sig-name descname"><span class="pre">matlab_get_version_from_matlab_run</span></span><a class="headerlink" href="#command:matlab_get_version_from_matlab_run" title="Permalink to this definition">¶</a></dt>
 <dd><p>This function runs Matlab program specified on arguments and extracts its
 version. If the path provided for the Matlab installation points to an MCR
 installation, the version is extracted from the installed files.</p>
@@ -412,9 +421,9 @@ installation, the version is extracted from the installed files.</p>
 </dl>
 </dd></dl>
 
-<dl class="command">
-<dt id="command:matlab_add_unit_test">
-<code class="sig-name descname">matlab_add_unit_test</code><a class="headerlink" href="#command:matlab_add_unit_test" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:matlab_add_unit_test">
+<span class="sig-name descname"><span class="pre">matlab_add_unit_test</span></span><a class="headerlink" href="#command:matlab_add_unit_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a Matlab unit test to the test set of cmake/ctest.
 This command requires the component <code class="docutils literal notranslate"><span class="pre">MAIN_PROGRAM</span></code> and hence is not
 available for an MCR installation.</p>
@@ -480,9 +489,9 @@ be used as the working directory and the log location.</p>
 </dl>
 </dd></dl>
 
-<dl class="command">
-<dt id="command:matlab_add_mex">
-<code class="sig-name descname">matlab_add_mex</code><a class="headerlink" href="#command:matlab_add_mex" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:matlab_add_mex">
+<span class="sig-name descname"><span class="pre">matlab_add_mex</span></span><a class="headerlink" href="#command:matlab_add_mex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds a Matlab MEX target.
 This commands compiles the given sources with the current tool-chain in
 order to produce a MEX file. The final name of the produced output may be
@@ -498,6 +507,7 @@ for the MEX file. Remaining arguments of the call are passed to the
     [LINK_TO target1 target2 ...]
     [R2017b | R2018a]
     [EXCLUDE_FROM_ALL]
+    [NO_IMPLICIT_LINK_TO_MATLAB_LIBRARIES]
     [...]
 )
 </pre></div>
@@ -508,7 +518,8 @@ for the MEX file. Remaining arguments of the call are passed to the
 <dt><code class="docutils literal notranslate"><span class="pre">SRC</span></code></dt><dd><p>list of source files.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">LINK_TO</span></code></dt><dd><p>a list of additional link dependencies.  The target links to <code class="docutils literal notranslate"><span class="pre">libmex</span></code>
-and <code class="docutils literal notranslate"><span class="pre">libmx</span></code> by default.</p>
+and <code class="docutils literal notranslate"><span class="pre">libmx</span></code> by default, unless the
+<code class="docutils literal notranslate"><span class="pre">NO_IMPLICIT_LINK_TO_MATLAB_LIBRARIES</span></code> option is passed.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">OUTPUT_NAME</span></code></dt><dd><p>if given, overrides the default name. The default name is
 the name of the target without any prefix and
@@ -546,6 +557,13 @@ a library. If no type is given explicitly, the type is <code class="docutils lit
 is forwarded to <span class="target" id="index-1-command:add_library"></span><a class="reference internal" href="../command/add_library.html#command:add_library" title="add_library"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_library()</span></code></a> or <span class="target" id="index-1-command:add_executable"></span><a class="reference internal" href="../command/add_executable.html#command:add_executable" title="add_executable"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_executable()</span></code></a>
 commands.</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">NO_IMPLICIT_LINK_TO_MATLAB_LIBRARIES</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<p>This option permits to disable the automatic linking of MATLAB
+libraries, so that only the libraries that are actually required can be
+linked via the <code class="docutils literal notranslate"><span class="pre">LINK_TO</span></code> option.</p>
+</dd>
 </dl>
 <p>The documentation file is not processed and should be in the following
 format:</p>
@@ -555,17 +573,19 @@ function ret = mex_target_output_name(input1)
 </div>
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">FindMatlab</a><ul>
 <li><a class="reference internal" href="#module-input-variables">Module Input Variables</a></li>
 <li><a class="reference internal" href="#imported-targets">Imported targets</a></li>
@@ -582,12 +602,17 @@ function ret = mex_target_output_name(input1)
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="FindLua51.html"
-                        title="previous chapter">FindLua51</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="FindMFC.html"
-                        title="next chapter">FindMFC</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="FindLua51.html"
+                          title="previous chapter">FindLua51</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="FindMFC.html"
+                          title="next chapter">FindMFC</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -599,12 +624,12 @@ function ret = mex_target_output_name(input1)
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -629,15 +654,17 @@ function ret = mex_target_output_name(input1)
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">FindMatlab</a></li> 
       </ul>
     </div>
+
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2021 Kitware, Inc. and Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

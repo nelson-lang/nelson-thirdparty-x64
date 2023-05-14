@@ -1,29 +1,31 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-  <title>CMAKE_INSTALL_MODE &mdash; CMake 3.22.1 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>CMAKE_INSTALL_MODE &mdash; CMake 3.26.3 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CMAKE_&lt;LANG&gt;_COMPILER_LAUNCHER" href="CMAKE_LANG_COMPILER_LAUNCHER.html" />
     <link rel="prev" title="CMAKE_GENERATOR_TOOLSET" href="CMAKE_GENERATOR_TOOLSET.html" />
-  
  
 
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,10 +46,11 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-env-variables.7.html" accesskey="U">cmake-env-variables(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-env-variables.7.html" accesskey="U">cmake-env-variables(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMAKE_INSTALL_MODE</a></li> 
       </ul>
     </div>  
 
@@ -56,8 +59,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="cmake-install-mode">
-<span id="envvar:CMAKE_INSTALL_MODE"></span><h1>CMAKE_INSTALL_MODE<a class="headerlink" href="#cmake-install-mode" title="Permalink to this headline">¶</a></h1>
+  <section id="cmake-install-mode">
+<span id="envvar:CMAKE_INSTALL_MODE"></span><h1>CMAKE_INSTALL_MODE<a class="headerlink" href="#cmake-install-mode" title="Permalink to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.22.</span></p>
 </div>
@@ -69,8 +72,8 @@ CMake in an alternate mode of <span class="target" id="index-0-command:file"></s
 source directory into a destination directory. This environment variable
 however allows the user to override this behavior, causing CMake to create
 symbolic links instead.</p>
-<div class="section" id="usage-scenarios">
-<h2>Usage Scenarios<a class="headerlink" href="#usage-scenarios" title="Permalink to this headline">¶</a></h2>
+<section id="usage-scenarios">
+<h2>Usage Scenarios<a class="headerlink" href="#usage-scenarios" title="Permalink to this heading">¶</a></h2>
 <p>Installing symbolic links rather than copying files can help in the following
 ways:</p>
 <ul class="simple">
@@ -82,9 +85,9 @@ of the link. This may be useful when dealing with CMake project hierarchies,
 i.e. using <span class="target" id="index-0-module:ExternalProject"></span><a class="reference internal" href="../module/ExternalProject.html#module:ExternalProject" title="ExternalProject"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">ExternalProject</span></code></a> and consistent source navigation and
 refactoring is desired across projects.</p></li>
 </ul>
-</div>
-<div class="section" id="allowed-values">
-<h2>Allowed Values<a class="headerlink" href="#allowed-values" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="allowed-values">
+<h2>Allowed Values<a class="headerlink" href="#allowed-values" title="Permalink to this heading">¶</a></h2>
 <p>The following values are allowed for <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_MODE</span></code>:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">COPY</span></code>, empty or unset</dt><dd><p>Duplicate the file at its destination.  This is the default behavior.</p>
@@ -115,9 +118,9 @@ be created.</p>
 own, hence there are two ways to express the relation, either by a <em>relative</em>
 or an <em>absolute</em> path.</p>
 </div>
-</div>
-<div class="section" id="when-to-set-the-environment-variable">
-<h2>When To Set The Environment Variable<a class="headerlink" href="#when-to-set-the-environment-variable" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="when-to-set-the-environment-variable">
+<h2>When To Set The Environment Variable<a class="headerlink" href="#when-to-set-the-environment-variable" title="Permalink to this heading">¶</a></h2>
 <p>For the environment variable to take effect, it must be set during the correct
 build phase(s).</p>
 <ul class="simple">
@@ -134,9 +137,9 @@ will execute during the main project's build phase.</p></li>
 </ul>
 <p>Given the above, it is recommended to set the environment variable consistently
 across all phases (configure, build and install).</p>
-</div>
-<div class="section" id="caveats">
-<h2>Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="caveats">
+<h2>Caveats<a class="headerlink" href="#caveats" title="Permalink to this heading">¶</a></h2>
 <p>Use this environment variable with caution. The following highlights some
 points to be considered:</p>
 <ul class="simple">
@@ -159,17 +162,19 @@ not true.  Once a symlink exists at the destination, even if you switch to a
 non-symlink mode, the symlink will continue to exist at the destination and
 will not be replaced by an actual file.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">CMAKE_INSTALL_MODE</a><ul>
 <li><a class="reference internal" href="#usage-scenarios">Usage Scenarios</a></li>
 <li><a class="reference internal" href="#allowed-values">Allowed Values</a></li>
@@ -179,12 +184,17 @@ will not be replaced by an actual file.</p></li>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="CMAKE_GENERATOR_TOOLSET.html"
-                        title="previous chapter">CMAKE_GENERATOR_TOOLSET</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="CMAKE_LANG_COMPILER_LAUNCHER.html"
-                        title="next chapter">CMAKE_&lt;LANG&gt;_COMPILER_LAUNCHER</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="CMAKE_GENERATOR_TOOLSET.html"
+                          title="previous chapter">CMAKE_GENERATOR_TOOLSET</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="CMAKE_LANG_COMPILER_LAUNCHER.html"
+                          title="next chapter">CMAKE_&lt;LANG&gt;_COMPILER_LAUNCHER</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -196,12 +206,12 @@ will not be replaced by an actual file.</p></li>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -226,15 +236,17 @@ will not be replaced by an actual file.</p></li>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-env-variables.7.html" >cmake-env-variables(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-env-variables.7.html" >cmake-env-variables(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CMAKE_INSTALL_MODE</a></li> 
       </ul>
     </div>
+
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2021 Kitware, Inc. and Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

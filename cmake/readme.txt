@@ -1,2 +1,2 @@
-CMake 3.22.1
+CMake 3.26.3
 https://cmake.org/download/

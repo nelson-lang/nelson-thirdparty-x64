@@ -1,29 +1,31 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-  <title>ExternalProject &mdash; CMake 3.22.1 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>ExternalProject &mdash; CMake 3.26.3 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FeatureSummary" href="FeatureSummary.html" />
     <link rel="prev" title="ExternalData" href="ExternalData.html" />
-  
  
 
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,10 +46,11 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ExternalProject</a></li> 
       </ul>
     </div>  
 
@@ -56,9 +59,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="externalproject">
-<span id="module:ExternalProject"></span><h1><a class="toc-backref" href="#id1">ExternalProject</a><a class="headerlink" href="#externalproject" title="Permalink to this headline">¶</a></h1>
-<div class="contents topic" id="contents">
+  <section id="externalproject">
+<span id="module:ExternalProject"></span><h1><a class="toc-backref" href="#id1" role="doc-backlink">ExternalProject</a><a class="headerlink" href="#externalproject" title="Permalink to this heading">¶</a></h1>
+<nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#externalproject" id="id1">ExternalProject</a></p>
@@ -74,14 +77,14 @@
 </ul>
 </li>
 </ul>
-</div>
-<div class="section" id="commands">
-<h2><a class="toc-backref" href="#id2">Commands</a><a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="external-project-definition">
-<h3><a class="toc-backref" href="#id3">External Project Definition</a><a class="headerlink" href="#external-project-definition" title="Permalink to this headline">¶</a></h3>
-<dl class="command">
-<dt id="command:externalproject_add">
-<code class="sig-name descname">ExternalProject_Add</code><a class="headerlink" href="#command:externalproject_add" title="Permalink to this definition">¶</a></dt>
+</nav>
+<section id="commands">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Commands</a><a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h2>
+<section id="external-project-definition">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">External Project Definition</a><a class="headerlink" href="#external-project-definition" title="Permalink to this heading">¶</a></h3>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:externalproject_add">
+<span class="sig-name descname"><span class="pre">ExternalProject_Add</span></span><a class="headerlink" href="#command:externalproject_add" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">ExternalProject_Add()</span></code> function creates a custom target to drive
 download, update/patch, configure, build, install and test steps of an
 external project:</p>
@@ -219,6 +222,19 @@ URL is used to determine the file name. This option is rarely needed,
 the default name is generally suitable and is not normally used outside
 of code internal to the <code class="docutils literal notranslate"><span class="pre">ExternalProject</span></code> module.</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DOWNLOAD_EXTRACT_TIMESTAMP</span> <span class="pre">&lt;bool&gt;</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.24.</span></p>
+</div>
+<p>When specified with a true value, the timestamps of the extracted
+files will match those in the archive. When false, the timestamps of
+the extracted files will reflect the time at which the extraction
+was performed. If the download URL changes, timestamps based off
+those in the archive can result in dependent targets not being rebuilt
+when they potentially should have been. Therefore, unless the file
+timestamps are significant to the project in some way, use a false
+value for this option. If <code class="docutils literal notranslate"><span class="pre">DOWNLOAD_EXTRACT_TIMESTAMP</span></code> is not given,
+the default is false. See policy <span class="target" id="index-0-policy:CMP0135"></span><a class="reference internal" href="../policy/CMP0135.html#policy:CMP0135" title="CMP0135"><code class="xref cmake cmake-policy docutils literal notranslate"><span class="pre">CMP0135</span></code></a>.</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">DOWNLOAD_NO_EXTRACT</span> <span class="pre">&lt;bool&gt;</span></code></dt><dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
@@ -276,9 +292,9 @@ is enabled. If this option is not specified, the value of the
 <p><span class="versionmodified added">New in version 3.11.</span></p>
 </div>
 <p>Specify whether the <code class="docutils literal notranslate"><span class="pre">.netrc</span></code> file is to be used for operation.
-If this option is not specified, the value of the <span class="target" id="index-0-variable:CMAKE_NETRC"></span><a class="reference internal" href="../variable/CMAKE_NETRC.html#variable:CMAKE_NETRC" title="CMAKE_NETRC"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_NETRC</span></code></a>
-variable will be used instead (see <span class="target" id="index-4-command:file"></span><a class="reference internal" href="../command/file.html#command:file" title="file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">file(DOWNLOAD)</span></code></a>)
-Valid levels are:</p>
+If this option is not specified, the value of the
+<span class="target" id="index-0-variable:CMAKE_NETRC"></span><a class="reference internal" href="../variable/CMAKE_NETRC.html#variable:CMAKE_NETRC" title="CMAKE_NETRC"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_NETRC</span></code></a> variable will be used instead
+(see <span class="target" id="index-4-command:file"></span><a class="reference internal" href="../command/file.html#command:file" title="file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">file(DOWNLOAD)</span></code></a>).  Valid levels are:</p>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">IGNORED</span></code></dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">.netrc</span></code> file is ignored.
 This is the default.</p>
@@ -332,6 +348,8 @@ traceability and repeatability.</p></li>
 </ul>
 <p>If <code class="docutils literal notranslate"><span class="pre">GIT_SHALLOW</span></code> is enabled then <code class="docutils literal notranslate"><span class="pre">GIT_TAG</span></code> works only with
 branch names and tags.  A commit hash is not allowed.</p>
+<p>Note that if not provided, <code class="docutils literal notranslate"><span class="pre">GIT_TAG</span></code> defaults to <code class="docutils literal notranslate"><span class="pre">master</span></code>, not the
+default Git branch name.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">GIT_REMOTE_NAME</span> <span class="pre">&lt;name&gt;</span></code></dt><dd><p>The optional name of the remote. If this option is not specified, it
 defaults to <code class="docutils literal notranslate"><span class="pre">origin</span></code>.</p>
@@ -393,7 +411,11 @@ and popped again after rebasing.  If rebasing or popping stashed
 changes fail, abort the rebase and halt with an error.
 When <code class="docutils literal notranslate"><span class="pre">GIT_REMOTE_UPDATE_STRATEGY</span></code> is not present, this is the
 default strategy unless the default has been overridden with
-<code class="docutils literal notranslate"><span class="pre">CMAKE_EP_GIT_REMOTE_UPDATE_STRATEGY</span></code> (see below).</p>
+<code class="docutils literal notranslate"><span class="pre">CMAKE_EP_GIT_REMOTE_UPDATE_STRATEGY</span></code> (see below).
+Note that if the branch specified in <code class="docutils literal notranslate"><span class="pre">GIT_TAG</span></code> is different to
+the upstream branch currently being tracked, it is not safe to
+perform a rebase. In that situation, <code class="docutils literal notranslate"><span class="pre">REBASE</span></code> will silently be
+treated as <code class="docutils literal notranslate"><span class="pre">CHECKOUT</span></code> instead.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">REBASE_CHECKOUT</span></code></dt><dd><p>Same as <code class="docutils literal notranslate"><span class="pre">REBASE</span></code> except if the rebase fails, an annotated tag will
 be created at the original <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> position from before the rebase
@@ -410,8 +432,9 @@ popped successfully.</p>
 override the default strategy.  This variable should not be set by a
 project, it is intended for the user to set.  It is primarily intended
 for use in continuous integration scripts to ensure that when history
-is rewritten on a remote branch, the build doesn't end up with unintended
-changes or failed builds resulting from conflicts during rebase operations.</p>
+is rewritten on a remote branch, the build doesn't end up with
+unintended changes or failed builds resulting from conflicts during
+rebase operations.</p>
 </dd>
 </dl>
 </dd>
@@ -448,7 +471,7 @@ checkout and update commands.</p>
 </dd>
 </dl>
 </dd>
-<dt><strong>Update/Patch Step Options:</strong></dt><dd><p>Whenever CMake is re-run, by default the external project's sources will be
+<dt><strong>Update Step Options:</strong></dt><dd><p>Whenever CMake is re-run, by default the external project's sources will be
 updated if the download method supports updates (e.g. a git repository
 would be checked if the <code class="docutils literal notranslate"><span class="pre">GIT_TAG</span></code> does not refer to a specific commit).</p>
 <dl>
@@ -479,6 +502,9 @@ for setting the directory property).</p>
 <p>This may cause a step target to be created automatically for the
 <code class="docutils literal notranslate"><span class="pre">download</span></code> step.  See policy <span class="target" id="index-0-policy:CMP0114"></span><a class="reference internal" href="../policy/CMP0114.html#policy:CMP0114" title="CMP0114"><code class="xref cmake cmake-policy docutils literal notranslate"><span class="pre">CMP0114</span></code></a>.</p>
 </dd>
+</dl>
+</dd>
+<dt><strong>Patch Step Options:</strong></dt><dd><dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">PATCH_COMMAND</span> <span class="pre">&lt;cmd&gt;...</span></code></dt><dd><p>Specifies a custom command to patch the sources after an update. By
 default, no patch command is defined. Note that it can be quite difficult
 to define an appropriate patch command that performs robustly, especially
@@ -534,12 +560,13 @@ option without the <code class="docutils literal notranslate"><span class="pre">
 <span class="target" id="index-0-variable:CMAKE_GENERATOR_INSTANCE"></span><a class="reference internal" href="../variable/CMAKE_GENERATOR_INSTANCE.html#variable:CMAKE_GENERATOR_INSTANCE" title="CMAKE_GENERATOR_INSTANCE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_GENERATOR_INSTANCE</span></code></a>). It is an error to provide this
 option without the <code class="docutils literal notranslate"><span class="pre">CMAKE_GENERATOR</span></code> option.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span> <span class="pre">&lt;arg&gt;...</span></code></dt><dd><p>The specified arguments are passed to the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> command line. They
-can be any argument the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> command understands, not just cache
-values defined by <code class="docutils literal notranslate"><span class="pre">-D...</span></code> arguments (see also
+<dt><code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span> <span class="pre">&lt;arg&gt;...</span></code></dt><dd><p>The specified arguments are passed to the <strong class="program">cmake</strong> command line.
+They can be any argument the <strong class="program">cmake</strong> command understands, not just
+cache values defined by <code class="docutils literal notranslate"><span class="pre">-D...</span></code> arguments (see also
 <span class="target" id="index-0-manual:cmake(1)"></span><a class="reference internal" href="../manual/cmake.1.html#manual:cmake(1)" title="cmake(1)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">CMake</span> <span class="pre">Options</span></code></a>).</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.3: </span>Arguments may use <span class="target" id="index-3-manual:cmake-generator-expressions(7)"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#manual:cmake-generator-expressions(7)" title="cmake-generator-expressions(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">generator</span> <span class="pre">expressions</span></code></a>.</p>
+<p><span class="versionmodified added">New in version 3.3: </span>Arguments may use
+<span class="target" id="index-3-manual:cmake-generator-expressions(7)"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#manual:cmake-generator-expressions(7)" title="cmake-generator-expressions(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">generator</span> <span class="pre">expressions</span></code></a>.</p>
 </div>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">CMAKE_CACHE_ARGS</span> <span class="pre">&lt;arg&gt;...</span></code></dt><dd><p>This is an alternate way of specifying cache variables where command line
@@ -549,7 +576,8 @@ CMake <span class="target" id="index-0-command:set"></span><a class="reference i
 <code class="docutils literal notranslate"><span class="pre">set()</span></code> commands are written to a pre-load script which is then applied
 using the <span class="target" id="index-1-manual:cmake(1)"></span><a class="reference internal" href="../manual/cmake.1.html#manual:cmake(1)" title="cmake(1)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-C</span></code></a> command line option.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.3: </span>Arguments may use <span class="target" id="index-4-manual:cmake-generator-expressions(7)"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#manual:cmake-generator-expressions(7)" title="cmake-generator-expressions(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">generator</span> <span class="pre">expressions</span></code></a>.</p>
+<p><span class="versionmodified added">New in version 3.3: </span>Arguments may use
+<span class="target" id="index-4-manual:cmake-generator-expressions(7)"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#manual:cmake-generator-expressions(7)" title="cmake-generator-expressions(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">generator</span> <span class="pre">expressions</span></code></a>.</p>
 </div>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">CMAKE_CACHE_DEFAULT_ARGS</span> <span class="pre">&lt;arg&gt;...</span></code></dt><dd><div class="versionadded">
@@ -562,7 +590,7 @@ from a previous run. Use this option with care, as it can lead to
 different behavior depending on whether the build starts from a fresh
 build directory or re-uses previous build contents.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.15: </span>If the CMake generator is the <code class="docutils literal notranslate"><span class="pre">Green</span> <span class="pre">Hills</span> <span class="pre">MULTI</span></code> and not overridden then
+<p><span class="versionmodified added">New in version 3.15: </span>If the CMake generator is the <code class="docutils literal notranslate"><span class="pre">Green</span> <span class="pre">Hills</span> <span class="pre">MULTI</span></code> and not overridden,
 the original project's settings for the GHS toolset and target system
 customization cache variables are propagated into the external project.</p>
 </div>
@@ -616,9 +644,9 @@ pass <code class="docutils literal notranslate"><span class="pre">-v</span></cod
 supported). If this option is not given, the default build command will
 be chosen to integrate with the main build in the most appropriate way
 (e.g. using recursive <code class="docutils literal notranslate"><span class="pre">make</span></code> for Makefile generators or
-<code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--build</span></code> if the project uses a CMake build). This option can be
-specified with an empty string as the command to make the build step do
-nothing.</p>
+<a class="reference internal" href="../manual/cmake.1.html#cmdoption-cmake-build"><code class="xref std std-option docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">--build</span></code></a> if the project uses a CMake build). This option
+can be specified with an empty string as the command to make the build
+step do nothing.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">BUILD_IN_SOURCE</span> <span class="pre">&lt;bool&gt;</span></code></dt><dd><p>When this option is enabled, the build will be done directly within the
 external project's source tree. This should generally be avoided, the use
@@ -640,8 +668,11 @@ developers might modify the sources in <code class="docutils literal notranslate
 </div>
 <p>Specifies files that will be generated by the build command but which
 might or might not have their modification time updated by subsequent
-builds. These ultimately get passed through as <code class="docutils literal notranslate"><span class="pre">BYPRODUCTS</span></code> to the
-build step's own underlying call to <span class="target" id="index-0-command:add_custom_command"></span><a class="reference internal" href="../command/add_custom_command.html#command:add_custom_command" title="add_custom_command"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_custom_command()</span></code></a>.</p>
+builds. This may also be required to explicitly declare dependencies
+when using the <span class="target" id="index-0-generator:Ninja"></span><a class="reference internal" href="../generator/Ninja.html#generator:Ninja" title="Ninja"><code class="xref cmake cmake-generator docutils literal notranslate"><span class="pre">Ninja</span></code></a> generator.
+These ultimately get passed through as <code class="docutils literal notranslate"><span class="pre">BYPRODUCTS</span></code> to the
+build step's own underlying call to <span class="target" id="index-0-command:add_custom_command"></span><a class="reference internal" href="../command/add_custom_command.html#command:add_custom_command" title="add_custom_command"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_custom_command()</span></code></a>, which
+has additional documentation.</p>
 </dd>
 </dl>
 </dd>
@@ -649,7 +680,7 @@ build step's own underlying call to <span class="target" id="index-0-command:add
 system, the install step will also. Otherwise, the install step will assume
 a Makefile-based build and simply run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> as the default build
 step. This can be overridden with custom install commands if required.</p>
-<dl class="simple">
+<dl>
 <dt><code class="docutils literal notranslate"><span class="pre">INSTALL_COMMAND</span> <span class="pre">&lt;cmd&gt;...</span></code></dt><dd><p>The external project's own install step is invoked as part of the main
 project's <em>build</em>. It is done after the external project's build step
 and may be before or after the external project's test step (see the
@@ -663,6 +694,17 @@ with a custom command using this option
 (<span class="target" id="index-6-manual:cmake-generator-expressions(7)"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#manual:cmake-generator-expressions(7)" title="cmake-generator-expressions(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">generator</span> <span class="pre">expressions</span></code></a> are
 supported). Passing an empty string as the <code class="docutils literal notranslate"><span class="pre">&lt;cmd&gt;</span></code> makes the install
 step do nothing.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">INSTALL_BYPRODUCTS</span> <span class="pre">&lt;file&gt;...</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<p>Specifies files that will be generated by the install command but which
+might or might not have their modification time updated by subsequent
+installs. This may also be required to explicitly declare dependencies
+when using the <span class="target" id="index-1-generator:Ninja"></span><a class="reference internal" href="../generator/Ninja.html#generator:Ninja" title="Ninja"><code class="xref cmake cmake-generator docutils literal notranslate"><span class="pre">Ninja</span></code></a> generator.
+These ultimately get passed through as <code class="docutils literal notranslate"><span class="pre">BYPRODUCTS</span></code> to the
+install step's own underlying call to <span class="target" id="index-1-command:add_custom_command"></span><a class="reference internal" href="../command/add_custom_command.html#command:add_custom_command" title="add_custom_command"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_custom_command()</span></code></a>, which
+has additional documentation.</p>
 </dd>
 </dl>
 <div class="admonition note">
@@ -763,13 +805,18 @@ console.</p>
 <p>Steps can be given direct access to the terminal in some cases. Giving a
 step access to the terminal may allow it to receive terminal input if
 required, such as for authentication details not provided by other options.
-With the <span class="target" id="index-0-generator:Ninja"></span><a class="reference internal" href="../generator/Ninja.html#generator:Ninja" title="Ninja"><code class="xref cmake cmake-generator docutils literal notranslate"><span class="pre">Ninja</span></code></a> generator, these options place the steps in the
+With the <span class="target" id="index-2-generator:Ninja"></span><a class="reference internal" href="../generator/Ninja.html#generator:Ninja" title="Ninja"><code class="xref cmake cmake-generator docutils literal notranslate"><span class="pre">Ninja</span></code></a> generator, these options place the steps in the
 <code class="docutils literal notranslate"><span class="pre">console</span></code> <span class="target" id="index-0-prop_gbl:JOB_POOLS"></span><a class="reference internal" href="../prop_gbl/JOB_POOLS.html#prop_gbl:JOB_POOLS" title="JOB_POOLS"><code class="xref cmake cmake-prop_gbl docutils literal notranslate"><span class="pre">job</span> <span class="pre">pool</span></code></a>. Each step can be given access
 to the terminal individually via the following options:</p>
-<dl class="simple">
+<dl>
 <dt><code class="docutils literal notranslate"><span class="pre">USES_TERMINAL_DOWNLOAD</span> <span class="pre">&lt;bool&gt;</span></code></dt><dd><p>Give the download step access to the terminal.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">USES_TERMINAL_UPDATE</span> <span class="pre">&lt;bool&gt;</span></code></dt><dd><p>Give the update step access to the terminal.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">USES_TERMINAL_PATCH</span> <span class="pre">&lt;bool&gt;</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.23.</span></p>
+</div>
+<p>Give the patch step access to the terminal.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">USES_TERMINAL_CONFIGURE</span> <span class="pre">&lt;bool&gt;</span></code></dt><dd><p>Give the configure step access to the terminal.</p>
 </dd>
@@ -817,11 +864,11 @@ of the effects of this option.</p>
 </dl>
 </dd>
 <dt><strong>Miscellaneous Options:</strong></dt><dd><dl>
-<dt><code class="docutils literal notranslate"><span class="pre">LIST_SEPARATOR</span> <span class="pre">&lt;sep&gt;</span></code></dt><dd><p>For any of the various <code class="docutils literal notranslate"><span class="pre">..._COMMAND</span></code> options, replace <code class="docutils literal notranslate"><span class="pre">;</span></code> with
-<code class="docutils literal notranslate"><span class="pre">&lt;sep&gt;</span></code> in the specified command lines. This can be useful where list
-variables may be given in commands where they should end up as
-space-separated arguments (<code class="docutils literal notranslate"><span class="pre">&lt;sep&gt;</span></code> would be a single space character
-string in this case).</p>
+<dt><code class="docutils literal notranslate"><span class="pre">LIST_SEPARATOR</span> <span class="pre">&lt;sep&gt;</span></code></dt><dd><p>For any of the various <code class="docutils literal notranslate"><span class="pre">..._COMMAND</span></code> options, and <code class="docutils literal notranslate"><span class="pre">CMAKE_ARGS</span></code>,
+replace <code class="docutils literal notranslate"><span class="pre">;</span></code> with <code class="docutils literal notranslate"><span class="pre">&lt;sep&gt;</span></code> in the specified command lines.
+This can be useful where list variables may be given in commands where
+they should end up as space-separated arguments (<code class="docutils literal notranslate"><span class="pre">&lt;sep&gt;</span></code> would be a
+single space character string in this case).</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">COMMAND</span> <span class="pre">&lt;cmd&gt;...</span></code></dt><dd><p>Any of the other <code class="docutils literal notranslate"><span class="pre">..._COMMAND</span></code> options can have additional commands
 appended to them by following them with as many <code class="docutils literal notranslate"><span class="pre">COMMAND</span> <span class="pre">...</span></code> options
@@ -845,12 +892,12 @@ supported). For example:</p>
 automatic substitutions that are supported for some options.</p>
 </dd></dl>
 
-</div>
-<div class="section" id="obtaining-project-properties">
-<h3><a class="toc-backref" href="#id4">Obtaining Project Properties</a><a class="headerlink" href="#obtaining-project-properties" title="Permalink to this headline">¶</a></h3>
-<dl class="command">
-<dt id="command:externalproject_get_property">
-<code class="sig-name descname">ExternalProject_Get_Property</code><a class="headerlink" href="#command:externalproject_get_property" title="Permalink to this definition">¶</a></dt>
+</section>
+<section id="obtaining-project-properties">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Obtaining Project Properties</a><a class="headerlink" href="#obtaining-project-properties" title="Permalink to this heading">¶</a></h3>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:externalproject_get_property">
+<span class="sig-name descname"><span class="pre">ExternalProject_Get_Property</span></span><a class="headerlink" href="#command:externalproject_get_property" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">ExternalProject_Get_Property()</span></code> function retrieves external project
 target properties:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">ExternalProject_Get_Property(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;prop1&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;prop2&gt;...</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
@@ -865,9 +912,9 @@ For example, the source directory might be retrieved like so:</p>
 </div>
 </dd></dl>
 
-</div>
-<div class="section" id="explicit-step-management">
-<h3><a class="toc-backref" href="#id5">Explicit Step Management</a><a class="headerlink" href="#explicit-step-management" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="explicit-step-management">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Explicit Step Management</a><a class="headerlink" href="#explicit-step-management" title="Permalink to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">ExternalProject_Add()</span></code> function on its own is often sufficient for
 incorporating an external project into the main build. Certain scenarios
 require additional work to implement desired behavior, such as adding in a
@@ -875,9 +922,9 @@ custom step or making steps available as manually triggerable targets. The
 <code class="docutils literal notranslate"><span class="pre">ExternalProject_Add_Step()</span></code>, <code class="docutils literal notranslate"><span class="pre">ExternalProject_Add_StepTargets()</span></code> and
 <code class="docutils literal notranslate"><span class="pre">ExternalProject_Add_StepDependencies</span></code> functions provide the lower level
 control needed to implement such step-level capabilities.</p>
-<dl class="command">
-<dt id="command:externalproject_add_step">
-<code class="sig-name descname">ExternalProject_Add_Step</code><a class="headerlink" href="#command:externalproject_add_step" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:externalproject_add_step">
+<span class="sig-name descname"><span class="pre">ExternalProject_Add_Step</span></span><a class="headerlink" href="#command:externalproject_add_step" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">ExternalProject_Add_Step()</span></code> function specifies an additional custom
 step for an external project defined by an earlier call to
 <span class="target" id="index-0-command:externalproject_add"></span><a class="reference internal" href="#command:externalproject_add" title="externalproject_add"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">ExternalProject_Add()</span></code></a>:</p>
@@ -922,9 +969,12 @@ on the external targets, but may depend on targets for other steps.</p>
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
 <p>Files that will be generated by this custom step but which might or might
-not have their modification time updated by subsequent builds. This list of
+not have their modification time updated by subsequent builds.
+This may also be required to explicitly declare dependencies
+when using the <span class="target" id="index-3-generator:Ninja"></span><a class="reference internal" href="../generator/Ninja.html#generator:Ninja" title="Ninja"><code class="xref cmake cmake-generator docutils literal notranslate"><span class="pre">Ninja</span></code></a> generator. This list of
 files will ultimately be passed through as the <code class="docutils literal notranslate"><span class="pre">BYPRODUCTS</span></code> option to the
-<span class="target" id="index-1-command:add_custom_command"></span><a class="reference internal" href="../command/add_custom_command.html#command:add_custom_command" title="add_custom_command"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_custom_command()</span></code></a> used to implement the custom step internally.</p>
+<span class="target" id="index-2-command:add_custom_command"></span><a class="reference internal" href="../command/add_custom_command.html#command:add_custom_command" title="add_custom_command"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_custom_command()</span></code></a> used to implement the custom step internally,
+which has additional documentation.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">ALWAYS</span> <span class="pre">&lt;bool&gt;</span></code></dt><dd><p>When enabled, this option specifies that the custom step should always be
 run (i.e. that it is always considered out of date).</p>
@@ -960,9 +1010,9 @@ corresponding property values defined in the original call to
 </div>
 </dd></dl>
 
-<dl class="command">
-<dt id="command:externalproject_add_steptargets">
-<code class="sig-name descname">ExternalProject_Add_StepTargets</code><a class="headerlink" href="#command:externalproject_add_steptargets" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:externalproject_add_steptargets">
+<span class="sig-name descname"><span class="pre">ExternalProject_Add_StepTargets</span></span><a class="headerlink" href="#command:externalproject_add_steptargets" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <code class="docutils literal notranslate"><span class="pre">ExternalProject_Add_StepTargets()</span></code> function generates targets for the
 steps listed. The name of each created target will be of the form
 <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;-&lt;step&gt;</span></code>:</p>
@@ -995,9 +1045,9 @@ can save having to repeatedly specify the same set of step targets when
 multiple external projects are being defined.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.19: </span>If <span class="target" id="index-5-policy:CMP0114"></span><a class="reference internal" href="../policy/CMP0114.html#policy:CMP0114" title="CMP0114"><code class="xref cmake cmake-policy docutils literal notranslate"><span class="pre">CMP0114</span></code></a> is set to <code class="docutils literal notranslate"><span class="pre">NEW</span></code>, step targets are fully responsible
-for holding the custom commands implementing their steps.  The primary target
-created by <code class="docutils literal notranslate"><span class="pre">ExternalProject_Add</span></code> depends on the step targets, and the
-step targets depend on each other.  The target-level dependencies match
+for holding the custom commands implementing their steps.  The primary
+target created by <code class="docutils literal notranslate"><span class="pre">ExternalProject_Add</span></code> depends on the step targets, and
+the step targets depend on each other.  The target-level dependencies match
 the file-level dependencies used by the custom commands for each step.
 The targets for steps created with <span class="target" id="index-3-command:externalproject_add_step"></span><a class="reference internal" href="#command:externalproject_add_step" title="externalproject_add_step"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">ExternalProject_Add_Step()</span></code></a>'s
 <code class="docutils literal notranslate"><span class="pre">INDEPENDENT</span></code> option do not depend on the external targets specified
@@ -1009,16 +1059,16 @@ is available:</p>
 <ul class="simple">
 <li><p>A deprecated <code class="docutils literal notranslate"><span class="pre">NO_DEPENDS</span></code> option may be specified immediately after the
 <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> and before the first step.
-If the <code class="docutils literal notranslate"><span class="pre">NO_DEPENDS</span></code> option is specified, the step target will not depend on
-the dependencies of the external project (i.e. on any dependencies of the
+If the <code class="docutils literal notranslate"><span class="pre">NO_DEPENDS</span></code> option is specified, the step target will not depend
+on the dependencies of the external project (i.e. on any dependencies of the
 <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> custom target created by <span class="target" id="index-8-command:externalproject_add"></span><a class="reference internal" href="#command:externalproject_add" title="externalproject_add"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">ExternalProject_Add()</span></code></a>). This is
-usually safe for the <code class="docutils literal notranslate"><span class="pre">download</span></code>, <code class="docutils literal notranslate"><span class="pre">update</span></code> and <code class="docutils literal notranslate"><span class="pre">patch</span></code> steps, since they
-do not typically require that the dependencies are updated and built. Using
-<code class="docutils literal notranslate"><span class="pre">NO_DEPENDS</span></code> for any of the other pre-defined steps, however, may break
-parallel builds. Only use <code class="docutils literal notranslate"><span class="pre">NO_DEPENDS</span></code> where it is certain that the named
-steps genuinely do not have dependencies. For custom steps, consider whether
-or not the custom commands require the dependencies to be configured, built
-and installed.</p></li>
+usually safe for the <code class="docutils literal notranslate"><span class="pre">download</span></code>, <code class="docutils literal notranslate"><span class="pre">update</span></code> and <code class="docutils literal notranslate"><span class="pre">patch</span></code> steps, since
+they do not typically require that the dependencies are updated and built.
+Using <code class="docutils literal notranslate"><span class="pre">NO_DEPENDS</span></code> for any of the other pre-defined steps, however, may
+break parallel builds. Only use <code class="docutils literal notranslate"><span class="pre">NO_DEPENDS</span></code> where it is certain that the
+named steps genuinely do not have dependencies. For custom steps, consider
+whether or not the custom commands require the dependencies to be
+configured, built and installed.</p></li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">INDEPENDENT_STEP_TARGETS</span></code> option for <span class="target" id="index-9-command:externalproject_add"></span><a class="reference internal" href="#command:externalproject_add" title="externalproject_add"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">ExternalProject_Add()</span></code></a>,
 or the <code class="docutils literal notranslate"><span class="pre">EP_INDEPENDENT_STEP_TARGETS</span></code> directory property, tells the
 function to call <code class="docutils literal notranslate"><span class="pre">ExternalProject_Add_StepTargets()</span></code> internally
@@ -1026,9 +1076,9 @@ using the <code class="docutils literal notranslate"><span class="pre">NO_DEPEND
 </ul>
 </dd></dl>
 
-<dl class="command">
-<dt id="command:externalproject_add_stepdependencies">
-<code class="sig-name descname">ExternalProject_Add_StepDependencies</code><a class="headerlink" href="#command:externalproject_add_stepdependencies" title="Permalink to this definition">¶</a></dt>
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:externalproject_add_stepdependencies">
+<span class="sig-name descname"><span class="pre">ExternalProject_Add_StepDependencies</span></span><a class="headerlink" href="#command:externalproject_add_stepdependencies" title="Permalink to this definition">¶</a></dt>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
@@ -1045,10 +1095,10 @@ will ensure that parallel builds will not break. It should be used instead of
 targets generated by the <code class="docutils literal notranslate"><span class="pre">ExternalProject</span></code> module.</p>
 </dd></dl>
 
-</div>
-</div>
-<div class="section" id="examples">
-<h2><a class="toc-backref" href="#id6">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
 <p>The following example shows how to download and build a hypothetical project
 called <em>FooBar</em> from github:</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">ExternalProject</span><span class="nf">)</span><span class="w"></span>
@@ -1130,17 +1180,19 @@ custom target to trigger the script can be defined like so:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cmake --build . --target secretsauce-docs
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">ExternalProject</a><ul>
 <li><a class="reference internal" href="#commands">Commands</a><ul>
 <li><a class="reference internal" href="#external-project-definition">External Project Definition</a></li>
@@ -1153,12 +1205,17 @@ custom target to trigger the script can be defined like so:</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="ExternalData.html"
-                        title="previous chapter">ExternalData</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="FeatureSummary.html"
-                        title="next chapter">FeatureSummary</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="ExternalData.html"
+                          title="previous chapter">ExternalData</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="FeatureSummary.html"
+                          title="next chapter">FeatureSummary</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1170,12 +1227,12 @@ custom target to trigger the script can be defined like so:</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1200,15 +1257,17 @@ custom target to trigger the script can be defined like so:</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">ExternalProject</a></li> 
       </ul>
     </div>
+
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2021 Kitware, Inc. and Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

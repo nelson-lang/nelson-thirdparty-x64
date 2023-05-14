@@ -1,29 +1,31 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-  <title>FindPython &mdash; CMake 3.22.1 Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <link rel="stylesheet" href="../_static/cmake.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <title>FindPython &mdash; CMake 3.26.3 Documentation</title>
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
     
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
     
     <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindPython2" href="FindPython2.html" />
     <link rel="prev" title="FindProtobuf" href="FindProtobuf.html" />
-  
  
 
   </head><body>
+
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,10 +46,11 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">FindPython</a></li> 
       </ul>
     </div>  
 
@@ -56,8 +59,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="findpython">
-<span id="module:FindPython"></span><h1>FindPython<a class="headerlink" href="#findpython" title="Permalink to this headline">¶</a></h1>
+  <section id="findpython">
+<span id="module:FindPython"></span><h1>FindPython<a class="headerlink" href="#findpython" title="Permalink to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.12.</span></p>
 </div>
@@ -84,6 +87,15 @@ developments.</p></li>
 developments.</p></li>
 </ul>
 </div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26: </span></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Development.SABIModule</span></code>: search for artifacts for Python module
+developments using the
+<a class="reference external" href="https://docs.python.org/3/c-api/stable.html">Stable Application Binary Interface</a>.
+This component is available only for version <code class="docutils literal notranslate"><span class="pre">3.2</span></code> and upper.</p></li>
+</ul>
+</div>
 </li>
 <li><p><code class="docutils literal notranslate"><span class="pre">NumPy</span></code>: search for NumPy include directories.</p></li>
 </ul>
@@ -107,12 +119,12 @@ To manage concurrent versions 3 and 2 of Python, use <span class="target" id="in
 <p class="admonition-title">Note</p>
 <p>If components <code class="docutils literal notranslate"><span class="pre">Interpreter</span></code> and <code class="docutils literal notranslate"><span class="pre">Development</span></code> (or one of its
 sub-components) are both specified, this module search only for interpreter
-with same platform architecture as the one defined by <code class="docutils literal notranslate"><span class="pre">CMake</span></code>
+with same platform architecture as the one defined by CMake
 configuration. This constraint does not apply if only <code class="docutils literal notranslate"><span class="pre">Interpreter</span></code>
 component is specified.</p>
 </div>
-<div class="section" id="imported-targets">
-<h2>Imported Targets<a class="headerlink" href="#imported-targets" title="Permalink to this headline">¶</a></h2>
+<section id="imported-targets">
+<h2>Imported Targets<a class="headerlink" href="#imported-targets" title="Permalink to this heading">¶</a></h2>
 <p>This module defines the following <a class="reference internal" href="../manual/cmake-buildsystem.7.html#imported-targets"><span class="std std-ref">Imported Targets</span></a>:</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 3.14: </span><a class="reference internal" href="../manual/cmake-buildsystem.7.html#imported-targets"><span class="std std-ref">Imported Targets</span></a> are only created when
@@ -129,6 +141,12 @@ component is specified.</p>
 <p>Python library for Python module. Target defined if component
 <code class="docutils literal notranslate"><span class="pre">Development.Module</span></code> is found.</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Python::SABIModule</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<p>Python library for Python module using the Stable Application Binary
+Interface. Target defined if component <code class="docutils literal notranslate"><span class="pre">Development.SABIModule</span></code> is found.</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">Python::Python</span></code></dt><dd><p>Python library for Python embedding. Target defined if component
 <code class="docutils literal notranslate"><span class="pre">Development.Embed</span></code> is found.</p>
 </dd>
@@ -138,9 +156,9 @@ component is specified.</p>
 <p>NumPy Python library. Target defined if component <code class="docutils literal notranslate"><span class="pre">NumPy</span></code> is found.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="result-variables">
-<h2>Result Variables<a class="headerlink" href="#result-variables" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="result-variables">
+<h2>Result Variables<a class="headerlink" href="#result-variables" title="Permalink to this heading">¶</a></h2>
 <p>This module will set the following variables in your project
 (see <a class="reference internal" href="../manual/cmake-developer.7.html#cmake-developer-standard-variable-names"><span class="std std-ref">Standard Variable Names</span></a>):</p>
 <dl>
@@ -186,12 +204,20 @@ or else <code class="docutils literal notranslate"><span class="pre">sysconfig.g
 <p><span class="versionmodified added">New in version 3.17.</span></p>
 </div>
 <p>Extension suffix for modules.</p>
-<p>Information returned by
-<code class="docutils literal notranslate"><span class="pre">distutils.sysconfig.get_config_var('SOABI')</span></code> or computed from
-<code class="docutils literal notranslate"><span class="pre">distutils.sysconfig.get_config_var('EXT_SUFFIX')</span></code> or
-<code class="docutils literal notranslate"><span class="pre">python-config</span> <span class="pre">--extension-suffix</span></code>. If package <code class="docutils literal notranslate"><span class="pre">distutils.sysconfig</span></code> is
-not available, <code class="docutils literal notranslate"><span class="pre">sysconfig.get_config_var('SOABI')</span></code> or
-<code class="docutils literal notranslate"><span class="pre">sysconfig.get_config_var('EXT_SUFFIX')</span></code> are used.</p>
+<p>Information computed from <code class="docutils literal notranslate"><span class="pre">distutils.sysconfig.get_config_var('EXT_SUFFIX')</span></code>
+or <code class="docutils literal notranslate"><span class="pre">distutils.sysconfig.get_config_var('SOABI')</span></code> or
+<code class="docutils literal notranslate"><span class="pre">python3-config</span> <span class="pre">--extension-suffix</span></code>. If package <code class="docutils literal notranslate"><span class="pre">distutils.sysconfig</span></code> is
+not available, <code class="docutils literal notranslate"><span class="pre">sysconfig.get_config_var('EXT_SUFFIX')</span></code> or
+<code class="docutils literal notranslate"><span class="pre">sysconfig.get_config_var('SOABI')</span></code> are used.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Python_SOSABI</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<p>Extension suffix for modules using the Stable Application Binary Interface.</p>
+<p>Information computed from <code class="docutils literal notranslate"><span class="pre">importlib.machinery.EXTENSION_SUFFIXES</span></code> if the
+COMPONENT <code class="docutils literal notranslate"><span class="pre">Interpreter</span></code> was specified. Otherwise, the extension is <code class="docutils literal notranslate"><span class="pre">abi3</span></code>
+except for <code class="docutils literal notranslate"><span class="pre">Windows</span></code>, <code class="docutils literal notranslate"><span class="pre">MSYS</span></code> and <code class="docutils literal notranslate"><span class="pre">CYGWIN</span></code> for which this is an empty
+string.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">Python_Compiler_FOUND</span></code></dt><dd><p>System has the Python compiler.</p>
 </dd>
@@ -216,6 +242,12 @@ not available, <code class="docutils literal notranslate"><span class="pre">sysc
 </div>
 <p>System has the Python development artifacts for Python module.</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Python_Development.SABIModule_FOUND</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<p>System has the Python development artifacts for Python module using the
+Stable Application Binary Interface.</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">Python_Development.Embed_FOUND</span></code></dt><dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.18.</span></p>
 </div>
@@ -238,6 +270,21 @@ for a correct build and execution.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">Python_LIBRARY_DIRS</span></code></dt><dd><p>The Python library directories.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">Python_RUNTIME_LIBRARY_DIRS</span></code></dt><dd><p>The Python runtime library directories.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Python_SABI_LIBRARIES</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<p>The Python libraries for the Stable Application Binary Interface.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Python_SABI_LIBRARY_DIRS</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<p>The Python <code class="docutils literal notranslate"><span class="pre">SABI</span></code> library directories.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Python_RUNTIME_SABI_LIBRARY_DIRS</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<p>The Python runtime <code class="docutils literal notranslate"><span class="pre">SABI</span></code> library directories.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">Python_VERSION</span></code></dt><dd><p>Python version.</p>
 </dd>
@@ -268,9 +315,9 @@ for a correct build and execution.</p>
 <p>The NumPy version.</p>
 </dd>
 </dl>
-</div>
-<div class="section" id="hints">
-<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this heading">¶</a></h2>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">Python_ROOT_DIR</span></code></dt><dd><p>Define the root directory of a Python installation.</p>
 </dd>
@@ -289,8 +336,8 @@ available on this platform.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">Python_FIND_ABI</span></code></dt><dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.16.</span></p>
 </div>
-<p>This variable defines which ABIs, as defined in
-<a class="reference external" href="https://www.python.org/dev/peps/pep-3149/">PEP 3149</a>, should be searched.</p>
+<p>This variable defines which ABIs, as defined in <span class="target" id="index-0"></span><a class="pep reference external" href="https://peps.python.org/pep-3149/"><strong>PEP 3149</strong></a>, should be
+searched.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This hint will be honored only when searched for <code class="docutils literal notranslate"><span class="pre">Python</span></code> version 3.</p>
@@ -414,7 +461,7 @@ hold the following values:</p>
 <code class="docutils literal notranslate"><span class="pre">Anaconda</span></code> or <code class="docutils literal notranslate"><span class="pre">ActivePython</span></code>, rely on this implementation.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">IronPython</span></code>: This implementation use the <code class="docutils literal notranslate"><span class="pre">CSharp</span></code> language for
 <code class="docutils literal notranslate"><span class="pre">.NET</span> <span class="pre">Framework</span></code> on top of the <cite>Dynamic Language Runtime</cite> (<code class="docutils literal notranslate"><span class="pre">DLR</span></code>).
-See <a class="reference external" href="http://ironpython.net">IronPython</a>.</p></li>
+See <a class="reference external" href="https://ironpython.net">IronPython</a>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">PyPy</span></code>: This implementation use <code class="docutils literal notranslate"><span class="pre">RPython</span></code> language and
 <code class="docutils literal notranslate"><span class="pre">RPython</span> <span class="pre">translation</span> <span class="pre">toolchain</span></code> to produce the python interpreter.
 See <a class="reference external" href="https://www.pypy.org">PyPy</a>.</p></li>
@@ -456,9 +503,9 @@ This is the default.</p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="artifacts-specification">
-<h2>Artifacts Specification<a class="headerlink" href="#artifacts-specification" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="artifacts-specification">
+<h2>Artifacts Specification<a class="headerlink" href="#artifacts-specification" title="Permalink to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.16.</span></p>
 </div>
@@ -477,6 +524,13 @@ setting the following variables:</p>
 <dt><code class="docutils literal notranslate"><span class="pre">Python_LIBRARY</span></code></dt><dd><p>The path to the library. It will be used to compute the
 variables <code class="docutils literal notranslate"><span class="pre">Python_LIBRARIES</span></code>, <code class="docutils literal notranslate"><span class="pre">Python_LIBRARY_DIRS</span></code> and
 <code class="docutils literal notranslate"><span class="pre">Python_RUNTIME_LIBRARY_DIRS</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">Python_SABI_LIBRARY</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26.</span></p>
+</div>
+<p>The path to the library for Stable Application Binary Interface. It will be
+used to compute the variables <code class="docutils literal notranslate"><span class="pre">Python_SABI_LIBRARIES</span></code>,
+<code class="docutils literal notranslate"><span class="pre">Python_SABI_LIBRARY_DIRS</span></code> and <code class="docutils literal notranslate"><span class="pre">Python_RUNTIME_SABI_LIBRARY_DIRS</span></code>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">Python_INCLUDE_DIR</span></code></dt><dd><p>The path to the directory of the <code class="docutils literal notranslate"><span class="pre">Python</span></code> headers. It will be used to
 compute the variable <code class="docutils literal notranslate"><span class="pre">Python_INCLUDE_DIRS</span></code>.</p>
@@ -499,7 +553,7 @@ ensure the consistency of the various artifacts.</p>
 </div>
 <p>By default, this module supports multiple calls in different directories of a
 project with different version/component requirements while providing correct
-and consistent results for each call. To support this behavior, <code class="docutils literal notranslate"><span class="pre">CMake</span></code> cache
+and consistent results for each call. To support this behavior, CMake cache
 is not used in the traditional way which can be problematic for interactive
 specification. So, to enable also interactive specification, module behavior
 can be controlled with the following variable:</p>
@@ -517,15 +571,16 @@ requirements.</p></li>
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="commands">
-<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading">¶</a></h2>
 <p>This module defines the command <code class="docutils literal notranslate"><span class="pre">Python_add_library</span></code> (when
 <span class="target" id="index-1-prop_gbl:CMAKE_ROLE"></span><a class="reference internal" href="../prop_gbl/CMAKE_ROLE.html#prop_gbl:CMAKE_ROLE" title="CMAKE_ROLE"><code class="xref cmake cmake-prop_gbl docutils literal notranslate"><span class="pre">CMAKE_ROLE</span></code></a> is <code class="docutils literal notranslate"><span class="pre">PROJECT</span></code>), which has the same semantics as
 <span class="target" id="index-0-command:add_library"></span><a class="reference internal" href="../command/add_library.html#command:add_library" title="add_library"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_library()</span></code></a> and adds a dependency to target <code class="docutils literal notranslate"><span class="pre">Python::Python</span></code> or,
-when library type is <code class="docutils literal notranslate"><span class="pre">MODULE</span></code>, to target <code class="docutils literal notranslate"><span class="pre">Python::Module</span></code> and takes care of
-Python module naming rules:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python_add_library (&lt;name&gt; [STATIC | SHARED | MODULE [WITH_SOABI]]
+when library type is <code class="docutils literal notranslate"><span class="pre">MODULE</span></code>, to target <code class="docutils literal notranslate"><span class="pre">Python::Module</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Python::SABIModule</span></code> (when <code class="docutils literal notranslate"><span class="pre">USE_SABI</span></code> option is specified) and takes care
+of Python module naming rules:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Python_add_library (&lt;name&gt; [STATIC | SHARED | MODULE [USE_SABI &lt;version&gt;] [WITH_SOABI]]
                     &lt;source1&gt; [&lt;source2&gt; ...])
 </pre></div>
 </div>
@@ -534,17 +589,31 @@ Python module naming rules:</p>
 <p><span class="versionmodified added">New in version 3.17: </span>For <code class="docutils literal notranslate"><span class="pre">MODULE</span></code> library type, if option <code class="docutils literal notranslate"><span class="pre">WITH_SOABI</span></code> is specified, the
 module suffix will include the <code class="docutils literal notranslate"><span class="pre">Python_SOABI</span></code> value, if any.</p>
 </div>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 3.26: </span>For <code class="docutils literal notranslate"><span class="pre">MODULE</span></code> type, if the option <code class="docutils literal notranslate"><span class="pre">USE_SABI</span></code> is specified, the
+preprocessor definition <code class="docutils literal notranslate"><span class="pre">Py_LIMITED_API</span></code> will be specified, as <code class="docutils literal notranslate"><span class="pre">PRIVATE</span></code>,
+for the target <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> with the value computed from <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> argument.
+The expected format for <code class="docutils literal notranslate"><span class="pre">&lt;version&gt;</span></code> is <code class="docutils literal notranslate"><span class="pre">major[.minor]</span></code>, where each
+component is a numeric value. If <code class="docutils literal notranslate"><span class="pre">minor</span></code> component is specified, the
+version should be, at least, <code class="docutils literal notranslate"><span class="pre">3.2</span></code> which is the version where the
+<a class="reference external" href="https://docs.python.org/3/c-api/stable.html">Stable Application Binary Interface</a>
+was introduced. Specifying only major version <code class="docutils literal notranslate"><span class="pre">3</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">3.2</span></code>.</p>
+<p>When option <code class="docutils literal notranslate"><span class="pre">WITH_SOABI</span></code> is also specified,  the module suffix will include
+the <code class="docutils literal notranslate"><span class="pre">Python_SOSABI</span></code> value, if any.</p>
 </div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">FindPython</a><ul>
 <li><a class="reference internal" href="#imported-targets">Imported Targets</a></li>
 <li><a class="reference internal" href="#result-variables">Result Variables</a></li>
@@ -555,12 +624,17 @@ module suffix will include the <code class="docutils literal notranslate"><span 
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="FindProtobuf.html"
-                        title="previous chapter">FindProtobuf</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="FindPython2.html"
-                        title="next chapter">FindPython2</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="FindProtobuf.html"
+                          title="previous chapter">FindProtobuf</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="FindPython2.html"
+                          title="next chapter">FindPython2</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -572,12 +646,12 @@ module suffix will include the <code class="docutils literal notranslate"><span 
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -602,15 +676,17 @@ module suffix will include the <code class="docutils literal notranslate"><span 
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.22.1 Documentation</a> &#187;
+    <a href="../index.html">3.26.3 Documentation</a> &#187;
   </li>
 
-          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">FindPython</a></li> 
       </ul>
     </div>
+
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2021 Kitware, Inc. and Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>
