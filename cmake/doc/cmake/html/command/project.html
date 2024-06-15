@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>project &mdash; CMake 3.26.3 Documentation</title>
+  <title>project &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="remove_definitions" href="remove_definitions.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,16 +57,16 @@
           <div class="body" role="main">
             
   <section id="project">
-<span id="command:project"></span><h1>project<a class="headerlink" href="#project" title="Permalink to this heading">¶</a></h1>
+<span id="command:project"></span><h1>project<a class="headerlink" href="#project" title="Link to this heading">¶</a></h1>
 <p>Set the name of the project.</p>
 <section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">project(</span><span class="nv">&lt;PROJECT-NAME&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;language-name&gt;...</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">project(</span><span class="nv">&lt;PROJECT-NAME&gt;</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">VERSION</span><span class="w"> </span><span class="nv">&lt;major&gt;</span><span class="p">[.</span><span class="nv">&lt;minor&gt;</span><span class="p">[.</span><span class="nv">&lt;patch&gt;</span><span class="p">[.</span><span class="nv">&lt;tweak&gt;</span><span class="p">]]]]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="nv">&lt;project-description-string&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">HOMEPAGE_URL</span><span class="w"> </span><span class="nv">&lt;url-string&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">LANGUAGES</span><span class="w"> </span><span class="nv">&lt;language-name&gt;...</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">project(</span><span class="nv">&lt;PROJECT-NAME&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;language-name&gt;...</span><span class="p">]</span><span class="nf">)</span>
+<span class="nf">project(</span><span class="nv">&lt;PROJECT-NAME&gt;</span>
+<span class="w">        </span><span class="p">[</span><span class="no">VERSION</span><span class="w"> </span><span class="nv">&lt;major&gt;</span><span class="p">[.</span><span class="nv">&lt;minor&gt;</span><span class="p">[.</span><span class="nv">&lt;patch&gt;</span><span class="p">[.</span><span class="nv">&lt;tweak&gt;</span><span class="p">]]]]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="nv">&lt;project-description-string&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">HOMEPAGE_URL</span><span class="w"> </span><span class="nv">&lt;url-string&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">LANGUAGES</span><span class="w"> </span><span class="nv">&lt;language-name&gt;...</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Sets the name of the project, and stores it in the variable
@@ -93,7 +90,7 @@ If any of these arguments is not used, then the corresponding variables are
 set to the empty string.</p>
 </section>
 <section id="options">
-<h2>Options<a class="headerlink" href="#options" title="Permalink to this heading">¶</a></h2>
+<h2>Options<a class="headerlink" href="#options" title="Link to this heading">¶</a></h2>
 <p>The options are:</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">VERSION</span> <span class="pre">&lt;version&gt;</span></code></dt><dd><p>Optional; may not be used unless policy <span class="target" id="index-0-policy:CMP0048"></span><a class="reference internal" href="../policy/CMP0048.html#policy:CMP0048" title="CMP0048"><code class="xref cmake cmake-policy docutils literal notranslate"><span class="pre">CMP0048</span></code></a> is
@@ -178,24 +175,27 @@ Can also be specified without <code class="docutils literal notranslate"><span c
 </div></blockquote>
 <p>If enabling <code class="docutils literal notranslate"><span class="pre">ASM</span></code>, list it last so that CMake can check whether
 compilers for other languages like <code class="docutils literal notranslate"><span class="pre">C</span></code> work for assembly too.</p>
+<p>By default <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code> are enabled if no language options are given.
+Specify language <code class="docutils literal notranslate"><span class="pre">NONE</span></code>, or use the <code class="docutils literal notranslate"><span class="pre">LANGUAGES</span></code> keyword and list no languages,
+to skip enabling any languages.</p>
 <p>The variables set through the <code class="docutils literal notranslate"><span class="pre">VERSION</span></code>, <code class="docutils literal notranslate"><span class="pre">DESCRIPTION</span></code> and <code class="docutils literal notranslate"><span class="pre">HOMEPAGE_URL</span></code>
 options are intended for use as default values in package metadata and documentation.</p>
 </section>
 <section id="code-injection">
-<span id="id1"></span><h2>Code Injection<a class="headerlink" href="#code-injection" title="Permalink to this heading">¶</a></h2>
+<span id="id1"></span><h2>Code Injection<a class="headerlink" href="#code-injection" title="Link to this heading">¶</a></h2>
 <p>A number of variables can be defined by the user to specify files to include
 at different points during the execution of the <code class="docutils literal notranslate"><span class="pre">project()</span></code> command.
 The following outlines the steps performed during a <code class="docutils literal notranslate"><span class="pre">project()</span></code> call:</p>
 <ul>
 <li><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.15: </span>For every <code class="docutils literal notranslate"><span class="pre">project()</span></code> call regardless of the project
-name, include the file named by <span class="target" id="index-0-variable:CMAKE_PROJECT_INCLUDE_BEFORE"></span><a class="reference internal" href="../variable/CMAKE_PROJECT_INCLUDE_BEFORE.html#variable:CMAKE_PROJECT_INCLUDE_BEFORE" title="CMAKE_PROJECT_INCLUDE_BEFORE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_PROJECT_INCLUDE_BEFORE</span></code></a>,
-if set.</p>
+name, include the file(s) and module(s) named by
+<span class="target" id="index-0-variable:CMAKE_PROJECT_INCLUDE_BEFORE"></span><a class="reference internal" href="../variable/CMAKE_PROJECT_INCLUDE_BEFORE.html#variable:CMAKE_PROJECT_INCLUDE_BEFORE" title="CMAKE_PROJECT_INCLUDE_BEFORE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_PROJECT_INCLUDE_BEFORE</span></code></a>, if set.</p>
 </div>
 </li>
 <li><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.17: </span>If the <code class="docutils literal notranslate"><span class="pre">project()</span></code> command specifies <code class="docutils literal notranslate"><span class="pre">&lt;PROJECT-NAME&gt;</span></code> as its project
-name, include the file named by
+name, include the file(s) and module(s) named by
 <span class="target" id="index-0-variable:CMAKE_PROJECT_&lt;PROJECT-NAME&gt;_INCLUDE_BEFORE"></span><a class="reference internal" href="../variable/CMAKE_PROJECT_PROJECT-NAME_INCLUDE_BEFORE.html#variable:CMAKE_PROJECT_&lt;PROJECT-NAME&gt;_INCLUDE_BEFORE" title="CMAKE_PROJECT_&lt;PROJECT-NAME&gt;_INCLUDE_BEFORE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_PROJECT_&lt;PROJECT-NAME&gt;_INCLUDE_BEFORE</span></code></a>, if set.</p>
 </div>
 </li>
@@ -223,17 +223,17 @@ none were provided. The toolchain file may be re-read when enabling a
 language for the first time.</p></li>
 <li><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.15: </span>For every <code class="docutils literal notranslate"><span class="pre">project()</span></code> call regardless of the project
-name, include the file named by <span class="target" id="index-0-variable:CMAKE_PROJECT_INCLUDE"></span><a class="reference internal" href="../variable/CMAKE_PROJECT_INCLUDE.html#variable:CMAKE_PROJECT_INCLUDE" title="CMAKE_PROJECT_INCLUDE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_PROJECT_INCLUDE</span></code></a>,
-if set.</p>
+name, include the file(s) and module(s) named by
+<span class="target" id="index-0-variable:CMAKE_PROJECT_INCLUDE"></span><a class="reference internal" href="../variable/CMAKE_PROJECT_INCLUDE.html#variable:CMAKE_PROJECT_INCLUDE" title="CMAKE_PROJECT_INCLUDE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_PROJECT_INCLUDE</span></code></a>, if set.</p>
 </div>
 </li>
 <li><p>If the <code class="docutils literal notranslate"><span class="pre">project()</span></code> command specifies <code class="docutils literal notranslate"><span class="pre">&lt;PROJECT-NAME&gt;</span></code> as its project
-name, include the file named by
+name, include the file(s) and module(s) named by
 <span class="target" id="index-0-variable:CMAKE_PROJECT_&lt;PROJECT-NAME&gt;_INCLUDE"></span><a class="reference internal" href="../variable/CMAKE_PROJECT_PROJECT-NAME_INCLUDE.html#variable:CMAKE_PROJECT_&lt;PROJECT-NAME&gt;_INCLUDE" title="CMAKE_PROJECT_&lt;PROJECT-NAME&gt;_INCLUDE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_PROJECT_&lt;PROJECT-NAME&gt;_INCLUDE</span></code></a>, if set.</p></li>
 </ul>
 </section>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
 <p>The top-level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file for a project must contain a
 literal, direct call to the <code class="docutils literal notranslate"><span class="pre">project()</span></code> command; loading one
 through the <span class="target" id="index-0-command:include"></span><a class="reference internal" href="include.html#command:include" title="include"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">include()</span></code></a> command is not sufficient.  If no such
@@ -323,7 +323,7 @@ See also policy <span class="target" id="index-0-policy:CMP0000"></span><a class
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -332,8 +332,8 @@ See also policy <span class="target" id="index-0-policy:CMP0000"></span><a class
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

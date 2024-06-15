@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindImageMagick &mdash; CMake 3.26.3 Documentation</title>
+  <title>FindImageMagick &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindIntl" href="FindIntl.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="findimagemagick">
-<span id="module:FindImageMagick"></span><h1>FindImageMagick<a class="headerlink" href="#findimagemagick" title="Permalink to this heading">¶</a></h1>
+<span id="module:FindImageMagick"></span><h1>FindImageMagick<a class="headerlink" href="#findimagemagick" title="Link to this heading">¶</a></h1>
 <p>Find ImageMagick, software suite for displaying, converting and
 manipulating raster images.</p>
 <div class="versionadded">
@@ -92,7 +89,7 @@ searches for the ImageMagick executable directory.</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">MagickCore</span></code>: ImageMagick MagickCore low-level C API, if found.</p></li>
 </ul>
 <section id="imported-targets">
-<h2>Imported targets<a class="headerlink" href="#imported-targets" title="Permalink to this heading">¶</a></h2>
+<h2>Imported targets<a class="headerlink" href="#imported-targets" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.26.</span></p>
 </div>
@@ -107,7 +104,7 @@ searches for the ImageMagick executable directory.</p>
 </dl>
 </section>
 <section id="result-variables">
-<h2>Result Variables<a class="headerlink" href="#result-variables" title="Permalink to this heading">¶</a></h2>
+<h2>Result Variables<a class="headerlink" href="#result-variables" title="Link to this heading">¶</a></h2>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">ImageMagick_FOUND</span></code></dt><dd><p>TRUE if all components are found.</p>
 </dd>
@@ -138,9 +135,9 @@ Will not work for old versions like 5.2.3.</p>
 </dl>
 </section>
 <section id="example-usage">
-<h2>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">ImageMagick</span><span class="w"> </span><span class="no">COMPONENTS</span><span class="w"> </span><span class="nb">Magick++</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">target_link_libraries(</span><span class="nb">example</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">ImageMagick</span><span class="o">::</span><span class="nb">Magick++</span><span class="nf">)</span><span class="w"></span>
+<h2>Example Usage<a class="headerlink" href="#example-usage" title="Link to this heading">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">ImageMagick</span><span class="w"> </span><span class="no">COMPONENTS</span><span class="w"> </span><span class="nb">Magick++</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">example</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">ImageMagick</span><span class="o">::</span><span class="nb">Magick++</span><span class="nf">)</span>
 </pre></div>
 </div>
 </section>
@@ -216,7 +213,7 @@ Will not work for old versions like 5.2.3.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -225,8 +222,8 @@ Will not work for old versions like 5.2.3.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

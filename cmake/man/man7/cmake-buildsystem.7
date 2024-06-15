@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "CMAKE-BUILDSYSTEM" "7" "Apr 04, 2023" "3.26.3" "CMake"
+.TH "CMAKE-BUILDSYSTEM" "7" "Jun 14, 2024" "3.30.0" "CMake"
 .SH NAME
 cmake-buildsystem \- CMake Buildsystem Reference
 .SH INTRODUCTION
@@ -210,26 +210,78 @@ the list of objects can be used by \fI\%add_custom_command(OUTPUT)\fP
 or \fI\%file(GENERATE)\fP by using \fB$<TARGET_OBJECTS:objlib>\fP\&.
 .SH BUILD SPECIFICATION AND USAGE REQUIREMENTS
 .sp
-The \fI\%target_include_directories()\fP, \fI\%target_compile_definitions()\fP
-and \fI\%target_compile_options()\fP commands specify the build specifications
-and the usage requirements of binary targets.  The commands populate the
-\fI\%INCLUDE_DIRECTORIES\fP, \fI\%COMPILE_DEFINITIONS\fP and
-\fI\%COMPILE_OPTIONS\fP target properties respectively, and/or the
-\fI\%INTERFACE_INCLUDE_DIRECTORIES\fP, \fI\%INTERFACE_COMPILE_DEFINITIONS\fP
-and \fI\%INTERFACE_COMPILE_OPTIONS\fP target properties.
+Targets build according to their own
+\fI\%build specification\fP in combination with
+\fI\%usage requirements\fP propagated from their
+link dependencies.  Both may be specified using target\-specific
+\fI\%commands\fP\&.
 .sp
-Each of the commands has a \fBPRIVATE\fP, \fBPUBLIC\fP and \fBINTERFACE\fP mode.  The
-\fBPRIVATE\fP mode populates only the non\-\fBINTERFACE_\fP variant of the target
-property and the \fBINTERFACE\fP mode populates only the \fBINTERFACE_\fP variants.
-The \fBPUBLIC\fP mode populates both variants of the respective target property.
-Each command may be invoked with multiple uses of each keyword:
+For example:
 .INDENT 0.0
 .INDENT 3.5
 .sp
 .nf
 .ft C
+add_library(archive SHARED archive.cpp zip.cpp)
+
+if (LZMA_FOUND)
+  # Add a source implementing support for lzma.
+  target_sources(archive PRIVATE lzma.cpp)
+
+  # Compile the \(aqarchive\(aq library sources with \(aq\-DBUILDING_WITH_LZMA\(aq.
+  target_compile_definitions(archive PRIVATE BUILDING_WITH_LZMA)
+endif()
+
+target_compile_definitions(archive INTERFACE USING_ARCHIVE_LIB)
+
+add_executable(consumer consumer.cpp)
+
+# Link \(aqconsumer\(aq to \(aqarchive\(aq.  This also consumes its usage requirements,
+# so \(aqconsumer.cpp\(aq is compiled with \(aq\-DUSING_ARCHIVE_LIB\(aq.
+target_link_libraries(consumer archive)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Target Commands
+.sp
+Target\-specific commands populate the
+\fI\%build specification\fP of \fI\%Binary Targets\fP and
+\fI\%usage requirements\fP of \fI\%Binary Targets\fP,
+\fI\%Interface Libraries\fP, and \fI\%Imported Targets\fP\&.
+.sp
+Invocations must specify scope keywords, each affecting the visibility
+of arguments following it.  The scopes are:
+.INDENT 0.0
+.TP
+.B \fBPUBLIC\fP
+Populates both properties for \fI\%building\fP
+and properties for \fI\%using\fP a target.
+.TP
+.B \fBPRIVATE\fP
+Populates only properties for \fI\%building\fP
+a target.
+.TP
+.B \fBINTERFACE\fP
+Populates only properties for \fI\%using\fP
+a target.
+.UNINDENT
+.sp
+The commands are:
+.INDENT 0.0
+.TP
+.B \fI\%target_compile_definitions()\fP
+Populates the \fI\%COMPILE_DEFINITIONS\fP build specification and
+\fI\%INTERFACE_COMPILE_DEFINITIONS\fP usage requirement properties.
+.sp
+For example, the call
+.INDENT 7.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
 target_compile_definitions(archive
-  PRIVATE BUILDING_WITH_LZMA
+  PRIVATE   BUILDING_WITH_LZMA
   INTERFACE USING_ARCHIVE_LIB
 )
 .ft P
@@ -237,80 +289,215 @@ target_compile_definitions(archive
 .UNINDENT
 .UNINDENT
 .sp
+appends \fBBUILDING_WITH_LZMA\fP to the target\(aqs \fBCOMPILE_DEFINITIONS\fP
+property and appends \fBUSING_ARCHIVE_LIB\fP to the target\(aqs
+\fBINTERFACE_COMPILE_DEFINITIONS\fP property.
+.TP
+.B \fI\%target_compile_options()\fP
+Populates the \fI\%COMPILE_OPTIONS\fP build specification and
+\fI\%INTERFACE_COMPILE_OPTIONS\fP usage requirement properties.
+.TP
+.B \fI\%target_compile_features()\fP
+New in version 3.1.
+
+.sp
+Populates the \fI\%COMPILE_FEATURES\fP build specification and
+\fI\%INTERFACE_COMPILE_FEATURES\fP usage requirement properties.
+.TP
+.B \fI\%target_include_directories()\fP
+Populates the \fI\%INCLUDE_DIRECTORIES\fP build specification
+and \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP usage requirement
+properties.  With the \fBSYSTEM\fP option, it also populates the
+\fI\%INTERFACE_SYSTEM_INCLUDE_DIRECTORIES\fP usage requirement.
+.sp
+For convenience, the \fI\%CMAKE_INCLUDE_CURRENT_DIR\fP variable
+may be enabled to add the source directory and corresponding build
+directory as \fBINCLUDE_DIRECTORIES\fP on all targets.  Similarly,
+the \fI\%CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE\fP variable may
+be enabled to add them as \fBINTERFACE_INCLUDE_DIRECTORIES\fP on all
+targets.
+.TP
+.B \fI\%target_sources()\fP
+New in version 3.1.
+
+.sp
+Populates the \fI\%SOURCES\fP build specification and
+\fI\%INTERFACE_SOURCES\fP usage requirement properties.
+.sp
+It also supports specifying \fI\%File Sets\fP, which can add C++ module
+sources and headers not listed in the \fBSOURCES\fP and \fBINTERFACE_SOURCES\fP
+properties.  File sets may also populate the \fI\%INCLUDE_DIRECTORIES\fP
+build specification and \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP usage
+requirement properties with the include directories containing the headers.
+.TP
+.B \fI\%target_precompile_headers()\fP
+New in version 3.16.
+
+.sp
+Populates the \fI\%PRECOMPILE_HEADERS\fP build specification and
+\fI\%INTERFACE_PRECOMPILE_HEADERS\fP usage requirement properties.
+.TP
+.B \fI\%target_link_libraries()\fP
+Populates the \fI\%LINK_LIBRARIES\fP build specification
+and \fI\%INTERFACE_LINK_LIBRARIES\fP usage requirement properties.
+.sp
+This is the primary mechanism by which link dependencies and their
+\fI\%usage requirements\fP are transitively
+propagated to affect compilation and linking of a target.
+.TP
+.B \fI\%target_link_directories()\fP
+New in version 3.13.
+
+.sp
+Populates the \fI\%LINK_DIRECTORIES\fP build specification and
+\fI\%INTERFACE_LINK_DIRECTORIES\fP usage requirement properties.
+.TP
+.B \fI\%target_link_options()\fP
+New in version 3.13.
+
+.sp
+Populates the \fI\%LINK_OPTIONS\fP build specification and
+\fI\%INTERFACE_LINK_OPTIONS\fP usage requirement properties.
+.UNINDENT
+.SS Target Build Specification
+.sp
+The build specification of \fI\%Binary Targets\fP is represented by target
+properties.  For each of the following \fI\%compile\fP
+and \fI\%link\fP properties, compilation and linking
+of the target is affected both by its own value and by the corresponding
+\fI\%usage requirement\fP property, named with
+an \fBINTERFACE_\fP prefix, collected from the transitive closure of link
+dependencies.
+.SS Target Compile Properties
+.sp
+These represent the \fI\%build specification\fP
+for compiling a target.
+.INDENT 0.0
+.TP
+.B \fI\%COMPILE_DEFINITIONS\fP
+List of compile definitions for compiling sources in the target.
+These are passed to the compiler with \fB\-D\fP flags, or equivalent,
+in an unspecified order.
+.sp
+The \fI\%DEFINE_SYMBOL\fP target property is also used
+as a compile definition as a special convenience case for
+\fBSHARED\fP and \fBMODULE\fP library targets.
+.TP
+.B \fI\%COMPILE_OPTIONS\fP
+List of compile options for compiling sources in the target.
+These are passed to the compiler as flags, in the order of appearance.
+.sp
+Compile options are automatically escaped for the shell.
+.sp
+Some compile options are best specified via dedicated settings,
+such as the \fI\%POSITION_INDEPENDENT_CODE\fP target property.
+.TP
+.B \fI\%COMPILE_FEATURES\fP
+New in version 3.1.
+
+.sp
+List of \fI\%compile features\fP needed
+for compiling sources in the target.  Typically these ensure the
+target\(aqs sources are compiled using a sufficient language standard level.
+.TP
+.B \fI\%INCLUDE_DIRECTORIES\fP
+List of include directories for compiling sources in the target.
+These are passed to the compiler with \fB\-I\fP or \fB\-isystem\fP flags,
+or equivalent, in the order of appearance.
+.sp
+For convenience, the \fI\%CMAKE_INCLUDE_CURRENT_DIR\fP variable
+may be enabled to add the source directory and corresponding build
+directory as \fBINCLUDE_DIRECTORIES\fP on all targets.
+.TP
+.B \fI\%SOURCES\fP
+List of source files associated with the target.  This includes sources
+specified when the target was created by the \fI\%add_executable()\fP,
+\fI\%add_library()\fP, or \fI\%add_custom_target()\fP command.
+It also includes sources added by the \fI\%target_sources()\fP command,
+but does not include \fI\%File Sets\fP\&.
+.TP
+.B \fI\%PRECOMPILE_HEADERS\fP
+New in version 3.16.
+
+.sp
+List of header files to precompile and include when compiling
+sources in the target.
+.TP
+.B \fI\%AUTOMOC_MACRO_NAMES\fP
+New in version 3.10.
+
+.sp
+List of macro names used by \fI\%AUTOMOC\fP to determine if a
+C++ source in the target needs to be processed by \fBmoc\fP\&.
+.TP
+.B \fI\%AUTOUIC_OPTIONS\fP
+New in version 3.0.
+
+.sp
+List of options used by \fI\%AUTOUIC\fP when invoking \fBuic\fP
+for the target.
+.UNINDENT
+.SS Target Link Properties
+.sp
+These represent the \fI\%build specification\fP
+for linking a target.
+.INDENT 0.0
+.TP
+.B \fI\%LINK_LIBRARIES\fP
+List of link libraries for linking the target, if it is an executable,
+shared library, or module library.  Entries for \fI\%Normal Libraries\fP are
+passed to the linker either via paths to their link artifacts, or
+with \fB\-l\fP flags or equivalent.  Entries for \fI\%Object Libraries\fP are
+passed to the linker via paths to their object files.
+.sp
+Additionally, for compiling and linking the target itself,
+\fI\%usage requirements\fP are propagated from
+\fBLINK_LIBRARIES\fP entries naming \fI\%Normal Libraries\fP,
+\fI\%Interface Libraries\fP, \fI\%Object Libraries\fP, and \fI\%Imported Targets\fP,
+collected over the transitive closure of their
+\fI\%INTERFACE_LINK_LIBRARIES\fP properties.
+.TP
+.B \fI\%LINK_DIRECTORIES\fP
+New in version 3.13.
+
+.sp
+List of link directories for linking the target, if it is an executable,
+shared library, or module library.  The directories are passed to the
+linker with \fB\-L\fP flags, or equivalent.
+.TP
+.B \fI\%LINK_OPTIONS\fP
+New in version 3.13.
+
+.sp
+List of link options for linking the target, if it is an executable,
+shared library, or module library.  The options are passed to the
+linker as flags, in the order of appearance.
+.sp
+Link options are automatically escaped for the shell.
+.TP
+.B \fI\%LINK_DEPENDS\fP
+List of files on which linking the target depends, if it is an executable,
+shared library, or module library.  For example, linker scripts specified
+via \fI\%LINK_OPTIONS\fP may be listed here such that changing them
+causes binaries to be linked again.
+.UNINDENT
+.SS Target Usage Requirements
+.sp
+The \fIusage requirements\fP of a target are settings that propagate to consumers,
+which link to the target via \fI\%target_link_libraries()\fP, in order to
+correctly compile and link with it.  They are represented by transitive
+\fI\%compile\fP and
+\fI\%link\fP properties.
+.sp
 Note that usage requirements are not designed as a way to make downstreams
-use particular \fI\%COMPILE_OPTIONS\fP or
-\fI\%COMPILE_DEFINITIONS\fP etc for convenience only.  The contents of
-the properties must be \fBrequirements\fP, not merely recommendations or
-convenience.
+use particular \fI\%COMPILE_OPTIONS\fP, \fI\%COMPILE_DEFINITIONS\fP,
+etc. for convenience only.  The contents of the properties must be
+\fBrequirements\fP, not merely recommendations.
 .sp
 See the \fI\%Creating Relocatable Packages\fP section of the
 \fI\%cmake\-packages(7)\fP manual for discussion of additional care
 that must be taken when specifying usage requirements while creating
 packages for redistribution.
-.SS Target Properties
-.sp
-The contents of the \fI\%INCLUDE_DIRECTORIES\fP,
-\fI\%COMPILE_DEFINITIONS\fP and \fI\%COMPILE_OPTIONS\fP target
-properties are used appropriately when compiling the source files of a
-binary target.
-.sp
-Entries in the \fI\%INCLUDE_DIRECTORIES\fP are added to the compile line
-with \fB\-I\fP or \fB\-isystem\fP prefixes and in the order of appearance in the
-property value.
-.sp
-Entries in the \fI\%COMPILE_DEFINITIONS\fP are prefixed with \fB\-D\fP or
-\fB/D\fP and added to the compile line in an unspecified order.  The
-\fI\%DEFINE_SYMBOL\fP target property is also added as a compile
-definition as a special convenience case for \fBSHARED\fP and \fBMODULE\fP
-library targets.
-.sp
-Entries in the \fI\%COMPILE_OPTIONS\fP are escaped for the shell and added
-in the order of appearance in the property value.  Several compile options have
-special separate handling, such as \fI\%POSITION_INDEPENDENT_CODE\fP\&.
-.sp
-The contents of the \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP,
-\fI\%INTERFACE_COMPILE_DEFINITIONS\fP and
-\fI\%INTERFACE_COMPILE_OPTIONS\fP target properties are
-\fIUsage Requirements\fP \-\- they specify content which consumers
-must use to correctly compile and link with the target they appear on.
-For any binary target, the contents of each \fBINTERFACE_\fP property on
-each target specified in a \fI\%target_link_libraries()\fP command is
-consumed:
-.INDENT 0.0
-.INDENT 3.5
-.sp
-.nf
-.ft C
-set(srcs archive.cpp zip.cpp)
-if (LZMA_FOUND)
-  list(APPEND srcs lzma.cpp)
-endif()
-add_library(archive SHARED ${srcs})
-if (LZMA_FOUND)
-  # The archive library sources are compiled with \-DBUILDING_WITH_LZMA
-  target_compile_definitions(archive PRIVATE BUILDING_WITH_LZMA)
-endif()
-target_compile_definitions(archive INTERFACE USING_ARCHIVE_LIB)
-
-add_executable(consumer)
-# Link consumer to archive and consume its usage requirements. The consumer
-# executable sources are compiled with \-DUSING_ARCHIVE_LIB.
-target_link_libraries(consumer archive)
-.ft P
-.fi
-.UNINDENT
-.UNINDENT
-.sp
-Because it is common to require that the source directory and corresponding
-build directory are added to the \fI\%INCLUDE_DIRECTORIES\fP, the
-\fI\%CMAKE_INCLUDE_CURRENT_DIR\fP variable can be enabled to conveniently
-add the corresponding directories to the \fI\%INCLUDE_DIRECTORIES\fP of
-all targets.  The variable \fI\%CMAKE_INCLUDE_CURRENT_DIR_IN_INTERFACE\fP
-can be enabled to add the corresponding directories to the
-\fI\%INTERFACE_INCLUDE_DIRECTORIES\fP of all targets.  This makes use of
-targets in multiple different directories convenient through use of the
-\fI\%target_link_libraries()\fP command.
-.SS Transitive Usage Requirements
 .sp
 The usage requirements of a target can transitively propagate to the dependents.
 The \fI\%target_link_libraries()\fP command has \fBPRIVATE\fP,
@@ -399,6 +586,162 @@ target_include_directories(myExe
 Note that care must be taken when specifying usage requirements for targets
 which will be exported for installation using the \fI\%install(EXPORT)\fP
 command.  See \fI\%Creating Packages\fP for more.
+.SS Transitive Compile Properties
+.sp
+These represent \fI\%usage requirements\fP for
+compiling consumers.
+.INDENT 0.0
+.TP
+.B \fI\%INTERFACE_COMPILE_DEFINITIONS\fP
+List of compile definitions for compiling sources in the target\(aqs consumers.
+Typically these are used by the target\(aqs header files.
+.TP
+.B \fI\%INTERFACE_COMPILE_OPTIONS\fP
+List of compile options for compiling sources in the target\(aqs consumers.
+.TP
+.B \fI\%INTERFACE_COMPILE_FEATURES\fP
+New in version 3.1.
+
+.sp
+List of \fI\%compile features\fP needed
+for compiling sources in the target\(aqs consumers.  Typically these
+ensure the target\(aqs header files are processed when compiling consumers
+using a sufficient language standard level.
+.TP
+.B \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP
+List of include directories for compiling sources in the target\(aqs consumers.
+Typically these are the locations of the target\(aqs header files.
+.TP
+.B \fI\%INTERFACE_SYSTEM_INCLUDE_DIRECTORIES\fP
+List of directories that, when specified as include directories, e.g., by
+\fI\%INCLUDE_DIRECTORIES\fP or \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP,
+should be treated as \(dqsystem\(dq include directories when compiling sources
+in the target\(aqs consumers.
+.TP
+.B \fI\%INTERFACE_SOURCES\fP
+List of source files to associate with the target\(aqs consumers.
+.TP
+.B \fI\%INTERFACE_PRECOMPILE_HEADERS\fP
+New in version 3.16.
+
+.sp
+List of header files to precompile and include when compiling
+sources in the target\(aqs consumers.
+.TP
+.B \fI\%INTERFACE_AUTOMOC_MACRO_NAMES\fP
+New in version 3.27.
+
+.sp
+List of macro names used by \fI\%AUTOMOC\fP to determine if a
+C++ source in the target\(aqs consumers needs to be processed by \fBmoc\fP\&.
+.TP
+.B \fI\%INTERFACE_AUTOUIC_OPTIONS\fP
+New in version 3.0.
+
+.sp
+List of options used by \fI\%AUTOUIC\fP when invoking \fBuic\fP
+for the target\(aqs consumers.
+.UNINDENT
+.SS Transitive Link Properties
+.sp
+These represent \fI\%usage requirements\fP for
+linking consumers.
+.INDENT 0.0
+.TP
+.B \fI\%INTERFACE_LINK_LIBRARIES\fP
+List of link libraries for linking the target\(aqs consumers, for
+those that are executables, shared libraries, or module libraries.
+These are the transitive dependencies of the target.
+.sp
+Additionally, for compiling and linking the target\(aqs consumers,
+\fI\%usage requirements\fP are collected from
+the transitive closure of \fBINTERFACE_LINK_LIBRARIES\fP entries naming
+\fI\%Normal Libraries\fP, \fI\%Interface Libraries\fP, \fI\%Object Libraries\fP,
+and \fI\%Imported Targets\fP,
+.TP
+.B \fI\%INTERFACE_LINK_DIRECTORIES\fP
+New in version 3.13.
+
+.sp
+List of link directories for linking the target\(aqs consumers, for
+those that are executables, shared libraries, or module libraries.
+.TP
+.B \fI\%INTERFACE_LINK_OPTIONS\fP
+New in version 3.13.
+
+.sp
+List of link options for linking the target\(aqs consumers, for
+those that are executables, shared libraries, or module libraries.
+.TP
+.B \fI\%INTERFACE_LINK_DEPENDS\fP
+New in version 3.13.
+
+.sp
+List of files on which linking the target\(aqs consumers depends, for
+those that are executables, shared libraries, or module libraries.
+.UNINDENT
+.SS Custom Transitive Properties
+.sp
+New in version 3.30.
+
+.sp
+The \fI\%TARGET_PROPERTY\fP generator expression evaluates the above
+\fI\%build specification\fP and
+\fI\%usage requirement\fP properties
+as builtin transitive properties.  It also supports custom transitive
+properties defined by the \fI\%TRANSITIVE_COMPILE_PROPERTIES\fP
+and \fI\%TRANSITIVE_LINK_PROPERTIES\fP properties on the target
+and its link dependencies.
+.sp
+For example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_library(example INTERFACE)
+set_target_properties(example PROPERTIES
+  TRANSITIVE_COMPILE_PROPERTIES \(dqCUSTOM_C\(dq
+  TRANSITIVE_LINK_PROPERTIES    \(dqCUSTOM_L\(dq
+
+  INTERFACE_CUSTOM_C \(dqEXAMPLE_CUSTOM_C\(dq
+  INTERFACE_CUSTOM_L \(dqEXAMPLE_CUSTOM_L\(dq
+  )
+
+add_library(mylib STATIC mylib.c)
+target_link_libraries(mylib PRIVATE example)
+set_target_properties(mylib PROPERTIES
+  CUSTOM_C           \(dqMYLIB_PRIVATE_CUSTOM_C\(dq
+  CUSTOM_L           \(dqMYLIB_PRIVATE_CUSTOM_L\(dq
+  INTERFACE_CUSTOM_C \(dqMYLIB_IFACE_CUSTOM_C\(dq
+  INTERFACE_CUSTOM_L \(dqMYLIB_IFACE_CUSTOM_L\(dq
+  )
+
+add_executable(myexe myexe.c)
+target_link_libraries(myexe PRIVATE mylib)
+set_target_properties(myexe PROPERTIES
+  CUSTOM_C \(dqMYEXE_CUSTOM_C\(dq
+  CUSTOM_L \(dqMYEXE_CUSTOM_L\(dq
+  )
+
+add_custom_target(print ALL VERBATIM
+  COMMAND ${CMAKE_COMMAND} \-E echo
+    # Prints \(dqMYLIB_PRIVATE_CUSTOM_C;EXAMPLE_CUSTOM_C\(dq
+    \(dq$<TARGET_PROPERTY:mylib,CUSTOM_C>\(dq
+
+    # Prints \(dqMYLIB_PRIVATE_CUSTOM_L;EXAMPLE_CUSTOM_L\(dq
+    \(dq$<TARGET_PROPERTY:mylib,CUSTOM_L>\(dq
+
+    # Prints \(dqMYEXE_CUSTOM_C\(dq
+    \(dq$<TARGET_PROPERTY:myexe,CUSTOM_C>\(dq
+
+    # Prints \(dqMYEXE_CUSTOM_L;MYLIB_IFACE_CUSTOM_L;EXAMPLE_CUSTOM_L\(dq
+    \(dq$<TARGET_PROPERTY:myexe,CUSTOM_L>\(dq
+  )
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS Compatible Interface Properties
 .sp
 Some target properties are required to be compatible between a target and
@@ -942,6 +1285,10 @@ when its \fI\%ENABLE_EXPORTS\fP target property is set.
 On AIX: the linker import file (e.g. \fB\&.imp\fP) of an executable target
 created by the \fI\%add_executable()\fP command when its
 \fI\%ENABLE_EXPORTS\fP target property is set.
+.IP \(bu 2
+On macOS: the linker import file (e.g. \fB\&.tbd\fP) of a shared library target
+created by the \fI\%add_library()\fP command with the \fBSHARED\fP option and
+when its \fI\%ENABLE_EXPORTS\fP target property is set.
 .UNINDENT
 .sp
 The \fI\%ARCHIVE_OUTPUT_DIRECTORY\fP and \fI\%ARCHIVE_OUTPUT_NAME\fP
@@ -1288,6 +1635,6 @@ Here, the headers defined in the header set are installed to \fBinclude/Eigen\fP
 The install destination automatically becomes an include directory that is a
 usage requirement for consumers.
 .SH COPYRIGHT
-2000-2023 Kitware, Inc. and Contributors
+2000-2024 Kitware, Inc. and Contributors
 .\" Generated by docutils manpage writer.
 .

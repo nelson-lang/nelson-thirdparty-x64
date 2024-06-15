@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "CTEST" "1" "Apr 04, 2023" "3.26.3" "CMake"
+.TH "CTEST" "1" "Jun 14, 2024" "3.30.0" "CMake"
 .SH NAME
 ctest \- CTest Command-Line Reference
 .SS Contents
@@ -92,7 +92,11 @@ ctest \- CTest Command-Line Reference
 \fI\%RESOURCE_GROUPS Property\fP
 .IP \(bu 2
 \fI\%Environment Variables\fP
+.IP \(bu 2
+\fI\%Dynamically\-Generated Resource Specification File\fP
 .UNINDENT
+.IP \(bu 2
+\fI\%Job Server Integration\fP
 .IP \(bu 2
 \fI\%See Also\fP
 .UNINDENT
@@ -104,7 +108,7 @@ ctest \- CTest Command-Line Reference
 .nf
 .ft C
 \fI\%Run Tests\fP
- ctest [<options>]
+ ctest [<options>] [\-\-test\-dir <path\-to\-build>]
 
 \fI\%Build and Test Mode\fP
  ctest \-\-build\-and\-test <path\-to\-source> <path\-to\-build>
@@ -217,16 +221,27 @@ will have no effect.
 .UNINDENT
 .INDENT 0.0
 .TP
-.B \-j <jobs>, \-\-parallel <jobs>
-Run the tests in parallel using the given number of jobs.
+.B \-j [<level>], \-\-parallel [<level>]
+Run tests in parallel, optionally limited to a given level of parallelism.
 .sp
-This option tells CTest to run the tests in parallel using given
-number of jobs. This option can also be set by setting the
-\fI\%CTEST_PARALLEL_LEVEL\fP environment variable.
+New in version 3.29: The \fB<level>\fP may be omitted, or \fB0\fP, in which case:
+.INDENT 7.0
+.IP \(bu 2
+Under \fI\%Job Server Integration\fP, parallelism is limited by
+available job tokens.
+.IP \(bu 2
+Otherwise, if the value is omitted, parallelism is limited
+by the number of processors, or 2, whichever is larger.
+.IP \(bu 2
+Otherwise, if the value is \fB0\fP, parallelism is unbounded.
+.UNINDENT
+
+.sp
+This option may instead be specified by the \fI\%CTEST_PARALLEL_LEVEL\fP
+environment variable.
 .sp
 This option can be used with the \fI\%PROCESSORS\fP test property.
-.sp
-See \fI\%Label and Subproject Summary\fP\&.
+See the \fI\%Label and Subproject Summary\fP\&.
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -347,6 +362,34 @@ given regular expression.  When more than one \fB\-LE\fP option is given,
 a test will only be excluded if each regular expression matches at least one
 of the test\(aqs labels (i.e. the multiple \fB\-LE\fP labels form an \fBAND\fP
 relationship).  See \fI\%Label Matching\fP\&.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-tests\-from\-file <filename>
+New in version 3.29.
+
+.sp
+Run tests listed in the given file.
+.sp
+This option tells CTest to run tests that are listed in the given file.
+The file must contain one exact test name per line.
+Lines that do not exactly match any test names are ignored.
+This option can be combined with the other options like
+\fB\-R\fP, \fB\-E\fP, \fB\-L\fP or \fB\-LE\fP\&.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-exclude\-from\-file <filename>
+New in version 3.29.
+
+.sp
+Exclude tests listed in the given file.
+.sp
+This option tells CTest to NOT run tests that are listed in the given file.
+The file must contain one exact test name per line.
+Lines that do not exactly match any test names are ignored.
+This option can be combined with the other options like
+\fB\-R\fP, \fB\-E\fP, \fB\-L\fP or \fB\-LE\fP\&.
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -483,7 +526,11 @@ See \fI\%Label and Subproject Summary\fP\&.
 .INDENT 0.0
 .TP
 .B \-\-test\-dir <dir>
-Specify the directory in which to look for tests.
+New in version 3.20.
+
+.sp
+Specify the directory in which to look for tests, typically a CMake project
+build directory. If not specified, the current directory is used.
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -600,6 +647,21 @@ The output is printed to a named \fB<file>\fP if given.
 Print usage information and exit.
 .sp
 Usage describes the basic command line interface and its options.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-help <keyword> [<file>]
+Print help for one CMake keyword.
+.sp
+\fB<keyword>\fP can be a property, variable, command, policy, generator
+or module.
+.sp
+The relevant manual entry for \fB<keyword>\fP is
+printed in a human\-readable text format.
+The output is printed to a named \fB<file>\fP if given.
+.sp
+Changed in version 3.28: Prior to CMake 3.28, this option supported command names only.
+
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -1104,6 +1166,18 @@ This is useful if the build will not finish in one day.
 Submit extra files to the dashboard.
 .sp
 This option will submit extra files to the dashboard.
+.UNINDENT
+.INDENT 0.0
+.TP
+.B \-\-http\-header <header>
+New in version 3.29.
+
+.sp
+Append HTTP header when submitting to the dashboard.
+.sp
+This option will cause CTest to append the specified header
+when submitting to the dashboard.
+This option may be specified more than once.
 .UNINDENT
 .INDENT 0.0
 .TP
@@ -1698,7 +1772,8 @@ a given threshold.
 .TP
 .B \fBTimeOut\fP
 The default timeout for each test if not specified by the
-\fI\%TIMEOUT\fP test property.
+\fI\%TIMEOUT\fP test property or the
+\fI\%\-\-timeout\fP flag.
 .INDENT 7.0
 .IP \(bu 2
 \fI\%CTest Script\fP variable: \fI\%CTEST_TEST_TIMEOUT\fP
@@ -1927,15 +2002,27 @@ use the \fI\%ctest_submit()\fP \fBRETRY_DELAY\fP option.
 .UNINDENT
 .TP
 .B \fBCurlOptions\fP
+Deprecated since version 3.30: Use \fBTLSVerify\fP instead.
+
+.sp
 Specify a semicolon\-separated list of options to control the
 Curl library that CTest uses internally to connect to the
-server.  Possible options are \fBCURLOPT_SSL_VERIFYPEER_OFF\fP
-and \fBCURLOPT_SSL_VERIFYHOST_OFF\fP\&.
+server.
 .INDENT 7.0
 .IP \(bu 2
 \fI\%CTest Script\fP variable: \fI\%CTEST_CURL_OPTIONS\fP
 .IP \(bu 2
 \fI\%CTest\fP module variable: \fBCTEST_CURL_OPTIONS\fP
+.UNINDENT
+.sp
+Possible options are:
+.INDENT 7.0
+.TP
+.B \fBCURLOPT_SSL_VERIFYPEER_OFF\fP
+Disable the \fBCURLOPT_SSL_VERIFYPEER\fP curl option.
+.TP
+.B \fBCURLOPT_SSL_VERIFYHOST_OFF\fP
+Disable the \fBCURLOPT_SSL_VERIFYHOST\fP curl option.
 .UNINDENT
 .TP
 .B \fBDropLocation\fP
@@ -2046,6 +2133,32 @@ if not completed. Specify a zero value to disable timeout.
 \fI\%CTest Script\fP variable: \fI\%CTEST_SUBMIT_INACTIVITY_TIMEOUT\fP
 .IP \(bu 2
 \fI\%CTest\fP module variable: \fBCTEST_SUBMIT_INACTIVITY_TIMEOUT\fP
+.UNINDENT
+.TP
+.B \fBTLSVersion\fP
+New in version 3.30.
+
+.sp
+Specify a minimum TLS version allowed when submitting to a dashboard
+via \fBhttps://\fP URLs.
+.INDENT 7.0
+.IP \(bu 2
+\fI\%CTest Script\fP variable: \fI\%CTEST_TLS_VERSION\fP
+.IP \(bu 2
+\fI\%CTest\fP module variable: \fBCTEST_TLS_VERSION\fP
+.UNINDENT
+.TP
+.B \fBTLSVerify\fP
+New in version 3.30.
+
+.sp
+Specify a boolean value indicating whether to verify the server
+certificate when submitting to a dashboard via \fBhttps://\fP URLs.
+.INDENT 7.0
+.IP \(bu 2
+\fI\%CTest Script\fP variable: \fI\%CTEST_TLS_VERIFY\fP
+.IP \(bu 2
+\fI\%CTest\fP module variable: \fBCTEST_TLS_VERIFY\fP
 .UNINDENT
 .TP
 .B \fBTriggerSite\fP
@@ -2163,17 +2276,20 @@ that running several of these tests at once does not exhaust the GPU\(aqs memory
 pool.
 .sp
 Please note that CTest has no concept of what a GPU is or how much memory it
-has, nor does it have any way of communicating with a GPU to retrieve this
-information or perform any memory management. CTest simply keeps track of a
-list of abstract resource types, each of which has a certain number of slots
-available for tests to use. Each test specifies the number of slots that it
-requires from a certain resource, and CTest then schedules them in a way that
-prevents the total number of slots in use from exceeding the listed capacity.
-When a test is executed, and slots from a resource are allocated to that test,
-tests may assume that they have exclusive use of those slots for the duration
-of the test\(aqs process.
+has. It does not have any way of communicating with a GPU to retrieve this
+information or perform any memory management, although the project can define
+a test that provides details about the test machine (see
+\fI\%Dynamically\-Generated Resource Specification File\fP).
 .sp
-The CTest resource allocation feature consists of two inputs:
+CTest keeps track of a list of abstract resource types, each of which has a
+certain number of slots available for tests to use. Each test specifies the
+number of slots that it requires from a certain resource, and CTest then
+schedules them in a way that prevents the total number of slots in use from
+exceeding the listed capacity. When a test is executed, and slots from a
+resource are allocated to that test, tests may assume that they have exclusive
+use of those slots for the duration of the test\(aqs process.
+.sp
+The CTest resource allocation feature consists of at least two inputs:
 .INDENT 0.0
 .IP \(bu 2
 The \fI\%resource specification file\fP,
@@ -2213,15 +2329,20 @@ have resource allocation, then it can return a failing exit code or use the
 properties to indicate a skipped test.
 .SS Resource Specification File
 .sp
-The resource specification file is a JSON file which is passed to CTest, either
-on the command line as \fI\%ctest \-\-resource\-spec\-file\fP, or as the
-\fBRESOURCE_SPEC_FILE\fP argument of \fI\%ctest_test()\fP\&. If a dashboard script
-is used and \fBRESOURCE_SPEC_FILE\fP is not specified, the value of
-\fI\%CTEST_RESOURCE_SPEC_FILE\fP in the dashboard script is used instead.
-If \fI\%\-\-resource\-spec\-file\fP, \fBRESOURCE_SPEC_FILE\fP,
-and \fI\%CTEST_RESOURCE_SPEC_FILE\fP in the dashboard script are not specified,
-the value of \fI\%CTEST_RESOURCE_SPEC_FILE\fP in the CMake build is used
-instead. If none of these are specified, no resource spec file is used.
+The resource specification file is a JSON file which is passed to CTest in one
+of a number of ways. It can be specified on the command line with the
+\fI\%ctest \-\-resource\-spec\-file\fP option, it can be given using the
+\fBRESOURCE_SPEC_FILE\fP argument of \fI\%ctest_test()\fP, or it can be
+generated dynamically as part of test execution (see
+\fI\%Dynamically\-Generated Resource Specification File\fP).
+.sp
+If a dashboard script is used and \fBRESOURCE_SPEC_FILE\fP is not specified, the
+value of \fI\%CTEST_RESOURCE_SPEC_FILE\fP in the dashboard script is used
+instead.  If \fI\%\-\-resource\-spec\-file\fP,
+\fBRESOURCE_SPEC_FILE\fP, and \fI\%CTEST_RESOURCE_SPEC_FILE\fP in the
+dashboard script are not specified, the value of
+\fI\%CTEST_RESOURCE_SPEC_FILE\fP in the CMake build is used instead.
+If none of these are specified, no resource spec file is used.
 .sp
 The resource specification file must be a JSON object. All examples in this
 document assume the following resource specification file:
@@ -2407,6 +2528,51 @@ in the \fI\%RESOURCE_GROUPS\fP property, and they are converted to all
 uppercase in the \fBCTEST_RESOURCE_GROUP_<num>_<resource\-type>\fP environment
 variable.
 .UNINDENT
+.SS Dynamically\-Generated Resource Specification File
+.sp
+New in version 3.28.
+
+.sp
+A project may optionally specify a single test which will be used to
+dynamically generate the resource specification file that CTest will use for
+scheduling tests that use resources. The test that generates the file must
+have the \fI\%GENERATED_RESOURCE_SPEC_FILE\fP property set, and must have
+exactly one fixture in its \fI\%FIXTURES_SETUP\fP property. This fixture
+is considered by CTest to have special meaning: it\(aqs the fixture that generates
+the resource spec file. The fixture may have any name. If such a fixture
+exists, all tests that have \fI\%RESOURCE_GROUPS\fP set must have the
+fixture in their \fI\%FIXTURES_REQUIRED\fP, and a resource spec file may
+not be specified with the \fB\-\-resource\-spec\-file\fP argument or the
+\fI\%CTEST_RESOURCE_SPEC_FILE\fP variable.
+.SH JOB SERVER INTEGRATION
+.sp
+New in version 3.29.
+
+.sp
+On POSIX systems, when running under the context of a \fI\%Job Server\fP,
+CTest shares its job slots.  This is independent of the \fI\%PROCESSORS\fP
+test property, which still counts against CTest\(aqs \fI\%\-j\fP
+parallel level.  CTest acquires exactly one token from the job server before
+running each test, and returns it when the test finishes.
+.sp
+For example, consider the \fBMakefile\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+test:
+	+ctest \-j 8
+
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+When invoked via \fBmake \-j 2 test\fP, \fBctest\fP connects to the job server,
+acquires a token for each test, and runs at most 2 tests concurrently.
+.sp
+On Windows systems, job server integration is not yet implemented.
 .SH SEE ALSO
 .sp
 The following resources are available to get help using CMake:
@@ -2428,9 +2594,7 @@ found on this web page.
 .sp
 The Discourse Forum hosts discussion and questions about CMake.
 .UNINDENT
-.sp
-: \fI\%https://cdash.org\fP
 .SH COPYRIGHT
-2000-2023 Kitware, Inc. and Contributors
+2000-2024 Kitware, Inc. and Contributors
 .\" Generated by docutils manpage writer.
 .

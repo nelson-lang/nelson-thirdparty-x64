@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindICU &mdash; CMake 3.26.3 Documentation</title>
+  <title>FindICU &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindImageMagick" href="FindImageMagick.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="findicu">
-<span id="module:FindICU"></span><h1>FindICU<a class="headerlink" href="#findicu" title="Permalink to this heading">¶</a></h1>
+<span id="module:FindICU"></span><h1>FindICU<a class="headerlink" href="#findicu" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.7.</span></p>
 </div>
@@ -77,10 +74,10 @@ platform-specific library name will be automatically selected.</p>
 </div>
 <p>This module reports information about the ICU installation in
 several variables.  General variables:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ICU_VERSION - ICU release version
-ICU_FOUND - true if the main programs and libraries were found
-ICU_LIBRARIES - component libraries to be linked
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ICU_FOUND - true if the main programs and libraries were found
 ICU_INCLUDE_DIRS - the directories containing the ICU headers
+ICU_LIBRARIES - component libraries to be linked
+ICU_VERSION - ICU release version
 </pre></div>
 </div>
 <p>Imported targets:</p>
@@ -135,10 +132,6 @@ ICU_&lt;C&gt;_LIBRARY - the library for component &lt;C&gt;; ``&lt;C&gt;`` is up
 <p>In most cases none of the above variables will require setting,
 unless multiple ICU versions are available and a specific version
 is required.</p>
-</div>
-<p>Other variables one may set to control this module are:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ICU_DEBUG - Set to ON to enable debug output from FindICU.
-</pre></div>
 </div>
 </section>
 
@@ -200,7 +193,7 @@ is required.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -209,8 +202,8 @@ is required.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

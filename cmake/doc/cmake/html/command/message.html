@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>message &mdash; CMake 3.26.3 Documentation</title>
+  <title>message &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="option" href="option.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,10 +57,10 @@
           <div class="body" role="main">
             
   <section id="message">
-<span id="command:message"></span><h1>message<a class="headerlink" href="#message" title="Permalink to this heading">¶</a></h1>
+<span id="command:message"></span><h1>message<a class="headerlink" href="#message" title="Link to this heading">¶</a></h1>
 <p>Log a message.</p>
 <section id="synopsis">
-<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading">¶</a></h2>
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading">¶</a></h2>
 <pre class="literal-block"><a class="reference internal" href="#general-messages">General messages</a>
   message([&lt;mode&gt;] &quot;message text&quot; ...)
 
@@ -74,8 +71,8 @@
   message(CONFIGURE_LOG &lt;text&gt;...)</pre>
 </section>
 <section id="general-messages">
-<h2>General messages<a class="headerlink" href="#general-messages" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">message(</span><span class="p">[</span><span class="nv">&lt;mode&gt;</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;message text&quot;</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
+<h2>General messages<a class="headerlink" href="#general-messages" title="Link to this heading">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">message(</span><span class="p">[</span><span class="nv">&lt;mode&gt;</span><span class="p">]</span><span class="w"> </span><span class="s">&quot;message text&quot;</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Record the specified message text in the log.  If more than one message
@@ -159,25 +156,25 @@ language.  Non-indented text is formatted in line-wrapped paragraphs
 delimited by newlines.  Indented text is considered pre-formatted.</p>
 </section>
 <section id="reporting-checks">
-<h2>Reporting checks<a class="headerlink" href="#reporting-checks" title="Permalink to this heading">¶</a></h2>
+<h2>Reporting checks<a class="headerlink" href="#reporting-checks" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.17.</span></p>
 </div>
 <p>A common pattern in CMake output is a message indicating the start of some
 sort of check, followed by another message reporting the result of that check.
 For example:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">message(</span><span class="no">STATUS</span><span class="w"> </span><span class="s">&quot;Looking for someheader.h&quot;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">message(</span><span class="no">STATUS</span><span class="w"> </span><span class="s">&quot;Looking for someheader.h&quot;</span><span class="nf">)</span>
 <span class="c">#... do the checks, set checkSuccess with the result</span>
-<span class="nf">if(</span><span class="nb">checkSuccess</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">message(</span><span class="no">STATUS</span><span class="w"> </span><span class="s">&quot;Looking for someheader.h - found&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">else()</span><span class="w"></span>
-<span class="w">  </span><span class="nf">message(</span><span class="no">STATUS</span><span class="w"> </span><span class="s">&quot;Looking for someheader.h - not found&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">endif()</span><span class="w"></span>
+<span class="nf">if(</span><span class="nb">checkSuccess</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">message(</span><span class="no">STATUS</span><span class="w"> </span><span class="s">&quot;Looking for someheader.h - found&quot;</span><span class="nf">)</span>
+<span class="nf">else()</span>
+<span class="w">  </span><span class="nf">message(</span><span class="no">STATUS</span><span class="w"> </span><span class="s">&quot;Looking for someheader.h - not found&quot;</span><span class="nf">)</span>
+<span class="nf">endif()</span>
 </pre></div>
 </div>
 <p>This can be more robustly and conveniently expressed using the <code class="docutils literal notranslate"><span class="pre">CHECK_...</span></code>
 keyword form of the <code class="docutils literal notranslate"><span class="pre">message()</span></code> command:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">message(</span><span class="nv">&lt;checkState&gt;</span><span class="w"> </span><span class="s">&quot;message&quot;</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">message(</span><span class="nv">&lt;checkState&gt;</span><span class="w"> </span><span class="s">&quot;message&quot;</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">&lt;checkState&gt;</span></code> must be one of the following:</p>
@@ -200,25 +197,25 @@ at <code class="docutils literal notranslate"><span class="pre">STATUS</span></c
 matching <code class="docutils literal notranslate"><span class="pre">CHECK_PASS</span></code> or <code class="docutils literal notranslate"><span class="pre">CHECK_FAIL</span></code>.
 The <span class="target" id="index-1-variable:CMAKE_MESSAGE_INDENT"></span><a class="reference internal" href="../variable/CMAKE_MESSAGE_INDENT.html#variable:CMAKE_MESSAGE_INDENT" title="CMAKE_MESSAGE_INDENT"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_MESSAGE_INDENT</span></code></a> variable can also be used to add
 indenting to nested checks if desired.  For example:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">message(</span><span class="no">CHECK_START</span><span class="w"> </span><span class="s">&quot;Finding my things&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_INDENT</span><span class="w"> </span><span class="s">&quot;  &quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">unset(</span><span class="nb">missingComponents</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">message(</span><span class="no">CHECK_START</span><span class="w"> </span><span class="s">&quot;Finding my things&quot;</span><span class="nf">)</span>
+<span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_INDENT</span><span class="w"> </span><span class="s">&quot;  &quot;</span><span class="nf">)</span>
+<span class="nf">unset(</span><span class="nb">missingComponents</span><span class="nf">)</span>
 
-<span class="nf">message(</span><span class="no">CHECK_START</span><span class="w"> </span><span class="s">&quot;Finding partA&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">message(</span><span class="no">CHECK_START</span><span class="w"> </span><span class="s">&quot;Finding partA&quot;</span><span class="nf">)</span>
 <span class="c"># ... do check, assume we find A</span>
-<span class="nf">message(</span><span class="no">CHECK_PASS</span><span class="w"> </span><span class="s">&quot;found&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">message(</span><span class="no">CHECK_PASS</span><span class="w"> </span><span class="s">&quot;found&quot;</span><span class="nf">)</span>
 
-<span class="nf">message(</span><span class="no">CHECK_START</span><span class="w"> </span><span class="s">&quot;Finding partB&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">message(</span><span class="no">CHECK_START</span><span class="w"> </span><span class="s">&quot;Finding partB&quot;</span><span class="nf">)</span>
 <span class="c"># ... do check, assume we don&#39;t find B</span>
-<span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="nb">missingComponents</span><span class="w"> </span><span class="no">B</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">message(</span><span class="no">CHECK_FAIL</span><span class="w"> </span><span class="s">&quot;not found&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="nb">missingComponents</span><span class="w"> </span><span class="no">B</span><span class="nf">)</span>
+<span class="nf">message(</span><span class="no">CHECK_FAIL</span><span class="w"> </span><span class="s">&quot;not found&quot;</span><span class="nf">)</span>
 
-<span class="nf">list(</span><span class="no">POP_BACK</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_INDENT</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">if(</span><span class="nb">missingComponents</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">message(</span><span class="no">CHECK_FAIL</span><span class="w"> </span><span class="s">&quot;missing components: ${missingComponents}&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">else()</span><span class="w"></span>
-<span class="w">  </span><span class="nf">message(</span><span class="no">CHECK_PASS</span><span class="w"> </span><span class="s">&quot;all components found&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">endif()</span><span class="w"></span>
+<span class="nf">list(</span><span class="no">POP_BACK</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_INDENT</span><span class="nf">)</span>
+<span class="nf">if(</span><span class="nb">missingComponents</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">message(</span><span class="no">CHECK_FAIL</span><span class="w"> </span><span class="s">&quot;missing components: ${missingComponents}&quot;</span><span class="nf">)</span>
+<span class="nf">else()</span>
+<span class="w">  </span><span class="nf">message(</span><span class="no">CHECK_PASS</span><span class="w"> </span><span class="s">&quot;all components found&quot;</span><span class="nf">)</span>
+<span class="nf">endif()</span>
 </pre></div>
 </div>
 <p>Output from the above would appear something like the following:</p>
@@ -232,11 +229,11 @@ indenting to nested checks if desired.  For example:</p>
 </div>
 </section>
 <section id="configure-log">
-<h2>Configure Log<a class="headerlink" href="#configure-log" title="Permalink to this heading">¶</a></h2>
+<h2>Configure Log<a class="headerlink" href="#configure-log" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.26.</span></p>
 </div>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">message(</span><span class="no">CONFIGURE_LOG</span><span class="w"> </span><span class="nv">&lt;text&gt;...</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">message(</span><span class="no">CONFIGURE_LOG</span><span class="w"> </span><span class="nv">&lt;text&gt;...</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Record a <a class="reference internal" href="../manual/cmake-configure-log.7.html#message-configure-log-event"><span class="std std-ref">configure-log message event</span></a>
@@ -247,28 +244,28 @@ or other one-time operation guarded by a cache entry, but that is not
 performed using <span class="target" id="index-0-command:try_compile"></span><a class="reference internal" href="try_compile.html#command:try_compile" title="try_compile"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">try_compile()</span></code></a> or <span class="target" id="index-0-command:try_run"></span><a class="reference internal" href="try_run.html#command:try_run" title="try_run"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">try_run()</span></code></a>, which
 automatically log their details.  Projects should avoid calling it every
 time CMake runs.  For example:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">if</span> <span class="nf">(</span><span class="no">NOT</span><span class="w"> </span><span class="no">DEFINED</span><span class="w"> </span><span class="no">MY_CHECK_RESULT</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">if</span> <span class="nf">(</span><span class="no">NOT</span><span class="w"> </span><span class="no">DEFINED</span><span class="w"> </span><span class="no">MY_CHECK_RESULT</span><span class="nf">)</span>
 <span class="w">  </span><span class="c"># Print check summary in configure output.</span>
-<span class="w">  </span><span class="nf">message(</span><span class="no">CHECK_START</span><span class="w"> </span><span class="s">&quot;My Check&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="w">  </span><span class="nf">message(</span><span class="no">CHECK_START</span><span class="w"> </span><span class="s">&quot;My Check&quot;</span><span class="nf">)</span>
 
 <span class="w">  </span><span class="c"># ... perform system inspection, e.g., with execute_process ...</span>
 
 <span class="w">  </span><span class="c"># Cache the result so we do not run the check again.</span>
-<span class="w">  </span><span class="nf">set(</span><span class="no">MY_CHECK_RESULT</span><span class="w"> </span><span class="s">&quot;${MY_CHECK_RESULT}&quot;</span><span class="w"> </span><span class="no">CACHE</span><span class="w"> </span><span class="no">INTERNAL</span><span class="w"> </span><span class="s">&quot;My Check&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="w">  </span><span class="nf">set(</span><span class="no">MY_CHECK_RESULT</span><span class="w"> </span><span class="s">&quot;${MY_CHECK_RESULT}&quot;</span><span class="w"> </span><span class="no">CACHE</span><span class="w"> </span><span class="no">INTERNAL</span><span class="w"> </span><span class="s">&quot;My Check&quot;</span><span class="nf">)</span>
 
 <span class="w">  </span><span class="c"># Record the check details in the cmake-configure-log.</span>
-<span class="w">  </span><span class="nf">message(</span><span class="no">CONFIGURE_LOG</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;My Check Result: ${MY_CHECK_RESULT}\n&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;${details}&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nf">)</span><span class="w"></span>
+<span class="w">  </span><span class="nf">message(</span><span class="no">CONFIGURE_LOG</span>
+<span class="w">    </span><span class="s">&quot;My Check Result: ${MY_CHECK_RESULT}\n&quot;</span>
+<span class="w">    </span><span class="s">&quot;${details}&quot;</span>
+<span class="w">  </span><span class="nf">)</span>
 
 <span class="w">  </span><span class="c"># Print check result in configure output.</span>
-<span class="w">  </span><span class="nf">if(</span><span class="no">MY_CHECK_RESULT</span><span class="nf">)</span><span class="w"></span>
-<span class="w">    </span><span class="nf">message(</span><span class="no">CHECK_PASS</span><span class="w"> </span><span class="s">&quot;passed&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">else()</span><span class="w"></span>
-<span class="w">    </span><span class="nf">message(</span><span class="no">CHECK_FAIL</span><span class="w"> </span><span class="s">&quot;failed&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">endif()</span><span class="w"></span>
-<span class="nf">endif()</span><span class="w"></span>
+<span class="w">  </span><span class="nf">if(</span><span class="no">MY_CHECK_RESULT</span><span class="nf">)</span>
+<span class="w">    </span><span class="nf">message(</span><span class="no">CHECK_PASS</span><span class="w"> </span><span class="s">&quot;passed&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">else()</span>
+<span class="w">    </span><span class="nf">message(</span><span class="no">CHECK_FAIL</span><span class="w"> </span><span class="s">&quot;failed&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">endif()</span>
+<span class="nf">endif()</span>
 </pre></div>
 </div>
 <p>If no project is currently being configured, such as in
@@ -276,9 +273,9 @@ time CMake runs.  For example:</p>
 this command does nothing.</p>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
-<li><p><span class="target" id="index-0-command:cmake_language"></span><a class="reference internal" href="cmake_language.html#command:cmake_language" title="cmake_language"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_language(GET_MESSAGE_LOG_LEVEL)</span></code></a></p></li>
+<li><p><span class="target" id="index-0-command:cmake_language"></span><a class="reference internal" href="cmake_language.html#get-message-log-level" title="cmake_language(get_message_log_level)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_language(GET_MESSAGE_LOG_LEVEL)</span></code></a></p></li>
 </ul>
 </section>
 </section>
@@ -355,7 +352,7 @@ this command does nothing.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -364,8 +361,8 @@ this command does nothing.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

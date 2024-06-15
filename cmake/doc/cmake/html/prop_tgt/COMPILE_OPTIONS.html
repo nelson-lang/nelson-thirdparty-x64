@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>COMPILE_OPTIONS &mdash; CMake 3.26.3 Documentation</title>
+  <title>COMPILE_OPTIONS &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="COMPILE_PDB_NAME" href="COMPILE_PDB_NAME.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,15 +57,18 @@
           <div class="body" role="main">
             
   <section id="compile-options">
-<span id="prop_tgt:COMPILE_OPTIONS"></span><h1>COMPILE_OPTIONS<a class="headerlink" href="#compile-options" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:COMPILE_OPTIONS"></span><h1>COMPILE_OPTIONS<a class="headerlink" href="#compile-options" title="Link to this heading">¶</a></h1>
 <p>List of options to pass to the compiler.</p>
 <p>This property holds a <a class="reference internal" href="../manual/cmake-language.7.html#cmake-language-lists"><span class="std std-ref">semicolon-separated list</span></a>
 of options specified so far for its target.  Use the
 <span class="target" id="index-0-command:target_compile_options"></span><a class="reference internal" href="../command/target_compile_options.html#command:target_compile_options" title="target_compile_options"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_compile_options()</span></code></a> command to append more options.
-The options will be added after after flags in the
+The options will be added after flags in the
 <span class="target" id="index-0-variable:CMAKE_&lt;LANG&gt;_FLAGS"></span><a class="reference internal" href="../variable/CMAKE_LANG_FLAGS.html#variable:CMAKE_&lt;LANG&gt;_FLAGS" title="CMAKE_&lt;LANG&gt;_FLAGS"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_&lt;LANG&gt;_FLAGS</span></code></a> and <span class="target" id="index-0-variable:CMAKE_&lt;LANG&gt;_FLAGS_&lt;CONFIG&gt;"></span><a class="reference internal" href="../variable/CMAKE_LANG_FLAGS_CONFIG.html#variable:CMAKE_&lt;LANG&gt;_FLAGS_&lt;CONFIG&gt;" title="CMAKE_&lt;LANG&gt;_FLAGS_&lt;CONFIG&gt;"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_&lt;LANG&gt;_FLAGS_&lt;CONFIG&gt;</span></code></a>
 variables, but before those propagated from dependencies by the
 <span class="target" id="index-0-prop_tgt:INTERFACE_COMPILE_OPTIONS"></span><a class="reference internal" href="INTERFACE_COMPILE_OPTIONS.html#prop_tgt:INTERFACE_COMPILE_OPTIONS" title="INTERFACE_COMPILE_OPTIONS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">INTERFACE_COMPILE_OPTIONS</span></code></a> property.</p>
+<p>This property adds compile options for all languages in a target.
+Use the <span class="target" id="index-0-genex:COMPILE_LANGUAGE"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#genex:COMPILE_LANGUAGE" title="COMPILE_LANGUAGE"><code class="xref cmake cmake-genex docutils literal notranslate"><span class="pre">COMPILE_LANGUAGE</span></code></a> generator expression to specify
+per-language compile options.</p>
 <p>This property is initialized by the <span class="target" id="index-0-prop_dir:COMPILE_OPTIONS"></span><a class="reference internal" href="../prop_dir/COMPILE_OPTIONS.html#prop_dir:COMPILE_OPTIONS" title="COMPILE_OPTIONS"><code class="xref cmake cmake-prop_dir docutils literal notranslate"><span class="pre">COMPILE_OPTIONS</span></code></a> directory
 property when a target is created, and is used by the generators to set
 the options for the compiler.</p>
@@ -77,7 +77,7 @@ syntax <code class="docutils literal notranslate"><span class="pre">$&lt;...&gt;
 for available expressions.  See the <span class="target" id="index-0-manual:cmake-buildsystem(7)"></span><a class="reference internal" href="../manual/cmake-buildsystem.7.html#manual:cmake-buildsystem(7)" title="cmake-buildsystem(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake-buildsystem(7)</span></code></a> manual
 for more on defining buildsystem properties.</p>
 <section id="option-de-duplication">
-<h2>Option De-duplication<a class="headerlink" href="#option-de-duplication" title="Permalink to this heading">¶</a></h2>
+<h2>Option De-duplication<a class="headerlink" href="#option-de-duplication" title="Link to this heading">¶</a></h2>
 <p>The final set of options used for a target is constructed by
 accumulating options from the current target and the usage requirements of
 its dependencies.  The set of options is de-duplicated to avoid repetition.</p>
@@ -161,7 +161,7 @@ and the rest of the option string is parsed using the
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -170,8 +170,8 @@ and the rest of the option string is parsed using the
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

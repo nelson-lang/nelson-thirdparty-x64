@@ -1,27 +1,24 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>MacroAddFileDependencies &mdash; CMake 3.26.3 Documentation</title>
+  <title>MacroAddFileDependencies &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="TestCXXAcceptsFlag" href="TestCXXAcceptsFlag.html" />
-    <link rel="prev" title="Documentation" href="Documentation.html" />
+    <link rel="next" title="TestBigEndian" href="TestBigEndian.html" />
+    <link rel="prev" title="GetPrerequisites" href="GetPrerequisites.html" />
  
 
   </head><body>
@@ -33,10 +30,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="TestCXXAcceptsFlag.html" title="TestCXXAcceptsFlag"
+          <a href="TestBigEndian.html" title="TestBigEndian"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="Documentation.html" title="Documentation"
+          <a href="GetPrerequisites.html" title="GetPrerequisites"
              accesskey="P">previous</a> |</li>
   <li>
     <img src="../_static/cmake-logo-16.png" alt=""
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="macroaddfiledependencies">
-<span id="module:MacroAddFileDependencies"></span><h1>MacroAddFileDependencies<a class="headerlink" href="#macroaddfiledependencies" title="Permalink to this heading">¶</a></h1>
+<span id="module:MacroAddFileDependencies"></span><h1>MacroAddFileDependencies<a class="headerlink" href="#macroaddfiledependencies" title="Link to this heading">¶</a></h1>
 <div class="deprecated">
 <p><span class="versionmodified deprecated">Deprecated since version 3.14.</span></p>
 </div>
@@ -68,7 +65,7 @@
 </pre></div>
 </div>
 <p>Do not use this command in new code.  It is just a wrapper around:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_property(</span><span class="no">SOURCE</span><span class="w"> </span><span class="nv">&lt;source&gt;</span><span class="w"> </span><span class="no">APPEND</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">OBJECT_DEPENDS</span><span class="w"> </span><span class="nv">&lt;files&gt;...</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_property(</span><span class="no">SOURCE</span><span class="w"> </span><span class="nv">&lt;source&gt;</span><span class="w"> </span><span class="no">APPEND</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">OBJECT_DEPENDS</span><span class="w"> </span><span class="nv">&lt;files&gt;...</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Instead use the <span class="target" id="index-0-command:set_property"></span><a class="reference internal" href="../command/set_property.html#command:set_property" title="set_property"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">set_property()</span></code></a> command to append to the
@@ -84,13 +81,13 @@
         <div class="sphinxsidebarwrapper">
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="Documentation.html"
-                          title="previous chapter">Documentation</a></p>
+    <p class="topless"><a href="GetPrerequisites.html"
+                          title="previous chapter">GetPrerequisites</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="TestCXXAcceptsFlag.html"
-                          title="next chapter">TestCXXAcceptsFlag</a></p>
+    <p class="topless"><a href="TestBigEndian.html"
+                          title="next chapter">TestBigEndian</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -120,10 +117,10 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="TestCXXAcceptsFlag.html" title="TestCXXAcceptsFlag"
+          <a href="TestBigEndian.html" title="TestBigEndian"
              >next</a> |</li>
         <li class="right" >
-          <a href="Documentation.html" title="Documentation"
+          <a href="GetPrerequisites.html" title="GetPrerequisites"
              >previous</a> |</li>
   <li>
     <img src="../_static/cmake-logo-16.png" alt=""
@@ -133,7 +130,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -142,8 +139,8 @@
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

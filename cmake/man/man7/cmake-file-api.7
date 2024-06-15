@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "CMAKE-FILE-API" "7" "Apr 04, 2023" "3.26.3" "CMake"
+.TH "CMAKE-FILE-API" "7" "Jun 14, 2024" "3.30.0" "CMake"
 .SH NAME
 cmake-file-api \- CMake File-Based API
 .SH INTRODUCTION
@@ -44,6 +44,10 @@ of a build tree.  The API is versioned to support changes to the layout
 of files within the API directory.  API file layout versioning is
 orthogonal to the versioning of \fI\%Object Kinds\fP used in replies.
 This version of CMake supports only one API version, \fI\%API v1\fP\&.
+.sp
+New in version 3.27: Projects may also submit queries for the current run using the
+\fI\%cmake_file_api()\fP command.
+
 .SH API V1
 .sp
 API v1 is housed in the \fB<build>/.cmake/api/v1/\fP directory.
@@ -513,7 +517,7 @@ Version 1 does not exist to avoid confusion with that from
 .ft C
 {
   \(dqkind\(dq: \(dqcodemodel\(dq,
-  \(dqversion\(dq: { \(dqmajor\(dq: 2, \(dqminor\(dq: 5 },
+  \(dqversion\(dq: { \(dqmajor\(dq: 2, \(dqminor\(dq: 7 },
   \(dqpaths\(dq: {
     \(dqsource\(dq: \(dq/path/to/top\-level\-source\-dir\(dq,
     \(dqbuild\(dq: \(dq/path/to/top\-level\-build\-dir\(dq
@@ -1133,6 +1137,40 @@ index into the \fBbacktraceGraph\fP member\(aqs \fBnodes\fP array.
 .UNINDENT
 .UNINDENT
 .TP
+.B \fBlaunchers\fP
+Optional member that is present on executable targets that have
+at least one launcher specified by the project.  The value is a
+JSON array of entries corresponding to the specified launchers.
+Each entry is a JSON object with members:
+.INDENT 7.0
+.TP
+.B \fBcommand\fP
+A string specifying the path to the launcher on disk, represented
+with forward slashes. If the file is inside the top\-level source
+directory then the path is specified relative to that directory.
+.TP
+.B \fBarguments\fP
+Optional member that is present when the launcher command has
+arguments preceding the executable to be launched.  The value
+is a JSON array of strings representing the arguments.
+.TP
+.B \fBtype\fP
+A string specifying the type of launcher.  The value is one of
+the following:
+.INDENT 7.0
+.TP
+.B \fBemulator\fP
+An emulator for the target platform when cross\-compiling.
+See the \fI\%CROSSCOMPILING_EMULATOR\fP target property.
+.TP
+.B \fBtest\fP
+A start program for the execution of tests.
+See the \fI\%TEST_LAUNCHER\fP target property.
+.UNINDENT
+.UNINDENT
+.sp
+This field was added in codemodel version 2.7.
+.TP
 .B \fBlink\fP
 Optional member that is present for executables and shared library
 targets that link into a runtime binary.  The value is a JSON object
@@ -1248,8 +1286,10 @@ A string specifying the visibility of the file set; one of \fBPUBLIC\fP,
 \fBPRIVATE\fP, or \fBINTERFACE\fP\&.
 .TP
 .B \fBbaseDirectories\fP
-A JSON array of strings specifying the base directories containing sources
-in the file set.
+A JSON array of strings, each specifying a base directory containing
+sources in the file set.  If the directory is inside the top\-level source
+directory then the path is specified relative to that directory.
+Otherwise the path is absolute.
 .UNINDENT
 .sp
 This field was added in codemodel version 2.5.
@@ -1383,6 +1423,30 @@ that added this include directory is available.  The value is
 an unsigned integer 0\-based index into the \fBbacktraceGraph\fP
 member\(aqs \fBnodes\fP array.
 .UNINDENT
+.TP
+.B \fBframeworks\fP
+Optional member that is present when, on Apple platforms, there are
+frameworks. The value is a JSON array with an entry for each directory.
+Each entry is a JSON object with members:
+.INDENT 7.0
+.TP
+.B \fBpath\fP
+A string specifying the path to the framework directory,
+represented with forward slashes.
+.TP
+.B \fBisSystem\fP
+Optional member that is present with boolean value \fBtrue\fP if
+the framework is marked as a system one.
+.TP
+.B \fBbacktrace\fP
+Optional member that is present when a CMake language backtrace to
+the \fI\%target_link_libraries()\fP or other command invocation
+that added this framework is available.  The value is
+an unsigned integer 0\-based index into the \fBbacktraceGraph\fP
+member\(aqs \fBnodes\fP array.
+.UNINDENT
+.sp
+This field was added in codemodel version 2.6.
 .TP
 .B \fBprecompileHeaders\fP
 Optional member that is present when \fI\%target_precompile_headers()\fP
@@ -1620,7 +1684,7 @@ There is only one \fBcmakeFiles\fP object major version, version 1.
 .ft C
 {
   \(dqkind\(dq: \(dqcmakeFiles\(dq,
-  \(dqversion\(dq: { \(dqmajor\(dq: 1, \(dqminor\(dq: 0 },
+  \(dqversion\(dq: { \(dqmajor\(dq: 1, \(dqminor\(dq: 1 },
   \(dqpaths\(dq: {
     \(dqbuild\(dq: \(dq/path/to/top\-level\-build\-dir\(dq,
     \(dqsource\(dq: \(dq/path/to/top\-level\-source\-dir\(dq
@@ -1641,6 +1705,16 @@ There is only one \fBcmakeFiles\fP object major version, version 1.
       \(dqisCMake\(dq: true,
       \(dqisExternal\(dq: true,
       \(dqpath\(dq: \(dq/path/to/cmake/Modules/CMakeGenericSystem.cmake\(dq
+    }
+  ],
+  \(dqglobsDependent\(dq: [
+    {
+      \(dqexpression\(dq: \(dqsrc/*.cxx\(dq,
+      \(dqrecurse\(dq: true,
+      \(dqfiles\(dq: [
+        \(dqsrc/foo.cxx\(dq,
+        \(dqsrc/bar.cxx\(dq
+      ]
     }
   ]
 }
@@ -1691,6 +1765,46 @@ source or build directories.
 .B \fBisCMake\fP
 Optional member that is present with boolean value \fBtrue\fP
 if the path specifies a file in the CMake installation.
+.UNINDENT
+.TP
+.B \fBglobsDependent\fP
+Optional member that is present when the project calls \fI\%file(GLOB)\fP
+or \fI\%file(GLOB_RECURSE)\fP with the \fBCONFIGURE_DEPENDS\fP option.
+The value is a JSON array of JSON objects, each specifying a globbing
+expression and the list of paths it matched.  If the globbing expression
+no longer matches the same list of paths, CMake considers the build system
+to be out of date.
+.sp
+This field was added in \fBcmakeFiles\fP version 1.1.
+.sp
+The members of each entry are:
+.INDENT 7.0
+.TP
+.B \fBexpression\fP
+A string specifying the globbing expression.
+.TP
+.B \fBrecurse\fP
+Optional member that is present with boolean value \fBtrue\fP
+if the entry corresponds to a \fI\%file(GLOB_RECURSE)\fP call.
+Otherwise the entry corresponds to a \fI\%file(GLOB)\fP call.
+.TP
+.B \fBlistDirectories\fP
+Optional member that is present with boolean value \fBtrue\fP if
+\fI\%file(GLOB)\fP was called without \fBLIST_DIRECTORIES false\fP or
+\fI\%file(GLOB_RECURSE)\fP was called with \fBLIST_DIRECTORIES true\fP\&.
+.TP
+.B \fBfollowSymlinks\fP
+Optional member that is present with boolean value \fBtrue\fP if
+\fI\%file(GLOB)\fP was called with the \fBFOLLOW_SYMLINKS\fP option.
+.TP
+.B \fBrelative\fP
+Optional member that is present if \fI\%file(GLOB)\fP was called
+with the \fBRELATIVE <path>\fP option.  The value is a string containing
+the \fB<path>\fP given.
+.TP
+.B \fBpaths\fP
+A JSON array of strings specifying the paths matched by the call
+to \fI\%file(GLOB)\fP or \fI\%file(GLOB_RECURSE)\fP\&.
 .UNINDENT
 .UNINDENT
 .SS Object Kind \(dqtoolchains\(dq
@@ -1861,6 +1975,6 @@ language.
 .UNINDENT
 .UNINDENT
 .SH COPYRIGHT
-2000-2023 Kitware, Inc. and Contributors
+2000-2024 Kitware, Inc. and Contributors
 .\" Generated by docutils manpage writer.
 .

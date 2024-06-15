@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>EXCLUDE_FROM_ALL &mdash; CMake 3.26.3 Documentation</title>
+  <title>EXCLUDE_FROM_ALL &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="EXCLUDE_FROM_DEFAULT_BUILD" href="EXCLUDE_FROM_DEFAULT_BUILD.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="exclude-from-all">
-<span id="prop_tgt:EXCLUDE_FROM_ALL"></span><h1>EXCLUDE_FROM_ALL<a class="headerlink" href="#exclude-from-all" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:EXCLUDE_FROM_ALL"></span><h1>EXCLUDE_FROM_ALL<a class="headerlink" href="#exclude-from-all" title="Link to this heading">¶</a></h1>
 <p>Set this target property to a true (or false) value to exclude (or include)
 the target from the &quot;all&quot; target of the containing directory and its
 ancestors.  If excluded, running e.g. <code class="docutils literal notranslate"><span class="pre">make</span></code> in the containing directory
@@ -73,7 +70,7 @@ included in the &quot;all&quot; target of its ancestor directories unless the
 will be brought up to date as part of doing a <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code> or its
 equivalent for the CMake generator being used.</p>
 <p>If a target has <code class="docutils literal notranslate"><span class="pre">EXCLUDE_FROM_ALL</span></code> set to true, it may still be listed
-in an <span class="target" id="index-0-command:install"></span><a class="reference internal" href="../command/install.html#command:install" title="install"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(TARGETS)</span></code></a> command, but the user is responsible for
+in an <span class="target" id="index-0-command:install"></span><a class="reference internal" href="../command/install.html#targets" title="install(targets)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(TARGETS)</span></code></a> command, but the user is responsible for
 ensuring that the target's build artifacts are not missing or outdated when
 an install is performed.</p>
 <p>This property may use &quot;generator expressions&quot; with the syntax <code class="docutils literal notranslate"><span class="pre">$&lt;...&gt;</span></code>. See
@@ -141,7 +138,7 @@ same for all configurations.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -150,8 +147,8 @@ same for all configurations.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>try_run &mdash; CMake 3.26.3 Documentation</title>
+  <title>try_run &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ctest_build" href="ctest_build.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,45 +57,47 @@
           <div class="body" role="main">
             
   <section id="try-run">
-<span id="command:try_run"></span><h1><a class="toc-backref" href="#id1" role="doc-backlink">try_run</a><a class="headerlink" href="#try-run" title="Permalink to this heading">¶</a></h1>
+<span id="command:try_run"></span><h1><a class="toc-backref" href="#id1" role="doc-backlink">try_run</a><a class="headerlink" href="#try-run" title="Link to this heading">¶</a></h1>
 <nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#try-run" id="id1">try_run</a></p>
 <ul>
 <li><p><a class="reference internal" href="#try-compiling-and-running-source-files" id="id2">Try Compiling and Running Source Files</a></p></li>
-<li><p><a class="reference internal" href="#other-behavior-settings" id="id3">Other Behavior Settings</a></p></li>
-<li><p><a class="reference internal" href="#behavior-when-cross-compiling" id="id4">Behavior when Cross Compiling</a></p></li>
+<li><p><a class="reference internal" href="#options" id="id3">Options</a></p></li>
+<li><p><a class="reference internal" href="#other-behavior-settings" id="id4">Other Behavior Settings</a></p></li>
+<li><p><a class="reference internal" href="#behavior-when-cross-compiling" id="id5">Behavior when Cross Compiling</a></p></li>
 </ul>
 </li>
 </ul>
 </nav>
 <p>Try compiling and then running some code.</p>
 <section id="try-compiling-and-running-source-files">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Try Compiling and Running Source Files</a><a class="headerlink" href="#try-compiling-and-running-source-files" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">try_run(</span><span class="nv">&lt;runResultVar&gt;</span><span class="w"> </span><span class="nv">&lt;compileResultVar&gt;</span><span class="w"></span>
-<span class="w">        </span><span class="o">&lt;</span><span class="no">SOURCES</span><span class="w"> </span><span class="nv">&lt;srcfile...&gt;</span><span class="w">                 </span><span class="p">|</span><span class="w"></span>
-<span class="w">         </span><span class="no">SOURCE_FROM_CONTENT</span><span class="w"> </span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;content&gt;</span><span class="w"> </span><span class="p">|</span><span class="w"></span>
-<span class="w">         </span><span class="no">SOURCE_FROM_VAR</span><span class="w"> </span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="w">         </span><span class="p">|</span><span class="w"></span>
-<span class="w">         </span><span class="no">SOURCE_FROM_FILE</span><span class="w"> </span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;path&gt;</span><span class="w">       </span><span class="o">&gt;</span><span class="p">...</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">LOG_DESCRIPTION</span><span class="w"> </span><span class="nv">&lt;text&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">NO_CACHE</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">NO_LOG</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">CMAKE_FLAGS</span><span class="w"> </span><span class="nv">&lt;flags&gt;...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">COMPILE_DEFINITIONS</span><span class="w"> </span><span class="nv">&lt;defs&gt;...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">LINK_OPTIONS</span><span class="w"> </span><span class="nv">&lt;options&gt;...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">LINK_LIBRARIES</span><span class="w"> </span><span class="nv">&lt;libs&gt;...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">COMPILE_OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">COPY_FILE</span><span class="w"> </span><span class="nv">&lt;fileName&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">COPY_FILE_ERROR</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_STANDARD</span><span class="w"> </span><span class="nv">&lt;std&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_STANDARD_REQUIRED</span><span class="w"> </span><span class="nv">&lt;bool&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_EXTENSIONS</span><span class="w"> </span><span class="nv">&lt;bool&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">RUN_OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">RUN_OUTPUT_STDOUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">RUN_OUTPUT_STDERR_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">WORKING_DIRECTORY</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">ARGS</span><span class="w"> </span><span class="nv">&lt;args&gt;...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="nf">)</span><span class="w"></span>
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Try Compiling and Running Source Files</a><a class="headerlink" href="#try-compiling-and-running-source-files" title="Link to this heading">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">try_run(</span><span class="nv">&lt;runResultVar&gt;</span><span class="w"> </span><span class="nv">&lt;compileResultVar&gt;</span>
+<span class="w">        </span><span class="p">[</span><span class="no">SOURCES_TYPE</span><span class="w"> </span><span class="nv">&lt;type&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="no">SOURCES</span><span class="w"> </span><span class="nv">&lt;srcfile...&gt;</span><span class="w">                 </span><span class="p">|</span>
+<span class="w">         </span><span class="no">SOURCE_FROM_CONTENT</span><span class="w"> </span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;content&gt;</span><span class="w"> </span><span class="p">|</span>
+<span class="w">         </span><span class="no">SOURCE_FROM_VAR</span><span class="w"> </span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="w">         </span><span class="p">|</span>
+<span class="w">         </span><span class="no">SOURCE_FROM_FILE</span><span class="w"> </span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="nv">&lt;path&gt;</span><span class="w">       </span><span class="o">&gt;</span><span class="p">...</span>
+<span class="w">        </span><span class="p">[</span><span class="no">LOG_DESCRIPTION</span><span class="w"> </span><span class="nv">&lt;text&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">NO_CACHE</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">NO_LOG</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">CMAKE_FLAGS</span><span class="w"> </span><span class="nv">&lt;flags&gt;...</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">COMPILE_DEFINITIONS</span><span class="w"> </span><span class="nv">&lt;defs&gt;...</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">LINK_OPTIONS</span><span class="w"> </span><span class="nv">&lt;options&gt;...</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">LINK_LIBRARIES</span><span class="w"> </span><span class="nv">&lt;libs&gt;...</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">COMPILE_OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">COPY_FILE</span><span class="w"> </span><span class="nv">&lt;fileName&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">COPY_FILE_ERROR</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]]</span>
+<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_STANDARD</span><span class="w"> </span><span class="nv">&lt;std&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_STANDARD_REQUIRED</span><span class="w"> </span><span class="nv">&lt;bool&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_EXTENSIONS</span><span class="w"> </span><span class="nv">&lt;bool&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">RUN_OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">RUN_OUTPUT_STDOUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">RUN_OUTPUT_STDERR_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">WORKING_DIRECTORY</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">ARGS</span><span class="w"> </span><span class="nv">&lt;args&gt;...</span><span class="p">]</span>
+<span class="w">        </span><span class="nf">)</span>
 </pre></div>
 </div>
 <div class="versionadded">
@@ -121,24 +120,28 @@ if the <code class="docutils literal notranslate"><span class="pre">NO_LOG</span
 </div>
 <p>This command supports an alternate signature for CMake older than 3.25.
 The signature above is recommended for clarity.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">try_run(</span><span class="nv">&lt;runResultVar&gt;</span><span class="w"> </span><span class="nv">&lt;compileResultVar&gt;</span><span class="w"></span>
-<span class="w">        </span><span class="nv">&lt;bindir&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="nb">srcfile</span><span class="p">|</span><span class="no">SOURCES</span><span class="w"> </span><span class="nb">srcfile...</span><span class="o">&gt;</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">CMAKE_FLAGS</span><span class="w"> </span><span class="nv">&lt;flags&gt;...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">COMPILE_DEFINITIONS</span><span class="w"> </span><span class="nv">&lt;defs&gt;...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">LINK_OPTIONS</span><span class="w"> </span><span class="nv">&lt;options&gt;...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">LINK_LIBRARIES</span><span class="w"> </span><span class="nv">&lt;libs&gt;...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">COMPILE_OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">COPY_FILE</span><span class="w"> </span><span class="nv">&lt;fileName&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">COPY_FILE_ERROR</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_STANDARD</span><span class="w"> </span><span class="nv">&lt;std&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_STANDARD_REQUIRED</span><span class="w"> </span><span class="nv">&lt;bool&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_EXTENSIONS</span><span class="w"> </span><span class="nv">&lt;bool&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">RUN_OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">WORKING_DIRECTORY</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="p">[</span><span class="no">ARGS</span><span class="w"> </span><span class="nv">&lt;args&gt;...</span><span class="p">]</span><span class="w"></span>
-<span class="w">        </span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">try_run(</span><span class="nv">&lt;runResultVar&gt;</span><span class="w"> </span><span class="nv">&lt;compileResultVar&gt;</span>
+<span class="w">        </span><span class="nv">&lt;bindir&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="nb">srcfile</span><span class="p">|</span><span class="no">SOURCES</span><span class="w"> </span><span class="nb">srcfile...</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">[</span><span class="no">CMAKE_FLAGS</span><span class="w"> </span><span class="nv">&lt;flags&gt;...</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">COMPILE_DEFINITIONS</span><span class="w"> </span><span class="nv">&lt;defs&gt;...</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">LINK_OPTIONS</span><span class="w"> </span><span class="nv">&lt;options&gt;...</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">LINK_LIBRARIES</span><span class="w"> </span><span class="nv">&lt;libs&gt;...</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">LINKER_LANGUAGE</span><span class="w"> </span><span class="nv">&lt;lang&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">COMPILE_OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">COPY_FILE</span><span class="w"> </span><span class="nv">&lt;fileName&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">COPY_FILE_ERROR</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]]</span>
+<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_STANDARD</span><span class="w"> </span><span class="nv">&lt;std&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_STANDARD_REQUIRED</span><span class="w"> </span><span class="nv">&lt;bool&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="nv">&lt;LANG&gt;</span><span class="nb">_EXTENSIONS</span><span class="w"> </span><span class="nv">&lt;bool&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">RUN_OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">WORKING_DIRECTORY</span><span class="w"> </span><span class="nv">&lt;var&gt;</span><span class="p">]</span>
+<span class="w">        </span><span class="p">[</span><span class="no">ARGS</span><span class="w"> </span><span class="nv">&lt;args&gt;...</span><span class="p">]</span>
+<span class="w">        </span><span class="nf">)</span>
 </pre></div>
 </div>
+</section>
+<section id="options">
+<span id="try-run-options"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">Options</a><a class="headerlink" href="#options" title="Link to this heading">¶</a></h2>
 <p>The options specific to <code class="docutils literal notranslate"><span class="pre">try_run</span></code> are:</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">COMPILE_OUTPUT_VARIABLE</span> <span class="pre">&lt;var&gt;</span></code></dt><dd><p>Report the compile step build output in a given variable.</p>
@@ -172,7 +175,7 @@ directory.</p>
 </dl>
 </section>
 <section id="other-behavior-settings">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Other Behavior Settings</a><a class="headerlink" href="#other-behavior-settings" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Other Behavior Settings</a><a class="headerlink" href="#other-behavior-settings" title="Link to this heading">¶</a></h2>
 <p>Set variable <span class="target" id="index-0-variable:CMAKE_TRY_COMPILE_CONFIGURATION"></span><a class="reference internal" href="../variable/CMAKE_TRY_COMPILE_CONFIGURATION.html#variable:CMAKE_TRY_COMPILE_CONFIGURATION" title="CMAKE_TRY_COMPILE_CONFIGURATION"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_TRY_COMPILE_CONFIGURATION</span></code></a> to choose a build
 configuration:</p>
 <ul class="simple">
@@ -182,7 +185,7 @@ the test project.</p></li>
 </ul>
 </section>
 <section id="behavior-when-cross-compiling">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Behavior when Cross Compiling</a><a class="headerlink" href="#behavior-when-cross-compiling" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Behavior when Cross Compiling</a><a class="headerlink" href="#behavior-when-cross-compiling" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.3: </span>Use <code class="docutils literal notranslate"><span class="pre">CMAKE_CROSSCOMPILING_EMULATOR</span></code> when running cross-compiled binaries.</p>
 </div>
@@ -228,6 +231,7 @@ provide an easy-to-preset alternative for this case.</p>
     <ul>
 <li><a class="reference internal" href="#">try_run</a><ul>
 <li><a class="reference internal" href="#try-compiling-and-running-source-files">Try Compiling and Running Source Files</a></li>
+<li><a class="reference internal" href="#options">Options</a></li>
 <li><a class="reference internal" href="#other-behavior-settings">Other Behavior Settings</a></li>
 <li><a class="reference internal" href="#behavior-when-cross-compiling">Behavior when Cross Compiling</a></li>
 </ul>
@@ -286,7 +290,7 @@ provide an easy-to-preset alternative for this case.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -295,8 +299,8 @@ provide an easy-to-preset alternative for this case.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

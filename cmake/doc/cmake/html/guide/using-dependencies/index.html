@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Using Dependencies Guide &mdash; CMake 3.26.3 Documentation</title>
+  <title>Using Dependencies Guide &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Importing and Exporting Guide" href="../importing-exporting/index.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
         <li class="nav-item nav-item-this"><a href="">Using Dependencies Guide</a></li> 
@@ -59,7 +56,7 @@
           <div class="body" role="main">
             
   <section id="using-dependencies-guide">
-<span id="guide:Using Dependencies Guide"></span><h1><a class="toc-backref" href="#id3" role="doc-backlink">Using Dependencies Guide</a><a class="headerlink" href="#using-dependencies-guide" title="Permalink to this heading">¶</a></h1>
+<span id="guide:Using Dependencies Guide"></span><h1><a class="toc-backref" href="#id3" role="doc-backlink">Using Dependencies Guide</a><a class="headerlink" href="#using-dependencies-guide" title="Link to this heading">¶</a></h1>
 <nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
@@ -81,7 +78,7 @@
 </ul>
 </nav>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <p>Projects will frequently depend on other projects, assets, and artifacts.
 CMake provides a number of ways to incorporate such things into the build.
 Projects and users have the flexibility to choose between methods that
@@ -98,7 +95,7 @@ implemented by the developer.  Dependency providers co-operate with the
 primary methods mentioned above to extend their flexibility.</p>
 </section>
 <section id="using-pre-built-packages-with-find-package">
-<span id="prebuilt-find-package"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">Using Pre-built Packages With <code class="docutils literal notranslate"><span class="pre">find_package()</span></code></a><a class="headerlink" href="#using-pre-built-packages-with-find-package" title="Permalink to this heading">¶</a></h2>
+<span id="prebuilt-find-package"></span><h2><a class="toc-backref" href="#id5" role="doc-backlink">Using Pre-built Packages With <code class="docutils literal notranslate"><span class="pre">find_package()</span></code></a><a class="headerlink" href="#using-pre-built-packages-with-find-package" title="Link to this heading">¶</a></h2>
 <p>A package needed by the project may already be built and available at some
 location on the user's system.  That package might have also been built by
 CMake, or it could have used a different build system entirely.  It might
@@ -114,10 +111,10 @@ Most of the time, this will involve just the package name, maybe a version
 constraint, and the <code class="docutils literal notranslate"><span class="pre">REQUIRED</span></code> keyword if the dependency is not optional.
 A set of package components may also be specified.</p>
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-text">Examples of <code class="docutils literal notranslate"><span class="pre">find_package()</span></code> basic signature</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">Catch2</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">find_package(</span><span class="nb">GTest</span><span class="w"> </span><span class="no">REQUIRED</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">find_package(</span><span class="nb">Boost</span><span class="w"> </span><span class="m">1.79</span><span class="w"> </span><span class="no">COMPONENTS</span><span class="w"> </span><span class="nb">date_time</span><span class="nf">)</span><span class="w"></span>
+<div class="code-block-caption"><span class="caption-text">Examples of <code class="docutils literal notranslate"><span class="pre">find_package()</span></code> basic signature</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">Catch2</span><span class="nf">)</span>
+<span class="nf">find_package(</span><span class="nb">GTest</span><span class="w"> </span><span class="no">REQUIRED</span><span class="nf">)</span>
+<span class="nf">find_package(</span><span class="nb">Boost</span><span class="w"> </span><span class="m">1.79</span><span class="w"> </span><span class="no">COMPONENTS</span><span class="w"> </span><span class="nb">date_time</span><span class="nf">)</span>
 </pre></div>
 </div>
 </div>
@@ -151,7 +148,7 @@ complex topic.</p>
 packages. See the <a class="reference internal" href="../user-interaction/index.html#setting-build-variables"><span class="std std-ref">User Interaction Guide</span></a>
 for more on how to set cache variables.</p>
 <section id="config-file-packages">
-<span id="libraries-providing-config-file-packages"></span><h3><a class="toc-backref" href="#id6" role="doc-backlink">Config-file packages</a><a class="headerlink" href="#config-file-packages" title="Permalink to this heading">¶</a></h3>
+<span id="libraries-providing-config-file-packages"></span><h3><a class="toc-backref" href="#id6" role="doc-backlink">Config-file packages</a><a class="headerlink" href="#config-file-packages" title="Link to this heading">¶</a></h3>
 <p>The preferred way for a third party to provide executables, libraries,
 headers, and other files for use with CMake is to provide
 <a class="reference internal" href="../../manual/cmake-packages.7.html#config-file-packages"><span class="std std-ref">config files</span></a>.  These are text files shipped
@@ -165,12 +162,12 @@ first argument to the <span class="target" id="index-6-command:find_package"></s
 only argument.  Alternative names can also be specified with the <code class="docutils literal notranslate"><span class="pre">NAMES</span></code>
 option:</p>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-text">Providing alternative names when finding a package</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">SomeThing</span><span class="w"></span>
-<span class="w">  </span><span class="no">NAMES</span><span class="w"></span>
+<div class="code-block-caption"><span class="caption-text">Providing alternative names when finding a package</span><a class="headerlink" href="#id2" title="Link to this code">¶</a></div>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">SomeThing</span>
+<span class="w">  </span><span class="no">NAMES</span>
 <span class="w">    </span><span class="nb">SameThingOtherName</span><span class="w">   </span><span class="c"># Another name for the package</span>
 <span class="w">    </span><span class="nb">SomeThing</span><span class="w">            </span><span class="c"># Also still look for its canonical name</span>
-<span class="nf">)</span><span class="w"></span>
+<span class="nf">)</span>
 </pre></div>
 </div>
 </div>
@@ -229,7 +226,7 @@ See the <span class="target" id="index-12-command:find_package"></span><a class=
 environment variables that can affect the search.</p>
 </section>
 <section id="find-module-files">
-<span id="libraries-not-providing-config-file-packages"></span><h3><a class="toc-backref" href="#id7" role="doc-backlink">Find Module Files</a><a class="headerlink" href="#find-module-files" title="Permalink to this heading">¶</a></h3>
+<span id="libraries-not-providing-config-file-packages"></span><h3><a class="toc-backref" href="#id7" role="doc-backlink">Find Module Files</a><a class="headerlink" href="#find-module-files" title="Link to this heading">¶</a></h3>
 <p>Packages which do not provide config files can still be found with the
 <span class="target" id="index-13-command:find_package"></span><a class="reference internal" href="../../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> command, if a <code class="docutils literal notranslate"><span class="pre">FindSomePackage.cmake</span></code> file is
 available.  These Find module files are different to config files in that:</p>
@@ -257,7 +254,7 @@ Find module for the package.</p></li>
 Find module file.</p>
 </section>
 <section id="imported-targets">
-<span id="imported-targets-from-packages"></span><h3><a class="toc-backref" href="#id8" role="doc-backlink">Imported Targets</a><a class="headerlink" href="#imported-targets" title="Permalink to this heading">¶</a></h3>
+<span id="imported-targets-from-packages"></span><h3><a class="toc-backref" href="#id8" role="doc-backlink">Imported Targets</a><a class="headerlink" href="#imported-targets" title="Link to this heading">¶</a></h3>
 <p>Both config files and Find module files can define <a class="reference internal" href="../../manual/cmake-buildsystem.7.html#imported-targets"><span class="std std-ref">Imported Targets</span></a>.
 These will typically have names of the form <code class="docutils literal notranslate"><span class="pre">SomePrefix::ThingName</span></code>.
 Where these are available, the project should prefer to use them instead of
@@ -274,15 +271,15 @@ flags, and any other configuration-dependent quantities.  Find modules may
 be less reliable in providing these details than config files.</p>
 <p>A complete example which finds a third party package and uses a library
 from it might look like the following:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cmake_minimum_required(</span><span class="no">VERSION</span><span class="w"> </span><span class="m">3.10</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">project(</span><span class="nb">MyExeProject</span><span class="w"> </span><span class="no">VERSION</span><span class="w"> </span><span class="m">1.0.0</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">cmake_minimum_required(</span><span class="no">VERSION</span><span class="w"> </span><span class="m">3.10</span><span class="nf">)</span>
+<span class="nf">project(</span><span class="nb">MyExeProject</span><span class="w"> </span><span class="no">VERSION</span><span class="w"> </span><span class="m">1.0.0</span><span class="nf">)</span>
 
 <span class="c"># Make project-provided Find modules available</span>
-<span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MODULE_PATH</span><span class="w"> </span><span class="s">&quot;${CMAKE_CURRENT_SOURCE_DIR}/cmake&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MODULE_PATH</span><span class="w"> </span><span class="s">&quot;${CMAKE_CURRENT_SOURCE_DIR}/cmake&quot;</span><span class="nf">)</span>
 
-<span class="nf">find_package(</span><span class="nb">SomePackage</span><span class="w"> </span><span class="no">REQUIRED</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_executable(</span><span class="nb">MyExe</span><span class="w"> </span><span class="nb">main.cpp</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">target_link_libraries(</span><span class="nb">MyExe</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">SomePrefix</span><span class="o">::</span><span class="nb">LibName</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">find_package(</span><span class="nb">SomePackage</span><span class="w"> </span><span class="no">REQUIRED</span><span class="nf">)</span>
+<span class="nf">add_executable(</span><span class="nb">MyExe</span><span class="w"> </span><span class="nb">main.cpp</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">MyExe</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">SomePrefix</span><span class="o">::</span><span class="nb">LibName</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Note that the above call to <span class="target" id="index-14-command:find_package"></span><a class="reference internal" href="../../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> could be resolved by
@@ -295,7 +292,7 @@ file.</p>
 </section>
 </section>
 <section id="downloading-and-building-from-source-with-fetchcontent">
-<h2><a class="toc-backref" href="#id9" role="doc-backlink">Downloading And Building From Source With <code class="docutils literal notranslate"><span class="pre">FetchContent</span></code></a><a class="headerlink" href="#downloading-and-building-from-source-with-fetchcontent" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Downloading And Building From Source With <code class="docutils literal notranslate"><span class="pre">FetchContent</span></code></a><a class="headerlink" href="#downloading-and-building-from-source-with-fetchcontent" title="Link to this heading">¶</a></h2>
 <p>Dependencies do not necessarily have to be pre-built in order to use them
 with CMake.  They can be built from sources as part of the main project.
 The <span class="target" id="index-1-module:FetchContent"></span><a class="reference internal" href="../../module/FetchContent.html#module:FetchContent" title="FetchContent"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FetchContent</span></code></a> module provides functionality to download
@@ -307,18 +304,18 @@ part of the project's own sources.</p>
 dependencies it wants to use, then ask for them to be made available.
 The following demonstrates the principle (see <a class="reference internal" href="../../module/FetchContent.html#fetch-content-examples"><span class="std std-ref">Examples</span></a>
 for more):</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FetchContent</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">FetchContent_Declare(</span><span class="w"></span>
-<span class="w">  </span><span class="nb">googletest</span><span class="w"></span>
-<span class="w">  </span><span class="no">GIT_REPOSITORY</span><span class="w"> </span><span class="na">https://github.com/google/googletest.git</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FetchContent</span><span class="nf">)</span>
+<span class="nf">FetchContent_Declare(</span>
+<span class="w">  </span><span class="nb">googletest</span>
+<span class="w">  </span><span class="no">GIT_REPOSITORY</span><span class="w"> </span><span class="na">https://github.com/google/googletest.git</span>
 <span class="w">  </span><span class="no">GIT_TAG</span><span class="w">        </span><span class="m">703</span><span class="nb">bd9caab50b139428cea1aaff9974ebee5742e</span><span class="w"> </span><span class="c"># release-1.10.0</span>
-<span class="nf">)</span><span class="w"></span>
-<span class="nf">FetchContent_Declare(</span><span class="w"></span>
-<span class="w">  </span><span class="nb">Catch2</span><span class="w"></span>
-<span class="w">  </span><span class="no">GIT_REPOSITORY</span><span class="w"> </span><span class="na">https://github.com/catchorg/Catch2.git</span><span class="w"></span>
+<span class="nf">)</span>
+<span class="nf">FetchContent_Declare(</span>
+<span class="w">  </span><span class="nb">Catch2</span>
+<span class="w">  </span><span class="no">GIT_REPOSITORY</span><span class="w"> </span><span class="na">https://github.com/catchorg/Catch2.git</span>
 <span class="w">  </span><span class="no">GIT_TAG</span><span class="w">        </span><span class="m">605</span><span class="nb">a34765aa5d5ecbf476b4598a862ada971b0cc</span><span class="w"> </span><span class="c"># v3.0.1</span>
-<span class="nf">)</span><span class="w"></span>
-<span class="nf">FetchContent_MakeAvailable(</span><span class="nb">googletest</span><span class="w"> </span><span class="nb">Catch2</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">)</span>
+<span class="nf">FetchContent_MakeAvailable(</span><span class="nb">googletest</span><span class="w"> </span><span class="nb">Catch2</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Various download methods are supported, including downloading and extracting
@@ -340,7 +337,7 @@ add a clashing target name, it cannot be brought directly into the build
 with this method.</p>
 </section>
 <section id="fetchcontent-and-find-package-integration">
-<h2><a class="toc-backref" href="#id10" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">FetchContent</span></code> And <code class="docutils literal notranslate"><span class="pre">find_package()</span></code> Integration</a><a class="headerlink" href="#fetchcontent-and-find-package-integration" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id10" role="doc-backlink"><code class="docutils literal notranslate"><span class="pre">FetchContent</span></code> And <code class="docutils literal notranslate"><span class="pre">find_package()</span></code> Integration</a><a class="headerlink" href="#fetchcontent-and-find-package-integration" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.24.</span></p>
 </div>
@@ -356,17 +353,17 @@ This allows <span class="target" id="index-0-command:fetchcontent_makeavailable"
 dependency with a call to <span class="target" id="index-17-command:find_package"></span><a class="reference internal" href="../../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> first, using the arguments
 after the <code class="docutils literal notranslate"><span class="pre">FIND_PACKAGE_ARGS</span></code> keyword, if any.  If that doesn't find the
 dependency, it is built from source as described previously instead.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FetchContent</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">FetchContent_Declare(</span><span class="w"></span>
-<span class="w">  </span><span class="nb">googletest</span><span class="w"></span>
-<span class="w">  </span><span class="no">GIT_REPOSITORY</span><span class="w"> </span><span class="na">https://github.com/google/googletest.git</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FetchContent</span><span class="nf">)</span>
+<span class="nf">FetchContent_Declare(</span>
+<span class="w">  </span><span class="nb">googletest</span>
+<span class="w">  </span><span class="no">GIT_REPOSITORY</span><span class="w"> </span><span class="na">https://github.com/google/googletest.git</span>
 <span class="w">  </span><span class="no">GIT_TAG</span><span class="w">        </span><span class="m">703</span><span class="nb">bd9caab50b139428cea1aaff9974ebee5742e</span><span class="w"> </span><span class="c"># release-1.10.0</span>
-<span class="w">  </span><span class="no">FIND_PACKAGE_ARGS</span><span class="w"> </span><span class="no">NAMES</span><span class="w"> </span><span class="nb">GTest</span><span class="w"></span>
-<span class="nf">)</span><span class="w"></span>
-<span class="nf">FetchContent_MakeAvailable(</span><span class="nb">googletest</span><span class="nf">)</span><span class="w"></span>
+<span class="w">  </span><span class="no">FIND_PACKAGE_ARGS</span><span class="w"> </span><span class="no">NAMES</span><span class="w"> </span><span class="nb">GTest</span>
+<span class="nf">)</span>
+<span class="nf">FetchContent_MakeAvailable(</span><span class="nb">googletest</span><span class="nf">)</span>
 
-<span class="nf">add_executable(</span><span class="nb">ThingUnitTest</span><span class="w"> </span><span class="nb">thing_ut.cpp</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">target_link_libraries(</span><span class="nb">ThingUnitTest</span><span class="w"> </span><span class="nb">GTest</span><span class="o">::</span><span class="nb">gtest_main</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">add_executable(</span><span class="nb">ThingUnitTest</span><span class="w"> </span><span class="nb">thing_ut.cpp</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">ThingUnitTest</span><span class="w"> </span><span class="nb">GTest</span><span class="o">::</span><span class="nb">gtest_main</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>The above example calls
@@ -388,23 +385,23 @@ dependencies to be built from source.  The project can enforce this by adding
 the <code class="docutils literal notranslate"><span class="pre">OVERRIDE_FIND_PACKAGE</span></code> keyword to <span class="target" id="index-1-command:fetchcontent_declare"></span><a class="reference internal" href="../../module/FetchContent.html#command:fetchcontent_declare" title="fetchcontent_declare"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">FetchContent_Declare()</span></code></a>.
 A call to <span class="target" id="index-21-command:find_package"></span><a class="reference internal" href="../../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> for that dependency will then be redirected
 to <span class="target" id="index-1-command:fetchcontent_makeavailable"></span><a class="reference internal" href="../../module/FetchContent.html#command:fetchcontent_makeavailable" title="fetchcontent_makeavailable"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">FetchContent_MakeAvailable()</span></code></a> instead.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FetchContent</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">FetchContent_Declare(</span><span class="w"></span>
-<span class="w">  </span><span class="nb">Catch2</span><span class="w"></span>
-<span class="w">  </span><span class="no">URL</span><span class="w"> </span><span class="na">https://intranet.mycomp.com/vendored/Catch2_2.13.4_patched.tgz</span><span class="w"></span>
-<span class="w">  </span><span class="no">URL_HASH</span><span class="w"> </span><span class="no">MD5</span><span class="p">=</span><span class="nb">abc123...</span><span class="w"></span>
-<span class="w">  </span><span class="no">OVERRIDE_FIND_PACKAGE</span><span class="w"></span>
-<span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FetchContent</span><span class="nf">)</span>
+<span class="nf">FetchContent_Declare(</span>
+<span class="w">  </span><span class="nb">Catch2</span>
+<span class="w">  </span><span class="no">URL</span><span class="w"> </span><span class="na">https://intranet.mycomp.com/vendored/Catch2_2.13.4_patched.tgz</span>
+<span class="w">  </span><span class="no">URL_HASH</span><span class="w"> </span><span class="no">MD5</span><span class="p">=</span><span class="nb">abc123...</span>
+<span class="w">  </span><span class="no">OVERRIDE_FIND_PACKAGE</span>
+<span class="nf">)</span>
 
 <span class="c"># The following is automatically redirected to FetchContent_MakeAvailable(Catch2)</span>
-<span class="nf">find_package(</span><span class="nb">Catch2</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">find_package(</span><span class="nb">Catch2</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>For more advanced use cases, see the
 <span class="target" id="index-0-variable:CMAKE_FIND_PACKAGE_REDIRECTS_DIR"></span><a class="reference internal" href="../../variable/CMAKE_FIND_PACKAGE_REDIRECTS_DIR.html#variable:CMAKE_FIND_PACKAGE_REDIRECTS_DIR" title="CMAKE_FIND_PACKAGE_REDIRECTS_DIR"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_FIND_PACKAGE_REDIRECTS_DIR</span></code></a> variable.</p>
 </section>
 <section id="dependency-providers">
-<span id="dependency-providers-overview"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Dependency Providers</a><a class="headerlink" href="#dependency-providers" title="Permalink to this heading">¶</a></h2>
+<span id="dependency-providers-overview"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Dependency Providers</a><a class="headerlink" href="#dependency-providers" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.24.</span></p>
 </div>
@@ -441,7 +438,7 @@ approach for package managers.  The developer can use such a file like so:</p>
 </pre></div>
 </div>
 <p>For details on how to implement your own custom dependency provider, see the
-<span class="target" id="index-0-command:cmake_language"></span><a class="reference internal" href="../../command/cmake_language.html#command:cmake_language" title="cmake_language"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_language(SET_DEPENDENCY_PROVIDER)</span></code></a> command.</p>
+<span class="target" id="index-0-command:cmake_language"></span><a class="reference internal" href="../../command/cmake_language.html#set-dependency-provider" title="cmake_language(set_dependency_provider)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_language(SET_DEPENDENCY_PROVIDER)</span></code></a> command.</p>
 </section>
 </section>
 
@@ -522,7 +519,7 @@ approach for package managers.  The developer can use such a file like so:</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
         <li class="nav-item nav-item-this"><a href="">Using Dependencies Guide</a></li> 
@@ -530,8 +527,8 @@ approach for package managers.  The developer can use such a file like so:</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

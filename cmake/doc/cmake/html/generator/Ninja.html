@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Ninja &mdash; CMake 3.26.3 Documentation</title>
+  <title>Ninja &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Ninja Multi-Config" href="Ninja%20Multi-Config.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-generators.7.html" accesskey="U">cmake-generators(7)</a> &#187;</li>
@@ -60,11 +57,34 @@
           <div class="body" role="main">
             
   <section id="ninja">
-<span id="generator:Ninja"></span><h1>Ninja<a class="headerlink" href="#ninja" title="Permalink to this heading">¶</a></h1>
-<p>Generates <code class="docutils literal notranslate"><span class="pre">build.ninja</span></code> files.</p>
-<p>A <code class="docutils literal notranslate"><span class="pre">build.ninja</span></code> file is generated into the build tree.  Use the ninja
-program to build the project through the <code class="docutils literal notranslate"><span class="pre">all</span></code> target and install the
-project through the <code class="docutils literal notranslate"><span class="pre">install</span></code> (or <code class="docutils literal notranslate"><span class="pre">install/strip</span></code>) target.</p>
+<span id="generator:Ninja"></span><h1>Ninja<a class="headerlink" href="#ninja" title="Link to this heading">¶</a></h1>
+<p>Generates a <code class="docutils literal notranslate"><span class="pre">build.ninja</span></code> file into the build tree.</p>
+<section id="builtin-targets">
+<h2>Builtin Targets<a class="headerlink" href="#builtin-targets" title="Link to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">all</span></code></p>
+<blockquote>
+<div><p>Depends on all targets required by the project, except those with
+<span class="target" id="index-0-prop_tgt:EXCLUDE_FROM_ALL"></span><a class="reference internal" href="../prop_tgt/EXCLUDE_FROM_ALL.html#prop_tgt:EXCLUDE_FROM_ALL" title="EXCLUDE_FROM_ALL"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">EXCLUDE_FROM_ALL</span></code></a> set to true.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">install</span></code></p>
+<blockquote>
+<div><p>Runs the install step.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">install/strip</span></code></p>
+<blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.7: </span>Runs the install followed by a <code class="docutils literal notranslate"><span class="pre">CMAKE_STRIP</span></code> command, if any.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">CMAKE_STRIP</span></code> variable will contain the platform's <code class="docutils literal notranslate"><span class="pre">strip</span></code> utility, which
+removes symbols information from generated binaries.</p>
+</div>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">install/parallel</span></code></p>
+<blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30: </span>Created only if the <span class="target" id="index-0-prop_gbl:INSTALL_PARALLEL"></span><a class="reference internal" href="../prop_gbl/INSTALL_PARALLEL.html#prop_gbl:INSTALL_PARALLEL" title="INSTALL_PARALLEL"><code class="xref cmake cmake-prop_gbl docutils literal notranslate"><span class="pre">INSTALL_PARALLEL</span></code></a> global property is <code class="docutils literal notranslate"><span class="pre">ON</span></code>.
+Runs the install step for each subdirectory independently and in parallel.</p>
+</div>
+</div></blockquote>
 <p>For each subdirectory <code class="docutils literal notranslate"><span class="pre">sub/dir</span></code> of the project, additional targets
 are generated:</p>
 <p><code class="docutils literal notranslate"><span class="pre">sub/dir/all</span></code></p>
@@ -84,8 +104,6 @@ are generated:</p>
 <div><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.7: </span>Runs the install step in the subdirectory followed by a <code class="docutils literal notranslate"><span class="pre">CMAKE_STRIP</span></code> command,
 if any.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">CMAKE_STRIP</span></code> variable will contain the platform's <code class="docutils literal notranslate"><span class="pre">strip</span></code> utility, which
-removes symbols information from generated binaries.</p>
 </div>
 </div></blockquote>
 <p><code class="docutils literal notranslate"><span class="pre">sub/dir/test</span></code></p>
@@ -100,8 +118,9 @@ removes symbols information from generated binaries.</p>
 <p><span class="versionmodified added">New in version 3.7: </span>Runs the package step in the subdirectory, if any.</p>
 </div>
 </div></blockquote>
+</section>
 <section id="fortran-support">
-<h2>Fortran Support<a class="headerlink" href="#fortran-support" title="Permalink to this heading">¶</a></h2>
+<h2>Fortran Support<a class="headerlink" href="#fortran-support" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.7.</span></p>
 </div>
@@ -109,7 +128,7 @@ removes symbols information from generated binaries.</p>
 tool is at least version 1.10 (which has the required features).</p>
 </section>
 <section id="swift-support">
-<h2>Swift Support<a class="headerlink" href="#swift-support" title="Permalink to this heading">¶</a></h2>
+<h2>Swift Support<a class="headerlink" href="#swift-support" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.15.</span></p>
 </div>
@@ -117,7 +136,7 @@ tool is at least version 1.10 (which has the required features).</p>
 in future releases of CMake.</p>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.17: </span>The <span class="target" id="index-0-generator:Ninja Multi-Config"></span><a class="reference internal" href="Ninja%20Multi-Config.html#generator:Ninja Multi-Config" title="Ninja Multi-Config"><code class="xref cmake cmake-generator docutils literal notranslate"><span class="pre">Ninja</span> <span class="pre">Multi-Config</span></code></a> generator is similar to the <code class="docutils literal notranslate"><span class="pre">Ninja</span></code>
 generator, but generates multiple configurations at once.</p>
@@ -136,6 +155,7 @@ generator, but generates multiple configurations at once.</p>
     <h3><a href="../index.html">Table of Contents</a></h3>
     <ul>
 <li><a class="reference internal" href="#">Ninja</a><ul>
+<li><a class="reference internal" href="#builtin-targets">Builtin Targets</a></li>
 <li><a class="reference internal" href="#fortran-support">Fortran Support</a></li>
 <li><a class="reference internal" href="#swift-support">Swift Support</a></li>
 <li><a class="reference internal" href="#see-also">See Also</a></li>
@@ -195,7 +215,7 @@ generator, but generates multiple configurations at once.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-generators.7.html" >cmake-generators(7)</a> &#187;</li>
@@ -204,8 +224,8 @@ generator, but generates multiple configurations at once.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

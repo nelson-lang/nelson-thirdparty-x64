@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>VS_NO_SOLUTION_DEPLOY &mdash; CMake 3.26.3 Documentation</title>
+  <title>VS_NO_SOLUTION_DEPLOY &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="VS_PACKAGE_REFERENCES" href="VS_PACKAGE_REFERENCES.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="vs-no-solution-deploy">
-<span id="prop_tgt:VS_NO_SOLUTION_DEPLOY"></span><h1>VS_NO_SOLUTION_DEPLOY<a class="headerlink" href="#vs-no-solution-deploy" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:VS_NO_SOLUTION_DEPLOY"></span><h1>VS_NO_SOLUTION_DEPLOY<a class="headerlink" href="#vs-no-solution-deploy" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.15.</span></p>
 </div>
@@ -85,18 +82,18 @@ tagged for deployment to the IP address configured for that project even
 if those dependencies are not tagged for deployment.</p></li>
 </ul>
 <section id="example-1">
-<h2>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">¶</a></h2>
+<h2>Example 1<a class="headerlink" href="#example-1" title="Link to this heading">¶</a></h2>
 <p>This shows setting the variable for the target foo.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">foo</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="nb">foo.cpp</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">foo</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">VS_NO_SOLUTION_DEPLOY</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">foo</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="nb">foo.cpp</span><span class="nf">)</span>
+<span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">foo</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">VS_NO_SOLUTION_DEPLOY</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span>
 </pre></div>
 </div>
 </section>
 <section id="example-2">
-<h2>Example 2<a class="headerlink" href="#example-2" title="Permalink to this heading">¶</a></h2>
+<h2>Example 2<a class="headerlink" href="#example-2" title="Link to this heading">¶</a></h2>
 <p>This shows setting the variable for the Release configuration only.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">foo</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="nb">foo.cpp</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">foo</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">VS_NO_SOLUTION_DEPLOY</span><span class="w"> </span><span class="s">&quot;$&lt;CONFIG:Release&gt;&quot;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">foo</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="nb">foo.cpp</span><span class="nf">)</span>
+<span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">foo</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">VS_NO_SOLUTION_DEPLOY</span><span class="w"> </span><span class="s">&quot;$&lt;CONFIG:Release&gt;&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
 </section>
@@ -171,7 +168,7 @@ if those dependencies are not tagged for deployment.</p></li>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -180,8 +177,8 @@ if those dependencies are not tagged for deployment.</p></li>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

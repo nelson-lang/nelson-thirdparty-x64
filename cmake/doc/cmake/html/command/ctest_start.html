@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>ctest_start &mdash; CMake 3.26.3 Documentation</title>
+  <title>ctest_start &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="ctest_submit" href="ctest_submit.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,11 +57,11 @@
           <div class="body" role="main">
             
   <section id="ctest-start">
-<span id="command:ctest_start"></span><h1>ctest_start<a class="headerlink" href="#ctest-start" title="Permalink to this heading">¶</a></h1>
+<span id="command:ctest_start"></span><h1>ctest_start<a class="headerlink" href="#ctest-start" title="Link to this heading">¶</a></h1>
 <p>Starts the testing for a given model</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">ctest_start(</span><span class="nv">&lt;model&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;source&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;binary&gt;</span><span class="p">]]</span><span class="w"> </span><span class="p">[</span><span class="no">GROUP</span><span class="w"> </span><span class="nv">&lt;group&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">QUIET</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">ctest_start(</span><span class="nv">&lt;model&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;source&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;binary&gt;</span><span class="p">]]</span><span class="w"> </span><span class="p">[</span><span class="no">GROUP</span><span class="w"> </span><span class="nv">&lt;group&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">QUIET</span><span class="p">]</span><span class="nf">)</span>
 
-<span class="nf">ctest_start(</span><span class="p">[</span><span class="nv">&lt;model&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;source&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;binary&gt;</span><span class="p">]]]</span><span class="w"> </span><span class="p">[</span><span class="no">GROUP</span><span class="w"> </span><span class="nv">&lt;group&gt;</span><span class="p">]</span><span class="w"> </span><span class="no">APPEND</span><span class="w"> </span><span class="p">[</span><span class="no">QUIET</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">ctest_start(</span><span class="p">[</span><span class="nv">&lt;model&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;source&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;binary&gt;</span><span class="p">]]]</span><span class="w"> </span><span class="p">[</span><span class="no">GROUP</span><span class="w"> </span><span class="nv">&lt;group&gt;</span><span class="p">]</span><span class="w"> </span><span class="no">APPEND</span><span class="w"> </span><span class="p">[</span><span class="no">QUIET</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Starts the testing for a given model.  The command should be called
@@ -92,11 +89,11 @@ change its behavior is unchanged.</p>
 one based on the current time stamp. If you use <code class="docutils literal notranslate"><span class="pre">APPEND</span></code>, you can omit the
 <code class="docutils literal notranslate"><span class="pre">&lt;model&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">GROUP</span> <span class="pre">&lt;group&gt;</span></code> parameters, because they will be read from
 the generated <code class="docutils literal notranslate"><span class="pre">TAG</span></code> file. For example:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">ctest_start(</span><span class="nb">Experimental</span><span class="w"> </span><span class="no">GROUP</span><span class="w"> </span><span class="nb">GroupExperimental</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">ctest_start(</span><span class="nb">Experimental</span><span class="w"> </span><span class="no">GROUP</span><span class="w"> </span><span class="nb">GroupExperimental</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Later, in another <a class="reference internal" href="../manual/ctest.1.html#cmdoption-ctest-S"><code class="xref std std-option docutils literal notranslate"><span class="pre">ctest</span> <span class="pre">-S</span></code></a> script:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">ctest_start(</span><span class="no">APPEND</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">ctest_start(</span><span class="no">APPEND</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>When the second script runs <code class="docutils literal notranslate"><span class="pre">ctest_start(APPEND)</span></code>, it will read the
@@ -117,11 +114,11 @@ otherwise would have printed to the console.</p>
 exception that <code class="docutils literal notranslate"><span class="pre">&lt;model&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;source&gt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;binary&gt;</span></code> have to appear
 in that order with respect to each other. The following are all valid and
 equivalent:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">ctest_start(</span><span class="nb">Experimental</span><span class="w"> </span><span class="na">path/to/source</span><span class="w"> </span><span class="na">path/to/binary</span><span class="w"> </span><span class="no">GROUP</span><span class="w"> </span><span class="nb">SomeGroup</span><span class="w"> </span><span class="no">QUIET</span><span class="w"> </span><span class="no">APPEND</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">ctest_start(</span><span class="nb">Experimental</span><span class="w"> </span><span class="na">path/to/source</span><span class="w"> </span><span class="na">path/to/binary</span><span class="w"> </span><span class="no">GROUP</span><span class="w"> </span><span class="nb">SomeGroup</span><span class="w"> </span><span class="no">QUIET</span><span class="w"> </span><span class="no">APPEND</span><span class="nf">)</span>
 
-<span class="nf">ctest_start(</span><span class="no">GROUP</span><span class="w"> </span><span class="nb">SomeGroup</span><span class="w"> </span><span class="nb">Experimental</span><span class="w"> </span><span class="no">QUIET</span><span class="w"> </span><span class="na">path/to/source</span><span class="w"> </span><span class="no">APPEND</span><span class="w"> </span><span class="na">path/to/binary</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">ctest_start(</span><span class="no">GROUP</span><span class="w"> </span><span class="nb">SomeGroup</span><span class="w"> </span><span class="nb">Experimental</span><span class="w"> </span><span class="no">QUIET</span><span class="w"> </span><span class="na">path/to/source</span><span class="w"> </span><span class="no">APPEND</span><span class="w"> </span><span class="na">path/to/binary</span><span class="nf">)</span>
 
-<span class="nf">ctest_start(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">QUIET</span><span class="w"> </span><span class="nb">Experimental</span><span class="w"> </span><span class="na">path/to/source</span><span class="w"> </span><span class="no">GROUP</span><span class="w"> </span><span class="nb">SomeGroup</span><span class="w"> </span><span class="na">path/to/binary</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">ctest_start(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">QUIET</span><span class="w"> </span><span class="nb">Experimental</span><span class="w"> </span><span class="na">path/to/source</span><span class="w"> </span><span class="no">GROUP</span><span class="w"> </span><span class="nb">SomeGroup</span><span class="w"> </span><span class="na">path/to/binary</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>However, for the sake of readability, it is recommended that you order your
@@ -192,7 +189,7 @@ repository.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -201,8 +198,8 @@ repository.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

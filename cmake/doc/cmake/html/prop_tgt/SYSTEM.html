@@ -1,26 +1,23 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>SYSTEM &mdash; CMake 3.26.3 Documentation</title>
+  <title>SYSTEM &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="TYPE" href="TYPE.html" />
+    <link rel="next" title="TEST_LAUNCHER" href="TEST_LAUNCHER.html" />
     <link rel="prev" title="Swift_MODULE_NAME" href="Swift_MODULE_NAME.html" />
  
 
@@ -33,7 +30,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="TYPE.html" title="TYPE"
+          <a href="TEST_LAUNCHER.html" title="TEST_LAUNCHER"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="Swift_MODULE_NAME.html" title="Swift_MODULE_NAME"
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="system">
-<span id="prop_tgt:SYSTEM"></span><h1>SYSTEM<a class="headerlink" href="#system" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:SYSTEM"></span><h1>SYSTEM<a class="headerlink" href="#system" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.25.</span></p>
 </div>
@@ -71,13 +68,17 @@ effects:</p>
 system include directories when compiling consumers.
 Entries of <span class="target" id="index-0-prop_tgt:INTERFACE_SYSTEM_INCLUDE_DIRECTORIES"></span><a class="reference internal" href="INTERFACE_SYSTEM_INCLUDE_DIRECTORIES.html#prop_tgt:INTERFACE_SYSTEM_INCLUDE_DIRECTORIES" title="INTERFACE_SYSTEM_INCLUDE_DIRECTORIES"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">INTERFACE_SYSTEM_INCLUDE_DIRECTORIES</span></code></a> are not
 affected, and will always be treated as system include directories.</p></li>
+<li><p>On Apple platforms, If the <span class="target" id="index-0-prop_tgt:FRAMEWORK"></span><a class="reference internal" href="FRAMEWORK.html#prop_tgt:FRAMEWORK" title="FRAMEWORK"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">FRAMEWORK</span></code></a> target property is true,
+the frameworks directory is treated as system.</p></li>
 </ul>
 <p>For imported targets, this property defaults to true, which means
-that their <span class="target" id="index-1-prop_tgt:INTERFACE_INCLUDE_DIRECTORIES"></span><a class="reference internal" href="INTERFACE_INCLUDE_DIRECTORIES.html#prop_tgt:INTERFACE_INCLUDE_DIRECTORIES" title="INTERFACE_INCLUDE_DIRECTORIES"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">INTERFACE_INCLUDE_DIRECTORIES</span></code></a> are treated
-as system directories by default.  If their <code class="docutils literal notranslate"><span class="pre">SYSTEM</span></code> property is false,
-then their <span class="target" id="index-2-prop_tgt:INTERFACE_INCLUDE_DIRECTORIES"></span><a class="reference internal" href="INTERFACE_INCLUDE_DIRECTORIES.html#prop_tgt:INTERFACE_INCLUDE_DIRECTORIES" title="INTERFACE_INCLUDE_DIRECTORIES"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">INTERFACE_INCLUDE_DIRECTORIES</span></code></a> will not be
-treated as system.  Use the <span class="target" id="index-0-prop_tgt:EXPORT_NO_SYSTEM"></span><a class="reference internal" href="EXPORT_NO_SYSTEM.html#prop_tgt:EXPORT_NO_SYSTEM" title="EXPORT_NO_SYSTEM"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">EXPORT_NO_SYSTEM</span></code></a> property to change
-how a target's <code class="docutils literal notranslate"><span class="pre">SYSTEM</span></code> property is set when it is installed.</p>
+that their <span class="target" id="index-1-prop_tgt:INTERFACE_INCLUDE_DIRECTORIES"></span><a class="reference internal" href="INTERFACE_INCLUDE_DIRECTORIES.html#prop_tgt:INTERFACE_INCLUDE_DIRECTORIES" title="INTERFACE_INCLUDE_DIRECTORIES"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">INTERFACE_INCLUDE_DIRECTORIES</span></code></a> and, if the
+<span class="target" id="index-1-prop_tgt:FRAMEWORK"></span><a class="reference internal" href="FRAMEWORK.html#prop_tgt:FRAMEWORK" title="FRAMEWORK"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">FRAMEWORK</span></code></a> target property is true, frameworks directory are
+treated as system directories by default.  If their <code class="docutils literal notranslate"><span class="pre">SYSTEM</span></code> property is
+false, then their <span class="target" id="index-2-prop_tgt:INTERFACE_INCLUDE_DIRECTORIES"></span><a class="reference internal" href="INTERFACE_INCLUDE_DIRECTORIES.html#prop_tgt:INTERFACE_INCLUDE_DIRECTORIES" title="INTERFACE_INCLUDE_DIRECTORIES"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">INTERFACE_INCLUDE_DIRECTORIES</span></code></a> as well as
+frameworks will not be treated as system.  Use the <span class="target" id="index-0-prop_tgt:EXPORT_NO_SYSTEM"></span><a class="reference internal" href="EXPORT_NO_SYSTEM.html#prop_tgt:EXPORT_NO_SYSTEM" title="EXPORT_NO_SYSTEM"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">EXPORT_NO_SYSTEM</span></code></a>
+property to change how a target's <code class="docutils literal notranslate"><span class="pre">SYSTEM</span></code> property is set when it is
+installed.</p>
 <p>For non-imported targets, this target property is initialized from
 the <span class="target" id="index-0-prop_dir:SYSTEM"></span><a class="reference internal" href="../prop_dir/SYSTEM.html#prop_dir:SYSTEM" title="SYSTEM"><code class="xref cmake cmake-prop_dir docutils literal notranslate"><span class="pre">SYSTEM</span></code></a> directory property when the target is created.</p>
 </section>
@@ -96,8 +97,8 @@ the <span class="target" id="index-0-prop_dir:SYSTEM"></span><a class="reference
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="TYPE.html"
-                          title="next chapter">TYPE</a></p>
+    <p class="topless"><a href="TEST_LAUNCHER.html"
+                          title="next chapter">TEST_LAUNCHER</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -127,7 +128,7 @@ the <span class="target" id="index-0-prop_dir:SYSTEM"></span><a class="reference
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="TYPE.html" title="TYPE"
+          <a href="TEST_LAUNCHER.html" title="TEST_LAUNCHER"
              >next</a> |</li>
         <li class="right" >
           <a href="Swift_MODULE_NAME.html" title="Swift_MODULE_NAME"
@@ -140,7 +141,7 @@ the <span class="target" id="index-0-prop_dir:SYSTEM"></span><a class="reference
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -149,8 +150,8 @@ the <span class="target" id="index-0-prop_dir:SYSTEM"></span><a class="reference
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

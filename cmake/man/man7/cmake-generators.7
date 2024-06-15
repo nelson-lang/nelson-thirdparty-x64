@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "CMAKE-GENERATORS" "7" "Apr 04, 2023" "3.26.3" "CMake"
+.TH "CMAKE-GENERATORS" "7" "Jun 14, 2024" "3.30.0" "CMake"
 .SH NAME
 cmake-generators \- CMake Generators Reference
 .SH INTRODUCTION
@@ -125,11 +125,43 @@ Generates Watcom WMake makefiles.
 .SS Ninja Generators
 .SS Ninja
 .sp
-Generates \fBbuild.ninja\fP files.
+Generates a \fBbuild.ninja\fP file into the build tree.
+.SS Builtin Targets
 .sp
-A \fBbuild.ninja\fP file is generated into the build tree.  Use the ninja
-program to build the project through the \fBall\fP target and install the
-project through the \fBinstall\fP (or \fBinstall/strip\fP) target.
+\fBall\fP
+.INDENT 0.0
+.INDENT 3.5
+Depends on all targets required by the project, except those with
+\fI\%EXCLUDE_FROM_ALL\fP set to true.
+.UNINDENT
+.UNINDENT
+.sp
+\fBinstall\fP
+.INDENT 0.0
+.INDENT 3.5
+Runs the install step.
+.UNINDENT
+.UNINDENT
+.sp
+\fBinstall/strip\fP
+.INDENT 0.0
+.INDENT 3.5
+New in version 3.7: Runs the install followed by a \fBCMAKE_STRIP\fP command, if any.
+.sp
+The \fBCMAKE_STRIP\fP variable will contain the platform\(aqs \fBstrip\fP utility, which
+removes symbols information from generated binaries.
+
+.UNINDENT
+.UNINDENT
+.sp
+\fBinstall/parallel\fP
+.INDENT 0.0
+.INDENT 3.5
+New in version 3.30: Created only if the \fI\%INSTALL_PARALLEL\fP global property is \fBON\fP\&.
+Runs the install step for each subdirectory independently and in parallel.
+
+.UNINDENT
+.UNINDENT
 .sp
 For each subdirectory \fBsub/dir\fP of the project, additional targets
 are generated:
@@ -155,9 +187,6 @@ New in version 3.7: Runs the install step in the subdirectory, if any.
 .INDENT 3.5
 New in version 3.7: Runs the install step in the subdirectory followed by a \fBCMAKE_STRIP\fP command,
 if any.
-.sp
-The \fBCMAKE_STRIP\fP variable will contain the platform\(aqs \fBstrip\fP utility, which
-removes symbols information from generated binaries.
 
 .UNINDENT
 .UNINDENT
@@ -432,112 +461,40 @@ the generator has been removed since CMake 3.12.  It is still possible to
 build with VS 2005 tools using the \fI\%NMake Makefiles\fP generator.
 .SS Visual Studio 9 2008
 .sp
-Generates Visual Studio 9 2008 project files.
-.SS Platform Selection
-.sp
-The default target platform name (architecture) is \fBWin32\fP\&.
-.sp
-New in version 3.1: The \fI\%CMAKE_GENERATOR_PLATFORM\fP variable may be set, perhaps
-via the \fI\%cmake \-A\fP option, to specify a target platform
-name (architecture).  For example:
-.INDENT 0.0
-.IP \(bu 2
-\fBcmake \-G \(dqVisual Studio 9 2008\(dq \-A Win32\fP
-.IP \(bu 2
-\fBcmake \-G \(dqVisual Studio 9 2008\(dq \-A x64\fP
-.IP \(bu 2
-\fBcmake \-G \(dqVisual Studio 9 2008\(dq \-A Itanium\fP
-.IP \(bu 2
-\fBcmake \-G \(dqVisual Studio 9 2008\(dq \-A <WinCE\-SDK>\fP
-(Specify a target platform matching a Windows CE SDK name.)
-.UNINDENT
-
-.sp
-For compatibility with CMake versions prior to 3.1, one may specify
-a target platform name optionally at the end of the generator name.
-This is supported only for:
-.INDENT 0.0
-.TP
-.B \fBVisual Studio 9 2008 Win64\fP
-Specify target platform \fBx64\fP\&.
-.TP
-.B \fBVisual Studio 9 2008 IA64\fP
-Specify target platform \fBItanium\fP\&.
-.TP
-.B \fBVisual Studio 9 2008 <WinCE\-SDK>\fP
-Specify target platform matching a Windows CE SDK name.
-.UNINDENT
+Removed.  This once generated Visual Studio 9 2008 project files, but
+the generator has been removed since CMake 3.30.  It is still possible
+to build with VS 9 2008 tools using the \fI\%Visual Studio 14 2015\fP
+generator (or above, and with VS 10 2010 also installed) with
+\fI\%CMAKE_GENERATOR_TOOLSET\fP set to \fBv90\fP, or by using
+the \fI\%NMake Makefiles\fP generator.
 .SS Visual Studio 10 2010
 .sp
 Removed.  This once generated Visual Studio 10 2010 project files, but
 the generator has been removed since CMake 3.25.  It is still possible
-to build with VS 10 2010 tools using the \fI\%Visual Studio 12 2013\fP
+to build with VS 10 2010 tools using the \fI\%Visual Studio 14 2015\fP
 (or above) generator with \fI\%CMAKE_GENERATOR_TOOLSET\fP set to
 \fBv100\fP, or by using the \fI\%NMake Makefiles\fP generator.
 .SS Visual Studio 11 2012
 .sp
-Deprecated.  Generates Visual Studio 11 (VS 2012) project files.
+Removed.  This once generated Visual Studio 11 2012 project files, but
+the generator has been removed since CMake 3.28.  It is still possible
+to build with VS 11 2012 tools using the \fI\%Visual Studio 14 2015\fP
+(or above) generator with \fI\%CMAKE_GENERATOR_TOOLSET\fP set to \fBv110\fP,
+or by using the \fI\%NMake Makefiles\fP generator.
+.SS Visual Studio 12 2013
+.sp
+Deprecated.  Generates Visual Studio 12 (VS 2013) project files.
 .sp
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
 This generator is deprecated and will be removed in a future version
-of CMake.  It will still be possible to build with VS 11 2012 tools
-using the \fI\%Visual Studio 12 2013\fP (or above) generator
-with \fI\%CMAKE_GENERATOR_TOOLSET\fP set to \fBv110\fP, or by
+of CMake.  It will still be possible to build with VS 12 2013 tools
+using the \fI\%Visual Studio 14 2015\fP (or above) generator
+with \fI\%CMAKE_GENERATOR_TOOLSET\fP set to \fBv120\fP, or by
 using the \fI\%NMake Makefiles\fP generator.
 .UNINDENT
 .UNINDENT
-.sp
-For compatibility with CMake versions prior to 3.0, one may specify this
-generator using the name \(dqVisual Studio 11\(dq without the year component.
-.SS Project Types
-.sp
-Only Visual C++ and C# projects may be generated (and Fortran with
-Intel compiler integration).  Other types of projects (JavaScript,
-Database, Website, etc.) are not supported.
-.SS Platform Selection
-.sp
-The default target platform name (architecture) is \fBWin32\fP\&.
-.sp
-New in version 3.1: The \fI\%CMAKE_GENERATOR_PLATFORM\fP variable may be set, perhaps
-via the \fI\%cmake \-A\fP option, to specify a target platform
-name (architecture).  For example:
-.INDENT 0.0
-.IP \(bu 2
-\fBcmake \-G \(dqVisual Studio 11 2012\(dq \-A Win32\fP
-.IP \(bu 2
-\fBcmake \-G \(dqVisual Studio 11 2012\(dq \-A x64\fP
-.IP \(bu 2
-\fBcmake \-G \(dqVisual Studio 11 2012\(dq \-A ARM\fP
-.IP \(bu 2
-\fBcmake \-G \(dqVisual Studio 11 2012\(dq \-A <WinCE\-SDK>\fP
-(Specify a target platform matching a Windows CE SDK name.)
-.UNINDENT
-
-.sp
-For compatibility with CMake versions prior to 3.1, one may specify
-a target platform name optionally at the end of the generator name.
-This is supported only for:
-.INDENT 0.0
-.TP
-.B \fBVisual Studio 11 2012 Win64\fP
-Specify target platform \fBx64\fP\&.
-.TP
-.B \fBVisual Studio 11 2012 ARM\fP
-Specify target platform \fBARM\fP\&.
-.TP
-.B \fBVisual Studio 11 2012 <WinCE\-SDK>\fP
-Specify target platform matching a Windows CE SDK name.
-.UNINDENT
-.SS Toolset Selection
-.sp
-The \fBv110\fP toolset that comes with Visual Studio 11 2012 is selected by
-default.  The \fI\%CMAKE_GENERATOR_TOOLSET\fP option may be set, perhaps
-via the \fI\%cmake \-T\fP option, to specify another toolset.
-.SS Visual Studio 12 2013
-.sp
-Generates Visual Studio 12 (VS 2013) project files.
 .sp
 For compatibility with CMake versions prior to 3.0, one may specify this
 generator using the name \(dqVisual Studio 12\(dq without the year component.
@@ -1031,7 +988,7 @@ variables:
 \fBNOTE:\fP
 .INDENT 0.0
 .INDENT 3.5
-This generator is deemed experimental as of CMake 3.26.3
+This generator is deemed experimental as of CMake 3.30.0\-rc3
 and is still a work in progress.  Future versions of CMake
 may make breaking changes as the generator matures.
 .UNINDENT
@@ -1098,12 +1055,22 @@ add_executable(MyApp mymain\-$<CONFIG>.cpp)
 .UNINDENT
 .SH EXTRA GENERATORS
 .sp
+Deprecated since version 3.27: Support for \(dqExtra Generators\(dq is deprecated and will be removed from
+a future version of CMake.  IDEs may use the \fI\%cmake\-file\-api(7)\fP
+to view CMake\-generated project build trees.
+
+.sp
 Some of the \fI\%CMake Generators\fP listed in the \fI\%cmake(1)\fP
 command\-line tool \fI\%\-\-help\fP output may have
 variants that specify an extra generator for an auxiliary IDE tool.
 Such generator names have the form \fB<extra\-generator> \- <main\-generator>\fP\&.
 The following extra generators are known to CMake.
 .SS CodeBlocks
+.sp
+Deprecated since version 3.27: Support for \fI\%Extra Generators\fP is deprecated and will be removed from
+a future version of CMake.  IDEs may use the \fI\%cmake\-file\-api(7)\fP
+to view CMake\-generated project build trees.
+
 .sp
 Generates CodeBlocks project files.
 .sp
@@ -1141,6 +1108,11 @@ Generate with \fI\%Unix Makefiles\fP\&.
 .UNINDENT
 .SS CodeLite
 .sp
+Deprecated since version 3.27: Support for \fI\%Extra Generators\fP is deprecated and will be removed from
+a future version of CMake.  IDEs may use the \fI\%cmake\-file\-api(7)\fP
+to view CMake\-generated project build trees.
+
+.sp
 Generates CodeLite project files.
 .sp
 Project files for CodeLite will be created in the top directory and
@@ -1172,6 +1144,11 @@ Generate with \fI\%Unix Makefiles\fP\&.
 .UNINDENT
 .SS Eclipse CDT4
 .sp
+Deprecated since version 3.27: Support for \fI\%Extra Generators\fP is deprecated and will be removed from
+a future version of CMake.  IDEs may use the \fI\%cmake\-file\-api(7)\fP
+to view CMake\-generated project build trees.
+
+.sp
 Generates Eclipse CDT 4.0 project files.
 .sp
 Project files for Eclipse will be created in the top directory.  In
@@ -1198,6 +1175,11 @@ Generate with \fI\%Unix Makefiles\fP\&.
 .UNINDENT
 .SS Kate
 .sp
+Deprecated since version 3.27: Support for \fI\%Extra Generators\fP is deprecated and will be removed from
+a future version of CMake.  IDEs may use the \fI\%cmake\-file\-api(7)\fP
+to view CMake\-generated project build trees.
+
+.sp
 Generates Kate project files.
 .sp
 A project file for Kate will be created in the top directory in the top level
@@ -1220,10 +1202,18 @@ Generate with \fI\%NMake Makefiles\fP\&.
 .B \fBKate \- Ninja\fP
 Generate with \fI\%Ninja\fP\&.
 .TP
+.B \fBKate \- Ninja Multi\-Config\fP
+Generate with \fI\%Ninja Multi\-Config\fP\&.
+.TP
 .B \fBKate \- Unix Makefiles\fP
 Generate with \fI\%Unix Makefiles\fP\&.
 .UNINDENT
 .SS Sublime Text 2
+.sp
+Deprecated since version 3.27: Support for \fI\%Extra Generators\fP is deprecated and will be removed from
+a future version of CMake.  IDEs may use the \fI\%cmake\-file\-api(7)\fP
+to view CMake\-generated project build trees.
+
 .sp
 Generates Sublime Text 2 project files.
 .sp
@@ -1250,6 +1240,6 @@ Generate with \fI\%Ninja\fP\&.
 Generate with \fI\%Unix Makefiles\fP\&.
 .UNINDENT
 .SH COPYRIGHT
-2000-2023 Kitware, Inc. and Contributors
+2000-2024 Kitware, Inc. and Contributors
 .\" Generated by docutils manpage writer.
 .

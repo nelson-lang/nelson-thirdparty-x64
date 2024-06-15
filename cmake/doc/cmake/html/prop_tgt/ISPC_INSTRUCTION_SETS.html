@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>ISPC_INSTRUCTION_SETS &mdash; CMake 3.26.3 Documentation</title>
+  <title>ISPC_INSTRUCTION_SETS &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="JOB_POOL_COMPILE" href="JOB_POOL_COMPILE.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="ispc-instruction-sets">
-<span id="prop_tgt:ISPC_INSTRUCTION_SETS"></span><h1>ISPC_INSTRUCTION_SETS<a class="headerlink" href="#ispc-instruction-sets" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:ISPC_INSTRUCTION_SETS"></span><h1>ISPC_INSTRUCTION_SETS<a class="headerlink" href="#ispc-instruction-sets" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.19.</span></p>
 </div>
@@ -70,8 +67,8 @@ variable if it is set when a target is created.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">ISPC_INSTRUCTION_SETS</span></code> target property must be used when generating for multiple
 instruction sets so that CMake can track what object files will be generated.</p>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">tgt</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">ISPC_INSTRUCTION_SETS</span><span class="w"> </span><span class="nb">avx2-i32x4</span><span class="w"> </span><span class="nb">avx512skx-i32x835</span><span class="nf">)</span><span class="w"></span>
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">tgt</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">ISPC_INSTRUCTION_SETS</span><span class="w"> </span><span class="nb">avx2-i32x4</span><span class="w"> </span><span class="nb">avx512skx-i32x835</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Generates code for avx2 and avx512skx target architectures.</p>
@@ -146,7 +143,7 @@ instruction sets so that CMake can track what object files will be generated.</p
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -155,8 +152,8 @@ instruction sets so that CMake can track what object files will be generated.</p
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

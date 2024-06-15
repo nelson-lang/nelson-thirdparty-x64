@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindPhysFS &mdash; CMake 3.26.3 Documentation</title>
+  <title>FindPhysFS &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindPike" href="FindPike.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -60,13 +57,21 @@
           <div class="body" role="main">
             
   <section id="findphysfs">
-<span id="module:FindPhysFS"></span><h1>FindPhysFS<a class="headerlink" href="#findphysfs" title="Permalink to this heading">¶</a></h1>
-<p>Locate PhysFS library This module defines PHYSFS_LIBRARY, the name of
-the library to link against PHYSFS_FOUND, if false, do not try to link
-to PHYSFS PHYSFS_INCLUDE_DIR, where to find physfs.h</p>
-<p>$PHYSFSDIR is an environment variable that would correspond to the
-./configure --prefix=$PHYSFSDIR used in building PHYSFS.</p>
-<p>Created by Eric Wing.</p>
+<span id="module:FindPhysFS"></span><h1>FindPhysFS<a class="headerlink" href="#findphysfs" title="Link to this heading">¶</a></h1>
+<p>Locate PhysFS library This module defines:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">PHYSFS_LIBRARY</span></code></dt><dd><p>the name of the library to link against</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PHYSFS_FOUND</span></code></dt><dd><p>if false, do not try to link to PHYSFS</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PHYSFS_INCLUDE_DIR</span></code></dt><dd><p>where to find physfs.h</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">$PHYSFSDIR</span></code> is an environment variable that would correspond to:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./configure --prefix=$PHYSFSDIR
+</pre></div>
+</div>
+<p>used in building PHYSFS.</p>
 </section>
 
 
@@ -127,7 +132,7 @@ to PHYSFS PHYSFS_INCLUDE_DIR, where to find physfs.h</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -136,8 +141,8 @@ to PHYSFS PHYSFS_INCLUDE_DIR, where to find physfs.h</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

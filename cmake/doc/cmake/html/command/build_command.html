@@ -1,26 +1,23 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>build_command &mdash; CMake 3.26.3 Documentation</title>
+  <title>build_command &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="create_test_sourcelist" href="create_test_sourcelist.html" />
+    <link rel="next" title="cmake_file_api" href="cmake_file_api.html" />
     <link rel="prev" title="aux_source_directory" href="aux_source_directory.html" />
  
 
@@ -33,7 +30,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="create_test_sourcelist.html" title="create_test_sourcelist"
+          <a href="cmake_file_api.html" title="cmake_file_api"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="aux_source_directory.html" title="aux_source_directory"
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,15 +57,15 @@
           <div class="body" role="main">
             
   <section id="build-command">
-<span id="command:build_command"></span><h1>build_command<a class="headerlink" href="#build-command" title="Permalink to this heading">¶</a></h1>
+<span id="command:build_command"></span><h1>build_command<a class="headerlink" href="#build-command" title="Link to this heading">¶</a></h1>
 <p>Get a command line to build the current project.
 This is mainly intended for internal use by the <span class="target" id="index-0-module:CTest"></span><a class="reference internal" href="../module/CTest.html#module:CTest" title="CTest"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">CTest</span></code></a> module.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">build_command(</span><span class="nv">&lt;variable&gt;</span><span class="w"></span>
-<span class="w">              </span><span class="p">[</span><span class="no">CONFIGURATION</span><span class="w"> </span><span class="nv">&lt;config&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">              </span><span class="p">[</span><span class="no">PARALLEL_LEVEL</span><span class="w"> </span><span class="nv">&lt;parallel&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">              </span><span class="p">[</span><span class="no">TARGET</span><span class="w"> </span><span class="nv">&lt;target&gt;</span><span class="p">]</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">build_command(</span><span class="nv">&lt;variable&gt;</span>
+<span class="w">              </span><span class="p">[</span><span class="no">CONFIGURATION</span><span class="w"> </span><span class="nv">&lt;config&gt;</span><span class="p">]</span>
+<span class="w">              </span><span class="p">[</span><span class="no">PARALLEL_LEVEL</span><span class="w"> </span><span class="nv">&lt;parallel&gt;</span><span class="p">]</span>
+<span class="w">              </span><span class="p">[</span><span class="no">TARGET</span><span class="w"> </span><span class="nv">&lt;target&gt;</span><span class="p">]</span>
 <span class="w">              </span><span class="p">[</span><span class="no">PROJECT_NAME</span><span class="w"> </span><span class="nv">&lt;projname&gt;</span><span class="p">]</span><span class="w"> </span><span class="c"># legacy, causes warning</span>
-<span class="w">             </span><span class="nf">)</span><span class="w"></span>
+<span class="w">             </span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Sets the given <code class="docutils literal notranslate"><span class="pre">&lt;variable&gt;</span></code> to a command-line string of the form:</p>
@@ -87,7 +84,7 @@ underlying build system tool.</p>
 <p><span class="versionmodified added">New in version 3.21: </span>The <code class="docutils literal notranslate"><span class="pre">PARALLEL_LEVEL</span></code> argument can be used to set the
 <a class="reference internal" href="../manual/cmake.1.html#cmdoption-cmake-build-j"><code class="xref std std-option docutils literal notranslate"><span class="pre">--parallel</span></code></a> flag.</p>
 </div>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">build_command(</span><span class="nv">&lt;cachevariable&gt;</span><span class="w"> </span><span class="nv">&lt;makecommand&gt;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">build_command(</span><span class="nv">&lt;cachevariable&gt;</span><span class="w"> </span><span class="nv">&lt;makecommand&gt;</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>This second signature is deprecated, but still available for backwards
@@ -120,8 +117,8 @@ had no useful effects, so CMake now warns on use of the option.</p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="create_test_sourcelist.html"
-                          title="next chapter">create_test_sourcelist</a></p>
+    <p class="topless"><a href="cmake_file_api.html"
+                          title="next chapter">cmake_file_api</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -151,7 +148,7 @@ had no useful effects, so CMake now warns on use of the option.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="create_test_sourcelist.html" title="create_test_sourcelist"
+          <a href="cmake_file_api.html" title="cmake_file_api"
              >next</a> |</li>
         <li class="right" >
           <a href="aux_source_directory.html" title="aux_source_directory"
@@ -164,7 +161,7 @@ had no useful effects, so CMake now warns on use of the option.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -173,8 +170,8 @@ had no useful effects, so CMake now warns on use of the option.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

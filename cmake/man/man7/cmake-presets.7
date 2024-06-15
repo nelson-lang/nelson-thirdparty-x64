@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "CMAKE-PRESETS" "7" "Apr 04, 2023" "3.26.3" "CMake"
+.TH "CMAKE-PRESETS" "7" "Jun 14, 2024" "3.30.0" "CMake"
 .SH NAME
 cmake-presets \- CMakePresets.json
 .SH INTRODUCTION
@@ -176,6 +176,15 @@ The files are a JSON document with an object as the root:
 The root object recognizes the following fields:
 .INDENT 0.0
 .TP
+.B \fB$schema\fP
+An optional string that provides a URI to the JSON schema that describes the
+structure of this JSON document. This field is used for validation and
+autocompletion in editors that support JSON schema. It doesn\(aqt affect the
+behavior of the document itself. If this field is not specified, the JSON
+document will still be valid, but tools that use JSON schema for validation
+and autocompletion may not function correctly.
+This is allowed in preset files specifying version \fB8\fP or above.
+.TP
 .B \fBversion\fP
 A required integer representing the version of the JSON schema.
 The supported versions are:
@@ -203,6 +212,18 @@ New in version 3.24.
 .TP
 .B \fB6\fP
 New in version 3.25.
+
+.TP
+.B \fB7\fP
+New in version 3.27.
+
+.TP
+.B \fB8\fP
+New in version 3.28.
+
+.TP
+.B \fB9\fP
+New in version 3.30.
 
 .UNINDENT
 .TP
@@ -273,6 +294,12 @@ included multiple times from the same file or from different files.
 Files directly or indirectly included from \fBCMakePresets.json\fP should be
 guaranteed to be provided by the project. \fBCMakeUserPresets.json\fP may
 include files from anywhere.
+.sp
+Starting from version \fB7\fP, the \fBinclude\fP field supports
+\fI\%macro expansion\fP, but only \fB$penv{}\fP macro expansion. Starting from version
+\fB9\fP, other macro expansions are also available, except for \fB$env{}\fP and
+preset\-specific macros, i.e., those derived from the fields inside a preset\(aqs
+definition like \fBpresetName\fP\&.
 .SS Configure Preset
 .sp
 Each entry of the \fBconfigurePresets\fP array is a JSON object
@@ -512,6 +539,58 @@ line.
 .B \fBfind\fP
 An optional boolean. Setting this to \fBtrue\fP is equivalent to passing
 \fI\%\-\-debug\-find\fP on the command line.
+.UNINDENT
+.TP
+.B \fBtrace\fP
+An optional object specifying trace options. This is allowed in preset
+files specifying version \fB7\fP\&. The object may contain the following fields:
+.INDENT 7.0
+.TP
+.B \fBmode\fP
+An optional string that specifies the trace mode. Valid values are:
+.INDENT 7.0
+.TP
+.B \fBon\fP
+Causes a trace of all calls made and from where to be printed.
+Equivalent to passing \fI\%\-\-trace\fP on the command
+line.
+.TP
+.B \fBoff\fP
+A trace of all calls will not be printed.
+.TP
+.B \fBexpand\fP
+Causes a trace with variables expanded of all calls made and from where
+to be printed. Equivalent to passing \fI\%\-\-trace\-expand\fP
+on the command line.
+.UNINDENT
+.TP
+.B \fBformat\fP
+An optional string that specifies the format output of the trace.
+Valid values are:
+.INDENT 7.0
+.TP
+.B \fBhuman\fP
+Prints each trace line in a human\-readable format.
+This is the default format.  Equivalent to passing
+\fI\%\-\-trace\-format=human\fP
+on the command line.
+.TP
+.B \fBjson\-v1\fP
+Prints each line as a separate JSON document.  Equivalent to passing
+\fI\%\-\-trace\-format=json\-v1\fP
+on the command line.
+.UNINDENT
+.TP
+.B \fBsource\fP
+An optional array of strings representing the paths of source files to
+be traced.  This field can also be a string, which is equivalent to an
+array containing one string.  Equivalent to passing
+\fI\%\-\-trace\-source\fP on the command line.
+.TP
+.B \fBredirect\fP
+An optional string specifying a path to a trace output file.  Equivalent
+to passing \fI\%\-\-trace\-redirect\fP
+on the command line.
 .UNINDENT
 .UNINDENT
 .SS Build Preset
@@ -1191,6 +1270,12 @@ two workflow presets in the union of \fBCMakePresets.json\fP and
 a workflow preset may have the same name as a configure, build, test, or
 package preset.
 .TP
+.B \fBvendor\fP
+An optional map containing vendor\-specific information. CMake does not
+interpret the contents of this field except to verify that it is a map
+if it does exist. However, it should follow the same conventions as the
+root\-level \fBvendor\fP field.
+.TP
 .B \fBdisplayName\fP
 An optional string with a human\-friendly name of the preset.
 .TP
@@ -1351,11 +1436,15 @@ The last filename component of \fB${sourceDir}\fP\&. For example, if
 .TP
 .B \fB${presetName}\fP
 Name specified in the preset\(aqs \fBname\fP field.
+.sp
+This is a preset\-specific macro.
 .TP
 .B \fB${generator}\fP
 Generator specified in the preset\(aqs \fBgenerator\fP field. For build and
 test presets, this will evaluate to the generator specified by
 \fBconfigurePreset\fP\&.
+.sp
+This is a preset\-specific macro.
 .TP
 .B \fB${hostSystemName}\fP
 The name of the host operating system. Contains the same value as
@@ -1417,6 +1506,6 @@ example, the Example IDE could have \fB$vendor{xide.ideInstallDir}\fP\&.
 \fBThis file\fP provides a machine\-readable
 JSON schema for the \fBCMakePresets.json\fP format.
 .SH COPYRIGHT
-2000-2023 Kitware, Inc. and Contributors
+2000-2024 Kitware, Inc. and Contributors
 .\" Generated by docutils manpage writer.
 .

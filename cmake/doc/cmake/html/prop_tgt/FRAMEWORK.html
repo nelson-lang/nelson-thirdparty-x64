@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FRAMEWORK &mdash; CMake 3.26.3 Documentation</title>
+  <title>FRAMEWORK &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FRAMEWORK_MULTI_CONFIG_POSTFIX_&lt;CONFIG&gt;" href="FRAMEWORK_MULTI_CONFIG_POSTFIX_CONFIG.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="framework">
-<span id="prop_tgt:FRAMEWORK"></span><h1>FRAMEWORK<a class="headerlink" href="#framework" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:FRAMEWORK"></span><h1>FRAMEWORK<a class="headerlink" href="#framework" title="Link to this heading">¶</a></h1>
 <p>Build <code class="docutils literal notranslate"><span class="pre">SHARED</span></code> or <code class="docutils literal notranslate"><span class="pre">STATIC</span></code> library as Framework Bundle on the macOS and iOS.</p>
 <p>If such a library target has this property set to <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> it will be
 built as a framework when built on the macOS and iOS.  It will have the
@@ -72,22 +69,22 @@ created.</p>
 <span class="target" id="index-0-prop_tgt:MACOSX_FRAMEWORK_INFO_PLIST"></span><a class="reference internal" href="MACOSX_FRAMEWORK_INFO_PLIST.html#prop_tgt:MACOSX_FRAMEWORK_INFO_PLIST" title="MACOSX_FRAMEWORK_INFO_PLIST"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">MACOSX_FRAMEWORK_INFO_PLIST</span></code></a> target property.</p>
 <p>For macOS see also the <span class="target" id="index-0-prop_tgt:FRAMEWORK_VERSION"></span><a class="reference internal" href="FRAMEWORK_VERSION.html#prop_tgt:FRAMEWORK_VERSION" title="FRAMEWORK_VERSION"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">FRAMEWORK_VERSION</span></code></a> target property.</p>
 <p>Example of creation <code class="docutils literal notranslate"><span class="pre">dynamicFramework</span></code>:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">dynamicFramework</span><span class="w"> </span><span class="no">SHARED</span><span class="w"></span>
-<span class="w">            </span><span class="nb">dynamicFramework.c</span><span class="w"></span>
-<span class="w">            </span><span class="nb">dynamicFramework.h</span><span class="w"></span>
-<span class="nf">)</span><span class="w"></span>
-<span class="nf">set_target_properties(</span><span class="nb">dynamicFramework</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"></span>
-<span class="w">  </span><span class="no">FRAMEWORK</span><span class="w"> </span><span class="no">TRUE</span><span class="w"></span>
-<span class="w">  </span><span class="no">FRAMEWORK_VERSION</span><span class="w"> </span><span class="no">C</span><span class="w"></span>
-<span class="w">  </span><span class="no">MACOSX_FRAMEWORK_IDENTIFIER</span><span class="w"> </span><span class="nb">com.cmake.dynamicFramework</span><span class="w"></span>
-<span class="w">  </span><span class="no">MACOSX_FRAMEWORK_INFO_PLIST</span><span class="w"> </span><span class="nb">Info.plist</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">dynamicFramework</span><span class="w"> </span><span class="no">SHARED</span>
+<span class="w">            </span><span class="nb">dynamicFramework.c</span>
+<span class="w">            </span><span class="nb">dynamicFramework.h</span>
+<span class="nf">)</span>
+<span class="nf">set_target_properties(</span><span class="nb">dynamicFramework</span><span class="w"> </span><span class="no">PROPERTIES</span>
+<span class="w">  </span><span class="no">FRAMEWORK</span><span class="w"> </span><span class="no">TRUE</span>
+<span class="w">  </span><span class="no">FRAMEWORK_VERSION</span><span class="w"> </span><span class="no">C</span>
+<span class="w">  </span><span class="no">MACOSX_FRAMEWORK_IDENTIFIER</span><span class="w"> </span><span class="nb">com.cmake.dynamicFramework</span>
+<span class="w">  </span><span class="no">MACOSX_FRAMEWORK_INFO_PLIST</span><span class="w"> </span><span class="nb">Info.plist</span>
 <span class="w">  </span><span class="c"># &quot;current version&quot; in semantic format in Mach-O binary file</span>
-<span class="w">  </span><span class="no">VERSION</span><span class="w"> </span><span class="m">16.4.0</span><span class="w"></span>
+<span class="w">  </span><span class="no">VERSION</span><span class="w"> </span><span class="m">16.4.0</span>
 <span class="w">  </span><span class="c"># &quot;compatibility version&quot; in semantic format in Mach-O binary file</span>
-<span class="w">  </span><span class="no">SOVERSION</span><span class="w"> </span><span class="m">1.0.0</span><span class="w"></span>
-<span class="w">  </span><span class="no">PUBLIC_HEADER</span><span class="w"> </span><span class="nb">dynamicFramework.h</span><span class="w"></span>
-<span class="w">  </span><span class="no">XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY</span><span class="w"> </span><span class="s">&quot;iPhone Developer&quot;</span><span class="w"></span>
-<span class="nf">)</span><span class="w"></span>
+<span class="w">  </span><span class="no">SOVERSION</span><span class="w"> </span><span class="m">1.0.0</span>
+<span class="w">  </span><span class="no">PUBLIC_HEADER</span><span class="w"> </span><span class="nb">dynamicFramework.h</span>
+<span class="w">  </span><span class="no">XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY</span><span class="w"> </span><span class="s">&quot;iPhone Developer&quot;</span>
+<span class="nf">)</span>
 </pre></div>
 </div>
 </section>
@@ -150,7 +147,7 @@ created.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -159,8 +156,8 @@ created.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

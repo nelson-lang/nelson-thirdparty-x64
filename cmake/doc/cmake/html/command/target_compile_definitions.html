@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>target_compile_definitions &mdash; CMake 3.26.3 Documentation</title>
+  <title>target_compile_definitions &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="target_compile_features" href="target_compile_features.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,11 +57,11 @@
           <div class="body" role="main">
             
   <section id="target-compile-definitions">
-<span id="command:target_compile_definitions"></span><h1>target_compile_definitions<a class="headerlink" href="#target-compile-definitions" title="Permalink to this heading">¶</a></h1>
+<span id="command:target_compile_definitions"></span><h1>target_compile_definitions<a class="headerlink" href="#target-compile-definitions" title="Link to this heading">¶</a></h1>
 <p>Add compile definitions to a target.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">target_compile_definitions(</span><span class="nv">&lt;target&gt;</span><span class="w"></span>
-<span class="w">  </span><span class="o">&lt;</span><span class="no">INTERFACE</span><span class="p">|</span><span class="no">PUBLIC</span><span class="p">|</span><span class="no">PRIVATE</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="nb">items1...</span><span class="p">]</span><span class="w"></span>
-<span class="w">  </span><span class="p">[</span><span class="o">&lt;</span><span class="no">INTERFACE</span><span class="p">|</span><span class="no">PUBLIC</span><span class="p">|</span><span class="no">PRIVATE</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="nb">items2...</span><span class="p">]</span><span class="w"> </span><span class="p">...]</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">target_compile_definitions(</span><span class="nv">&lt;target&gt;</span>
+<span class="w">  </span><span class="o">&lt;</span><span class="no">INTERFACE</span><span class="p">|</span><span class="no">PUBLIC</span><span class="p">|</span><span class="no">PRIVATE</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="nb">items1...</span><span class="p">]</span>
+<span class="w">  </span><span class="p">[</span><span class="o">&lt;</span><span class="no">INTERFACE</span><span class="p">|</span><span class="no">PUBLIC</span><span class="p">|</span><span class="no">PRIVATE</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[</span><span class="nb">items2...</span><span class="p">]</span><span class="w"> </span><span class="p">...]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Specifies compile definitions to use when compiling a given <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>.  The
@@ -72,7 +69,7 @@ named <code class="docutils literal notranslate"><span class="pre">&lt;target&gt
 <span class="target" id="index-0-command:add_executable"></span><a class="reference internal" href="add_executable.html#command:add_executable" title="add_executable"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_executable()</span></code></a> or <span class="target" id="index-0-command:add_library"></span><a class="reference internal" href="add_library.html#command:add_library" title="add_library"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_library()</span></code></a> and must not be an
 <a class="reference internal" href="../manual/cmake-buildsystem.7.html#alias-targets"><span class="std std-ref">ALIAS target</span></a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code>, <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> and <code class="docutils literal notranslate"><span class="pre">PRIVATE</span></code> keywords are required to
-specify the <a class="reference internal" href="../manual/cmake-buildsystem.7.html#target-usage-requirements"><span class="std std-ref">scope</span></a> of the following arguments.
+specify the <a class="reference internal" href="../manual/cmake-buildsystem.7.html#target-command-scope"><span class="std std-ref">scope</span></a> of the following arguments.
 <code class="docutils literal notranslate"><span class="pre">PRIVATE</span></code> and <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> items will populate the <span class="target" id="index-0-prop_tgt:COMPILE_DEFINITIONS"></span><a class="reference internal" href="../prop_tgt/COMPILE_DEFINITIONS.html#prop_tgt:COMPILE_DEFINITIONS" title="COMPILE_DEFINITIONS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">COMPILE_DEFINITIONS</span></code></a>
 property of <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>. <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> and <code class="docutils literal notranslate"><span class="pre">INTERFACE</span></code> items will populate the
 <span class="target" id="index-0-prop_tgt:INTERFACE_COMPILE_DEFINITIONS"></span><a class="reference internal" href="../prop_tgt/INTERFACE_COMPILE_DEFINITIONS.html#prop_tgt:INTERFACE_COMPILE_DEFINITIONS" title="INTERFACE_COMPILE_DEFINITIONS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">INTERFACE_COMPILE_DEFINITIONS</span></code></a> property of <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>.
@@ -87,20 +84,20 @@ manual for available expressions.  See the <span class="target" id="index-1-manu
 for more on defining buildsystem properties.</p>
 <p>Any leading <code class="docutils literal notranslate"><span class="pre">-D</span></code> on an item will be removed.  Empty items are ignored.
 For example, the following are all equivalent:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">target_compile_definitions(</span><span class="nb">foo</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="no">FOO</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">target_compile_definitions(</span><span class="nb">foo</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="no">FOO</span><span class="nf">)</span>
 <span class="nf">target_compile_definitions(</span><span class="nb">foo</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="p">-</span><span class="no">DFOO</span><span class="nf">)</span><span class="w">  </span><span class="c"># -D removed</span>
 <span class="nf">target_compile_definitions(</span><span class="nb">foo</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="w"> </span><span class="no">FOO</span><span class="nf">)</span><span class="w"> </span><span class="c"># &quot;&quot; ignored</span>
 <span class="nf">target_compile_definitions(</span><span class="nb">foo</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="p">-</span><span class="no">D</span><span class="w"> </span><span class="no">FOO</span><span class="nf">)</span><span class="w"> </span><span class="c"># -D becomes &quot;&quot;, then ignored</span>
 </pre></div>
 </div>
 <p>Definitions may optionally have values:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">target_compile_definitions(</span><span class="nb">foo</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="no">FOO</span><span class="p">=</span><span class="m">1</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">target_compile_definitions(</span><span class="nb">foo</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="no">FOO</span><span class="p">=</span><span class="m">1</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Note that many compilers treat <code class="docutils literal notranslate"><span class="pre">-DFOO</span></code> as equivalent to <code class="docutils literal notranslate"><span class="pre">-DFOO=1</span></code>, but
 other tools may not recognize this in all circumstances (e.g. IntelliSense).</p>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><span class="target" id="index-0-command:add_compile_definitions"></span><a class="reference internal" href="add_compile_definitions.html#command:add_compile_definitions" title="add_compile_definitions"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">add_compile_definitions()</span></code></a></p></li>
 <li><p><span class="target" id="index-0-command:target_compile_features"></span><a class="reference internal" href="target_compile_features.html#command:target_compile_features" title="target_compile_features"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_compile_features()</span></code></a></p></li>
@@ -183,7 +180,7 @@ other tools may not recognize this in all circumstances (e.g. IntelliSense).</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -192,8 +189,8 @@ other tools may not recognize this in all circumstances (e.g. IntelliSense).</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>CPACK_CUSTOM_INSTALL_VARIABLES &mdash; CMake 3.26.3 Documentation</title>
+  <title>CPACK_CUSTOM_INSTALL_VARIABLES &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CPACK_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION" href="CPACK_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-variables.7.html" accesskey="U">cmake-variables(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="cpack-custom-install-variables">
-<span id="variable:CPACK_CUSTOM_INSTALL_VARIABLES"></span><h1>CPACK_CUSTOM_INSTALL_VARIABLES<a class="headerlink" href="#cpack-custom-install-variables" title="Permalink to this heading">¶</a></h1>
+<span id="variable:CPACK_CUSTOM_INSTALL_VARIABLES"></span><h1>CPACK_CUSTOM_INSTALL_VARIABLES<a class="headerlink" href="#cpack-custom-install-variables" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.21.</span></p>
 </div>
@@ -75,23 +72,23 @@ being set to the given <code class="docutils literal notranslate"><span class="p
 influenced by the user or driving script at CPack runtime without having to
 regenerate the install scripts.</p>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">FILES</span><span class="w"> </span><span class="nb">large.txt</span><span class="w"> </span><span class="no">DESTINATION</span><span class="w"> </span><span class="nb">data</span><span class="nf">)</span><span class="w"></span>
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">install(</span><span class="no">FILES</span><span class="w"> </span><span class="nb">large.txt</span><span class="w"> </span><span class="no">DESTINATION</span><span class="w"> </span><span class="nb">data</span><span class="nf">)</span>
 
-<span class="nf">install(</span><span class="no">CODE</span><span class="w"> </span><span class="p">[[</span><span class="w"></span>
-<span class="w">  </span><span class="nf">if(</span><span class="no">ENABLE_COMPRESSION</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">install(</span><span class="no">CODE</span><span class="w"> </span><span class="p">[[</span>
+<span class="w">  </span><span class="nf">if(</span><span class="no">ENABLE_COMPRESSION</span><span class="nf">)</span>
 <span class="w">    </span><span class="c"># &quot;run-compressor&quot; is a fictional tool that produces</span>
 <span class="w">    </span><span class="c"># large.txt.xz from large.txt and then removes the input file</span>
-<span class="w">    </span><span class="nf">execute_process(</span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">run-compressor</span><span class="w"> </span><span class="o">$ENV{</span><span class="nt">DESTDIR</span><span class="o">}${</span><span class="nt">CMAKE_INSTALL_PREFIX</span><span class="o">}</span><span class="na">/large.txt</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">endif()</span><span class="w"></span>
-<span class="p">]]</span><span class="nf">)</span><span class="w"></span>
+<span class="w">    </span><span class="nf">execute_process(</span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">run-compressor</span><span class="w"> </span><span class="o">$ENV{</span><span class="nt">DESTDIR</span><span class="o">}${</span><span class="nt">CMAKE_INSTALL_PREFIX</span><span class="o">}</span><span class="na">/large.txt</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">endif()</span>
+<span class="p">]]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>With the above example snippet, <span class="target" id="index-0-manual:cpack(1)"></span><a class="reference internal" href="../manual/cpack.1.html#manual:cpack(1)" title="cpack(1)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cpack</span></code></a> will by default
 run the installation script with <code class="docutils literal notranslate"><span class="pre">ENABLE_COMPRESSION</span></code> unset, resulting in
 a package containing the uncompressed <code class="docutils literal notranslate"><span class="pre">large.txt</span></code>.  This can be overridden
 when invoking <span class="target" id="index-1-manual:cpack(1)"></span><a class="reference internal" href="../manual/cpack.1.html#manual:cpack(1)" title="cpack(1)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cpack</span></code></a> like so:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cpack -D <span class="s2">&quot;CPACK_CUSTOM_INSTALL_VARIABLES=ENABLE_COMPRESSION=TRUE&quot;</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cpack<span class="w"> </span>-D<span class="w"> </span><span class="s2">&quot;CPACK_CUSTOM_INSTALL_VARIABLES=ENABLE_COMPRESSION=TRUE&quot;</span>
 </pre></div>
 </div>
 <p>The installation script will then run with <code class="docutils literal notranslate"><span class="pre">ENABLE_COMPRESSION</span></code> set to
@@ -168,7 +165,7 @@ instead.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-variables.7.html" >cmake-variables(7)</a> &#187;</li>
@@ -177,8 +174,8 @@ instead.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

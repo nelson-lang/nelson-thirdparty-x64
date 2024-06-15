@@ -1,26 +1,23 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>TIMEOUT_AFTER_MATCH &mdash; CMake 3.26.3 Documentation</title>
+  <title>TIMEOUT_AFTER_MATCH &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="WILL_FAIL" href="WILL_FAIL.html" />
+    <link rel="next" title="TIMEOUT_SIGNAL_GRACE_PERIOD" href="TIMEOUT_SIGNAL_GRACE_PERIOD.html" />
     <link rel="prev" title="TIMEOUT" href="TIMEOUT.html" />
  
 
@@ -33,7 +30,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="WILL_FAIL.html" title="WILL_FAIL"
+          <a href="TIMEOUT_SIGNAL_GRACE_PERIOD.html" title="TIMEOUT_SIGNAL_GRACE_PERIOD"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="TIMEOUT.html" title="TIMEOUT"
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,21 +57,21 @@
           <div class="body" role="main">
             
   <section id="timeout-after-match">
-<span id="prop_test:TIMEOUT_AFTER_MATCH"></span><h1>TIMEOUT_AFTER_MATCH<a class="headerlink" href="#timeout-after-match" title="Permalink to this heading">¶</a></h1>
+<span id="prop_test:TIMEOUT_AFTER_MATCH"></span><h1>TIMEOUT_AFTER_MATCH<a class="headerlink" href="#timeout-after-match" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6.</span></p>
 </div>
 <p>Change a test's timeout duration after a matching line is encountered
 in its output.</p>
 <section id="usage">
-<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_test(</span><span class="nb">mytest</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_property(</span><span class="no">TEST</span><span class="w"> </span><span class="nb">mytest</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">TIMEOUT_AFTER_MATCH</span><span class="w"> </span><span class="s">&quot;${seconds}&quot;</span><span class="w"> </span><span class="s">&quot;${regex}&quot;</span><span class="nf">)</span><span class="w"></span>
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_test(</span><span class="nb">mytest</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
+<span class="nf">set_property(</span><span class="no">TEST</span><span class="w"> </span><span class="nb">mytest</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">TIMEOUT_AFTER_MATCH</span><span class="w"> </span><span class="s">&quot;${seconds}&quot;</span><span class="w"> </span><span class="s">&quot;${regex}&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
 </section>
 <section id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading">¶</a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
 <p>Allow a test <code class="docutils literal notranslate"><span class="pre">seconds</span></code> to complete after <code class="docutils literal notranslate"><span class="pre">regex</span></code> is encountered in
 its output.</p>
 <p>When the test outputs a line that matches <code class="docutils literal notranslate"><span class="pre">regex</span></code> its start time is
@@ -94,6 +91,7 @@ is allowed to run.</p>
 <span class="target" id="index-0-prop_test:RESOURCE_LOCK"></span><a class="reference internal" href="RESOURCE_LOCK.html#prop_test:RESOURCE_LOCK" title="RESOURCE_LOCK"><code class="xref cmake cmake-prop_test docutils literal notranslate"><span class="pre">RESOURCE_LOCK</span></code></a> instead of <code class="docutils literal notranslate"><span class="pre">TIMEOUT_AFTER_MATCH</span></code>.
 This property should be used when only the test itself can determine
 when its required resources are available.</p>
+<p>See also <span class="target" id="index-0-prop_test:TIMEOUT_SIGNAL_NAME"></span><a class="reference internal" href="TIMEOUT_SIGNAL_NAME.html#prop_test:TIMEOUT_SIGNAL_NAME" title="TIMEOUT_SIGNAL_NAME"><code class="xref cmake cmake-prop_test docutils literal notranslate"><span class="pre">TIMEOUT_SIGNAL_NAME</span></code></a>.</p>
 </section>
 </section>
 
@@ -122,8 +120,8 @@ when its required resources are available.</p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="WILL_FAIL.html"
-                          title="next chapter">WILL_FAIL</a></p>
+    <p class="topless"><a href="TIMEOUT_SIGNAL_GRACE_PERIOD.html"
+                          title="next chapter">TIMEOUT_SIGNAL_GRACE_PERIOD</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -153,7 +151,7 @@ when its required resources are available.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="WILL_FAIL.html" title="WILL_FAIL"
+          <a href="TIMEOUT_SIGNAL_GRACE_PERIOD.html" title="TIMEOUT_SIGNAL_GRACE_PERIOD"
              >next</a> |</li>
         <li class="right" >
           <a href="TIMEOUT.html" title="TIMEOUT"
@@ -166,7 +164,7 @@ when its required resources are available.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -175,8 +173,8 @@ when its required resources are available.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

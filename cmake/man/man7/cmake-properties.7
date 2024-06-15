@@ -27,7 +27,7 @@ level margin: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .\" new: \\n[rst2man-indent\\n[rst2man-indent-level]]
 .in \\n[rst2man-indent\\n[rst2man-indent-level]]u
 ..
-.TH "CMAKE-PROPERTIES" "7" "Apr 04, 2023" "3.26.3" "CMake"
+.TH "CMAKE-PROPERTIES" "7" "Jun 14, 2024" "3.30.0" "CMake"
 .SH NAME
 cmake-properties \- CMake Properties Reference
 .SH PROPERTIES OF GLOBAL SCOPE
@@ -223,7 +223,7 @@ New in version 3.20.
 Compiler mode is at least CUDA/C++ 23.
 .TP
 .B \fBcuda_std_26\fP
-New in version 3.25.
+New in version 3.30.
 
 .sp
 Compiler mode is at least CUDA/C++ 26.
@@ -290,7 +290,7 @@ New in version 3.20.
 Compiler mode is at least C++ 23.
 .TP
 .B \fBcxx_std_26\fP
-New in version 3.25.
+New in version 3.30.
 
 .sp
 Compiler mode is at least C++ 26.
@@ -498,6 +498,59 @@ Return type deduction on normal functions, as defined in \fI\%N3386\fP\&.
 .B \fBcxx_variable_templates\fP
 Variable templates, as defined in \fI\%N3651\fP\&.
 .UNINDENT
+.SS CMAKE_HIP_KNOWN_FEATURES
+.sp
+New in version 3.30.
+
+.sp
+List of HIP features known to this version of CMake.
+.sp
+The features listed in this global property may be known to be available to the
+HIP compiler.  If the feature is available with the HIP compiler, it will
+be listed in the \fI\%CMAKE_HIP_COMPILE_FEATURES\fP variable.
+.sp
+The features listed here may be used with the \fI\%target_compile_features()\fP
+command.  See the \fI\%cmake\-compile\-features(7)\fP manual for information on
+compile features and a list of supported compilers.
+.sp
+The features known to this version of CMake are:
+.INDENT 0.0
+.TP
+.B \fBhip_std_98\fP
+Compiler mode is at least HIP/C++ 98.
+.TP
+.B \fBhip_std_11\fP
+Compiler mode is at least HIP/C++ 11.
+.TP
+.B \fBhip_std_14\fP
+Compiler mode is at least HIP/C++ 14.
+.TP
+.B \fBhip_std_17\fP
+Compiler mode is at least HIP/C++ 17.
+.TP
+.B \fBhip_std_20\fP
+Compiler mode is at least HIP/C++ 20.
+.TP
+.B \fBhip_std_23\fP
+Compiler mode is at least HIP/C++ 23.
+.TP
+.B \fBhip_std_26\fP
+New in version 3.30.
+
+.sp
+Compiler mode is at least HIP/C++ 26.
+.UNINDENT
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+If the compiler\(aqs default standard level is at least that
+of the requested feature, CMake may omit the \fB\-std=\fP flag.
+The flag may still be added if the compiler\(aqs default extensions mode
+does not match the \fI\%<LANG>_EXTENSIONS\fP target property,
+or if the \fI\%<LANG>_STANDARD\fP target property is set.
+.UNINDENT
+.UNINDENT
 .SS CMAKE_ROLE
 .sp
 New in version 3.14.
@@ -665,6 +718,29 @@ at the beginning of native build system generation.  It reports an
 error if the dependency graph contains a cycle that does not consist
 of all STATIC library targets.  This property tells CMake to disallow
 all cycles completely, even among static libraries.
+.SS INSTALL_PARALLEL
+.sp
+New in version 3.30.
+
+.sp
+Enables parallel installation option for the Ninja generator.
+.sp
+When this property is \fBON\fP, \fBinstall/local\fP targets have the
+console pool disabled, allowing them to run concurrently.
+.sp
+This property also provides the target \fBinstall/parallel\fP, which has an
+explicit dependency on the \fBinstall/local\fP target for each subdirectory,
+recursing down the project.
+.sp
+Setting this property has no affect on the behavior of \fBcmake \-\-install\fP\&.
+The install must be invoked by building the \fBinstall/parallel\fP target
+directly.
+.sp
+Calls to \fI\%install(CODE)\fP or \fI\%install(SCRIPT)\fP might depend
+on actions performed by an earlier \fI\%install()\fP command in a different
+directory such as files installed or variable settings. If the project has
+such order\-dependent installation logic, parallel installation should be
+not be enabled, in order to prevent possible race conditions.
 .SS IN_TRY_COMPILE
 .sp
 Read\-only property that is true during a try\-compile configuration.
@@ -727,6 +803,25 @@ If not set, CMake uses \(dqCMakePredefinedTargets\(dq as a default value for
 this property.  Targets such as INSTALL, PACKAGE and RUN_TESTS will be
 organized into this FOLDER.  See also the documentation for the
 \fI\%FOLDER\fP target property.
+.SS PROPAGATE_TOP_LEVEL_INCLUDES_TO_TRY_COMPILE
+.sp
+New in version 3.30.
+
+.sp
+When this global property is set to true, the
+\fI\%CMAKE_PROJECT_TOP_LEVEL_INCLUDES\fP variable is propagated into
+\fI\%try_compile()\fP calls that use the
+\fI\%whole\-project signature\fP\&.
+Calls to the \fI\%source file signature\fP are not
+affected by this property.
+\fBPROPAGATE_TOP_LEVEL_INCLUDES_TO_TRY_COMPILE\fP is unset by default.
+.sp
+For \fI\%dependency providers\fP that want to
+be enabled in whole\-project \fI\%try_compile()\fP calls, set this global
+property to true just before or after registering the provider.
+Note that all files listed in \fI\%CMAKE_PROJECT_TOP_LEVEL_INCLUDES\fP
+will need to be able to handle being included in such \fI\%try_compile()\fP
+calls, and it is the user\(aqs responsibility to ensure this.
 .SS REPORT_UNDEFINED_PROPERTIES
 .sp
 If set, report any undefined properties to this file.
@@ -828,9 +923,9 @@ everything except for target completion messages.
 .sp
 Does the target platform support shared libraries.
 .sp
-TARGET_SUPPORTS_SHARED_LIBS is a boolean specifying whether the target
+\fBTARGET_SUPPORTS_SHARED_LIBS\fP is a boolean specifying whether the target
 platform supports shared libraries.  Basically all current general
-general purpose OS do so, the exception are usually embedded systems
+purpose OS do so, the exceptions are usually embedded systems
 with no or special OSs.
 .SS USE_FOLDERS
 .sp
@@ -868,8 +963,8 @@ If set to \fBON\fP it will always be emitted
 If set to \fBOFF\fP it will never be emitted
 .IP \(bu 2
 If unset (the default) it will only be emitted when the project was
-configured for an embedded Xcode SDK like iOS, tvOS, watchOS or any
-of the simulators.
+configured for an embedded Xcode SDK like iOS, tvOS, visionOS, watchOS
+or any of the simulators.
 .UNINDENT
 .sp
 \fBNOTE:\fP
@@ -1040,9 +1135,34 @@ subdirectory by default.  This does not affect the \(dqall\(dq target of the
 subdirectory itself.  Running e.g. \fBmake\fP inside the subdirectory will
 still build its targets.
 .sp
-If the \fI\%EXCLUDE_FROM_ALL\fP target property is set on a target
-then its value determines whether the target is included in the \(dqall\(dq
-target of this directory and its ancestors.
+\fBEXCLUDE_FROM_ALL\fP is meant for when the subdirectory contains
+a separate part of the project that is useful, but not necessary,
+such as a set of examples, or e.g. an integrated 3rd party library.
+Typically the subdirectory should contain its own \fI\%project()\fP
+command invocation so that a full build system will be generated in the
+subdirectory (such as a Visual Studio IDE solution file).  Note that
+inter\-target dependencies supersede this exclusion.  If a target built by
+the parent project depends on a target in the subdirectory, the dependee
+target will be included in the parent project build system to satisfy
+the dependency.
+.sp
+If the \fBEXCLUDE_FROM_ALL\fP argument is provided, it has the following effects:
+.INDENT 0.0
+.IP \(bu 2
+Targets defined in the subdirectory or below will not be
+included in the \fBALL\fP target of the parent directory.
+Those targets must be built explicitly by the user,
+or be a dependency of another target that will be built.
+.IP \(bu 2
+Targets defined in the subdirectory or below will be
+excluded from IDE project files.
+.IP \(bu 2
+Any install rules defined in the subdirectory or below will
+be ignored when installing the parent directory.
+.UNINDENT
+.sp
+Note that these effects are not the same as those for the
+\fI\%EXCLUDE_FROM_ALL\fP target property.
 .SS IMPLICIT_DEPENDS_INCLUDE_TRANSFORM
 .sp
 Specify \fB#include\fP line transforms for dependencies in a directory.
@@ -1344,7 +1464,7 @@ pairs.  Each such pair will be transformed into an entry in the
 solution global section.  Whitespace around key and value is ignored.
 List elements which do not contain an equal sign are skipped.
 .sp
-This property only works for Visual Studio 9 and above; it is ignored
+This property only works for Visual Studio 12 and above; it is ignored
 on other generators.  The property only applies when set on a
 directory whose \fBCMakeLists.txt\fP contains a \fI\%project()\fP command.
 .sp
@@ -1380,7 +1500,7 @@ pairs.  Each such pair will be transformed into an entry in the
 solution global section.  Whitespace around key and value is ignored.
 List elements which do not contain an equal sign are skipped.
 .sp
-This property only works for Visual Studio 9 and above; it is ignored
+This property only works for Visual Studio 12 and above; it is ignored
 on other generators.  The property only applies when set on a
 directory whose \fBCMakeLists.txt\fP contains a \fI\%project()\fP command.
 .SS VS_STARTUP_PROJECT
@@ -1722,6 +1842,25 @@ expression is used.
 This property is initialized by the value of the
 \fI\%CMAKE_ARCHIVE_OUTPUT_DIRECTORY\fP variable if it is set when a target is created.
 .sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+On macOS, this property will be ignored for the linker import files (e.g.
+\fB\&.tbd\fP files, see \fI\%ENABLE_EXPORTS\fP property for details) when:
+.INDENT 0.0
+.IP \(bu 2
+The \fI\%FRAMEWORK\fP is set, because the framework layout cannot be
+changed.
+.IP \(bu 2
+The \fI\%Xcode\fP generator is used, due to the limitations and
+constraints of the \fBXcode\fP tool.
+.UNINDENT
+.sp
+In both cases, the linker import files will be generated in the same directory as the shared
+library.
+.UNINDENT
+.UNINDENT
+.sp
 See also the \fI\%ARCHIVE_OUTPUT_DIRECTORY_<CONFIG>\fP target property.
 .SS ARCHIVE_OUTPUT_DIRECTORY_<CONFIG>
 .sp
@@ -1746,6 +1885,25 @@ This property specifies the base name for archive target files.  It
 overrides \fI\%OUTPUT_NAME\fP and \fI\%OUTPUT_NAME_<CONFIG>\fP
 properties.
 .sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+On macOS, this property will be ignored for the linker import files (e.g.
+\fB\&.tbd\fP files, see \fI\%ENABLE_EXPORTS\fP property for details) when:
+.INDENT 0.0
+.IP \(bu 2
+The \fI\%FRAMEWORK\fP is set, because the framework layout cannot be
+changed.
+.IP \(bu 2
+The \fI\%Xcode\fP generator is used, due to the limitations and
+constraints of the \fBXcode\fP tool.
+.UNINDENT
+.sp
+In both cases, the linker import files will be generated with the same name as the shared
+library.
+.UNINDENT
+.UNINDENT
+.sp
 See also the \fI\%ARCHIVE_OUTPUT_NAME_<CONFIG>\fP target property.
 .SS ARCHIVE_OUTPUT_NAME_<CONFIG>
 .sp
@@ -1754,6 +1912,28 @@ Per\-configuration output name for
 .sp
 This is the configuration\-specific version of the
 \fI\%ARCHIVE_OUTPUT_NAME\fP target property.
+.SS AUTOGEN_BETTER_GRAPH_MULTI_CONFIG
+.sp
+New in version 3.29.
+
+.sp
+\fBAUTOGEN_BETTER_GRAPH_MULTI_CONFIG\fP is a boolean property that can be set
+on a target to have better dependency graph for multi\-configuration generators.
+When this property is enabled, \fBCMake\fP will generate more per\-config targets.
+Thus, the dependency graph will be more accurate for multi\-configuration
+generators and some recompilations will be avoided.
+.sp
+If the Qt version is 6.8 or newer, this property is enabled by default.
+If the Qt version is older than 6.8, this property is disabled by default.
+Consult the Qt documentation to check if the property can be enabled for older
+Qt versions.
+.sp
+See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
+with Qt.
+.sp
+This property is initialized by the
+\fI\%CMAKE_AUTOGEN_BETTER_GRAPH_MULTI_CONFIG\fP variable if it is set when
+a target is created.
 .SS AUTOGEN_BUILD_DIR
 .sp
 New in version 3.9.
@@ -1773,26 +1953,62 @@ By default \fBAUTOGEN_BUILD_DIR\fP is unset.
 .sp
 See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
 with Qt.
+.SS AUTOGEN_COMMAND_LINE_LENGTH_MAX
+.sp
+New in version 3.29.
+
+.sp
+Command line length limit for autogen targets, i.e. \fBmoc\fP or \fBuic\fP,
+that triggers the use of response files on Windows instead of passing all
+arguments to the command line.
+.INDENT 0.0
+.IP \(bu 2
+An empty (or unset) value sets the limit to 32000
+.IP \(bu 2
+A positive non zero integer value sets the exact command line length
+limit.
+.UNINDENT
+.sp
+By default \fBAUTOGEN_COMMAND_LINE_LENGTH_MAX\fP is initialized from
+\fI\%CMAKE_AUTOGEN_COMMAND_LINE_LENGTH_MAX\fP\&.
+.sp
+See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
+with Qt.
 .SS AUTOGEN_ORIGIN_DEPENDS
 .sp
 New in version 3.14.
 
 .sp
 Switch for forwarding origin target dependencies to the corresponding
-\fB_autogen\fP target.
+\fI\%The <ORIGIN>_autogen target\fP target.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+If Qt 5.15 or later is used and the generator is either \fI\%Ninja\fP
+or \fI\%Makefile Generators\fP, origin target dependencies are forwarded to
+the \fI\%The <ORIGIN>_autogen_timestamp_deps target\fP target instead of
+\fI\%The <ORIGIN>_autogen target\fP
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .sp
 Targets which have their \fI\%AUTOMOC\fP or \fI\%AUTOUIC\fP property
-\fBON\fP have a corresponding \fB_autogen\fP target which generates
-\fBmoc\fP and \fBuic\fP files.  As this \fB_autogen\fP target is created at
+\fBON\fP have a corresponding \fI\%The <ORIGIN>_autogen target\fP target which generates
+\fBmoc\fP and \fBuic\fP files.  As this \fI\%The <ORIGIN>_autogen target\fP target is created at
 generate\-time, it is not possible to define dependencies of it using
-e.g.  \fI\%add_dependencies()\fP\&.  Instead the
-\fBAUTOGEN_ORIGIN_DEPENDS\fP target property decides whether the origin
-target dependencies should be forwarded to the \fB_autogen\fP target or not.
+e.g.  \fI\%add_dependencies()\fP\&.  Instead the \fBAUTOGEN_ORIGIN_DEPENDS\fP
+target property decides whether the origin target dependencies should be
+forwarded to the \fI\%The <ORIGIN>_autogen target\fP target or not.
 .sp
 By default \fBAUTOGEN_ORIGIN_DEPENDS\fP is initialized from
 \fI\%CMAKE_AUTOGEN_ORIGIN_DEPENDS\fP which is \fBON\fP by default.
 .sp
-In total the dependencies of the \fB_autogen\fP target are composed from
+In total the dependencies of the \fI\%The <ORIGIN>_autogen target\fP target are composed
+from
 .INDENT 0.0
 .IP \(bu 2
 forwarded origin target dependencies
@@ -1803,17 +2019,21 @@ additional user defined dependencies from \fI\%AUTOGEN_TARGET_DEPENDS\fP
 .sp
 See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
 with Qt.
-.SS Note
 .sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
 Disabling \fBAUTOGEN_ORIGIN_DEPENDS\fP is useful to avoid building of
-origin target dependencies when building the \fB_autogen\fP target only.
-This is especially interesting when a
+origin target dependencies when building the \fI\%The <ORIGIN>_autogen target\fP target
+only. This is especially interesting when a
 \fI\%global autogen target\fP is enabled.
 .sp
-When the \fB_autogen\fP target doesn\(aqt require all the origin target\(aqs
+When the \fI\%The <ORIGIN>_autogen target\fP target doesn\(aqt require all the origin target\(aqs
 dependencies, and \fBAUTOGEN_ORIGIN_DEPENDS\fP is disabled, it might be
 necessary to extend \fI\%AUTOGEN_TARGET_DEPENDS\fP to add missing
 dependencies.
+.UNINDENT
+.UNINDENT
 .SS AUTOGEN_PARALLEL
 .sp
 New in version 3.11.
@@ -1822,9 +2042,9 @@ New in version 3.11.
 Number of parallel \fBmoc\fP or \fBuic\fP processes to start when using
 \fI\%AUTOMOC\fP and \fI\%AUTOUIC\fP\&.
 .sp
-The custom \fB<origin>_autogen\fP target starts a number of threads of which
+The custom \fI\%The <ORIGIN>_autogen target\fP target starts a number of threads of which
 each one parses a source file and on demand starts a \fBmoc\fP or \fBuic\fP
-process.  \fBAUTOGEN_PARALLEL\fP controls how many parallel threads
+process. \fBAUTOGEN_PARALLEL\fP controls how many parallel threads
 (and therefore \fBmoc\fP or \fBuic\fP processes) are started.
 .INDENT 0.0
 .IP \(bu 2
@@ -1843,18 +2063,34 @@ See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
 with Qt.
 .SS AUTOGEN_TARGET_DEPENDS
 .sp
-Additional target dependencies of the corresponding \fB_autogen\fP target.
+Additional target dependencies of the corresponding \fI\%The <ORIGIN>_autogen target\fP
+target.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+If Qt 5.15 or later is used and the generator is either \fI\%Ninja\fP
+or \fI\%Makefile Generators\fP, additional target dependencies are added to
+the \fI\%The <ORIGIN>_autogen_timestamp_deps target\fP target instead of the
+\fI\%The <ORIGIN>_autogen target\fP target.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .sp
 Targets which have their \fI\%AUTOMOC\fP or \fI\%AUTOUIC\fP property
-\fBON\fP have a corresponding \fB_autogen\fP target which generates
-\fBmoc\fP and \fBuic\fP files.  As this \fB_autogen\fP target is created at
-generate\-time, it is not possible to define dependencies of it using
-e.g.  \fI\%add_dependencies()\fP\&.  Instead the
-\fBAUTOGEN_TARGET_DEPENDS\fP target property can be set to a
-\fI\%;\-list\fP of additional dependencies for the
-\fB_autogen\fP target.  Dependencies can be target names or file names.
+\fBON\fP have a corresponding \fI\%The <ORIGIN>_autogen target\fP  target which generates
+\fBmoc\fP and \fBuic\fP files.  As this \fI\%The <ORIGIN>_autogen target\fP  target is created
+at generate\-time, it is not possible to define dependencies of it using e.g.
+\fI\%add_dependencies()\fP\&.  Instead the \fBAUTOGEN_TARGET_DEPENDS\fP target
+property can be set to a \fI\%;\-list\fP of additional
+dependencies for the \fI\%The <ORIGIN>_autogen target\fP  target. Dependencies can be target
+names or file names.
 .sp
-In total the dependencies of the \fB_autogen\fP target are composed from
+In total the dependencies of the \fI\%The <ORIGIN>_autogen target\fP  target are composed
+from
 .INDENT 0.0
 .IP \(bu 2
 forwarded origin target dependencies
@@ -1881,13 +2117,32 @@ a file that isn\(aqt in the origin target\(aqs sources
 .UNINDENT
 .sp
 it must be added to \fBAUTOGEN_TARGET_DEPENDS\fP\&.
+.SS AUTOGEN_USE_SYSTEM_INCLUDE
+.sp
+New in version 3.27.
+
+.sp
+\fBAUTOGEN_USE_SYSTEM_INCLUDE\fP is a boolean property that can be set
+on a target to indicate that the autogen target include directory should
+be added as a system include directory or normal include directory to the
+target.
+.sp
+If this property is not set, the autogen target include directory is added
+as a system include directory by default.  See policy \fI\%CMP0151\fP\&.
+.sp
+See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
+with Qt.
+.sp
+This property is initialized by the
+\fI\%CMAKE_AUTOGEN_USE_SYSTEM_INCLUDE\fP variable if it is set when
+a target is created.
 .SS AUTOMOC
 .sp
 Should the target be processed with auto\-moc (for Qt projects).
 .sp
-\fBAUTOMOC\fP is a boolean specifying whether CMake will handle the Qt
-\fBmoc\fP preprocessor automatically, i.e.  without having to use commands like
-\fI\%QT4_WRAP_CPP()\fP, \fBQT5_WRAP_CPP()\fP, etc.
+\fBAUTOMOC\fP is a boolean specifying whether CMake will handle the Qt \fBmoc\fP
+preprocessor automatically, i.e.  without having to use commands like
+\fI\%QT4_WRAP_CPP()\fP, \fI\%qt5_wrap_cpp()\fP, etc.
 Currently, Qt versions 4 to 6 are supported.
 .sp
 This property is initialized by the value of the \fI\%CMAKE_AUTOMOC\fP
@@ -2150,12 +2405,16 @@ e.g.  in MSVS.
 .sp
 \fI\%CMAKE_GLOBAL_AUTOGEN_TARGET\fP:
 A global \fBautogen\fP target, that depends on all \fBAUTOMOC\fP or
-\fI\%AUTOUIC\fP generated \fB<ORIGIN>_autogen\fP targets in the project,
+\fI\%AUTOUIC\fP generated \fI\%The <ORIGIN>_autogen target\fP targets in the project,
 will be generated when this variable is \fBON\fP\&.
 .sp
 \fI\%AUTOGEN_PARALLEL\fP:
 This target property controls the number of \fBmoc\fP or \fBuic\fP processes to
 start in parallel during builds.
+.sp
+\fI\%AUTOGEN_COMMAND_LINE_LENGTH_MAX\fP:
+This target property controls the limit when to use response files for
+\fBmoc\fP or \fBuic\fP processes on Windows.
 .sp
 See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
 with Qt.
@@ -2217,14 +2476,14 @@ file gets rebuilt even when the source file itself doesn\(aqt change.
 .sp
 If any of the extracted files is \fI\%GENERATED\fP or if it is not in the
 target\(aqs sources, then it might be necessary to add it to the
-\fB_autogen\fP target  dependencies.
+\fI\%The <ORIGIN>_autogen target\fP target  dependencies.
 See \fI\%AUTOGEN_TARGET_DEPENDS\fP for reference.
 .sp
 By default \fBAUTOMOC_DEPEND_FILTERS\fP is initialized from
 \fI\%CMAKE_AUTOMOC_DEPEND_FILTERS\fP, which is empty by default.
 .sp
-From Qt 5.15.0 on this variable is ignored as moc is able to output the correct
-dependencies.
+From Qt 5.15.0 on this variable is ignored as \fBmoc\fP is able to output the
+correct dependencies.
 .sp
 See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
 with Qt.
@@ -2373,7 +2632,7 @@ with Qt.
 New in version 3.10.
 
 .sp
-A \fI\%semicolon\-separated list\fP list of macro names used by
+A \fI\%semicolon\-separated list\fP of macro names used by
 \fI\%AUTOMOC\fP to determine if a C++ file needs to be processed by \fBmoc\fP\&.
 .sp
 This property is only used if the \fI\%AUTOMOC\fP property is \fBON\fP
@@ -2393,6 +2652,8 @@ then the file will be processed by \fBmoc\fP\&.
 .sp
 By default \fBAUTOMOC_MACRO_NAMES\fP is initialized from
 \fI\%CMAKE_AUTOMOC_MACRO_NAMES\fP\&.
+.sp
+See also the \fI\%INTERFACE_AUTOMOC_MACRO_NAMES\fP target property.
 .sp
 See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
 with Qt.
@@ -2427,6 +2688,56 @@ is created, or an empty string otherwise.
 .sp
 See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
 with Qt.
+.SS EXAMPLE
+.sp
+In this example, the \fBmoc\fP tool is invoked with the \fB\-D_EXTRA_DEFINE\fP
+option when generating the moc file for \fBobject.cpp\fP\&.
+.INDENT 0.0
+.TP
+.B \fBCMakeLists.txt\fP
+.INDENT 7.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_executable(mocOptions object.cpp main.cpp)
+set_property(TARGET mocOptions PROPERTY AUTOMOC ON)
+target_compile_options(mocOptions PRIVATE \(dq\-D_EXTRA_DEFINE\(dq)
+set_property(TARGET mocOptions PROPERTY AUTOMOC_MOC_OPTIONS \(dq\-D_EXTRA_DEFINE\(dq)
+target_link_libraries(mocOptions Qt6::Core)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.TP
+.B \fBobject.hpp\fP
+.INDENT 7.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+#ifndef Object_HPP
+#define Object_HPP
+
+#include <QObject>
+
+#ifdef _EXTRA_DEFINE
+class Object : public QObject
+{
+Q_OBJECT
+public:
+
+  Object();
+
+};
+#endif
+
+#endif
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .SS AUTOMOC_PATH_PREFIX
 .sp
 New in version 3.16.
@@ -2467,7 +2778,7 @@ Should the target be processed with auto\-rcc (for Qt projects).
 .sp
 \fBAUTORCC\fP is a boolean specifying whether CMake will handle
 the Qt \fBrcc\fP code generator automatically, i.e. without having to use
-commands like \fI\%QT4_ADD_RESOURCES()\fP, \fBQT5_ADD_RESOURCES()\fP,
+commands like \fI\%QT4_ADD_RESOURCES()\fP, \fI\%qt5_add_resources()\fP,
 etc.  Currently, Qt versions 4 to 6 are supported.
 .sp
 When this property is \fBON\fP, CMake will handle \fB\&.qrc\fP files added
@@ -2573,7 +2884,7 @@ Should the target be processed with auto\-uic (for Qt projects).
 .sp
 \fBAUTOUIC\fP is a boolean specifying whether CMake will handle
 the Qt \fBuic\fP code generator automatically, i.e. without having to use
-commands like \fI\%QT4_WRAP_UI()\fP, \fBQT5_WRAP_UI()\fP, etc.
+commands like \fI\%QT4_WRAP_UI()\fP, \fI\%qt5_wrap_ui()\fP, etc.
 Currently, Qt versions 4 to 6 are supported.
 .sp
 This property is initialized by the value of the \fI\%CMAKE_AUTOUIC\fP
@@ -2648,12 +2959,16 @@ e.g.  in MSVS.
 .sp
 \fI\%CMAKE_GLOBAL_AUTOGEN_TARGET\fP:
 A global \fBautogen\fP target, that depends on all \fI\%AUTOMOC\fP or
-\fBAUTOUIC\fP generated \fB<ORIGIN>_autogen\fP targets in the project,
+\fBAUTOUIC\fP generated \fI\%The <ORIGIN>_autogen target\fP targets in the project,
 will be generated when this variable is \fBON\fP\&.
 .sp
 \fI\%AUTOGEN_PARALLEL\fP:
 This target property controls the number of \fBmoc\fP or \fBuic\fP processes to
 start in parallel during builds.
+.sp
+\fI\%AUTOGEN_COMMAND_LINE_LENGTH_MAX\fP:
+This target property controls the limit when to use response files for
+\fBmoc\fP or \fBuic\fP processes on Windows.
 .sp
 See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
 with Qt.
@@ -2675,6 +2990,9 @@ you are building the \fBuic\fP binary as part of your project.
 See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
 with Qt.
 .SS AUTOUIC_OPTIONS
+.sp
+New in version 3.0.
+
 .sp
 Additional options for \fBuic\fP when using \fI\%AUTOUIC\fP
 .sp
@@ -3039,7 +3357,7 @@ property must not intersect with the set specified in any of the other
 \fI\%Compatible Interface Properties\fP\&.
 .SS COMPATIBLE_INTERFACE_NUMBER_MIN
 .sp
-Properties whose maximum value from the link interface will be used.
+Properties whose minimum value from the link interface will be used.
 .sp
 The \fBCOMPATIBLE_INTERFACE_NUMBER_MIN\fP property may contain a list of
 properties for this target whose minimum value may be read at generate
@@ -3153,10 +3471,14 @@ List of options to pass to the compiler.
 This property holds a \fI\%semicolon\-separated list\fP
 of options specified so far for its target.  Use the
 \fI\%target_compile_options()\fP command to append more options.
-The options will be added after after flags in the
+The options will be added after flags in the
 \fI\%CMAKE_<LANG>_FLAGS\fP and \fI\%CMAKE_<LANG>_FLAGS_<CONFIG>\fP
 variables, but before those propagated from dependencies by the
 \fI\%INTERFACE_COMPILE_OPTIONS\fP property.
+.sp
+This property adds compile options for all languages in a target.
+Use the \fI\%COMPILE_LANGUAGE\fP generator expression to specify
+per\-language compile options.
 .sp
 This property is initialized by the \fI\%COMPILE_OPTIONS\fP directory
 property when a target is created, and is used by the generators to set
@@ -3356,6 +3678,10 @@ New in version 3.15: If this property contains a \fI\%semicolon\-separated list\
 arguments.
 
 .sp
+New in version 3.29: Contents of \fBCROSSCOMPILING_EMULATOR\fP may use
+\fI\%generator expressions\fP\&.
+
+.sp
 This property is initialized by the value of the
 \fI\%CMAKE_CROSSCOMPILING_EMULATOR\fP variable if it is set when a target
 is created.
@@ -3441,6 +3767,26 @@ set_property(TARGET tgt PROPERTY CUDA_ARCHITECTURES OFF)
 .UNINDENT
 .sp
 CMake will not pass any architecture flags to the compiler.
+.SS CUDA_CUBIN_COMPILATION
+.sp
+New in version 3.27.
+
+.sp
+Compile CUDA sources to \fB\&.cubin\fP files instead of \fB\&.obj\fP files
+within \fI\%Object Libraries\fP\&.
+.sp
+For example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_library(mycubin OBJECT a.cu b.cu)
+set_property(TARGET mycubin PROPERTY CUDA_CUBIN_COMPILATION ON)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS CUDA_EXTENSIONS
 .sp
 New in version 3.8.
@@ -3462,6 +3808,46 @@ the \fI\%CMAKE_CUDA_EXTENSIONS\fP variable if set when a target is created
 and otherwise by the value of
 \fI\%CMAKE_CUDA_EXTENSIONS_DEFAULT\fP
 (see \fI\%CMP0128\fP).
+.SS CUDA_FATBIN_COMPILATION
+.sp
+New in version 3.27.
+
+.sp
+Compile CUDA sources to \fB\&.fatbin\fP files instead of \fB\&.obj\fP files
+within \fI\%Object Libraries\fP\&.
+.sp
+For example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_library(myfbins OBJECT a.cu b.cu)
+set_property(TARGET myfbins PROPERTY CUDA_FATBIN_COMPILATION ON)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS CUDA_OPTIX_COMPILATION
+.sp
+New in version 3.27.
+
+.sp
+Compile CUDA sources to \fB\&.optixir\fP files instead of \fB\&.obj\fP files
+within \fI\%Object Libraries\fP\&.
+.sp
+For example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_library(myoptix OBJECT a.cu b.cu)
+set_property(TARGET myoptix PROPERTY CUDA_OPTIX_COMPILATION ON)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS CUDA_PTX_COMPILATION
 .sp
 New in version 3.9.
@@ -3704,15 +4090,8 @@ and otherwise by the value of
 \fI\%CMP0128\fP).
 .SS CXX_MODULE_DIRS
 .sp
-New in version 3.25.
+New in version 3.28.
 
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
 .sp
 Semicolon\-separated list of base directories of the target\(aqs default
 C++ module set (i.e. the file set with name and type \fBCXX_MODULES\fP). The
@@ -3726,15 +4105,8 @@ See \fI\%CXX_MODULE_DIRS_<NAME>\fP for the list of base directories in
 other C++ module sets.
 .SS CXX_MODULE_DIRS_<NAME>
 .sp
-New in version 3.25.
+New in version 3.28.
 
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
 .sp
 Semicolon\-separated list of base directories of the target\(aqs \fB<NAME>\fP C++
 module set, which has the set type \fBCXX_MODULES\fP\&. The property supports
@@ -3746,133 +4118,10 @@ rather than being manipulated directly.
 See \fI\%CXX_MODULE_DIRS\fP for the list of base directories in the
 default C++ module set. See \fI\%CXX_MODULE_SETS\fP for the file set names
 of all C++ module sets.
-.SS CXX_MODULE_HEADER_UNIT_DIRS
-.sp
-New in version 3.25.
-
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
-.sp
-Semicolon\-separated list of base directories of the target\(aqs default C++
-module header set (i.e. the file set with name and type
-\fBCXX_MODULE_HEADER_UNITS\fP). The property supports
-\fI\%generator expressions\fP\&.
-.sp
-This property is normally only set by \fI\%target_sources(FILE_SET)\fP
-rather than being manipulated directly.
-.sp
-See \fI\%CXX_MODULE_HEADER_UNIT_DIRS_<NAME>\fP for the list of base
-directories in other C++ module header sets.
-.SS CXX_MODULE_HEADER_UNIT_DIRS_<NAME>
-.sp
-New in version 3.25.
-
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
-.sp
-Semicolon\-separated list of base directories of the target\(aqs \fB<NAME>\fP C++
-module header set, which has the set type \fBCXX_MODULE_HEADER_UNITS\fP\&. The
-property supports
-\fI\%generator expressions\fP\&.
-.sp
-This property is normally only set by \fI\%target_sources(FILE_SET)\fP
-rather than being manipulated directly.
-.sp
-See \fI\%CXX_MODULE_HEADER_UNIT_DIRS\fP for the list of base directories
-in the default C++ module header set. See
-\fI\%CXX_MODULE_HEADER_UNIT_SETS\fP for the file set names of all C++
-module header sets.
-.SS CXX_MODULE_HEADER_UNIT_SET
-.sp
-New in version 3.25.
-
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
-.sp
-Semicolon\-separated list of files in the target\(aqs default C++ module header
-set, (i.e. the file set with name and type \fBCXX_MODULE_HEADER_UNITS\fP). If
-any of the paths are relative, they are computed relative to the target\(aqs
-source directory. The property supports
-\fI\%generator expressions\fP\&.
-.sp
-This property is normally only set by \fI\%target_sources(FILE_SET)\fP
-rather than being manipulated directly.
-.sp
-See \fI\%CXX_MODULE_HEADER_UNIT_SET_<NAME>\fP for the list of files in
-other C++ module header sets.
-.SS CXX_MODULE_HEADER_UNIT_SET_<NAME>
-.sp
-New in version 3.25.
-
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
-.sp
-Semicolon\-separated list of files in the target\(aqs \fB<NAME>\fP C++ module header
-set, which has the set type \fBCXX_MODULE_HEADER_UNITS\fP\&. If any of the paths
-are relative, they are computed relative to the target\(aqs source directory. The
-property supports
-\fI\%generator expressions\fP\&.
-.sp
-This property is normally only set by \fI\%target_sources(FILE_SET)\fP
-rather than being manipulated directly.
-.sp
-See \fI\%CXX_MODULE_HEADER_UNIT_SET\fP for the list of files in the
-default C++ module header set. See \fI\%CXX_MODULE_HEADER_UNIT_SETS\fP for
-the file set names of all C++ module header sets.
-.SS CXX_MODULE_HEADER_UNIT_SETS
-.sp
-New in version 3.25.
-
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
-.sp
-Read\-only list of the target\(aqs \fBPRIVATE\fP and \fBPUBLIC\fP C++ module header
-sets (i.e. all file sets with the type \fBCXX_MODULE_HEADER_UNITS\fP). Files
-listed in these file sets are treated as source files for the purpose of IDE
-integration.
-.sp
-C++ module header sets may be defined using the \fI\%target_sources()\fP
-command \fBFILE_SET\fP option with type \fBCXX_MODULE_HEADER_UNITS\fP\&.
-.sp
-See also \fI\%CXX_MODULE_HEADER_UNIT_SET_<NAME>\fP,
-\fI\%CXX_MODULE_HEADER_UNIT_SET\fP and
-\fI\%INTERFACE_CXX_MODULE_HEADER_UNIT_SETS\fP\&.
 .SS CXX_MODULE_SET
 .sp
-New in version 3.25.
+New in version 3.28.
 
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
 .sp
 Semicolon\-separated list of files in the target\(aqs default C++ module set,
 (i.e. the file set with name and type \fBCXX_MODULES\fP). If any of the paths
@@ -3887,15 +4136,8 @@ See \fI\%CXX_MODULE_SET_<NAME>\fP for the list of files in other C++
 module sets.
 .SS CXX_MODULE_SET_<NAME>
 .sp
-New in version 3.25.
+New in version 3.28.
 
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
 .sp
 Semicolon\-separated list of files in the target\(aqs \fB<NAME>\fP C++ module set,
 which has the set type \fBCXX_MODULES\fP\&. If any of the paths are relative, they
@@ -3910,15 +4152,8 @@ set. See \fI\%CXX_MODULE_SETS\fP for the file set names of all C++ module
 sets.
 .SS CXX_MODULE_SETS
 .sp
-New in version 3.25.
+New in version 3.28.
 
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
 .sp
 Read\-only list of the target\(aqs \fBPRIVATE\fP and \fBPUBLIC\fP C++ module sets (i.e.
 all file sets with the type \fBCXX_MODULES\fP). Files listed in these file sets
@@ -3929,9 +4164,44 @@ C++ module sets may be defined using the \fI\%target_sources()\fP command
 .sp
 See also \fI\%CXX_MODULE_SET_<NAME>\fP, \fI\%CXX_MODULE_SET\fP and
 \fI\%INTERFACE_CXX_MODULE_SETS\fP\&.
+.SS CXX_MODULE_STD
+.sp
+New in version 3.30.
+
+.sp
+\fBCXX_MODULE_STD\fP is a boolean specifying whether the target may use
+\fBimport std;\fP its C++ sources or not.
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+This setting is meaningful only when experimental support for \fBimport
+std;\fP has been enabled by the \fBCMAKE_EXPERIMENTAL_CXX_IMPORT_STD\fP gate.
+.UNINDENT
+.UNINDENT
+.sp
+When this property is explicitly set to \fBON\fP, CMake will add a dependency to
+a target which provides the C++ standard library\(aqs modules for the C++
+standard applied to the target. This target is only applicable within the
+current build and will not appear in the exported interfaces of the targets.
+When consumed, these targets will be reapplied as necessary.
+.sp
+This property\(aqs value is not relevant for targets which disable scanning (see
+\fI\%CXX_SCAN_FOR_MODULES\fP). Additionally, this property only applies to
+targets utilizing C++23 (\fBcxx_std_23\fP) or newer.
+.sp
+The property supports
+\fI\%generator expressions\fP, however
+expressions that depend upon the configuration, the consuming target, or the
+linker language are not allowed. Whether a target uses \fBimport std\fP should
+not depend upon such things as it is a static property of the target\(aqs source
+code.
+.sp
+Targets which are exported with C++ module sources will have this property\(aqs
+resolved value exported.
 .SS CXX_SCAN_FOR_MODULES
 .sp
-New in version 3.26.
+New in version 3.28.
 
 .sp
 \fBCXX_SCAN_FOR_MODULES\fP is a boolean specifying whether CMake will scan C++
@@ -3950,15 +4220,7 @@ scan the target\(aqs \fBCXX\fP sources at build time.
 .sp
 Note that scanning is only performed if C++20 or higher is enabled for the
 target.  Scanning for modules in the target\(aqs sources belonging to file sets
-of type \fBCXX_MODULES\fP and \fBCXX_MODULES_HEADER_UNITS\fP is always performed.
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-This setting is meaningful only when experimental support for C++ modules
-has been enabled by the \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP gate.
-.UNINDENT
-.UNINDENT
+of type \fBCXX_MODULES\fP is always performed.
 .SS CXX_STANDARD
 .sp
 New in version 3.1.
@@ -4085,7 +4347,7 @@ New in version 3.13.
 
 .sp
 Set the WinCE project \fBAdditionalFiles\fP in \fBDeploymentTool\fP in \fB\&.vcproj\fP
-files generated by the \fI\%Visual Studio 9 2008\fP generator.
+files generated by the \fI\%Visual Studio Generators\fP\&.
 This is useful when you want to debug on remote WinCE device.
 Specify additional files that will be copied to the device.
 For example:
@@ -4120,7 +4382,7 @@ New in version 3.6.
 .sp
 Set the WinCE project \fBRemoteDirectory\fP in \fBDeploymentTool\fP and
 \fBRemoteExecutable\fP in \fBDebuggerTool\fP in \fB\&.vcproj\fP files generated
-by the \fI\%Visual Studio 9 2008\fP generator.
+by the \fI\%Visual Studio Generators\fP\&.
 This is useful when you want to debug on remote WinCE device.
 For example:
 .INDENT 0.0
@@ -4174,6 +4436,23 @@ Disables the precompilation of header files specified by
 .sp
 If the property is not set, CMake will use the value provided
 by \fI\%CMAKE_DISABLE_PRECOMPILE_HEADERS\fP\&.
+.SS DLL_NAME_WITH_SOVERSION
+.sp
+New in version 3.27.
+
+.sp
+This property controls whether the \fI\%SOVERSION\fP target
+property is added to the filename of generated DLL filenames
+for the Windows platform, which is selected when the
+\fI\%WIN32\fP variable is set.
+.sp
+The value of the listed property is appended to the
+basename of the runtime component of the shared library
+target as \fB\-<SOVERSION>\fP\&.
+.sp
+Please note that setting this property has no effect
+if versioned filenames are globally disabled with the
+\fI\%CMAKE_PLATFORM_NO_VERSIONED_SONAME\fP variable.
 .SS DOTNET_SDK
 .sp
 New in version 3.23.
@@ -4242,7 +4521,7 @@ A message to display on some generators (such as \fI\%Makefile Generators\fP)
 when the target is built.
 .SS ENABLE_EXPORTS
 .sp
-Specify whether an executable exports symbols for loadable modules.
+Specify whether an executable or a shared library exports symbols.
 .sp
 Normally an executable does not export any symbols because it is the
 final program.  It is possible for an executable to export symbols to
@@ -4270,8 +4549,39 @@ referencing the executable since the dynamic loader will
 automatically bind symbols when the module is loaded.
 .UNINDENT
 .sp
-This property is initialized by the value of the variable
-\fI\%CMAKE_ENABLE_EXPORTS\fP if it is set when a target is created.
+This property is initialized by the value of the
+\fI\%CMAKE_EXECUTABLE_ENABLE_EXPORTS\fP variable, if it is set when an
+executable target is created.  If \fI\%CMAKE_EXECUTABLE_ENABLE_EXPORTS\fP
+is not set, the \fI\%CMAKE_ENABLE_EXPORTS\fP variable is used to initialize
+the property instead for backward compatibility reasons.
+See below for alternative initialization behavior for shared library targets.
+.sp
+New in version 3.27: To link with a shared library on macOS, or to a shared framework on any Apple
+platform, a linker import file can be used instead of the actual shared
+library. These linker import files are also known as text\-based stubs, and
+they have a \fB\&.tbd\fP file extension.
+.sp
+The generation of these linker import files, as well as their consumption, is
+controlled by this property. When this property is set to true on a shared
+library target, CMake will generate a \fB\&.tbd\fP file for the library.
+Other targets that link to the shared library target will then use this
+\fB\&.tbd\fP file when linking rather than linking to the shared library binary.
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+For backward compatibility reasons, this property will be ignored if the
+\fI\%XCODE_ATTRIBUTE_GENERATE_TEXT_BASED_STUBS\fP
+target property or the
+\fI\%CMAKE_XCODE_ATTRIBUTE_GENERATE_TEXT_BASED_STUBS\fP
+variable is set to false.
+.UNINDENT
+.UNINDENT
+.sp
+For shared library targets, this property is initialized by the value of the
+\fI\%CMAKE_SHARED_LIBRARY_ENABLE_EXPORTS\fP variable, if it is set when
+the target is created.
+
 .SS EXCLUDE_FROM_ALL
 .sp
 Set this target property to a true (or false) value to exclude (or include)
@@ -4324,6 +4634,22 @@ Enable/Disable output of compile commands during generation for a target.
 .sp
 This property is initialized by the value of the variable
 \fI\%CMAKE_EXPORT_COMPILE_COMMANDS\fP if it is set when a target is created.
+.SS EXPORT_FIND_PACKAGE_NAME
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+Experimental. Gated by \fBCMAKE_EXPERIMENTAL_EXPORT_PACKAGE_DEPENDENCIES\fP\&.
+.UNINDENT
+.UNINDENT
+.sp
+Control the package name associated with a dependency target when exporting a
+\fI\%find_dependency()\fP call in \fI\%install(EXPORT)\fP or
+\fI\%export(EXPORT)\fP\&. This can be used to assign a package name to a
+package that is built by CMake and exported, or to override the package in the
+\fI\%find_package()\fP call that created the target.
+.sp
+This property is initialized by \fI\%CMAKE_EXPORT_FIND_PACKAGE_NAME\fP\&.
 .SS EXPORT_NAME
 .sp
 Exported name for target files.
@@ -4691,7 +5017,8 @@ See also \fI\%HEADER_SET_<NAME>\fP, \fI\%HEADER_SET\fP and
 New in version 3.21.
 
 .sp
-List of AMD GPU architectures to generate device code for.
+List of GPU architectures to for which to generate device code.
+Architecture names are interpreted based on \fI\%CMAKE_HIP_PLATFORM\fP\&.
 .sp
 A non\-empty false value (e.g. \fBOFF\fP) disables adding architectures.
 This is intended to support packagers and rare cases where full control
@@ -4888,14 +5215,87 @@ Ignored for non\-imported targets.
 See also the \fI\%COMMON_LANGUAGE_RUNTIME\fP target property.
 .SS IMPORTED_CONFIGURATIONS
 .sp
-Configurations provided for an IMPORTED target.
+Configurations provided for an \fI\%imported target\fP\&.
 .sp
-Set this to the list of configuration names available for an IMPORTED
-target.  The names correspond to configurations defined in the project
-from which the target is imported.  If the importing project uses a
-different set of configurations the names may be mapped using the
-MAP_IMPORTED_CONFIG_<CONFIG> property.  Ignored for non\-imported
-targets.
+Set this to the list of configuration names available for an imported
+target.  For each configuration named, the imported target\(aqs artifacts
+must be specified in other target properties:
+.INDENT 0.0
+.IP \(bu 2
+\fI\%IMPORTED_LOCATION_<CONFIG>\fP, or
+.IP \(bu 2
+\fI\%IMPORTED_IMPLIB_<CONFIG>\fP (on DLL platforms, on AIX for
+\fI\%Executables\fP or on Apple for
+\fI\%Shared Libraries\fP), or
+.IP \(bu 2
+\fI\%IMPORTED_OBJECTS_<CONFIG>\fP (for \fI\%Object Libraries\fP), or
+.IP \(bu 2
+\fI\%IMPORTED_LIBNAME_<CONFIG>\fP (for \fI\%Interface Libraries\fP).
+.UNINDENT
+.sp
+The configuration names correspond to those defined in the project from
+which the target is imported.  If the importing project uses a different
+set of configurations, the names may be mapped using the
+\fI\%MAP_IMPORTED_CONFIG_<CONFIG>\fP target property.
+.sp
+The \fBIMPORTED_CONFIGURATIONS\fP property is ignored for non\-imported targets.
+.SS IMPORTED_CXX_MODULES_COMPILE_DEFINITIONS
+.sp
+New in version 3.28.
+
+.sp
+Preprocessor definitions for compiling an \fBIMPORTED\fP target\(aqs C++ module
+sources.
+.sp
+CMake will automatically drop some definitions that are not supported
+by the native build tool.
+.SS IMPORTED_CXX_MODULES_COMPILE_FEATURES
+.sp
+New in version 3.28.
+
+.sp
+Compiler features enabled for this \fBIMPORTED\fP target\(aqs C++ modules.
+.sp
+The value of this property is used by the generators to set the include
+paths for the compiler.
+.SS IMPORTED_CXX_MODULES_COMPILE_OPTIONS
+.sp
+New in version 3.28.
+
+.sp
+List of options to pass to the compiler for this \fBIMPORTED\fP target\(aqs C++
+modules.
+.SS Option De\-duplication
+.sp
+The final set of options used for a target is constructed by
+accumulating options from the current target and the usage requirements of
+its dependencies.  The set of options is de\-duplicated to avoid repetition.
+.sp
+New in version 3.12: While beneficial for individual options, the de\-duplication step can break
+up option groups.  For example, \fB\-option A \-option B\fP becomes
+\fB\-option A B\fP\&.  One may specify a group of options using shell\-like
+quoting along with a \fBSHELL:\fP prefix.  The \fBSHELL:\fP prefix is dropped,
+and the rest of the option string is parsed using the
+\fI\%separate_arguments()\fP \fBUNIX_COMMAND\fP mode. For example,
+\fB\(dqSHELL:\-option A\(dq \(dqSHELL:\-option B\(dq\fP becomes \fB\-option A \-option B\fP\&.
+
+.SS IMPORTED_CXX_MODULES_INCLUDE_DIRECTORIES
+.sp
+New in version 3.28.
+
+.sp
+List of preprocessor include file search directories when compiling C++
+modules for \fBIMPORTED\fP targets.
+.sp
+The value of this property is used by the generators to set the include
+paths for the compiler.
+.SS IMPORTED_CXX_MODULES_LINK_LIBRARIES
+.sp
+New in version 3.28.
+
+.sp
+List of direct dependencies to use for usage requirements for C++ modules in
+the target\(aqs C++ modules.
 .SS IMPORTED_GLOBAL
 .sp
 New in version 3.11.
@@ -4938,10 +5338,45 @@ their initial scope (see \fI\%ALIAS_GLOBAL\fP target property).
 .sp
 Full path to the import library for an \fBIMPORTED\fP target.
 .sp
-Set this to the location of the \fB\&.lib\fP part of a Windows DLL, or on
-AIX set it to an import file created for executables that export symbols
-(see the \fI\%ENABLE_EXPORTS\fP target property).
-Ignored for non\-imported targets.
+This property may be set:
+.INDENT 0.0
+.IP \(bu 2
+On DLL platforms, to the location of the \fB\&.lib\fP part of the DLL.
+.IP \(bu 2
+New in version 3.16: On AIX, to an import file (e.g. \fB\&.imp\fP) created for executables that
+export symbols (see the \fI\%ENABLE_EXPORTS\fP target property).
+
+.IP \(bu 2
+New in version 3.27: On Apple platforms, to an import file (e.g. \fB\&.tbd\fP) created for shared
+libraries or frameworks (see the \fI\%ENABLE_EXPORTS\fP target
+property).  For frameworks, this is the location of the \fB\&.tbd\fP file
+symlink just inside the framework folder.
+
+.IP \(bu 2
+New in version 3.28: On non\-DLL platforms, to the location of a shared library.
+When set without also specifying an \fI\%IMPORTED_LOCATION\fP,
+the library is considered to be a stub, and its location will not
+be added as a runtime search path to dependents that link it.
+
+.UNINDENT
+.sp
+Changed in version 3.28: If an imported target is an Apple framework or XCFramework, the preferred
+arrangement is to set \fI\%IMPORTED_LOCATION\fP to the \fB\&.framework\fP
+or \fB\&.xcframework\fP directory.  CMake will then find the relevant \fB\&.tbd\fP
+file inside that framework or XCFramework automatically without requiring
+\fBIMPORTED_IMPLIB\fP to be set.
+
+.sp
+The \fBIMPORTED_IMPLIB\fP target property may be overridden for a
+given configuration \fB<CONFIG>\fP by the configuration\-specific
+\fI\%IMPORTED_IMPLIB_<CONFIG>\fP target property.  Furthermore,
+the \fI\%MAP_IMPORTED_CONFIG_<CONFIG>\fP target property may be
+used to map between a project\(aqs configurations and those of an imported
+target.  If none of these is set then the name of any other configuration
+listed in the \fI\%IMPORTED_CONFIGURATIONS\fP target property may be
+selected and its \fI\%IMPORTED_IMPLIB_<CONFIG>\fP value used.
+.sp
+This property is ignored for non\-imported targets.
 .SS IMPORTED_IMPLIB_<CONFIG>
 .sp
 <CONFIG>\-specific version of \fI\%IMPORTED_IMPLIB\fP property.
@@ -5076,6 +5511,12 @@ is the location of the \fB\&.dll\fP part of the library.  For \fBUNKNOWN\fP
 libraries this is the location of the file to be linked.  Ignored for
 non\-imported targets.
 .sp
+New in version 3.28: For ordinary frameworks on Apple platforms, this may be the location of the
+\fB\&.framework\fP folder itself.  For XCFrameworks, it may be the location of
+the \fB\&.xcframework\fP folder, in which case any target that links against it
+will get the selected library\(aqs \fBHeaders\fP directory as a usage requirement.
+
+.sp
 The \fBIMPORTED_LOCATION\fP target property may be overridden for a
 given configuration \fB<CONFIG>\fP by the configuration\-specific
 \fI\%IMPORTED_LOCATION_<CONFIG>\fP target property.  Furthermore,
@@ -5086,9 +5527,9 @@ listed in the \fI\%IMPORTED_CONFIGURATIONS\fP target property may be
 selected and its \fI\%IMPORTED_LOCATION_<CONFIG>\fP value used.
 .sp
 To get the location of an imported target read one of the \fI\%LOCATION\fP
-or \fBLOCATION_<CONFIG>\fP properties.
+or \fI\%LOCATION_<CONFIG>\fP properties.
 .sp
-For platforms with import libraries (e.g. Windows) see also
+For platforms with import libraries (e.g. Windows, AIX or Apple) see also
 \fI\%IMPORTED_IMPLIB\fP\&.
 .SS IMPORTED_LOCATION_<CONFIG>
 .sp
@@ -5110,45 +5551,6 @@ place of its missing \fBsoname\fP\&.  Ignored for non\-imported targets.
 .sp
 Configuration names correspond to those provided by the project from
 which the target is imported.
-.SS IMPORTED_NO_SYSTEM
-.sp
-New in version 3.23.
-
-.sp
-Deprecated since version 3.25: \fBIMPORTED_NO_SYSTEM\fP is deprecated. Please use the following alternatives
-instead:
-.INDENT 0.0
-.IP \(bu 2
-Set \fI\%SYSTEM\fP to false if you don\(aqt want a target\(aqs include
-directories to be treated as system directories when compiling consumers.
-.IP \(bu 2
-Set \fI\%EXPORT_NO_SYSTEM\fP to true if you don\(aqt want the include
-directories of the imported target generated by \fI\%install(EXPORT)\fP
-and \fI\%export()\fP commands to be treated as system directories when
-compiling consumers.
-.UNINDENT
-
-.sp
-Setting \fBIMPORTED_NO_SYSTEM\fP to true on an
-\fI\%imported target\fP specifies that it is not a
-system target.  This has the following effects:
-.INDENT 0.0
-.IP \(bu 2
-Entries of \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP are not treated
-as system include directories when compiling consumers (regardless of
-the value of the consumed target\(aqs \fI\%SYSTEM\fP property), as they
-would be by default.   Entries of
-\fI\%INTERFACE_SYSTEM_INCLUDE_DIRECTORIES\fP are not affected,
-and will always be treated as system include directories.
-.UNINDENT
-.sp
-This property can also be enabled on a non\-imported target.  Doing so does
-not affect the build system, but does tell the \fI\%install(EXPORT)\fP and
-\fI\%export()\fP commands to enable it on the imported targets they generate.
-.sp
-See the \fI\%NO_SYSTEM_FROM_IMPORTED\fP target property to set this
-behavior on the target \fIconsuming\fP the include directories rather than
-the one \fIproviding\fP them.
 .SS IMPORTED_OBJECTS
 .sp
 New in version 3.9.
@@ -5180,7 +5582,7 @@ once per architecture for each source file.  Unlike the other generators,
 it does not generate universal object file binaries.
 .sp
 A further complication with the \fI\%Xcode\fP generator is that when
-targeting device platforms (iOS, tvOS or watchOS), the \fI\%Xcode\fP
+targeting device platforms (iOS, tvOS, visionOS or watchOS), the \fI\%Xcode\fP
 generator has the ability to use either the device or simulator SDK without
 needing CMake to be re\-run.  The SDK can be selected at build time.
 But since some architectures can be supported by both the device and the
@@ -5407,7 +5809,111 @@ value of the \fI\%INSTALL_RPATH\fP target property.
 This property is initialized by the value of the variable
 \fI\%CMAKE_INSTALL_RPATH_USE_LINK_PATH\fP if it is set when a target is
 created.
+.SS INTERFACE_AUTOMOC_MACRO_NAMES
+.sp
+New in version 3.27.
+
+.sp
+A \fI\%semicolon\-separated list\fP of macro names for
+\fI\%AUTOMOC\fP to be propagated to consumers.
+.sp
+When a target with \fI\%AUTOMOC\fP enabled links to a library that sets
+\fBINTERFACE_AUTOMOC_MACRO_NAMES\fP, the target inherits the listed macro names
+and merges them with those specified in its own \fI\%AUTOMOC_MACRO_NAMES\fP
+property.  The target will then automatically generate MOC files for source
+files that contain the inherited macro names too, not just the macro names
+specified in its own \fI\%AUTOMOC_MACRO_NAMES\fP property.
+.sp
+By default \fBINTERFACE_AUTOMOC_MACRO_NAMES\fP is empty.
+.sp
+See the \fI\%cmake\-qt(7)\fP manual for more information on using CMake
+with Qt.
+.SS Example 1
+.sp
+In this example, \fBmyapp\fP inherits the macro names \fBSTATIC_LIB_1\fP and
+\fBSTATIC_LIB_2\fP from \fBstatic_lib\fP\&.  The \fBmoc\fP tool will then automatically
+be run on any of the \fBmyapp\fP sources which contain \fBSTATIC_LIB_1\fP or
+\fBSTATIC_LIB_2\fP\&.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+set(AUTOMOC ON)
+add_executable(myapp main.cpp)
+target_link_libraries(myapp PRIVATE static_lib)
+
+add_library(static_lib STATIC static.cpp)
+set_property(TARGET static_lib PROPERTY
+  INTERFACE_AUTOMOC_MACRO_NAMES \(dqSTATIC_LIB_1;STATIC_LIB_2\(dq
+)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.SS Example 2
+.sp
+In this example, the \fBINTERFACE_AUTOMOC_MACRO_NAMES\fP target property of the
+various \fB*_deep_lib\fP libraries will propagate to \fBshared_lib\fP,
+\fBstatic_lib\fP and \fBinterface_lib\fP\&.  Because the linking relationships are
+specified as \fBPUBLIC\fP and \fBINTERFACE\fP, those macro names will also further
+propagate transitively up to \fBapp\fP\&.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+set(AUTOMOC ON)
+
+add_library(shared_deep_lib SHARED deep_lib.cpp)
+add_library(static_deep_lib STATIC deep_lib.cpp)
+add_library(interface_deep_lib INTERFACE)
+
+set_property(TARGET shared_deep_lib PROPERTY
+  INTERFACE_AUTOMOC_MACRO_NAMES \(dqSHARED_LINK_LIB\(dq
+)
+set_property(TARGET static_deep_lib PROPERTY
+  INTERFACE_AUTOMOC_MACRO_NAMES \(dqSTATIC_LINK_LIB\(dq
+)
+set_property(TARGET interface_deep_lib PROPERTY
+  INTERFACE_AUTOMOC_MACRO_NAMES \(dqINTERFACE_LINK_LIB\(dq
+)
+
+add_library(shared_lib SHARED lib.cpp)
+add_library(static_lib STATIC lib.cpp)
+add_library(interface_lib INTERFACE)
+
+# PUBLIC and INTERFACE here ensure the macro names propagate to any
+# consumers of shared_lib, static_lib or interface_lib too
+target_link_libraries(shared_lib PUBLIC shared_deep_lib)
+target_link_libraries(static_lib PUBLIC static_deep_lib)
+target_link_libraries(interface_lib INTERFACE interface_deep_lib)
+
+# This consumer will receive all three of the above custom macro names as
+# transitive usage requirements
+add_executable(app main.cpp)
+target_link_libraries(app PRIVATE shared_lib static_lib interface_lib)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+In the above:
+.INDENT 0.0
+.IP \(bu 2
+\fBshared_lib\fP sources will be processed by \fBmoc\fP if they contain
+\fBSHARED_LINK_LIB\fP\&.
+.IP \(bu 2
+\fBstatic_lib\fP sources will be processed by \fBmoc\fP if they contain
+\fBSTATIC_LINK_LIB\fP\&.
+.IP \(bu 2
+\fBapp\fP sources will be processed by \fBmoc\fP if they contain
+\fBSHARED_LINK_LIB\fP, \fBSTATIC_LINK_LIB\fP or \fBINTERFACE_LINK_LIB\fP\&.
+.UNINDENT
 .SS INTERFACE_AUTOUIC_OPTIONS
+.sp
+New in version 3.0.
+
 .sp
 List of interface options to pass to uic.
 .sp
@@ -5477,38 +5983,10 @@ Contents of \fBINTERFACE_COMPILE_OPTIONS\fP may use \(dqgenerator expressions\(d
 with the syntax \fB$<...>\fP\&.  See the \fI\%cmake\-generator\-expressions(7)\fP
 manual for available expressions.  See the \fI\%cmake\-buildsystem(7)\fP
 \-manual for more on defining buildsystem properties.
-.SS INTERFACE_CXX_MODULE_HEADER_UNIT_SETS
-.sp
-New in version 3.25.
-
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
-.sp
-Read\-only list of the target\(aqs \fBPUBLIC\fP C++ module header sets (i.e. all
-file sets with the type \fBCXX_MODULE_HEADER_UNITS\fP). Files listed in these
-C++ module header sets can be installed with \fI\%install(TARGETS)\fP and
-exported with \fI\%install(EXPORT)\fP and \fI\%export()\fP\&.
-.sp
-C++ module header sets may be defined using the \fI\%target_sources()\fP
-command \fBFILE_SET\fP option with type \fBCXX_MODULE_HEADER_UNITS\fP\&.
-.sp
-See also \fI\%CXX_MODULE_HEADER_UNIT_SETS\fP\&.
 .SS INTERFACE_CXX_MODULE_SETS
 .sp
-New in version 3.25.
+New in version 3.28.
 
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Experimental. Gated by \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP
-.UNINDENT
-.UNINDENT
 .sp
 Read\-only list of the target\(aqs \fBPUBLIC\fP C++ module sets (i.e. all file sets
 with the type \fBCXX_MODULES\fP). Files listed in these C++ module sets can be
@@ -6215,28 +6693,6 @@ configuration.
 This property is initialized by the
 \fI\%CMAKE_INTERPROCEDURAL_OPTIMIZATION_<CONFIG>\fP variable if it is set
 when a target is created.
-.SS IOS_INSTALL_COMBINED
-.sp
-New in version 3.5.
-
-.sp
-Build a combined (device and simulator) target when installing.
-.sp
-When this property is set to set to false (which is the default) then it will
-either be built with the device SDK or the simulator SDK depending on the SDK
-set. But if this property is set to true then the target will at install time
-also be built for the corresponding SDK and combined into one library.
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-If a selected architecture is available for both: device SDK and simulator
-SDK it will be built for the SDK selected by \fI\%CMAKE_OSX_SYSROOT\fP
-and removed from the corresponding SDK.
-.UNINDENT
-.UNINDENT
-.sp
-This feature requires at least Xcode version 6.
 .SS ISPC_HEADER_DIRECTORY
 .sp
 New in version 3.19.
@@ -6392,6 +6848,18 @@ commands database.
 This property is initialized by the value of
 the \fI\%CMAKE_<LANG>_CLANG_TIDY\fP variable if it is set
 when a target is created.
+.sp
+New in version 3.27: This property supports
+\fI\%generator expressions\fP\&.
+
+.sp
+New in version 3.27: \fI\%SKIP_LINTING\fP can be set on individual source files to exclude
+them from the linting tools defined by \fI\%<LANG>_CPPLINT\fP,
+\fB<LANG>_CLANG_TIDY\fP, \fI\%<LANG>_CPPCHECK\fP, and
+\fI\%<LANG>_INCLUDE_WHAT_YOU_USE\fP\&.  When \fI\%SKIP_LINTING\fP is
+set to true on a source file, those tools will not be run on that specific
+file.
+
 .SS <LANG>_CLANG_TIDY_EXPORT_FIXES_DIR
 .sp
 New in version 3.26.
@@ -6458,6 +6926,18 @@ tool returns non\-zero.
 This property is initialized by the value of the
 \fI\%CMAKE_<LANG>_CPPCHECK\fP variable if it is set when a target is
 created.
+.sp
+New in version 3.27: This property supports
+\fI\%generator expressions\fP\&.
+
+.sp
+New in version 3.27: \fI\%SKIP_LINTING\fP can be set on individual source files to exclude
+them from the linting tools defined by \fI\%<LANG>_CPPLINT\fP,
+\fI\%<LANG>_CLANG_TIDY\fP, \fB<LANG>_CPPCHECK\fP, and
+\fI\%<LANG>_INCLUDE_WHAT_YOU_USE\fP\&.  When \fI\%SKIP_LINTING\fP is
+set to true on a source file, those tools will not be run on that specific
+file.
+
 .SS <LANG>_CPPLINT
 .sp
 New in version 3.8.
@@ -6473,6 +6953,18 @@ and report any problems.
 This property is initialized by the value of the
 \fI\%CMAKE_<LANG>_CPPLINT\fP variable if it is set when a target is
 created.
+.sp
+New in version 3.27: This property supports
+\fI\%generator expressions\fP\&.
+
+.sp
+New in version 3.27: \fI\%SKIP_LINTING\fP can be set on individual source files to exclude
+them from the linting tools defined by \fB<LANG>_CPPLINT\fP,
+\fI\%<LANG>_CLANG_TIDY\fP, \fI\%<LANG>_CPPCHECK\fP, and
+\fI\%<LANG>_INCLUDE_WHAT_YOU_USE\fP\&.  When \fI\%SKIP_LINTING\fP is
+set to true on a source file, those tools will not be run on that specific
+file.
+
 .SS <LANG>_EXTENSIONS
 .sp
 The variations are:
@@ -6518,6 +7010,18 @@ compiler and report a warning if the tool reports any problems.
 This property is initialized by the value of
 the \fI\%CMAKE_<LANG>_INCLUDE_WHAT_YOU_USE\fP variable if it is set
 when a target is created.
+.sp
+New in version 3.27: This property supports
+\fI\%generator expressions\fP\&.
+
+.sp
+New in version 3.27: \fI\%SKIP_LINTING\fP can be set on individual source files to exclude
+them from the linting tools defined by \fI\%<LANG>_CPPLINT\fP,
+\fI\%<LANG>_CLANG_TIDY\fP, \fI\%<LANG>_CPPCHECK\fP, and
+\fB<LANG>_INCLUDE_WHAT_YOU_USE\fP\&.  When \fI\%SKIP_LINTING\fP is
+set to true on a source file, those tools will not be run on that specific
+file.
+
 .SS <LANG>_LINKER_LAUNCHER
 .sp
 New in version 3.21.
@@ -6534,6 +7038,10 @@ arguments to the tool. This is useful for tools such as static analyzers.
 This property is initialized by the value of the
 \fI\%CMAKE_<LANG>_LINKER_LAUNCHER\fP variable if it is set when a target is
 created.
+.sp
+New in version 3.27: The property value may use
+\fI\%generator expressions\fP\&.
+
 .SS <LANG>_STANDARD
 .sp
 The variations are:
@@ -6560,7 +7068,7 @@ controlled with the \fI\%<LANG>_STANDARD_REQUIRED\fP target property.
 Note that the actual language standard used may be higher than that specified
 by \fB<LANG>_STANDARD\fP, regardless of the value of
 \fI\%<LANG>_STANDARD_REQUIRED\fP\&.  In particular,
-\fI\%transitive usage requirements\fP or the use of
+\fI\%usage requirements\fP or the use of
 \fI\%compile features\fP can raise the required
 language standard above what \fB<LANG>_STANDARD\fP specifies.
 .sp
@@ -6601,7 +7109,7 @@ error will be issued if that requirement cannot be met.
 Note that the actual language standard used may be higher than that specified
 by \fI\%<LANG>_STANDARD\fP, regardless of the value of
 \fB<LANG>_STANDARD_REQUIRED\fP\&.  In particular,
-\fI\%transitive usage requirements\fP or the use of
+\fI\%usage requirements\fP or the use of
 \fI\%compile features\fP can raise the required
 language standard above what \fI\%<LANG>_STANDARD\fP specifies.
 .sp
@@ -7260,6 +7768,125 @@ discussion can be found under the internal
 .sp
 If this property is not set by the user, it will be calculated at
 generate\-time by CMake.
+.SS LINKER_TYPE
+.sp
+New in version 3.29.
+
+.sp
+Specify which linker will be used for the link step. The property value may use
+\fI\%generator expressions\fP\&.
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+It is assumed that the linker specified is fully compatible with the default
+one the compiler would normally invoke. CMake will not do any option
+translation.
+.UNINDENT
+.UNINDENT
+.sp
+Linker types are case\-sensitive and may only contain letters, numbers and
+underscores. Linker types defined in all uppercase are reserved for CMake\(aqs own
+built\-in types. The pre\-defined linker types are:
+.INDENT 0.0
+.TP
+.B \fBDEFAULT\fP
+This type corresponds to standard linking, essentially equivalent to the
+\fI\%LINKER_TYPE\fP target property not being set at all.
+.TP
+.B \fBSYSTEM\fP
+Use the standard linker provided by the platform or toolchain. For example,
+this implies the Microsoft linker for all MSVC\-compatible compilers.
+This type is supported for the following platform\-compiler combinations:
+.INDENT 7.0
+.IP \(bu 2
+Linux: \fBGNU\fP, \fBClang\fP, \fBLLVMFlang\fP, \fBNVIDIA\fP, and \fBSwift\fP
+compilers.
+.IP \(bu 2
+Apple platforms: \fBAppleClang\fP, \fBClang\fP, \fBGNU\fP, and \fBSwift\fP
+compilers.
+.IP \(bu 2
+Windows: \fBMSVC\fP, \fBGNU\fP, \fBClang\fP, \fBNVIDIA\fP, and \fBSwift\fP compilers.
+.UNINDENT
+.TP
+.B \fBLLD\fP
+Use the \fBLLVM\fP linker. This type is supported for the following
+platform\-compiler combinations:
+.INDENT 7.0
+.IP \(bu 2
+Linux: \fBGNU\fP, \fBClang\fP, \fBLLVMFlang\fP, \fBNVIDIA\fP, and \fBSwift\fP
+compilers.
+.IP \(bu 2
+Apple platforms: \fBClang\fP, \fBAppleClang\fP, and \fBSwift\fP compilers.
+.IP \(bu 2
+Windows: \fBGNU\fP, \fBClang\fP with MSVC\-like front\-end, \fBClang\fP with
+GNU\-like front\-end, \fBMSVC\fP, \fBNVIDIA\fP with MSVC\-like front\-end,
+and \fBSwift\fP\&.
+.UNINDENT
+.TP
+.B \fBBFD\fP
+Use the \fBGNU\fP linker.  This type is supported for the following
+platform\-compiler combinations:
+.INDENT 7.0
+.IP \(bu 2
+Linux: \fBGNU\fP, \fBClang\fP, \fBLLVMFlang\fP, and \fBNVIDIA\fP compilers.
+.IP \(bu 2
+Windows: \fBGNU\fP, \fBClang\fP with GNU\-like front\-end.
+.UNINDENT
+.TP
+.B \fBGOLD\fP
+Supported on Linux platform with \fBGNU\fP, \fBClang\fP, \fBLLVMFlang\fP,
+\fBNVIDIA\fP, and \fBSwift\fP compilers.
+.TP
+.B \fBMOLD\fP
+Use the \fI\%mold linker\fP\&. This type is
+supported on the following platform\-compiler combinations:
+.INDENT 7.0
+.IP \(bu 2
+Linux: \fBGNU\fP, \fBClang\fP, \fBLLVMFlang\fP, and \fBNVIDIA\fP compilers.
+.IP \(bu 2
+Apple platforms: \fBClang\fP and \fBAppleClang\fP compilers (acts as an
+alias to the \fI\%sold linker\fP).
+.UNINDENT
+.TP
+.B \fBSOLD\fP
+Use the \fI\%sold linker\fP\&. This type is only supported on Apple platforms
+with \fBClang\fP and \fBAppleClang\fP compilers.
+.TP
+.B \fBAPPLE_CLASSIC\fP
+Use the Apple linker in the classic behavior (i.e. before \fBXcode 15.0\fP).
+This type is only supported on Apple platforms with \fBGNU\fP, \fBClang\fP,
+\fBAppleClang\fP, and \fBSwift\fP compilers.
+.TP
+.B \fBMSVC\fP
+Use the Microsoft linker. This type is only supported on the Windows
+platform with \fBMSVC\fP, \fBClang\fP with MSVC\-like front\-end, and \fBSwift\fP
+compilers.
+.UNINDENT
+.sp
+This property is not supported on \fI\%Green Hills MULTI\fP generator.
+.sp
+The implementation details for the selected linker will be provided by the
+\fI\%CMAKE_<LANG>_USING_LINKER_<TYPE>\fP variable. For example:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_library(lib1 SHARED ...)
+set_property(TARGET lib1 PROPERTY LINKER_TYPE LLD)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+This specifies that \fBlib1\fP should use linker type \fBLLD\fP for the link step.
+The command line options that will be passed to the toolchain will be provided
+by the \fBCMAKE_<LANG>_USING_LINKER_LLD\fP variable.
+.sp
+Note that the linker would typically be set using \fI\%CMAKE_LINKER_TYPE\fP
+for the whole build rather than setting the \fBLINKER_TYPE\fP property on
+individual targets.
 .SS LOCATION
 .sp
 Read\-only location of a target on disk.
@@ -7616,6 +8243,8 @@ set_property(TARGET foo PROPERTY
 selects for the target \fBfoo\fP the program database debug information format
 for the Debug configuration.
 .sp
+This property is initialized from the value of the
+\fI\%CMAKE_MSVC_DEBUG_INFORMATION_FORMAT\fP variable, if it is set.
 If this property is not set, CMake selects a debug information format using
 the default value \fB$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>\fP, if
 supported by the compiler, and otherwise
@@ -7719,13 +8348,14 @@ eventually fail to locate the library for the binary.
 Do not treat include directories from the interfaces of consumed
 \fI\%Imported Targets\fP as system directories.
 .sp
-The contents of the \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP target property
-are treated as system includes when the consumed target\(aqs \fI\%SYSTEM\fP
-property is set to true.  By default, \fI\%SYSTEM\fP is true for imported
-targets and false for other target types.  If the \fBNO_SYSTEM_FROM_IMPORTED\fP
-property is set to true on a \fIconsuming\fP target, compilation of sources in that
-consuming target will not treat the contents of the
-\fI\%INTERFACE_INCLUDE_DIRECTORIES\fP of consumed imported targets as
+When the consumed target\(aqs \fI\%SYSTEM\fP property is set to true, the
+contents of the \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP target property are
+treated as system includes or, on Apple platforms, when the target is a
+framework, it will be treated as system.  By default, \fI\%SYSTEM\fP is
+true for imported targets and false for other target types.  If the
+\fBNO_SYSTEM_FROM_IMPORTED\fP property is set to true on a \fIconsuming\fP target,
+compilation of sources in that consuming target will not treat the contents of
+the \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP of consumed imported targets as
 system includes, even if that imported target\(aqs \fI\%SYSTEM\fP property
 is false.
 .sp
@@ -7787,6 +8417,18 @@ Objective C99
 .TP
 .B \fB11\fP
 Objective C11
+.TP
+.B \fB17\fP
+New in version 3.21.
+
+.sp
+Objective C17
+.TP
+.B \fB23\fP
+New in version 3.21.
+
+.sp
+Objective C23
 .UNINDENT
 .sp
 If the value requested does not result in a compile flag being added for
@@ -8472,7 +9114,7 @@ evaluate to an absolute path. Not doing so is considered undefined behavior.
 Paths that are for files generated by the build will be treated
 as relative to the build directory of the target, if the path is not
 already specified as an absolute path.  Note that whether a file is seen as
-generated may be affected by policy \fI\%CMP0118\fP\&.
+generated may be affected by policies \fI\%CMP0118\fP and \fI\%CMP0163\fP\&.
 .sp
 If a path does not start with a generator expression, is not an
 absolute path and is not a generated file, it will be treated as relative to
@@ -8496,14 +9138,30 @@ See the \fI\%cmake\-buildsystem(7)\fP manual for more on defining
 buildsystem properties.
 .SS SOVERSION
 .sp
-What version number is this target.
+ABI version number of a shared library target.
 .sp
 For shared libraries \fI\%VERSION\fP and \fBSOVERSION\fP can be used to
-specify the build version and API version respectively.  When building or
+specify the build version and ABI version respectively.  When building or
 installing appropriate symlinks are created if the platform supports
 symlinks and the linker supports so\-names.  If only one of both is
 specified the missing is assumed to have the same version number.
 \fBSOVERSION\fP is ignored if \fI\%NO_SONAME\fP property is set.
+.sp
+A common convention is to specify both \fBVERSION\fP and \fBSOVERSION\fP
+such that \fBSOVERSION\fP matches the first component of \fBVERSION\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+set_target_properties(mylib PROPERTIES VERSION 1.2.3 SOVERSION 1)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+The idea is that breaking changes to the ABI increment both the
+\fBSOVERSION\fP and the major \fBVERSION\fP number.
 .SS Windows Versions
 .sp
 For shared libraries and executables on Windows the \fI\%VERSION\fP
@@ -8604,6 +9262,68 @@ What comes after the target name.
 .sp
 A target property that can be set to override the suffix (such as
 \fB\&.so\fP or \fB\&.exe\fP) on the name of a library, module or executable.
+.SS Swift_COMPILATION_MODE
+.sp
+New in version 3.29.
+
+.sp
+Specify how Swift compiles a target.
+.sp
+The allowed values are:
+.INDENT 0.0
+.TP
+.B \fBincremental\fP
+Compiles each Swift source in the module separately, resulting in better
+parallelism in the build. The compiler emits additional information into
+the build directory improving rebuild performance when small changes are made
+to the source between rebuilds. This is the best option to use while
+iterating on changes in a project.
+.TP
+.B \fBwholemodule\fP
+Whole\-module optimizations are slowest to compile, but results in the most
+optimized library. The entire context is loaded into once instance of the
+compiler, so there is no parallelism across source files in the module.
+.TP
+.B \fBsinglefile\fP
+Compiles each source in a Swift modules separately, resulting in better
+parallelism. Unlike the \fBincremental\fP build mode, no additional information
+is emitted by the compiler during the build, so rebuilding after making small
+changes to the source file will not run faster. This option should be used
+sparingly, preferring \fBincremental\fP builds, unless working around a compiler
+bug.
+.UNINDENT
+.sp
+Use \fI\%generator expressions\fP to support
+per\-configuration specification. For example, the code:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_library(foo foo.swift)
+set_property(TARGET foo PROPERTY
+  Swift_COMPILATION_MODE \(dq$<IF:$<CONFIG:Release>,wholemodule,incremental>\(dq)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+sets the Swift compilation mode to wholemodule mode in the release configuration
+and sets the property to incremental mode in other configurations.
+.sp
+The property is initialized from the value of the
+\fI\%CMAKE_Swift_COMPILATION_MODE\fP variable, if it is set. If the property
+is not set or is empty, then CMake uses the default value \fBincremental\fP to
+specify the swift compilation mode.
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+This property only has effect when policy \fI\%CMP0157\fP is set to \fBNEW\fP
+prior to the first \fI\%project()\fP or \fI\%enable_language()\fP command
+that enables the Swift language.
+.UNINDENT
+.UNINDENT
 .SS Swift_DEPENDENCIES_FILE
 .sp
 New in version 3.15.
@@ -8617,8 +9337,9 @@ New in version 3.16.
 
 .sp
 This property sets the language version for the Swift sources in the target.  If
-one is not specified, it will default to \fB<CMAKE_Swift_LANGUAGE_VERSION>\fP if
-specified, otherwise it is the latest version supported by the compiler.
+one is not specified, it will default to
+\fI\%CMAKE_Swift_LANGUAGE_VERSION\fP if specified, otherwise it is the
+latest version supported by the compiler.
 .SS Swift_MODULE_DIRECTORY
 .sp
 New in version 3.15.
@@ -8631,6 +9352,23 @@ the modules will be placed.  When this property is not set, the modules will be
 placed in the build directory corresponding to the target\(aqs source directory.
 If the variable \fI\%CMAKE_Swift_MODULE_DIRECTORY\fP is set when a target is
 created its value is used to initialize this property.
+.sp
+\fBWARNING:\fP
+.INDENT 0.0
+.INDENT 3.5
+This property does not currently provide a way to express per\-config
+module directories, so use with multi\-config generators is problematic:
+.INDENT 0.0
+.IP \(bu 2
+The \fI\%Xcode\fP generator does not implement the property at all.
+.IP \(bu 2
+The \fI\%Ninja Multi\-Config\fP generator implements this property,
+but module files generated for different build configurations have the
+same path, which can lead to subtle problems when building more than
+one configuration.
+.UNINDENT
+.UNINDENT
+.UNINDENT
 .SS Swift_MODULE_NAME
 .sp
 New in version 3.15.
@@ -8651,17 +9389,82 @@ Entries of \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP are treated as
 system include directories when compiling consumers.
 Entries of \fI\%INTERFACE_SYSTEM_INCLUDE_DIRECTORIES\fP are not
 affected, and will always be treated as system include directories.
+.IP \(bu 2
+On Apple platforms, If the \fI\%FRAMEWORK\fP target property is true,
+the frameworks directory is treated as system.
 .UNINDENT
 .sp
 For imported targets, this property defaults to true, which means
-that their \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP are treated
-as system directories by default.  If their \fBSYSTEM\fP property is false,
-then their \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP will not be
-treated as system.  Use the \fI\%EXPORT_NO_SYSTEM\fP property to change
-how a target\(aqs \fBSYSTEM\fP property is set when it is installed.
+that their \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP and, if the
+\fI\%FRAMEWORK\fP target property is true, frameworks directory are
+treated as system directories by default.  If their \fBSYSTEM\fP property is
+false, then their \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP as well as
+frameworks will not be treated as system.  Use the \fI\%EXPORT_NO_SYSTEM\fP
+property to change how a target\(aqs \fBSYSTEM\fP property is set when it is
+installed.
 .sp
 For non\-imported targets, this target property is initialized from
 the \fI\%SYSTEM\fP directory property when the target is created.
+.SS TEST_LAUNCHER
+.sp
+New in version 3.29.
+
+.sp
+Use the given launcher to run executables.
+This command will be added as a prefix to \fI\%add_test()\fP commands
+for build target system executables and is meant to be run on the host
+machine.
+.sp
+It effectively acts as a run script for tests in a similar way
+to how \fI\%CMAKE_<LANG>_COMPILER_LAUNCHER\fP works for compilation.
+.sp
+If this property contains a \fI\%semicolon\-separated list\fP, then the first value is the command and remaining values are its
+arguments.
+.sp
+Contents of \fBTEST_LAUNCHER\fP may use
+\fI\%generator expressions\fP\&.
+.sp
+This property is initialized by the value of the
+\fI\%CMAKE_TEST_LAUNCHER\fP variable if it is set when a target
+is created.
+.SS TRANSITIVE_COMPILE_PROPERTIES
+.sp
+New in version 3.30.
+
+.sp
+Properties that the \fI\%TARGET_PROPERTY\fP generator expression, on the
+target and its dependents, evaluates as the union of values collected from
+the transitive closure of link dependencies, excluding entries guarded by
+\fI\%LINK_ONLY\fP\&.
+.sp
+The value is a \fI\%semicolon\-separated list\fP
+of \fI\%custom transitive property\fP names.
+Any leading \fBINTERFACE_\fP prefix is ignored, e.g., \fBINTERFACE_PROP\fP is
+treated as just \fBPROP\fP\&.
+.sp
+See documentation of the \fI\%TARGET_PROPERTY\fP generator expression
+for details of custom transitive property evaluation.  See also the
+\fI\%TRANSITIVE_LINK_PROPERTIES\fP target property, which includes
+entries guarded by \fI\%LINK_ONLY\fP\&.
+.SS TRANSITIVE_LINK_PROPERTIES
+.sp
+New in version 3.30.
+
+.sp
+Properties that the \fI\%TARGET_PROPERTY\fP generator expression, on the
+target and its dependents, evaluates as the union of values collected from
+the transitive closure of link dependencies, including entries guarded by
+\fI\%LINK_ONLY\fP\&.
+.sp
+The value is a \fI\%semicolon\-separated list\fP
+of \fI\%custom transitive property\fP names.
+Any leading \fBINTERFACE_\fP prefix is ignored, e.g., \fBINTERFACE_PROP\fP is
+treated as just \fBPROP\fP\&.
+.sp
+See documentation of the \fI\%TARGET_PROPERTY\fP generator expression
+for details of custom transitive property evaluation.  See also the
+\fI\%TRANSITIVE_COMPILE_PROPERTIES\fP target property, which excludes
+entries guarded by \fI\%LINK_ONLY\fP\&..
 .SS TYPE
 .sp
 The type of the target.
@@ -8704,11 +9507,29 @@ this mode.
 If no explicit \fI\%UNITY_BUILD_MODE\fP has been specified, CMake will
 default to \fBBATCH\fP\&.
 .sp
-Unity builds are not currently supported for all languages.  CMake version
-3.26.3 supports combining \fBC\fP and \fBCXX\fP source files.  For targets that
-mix source files from more than one language, CMake will separate the languages
-such that each generated unity source file only contains sources for a single
-language.
+Unity builds are supported for the following languages:
+.INDENT 0.0
+.TP
+.B \fBC\fP
+New in version 3.16.
+
+.TP
+.B \fBCXX\fP
+New in version 3.16.
+
+.TP
+.B \fBOBJC\fP
+New in version 3.29.
+
+.TP
+.B \fBOBJCXX\fP
+New in version 3.29.
+
+.UNINDENT
+.sp
+For targets that mix source files from more than one language, CMake
+separates the languages such that each generated unity source file only
+contains sources for a single language.
 .sp
 This property is initialized by the value of the \fI\%CMAKE_UNITY_BUILD\fP
 variable when a target is created.
@@ -8739,6 +9560,11 @@ Any source file that has a non\-empty \fI\%COMPILE_OPTIONS\fP,
 \fI\%COMPILE_DEFINITIONS\fP, \fI\%COMPILE_FLAGS\fP, or
 \fI\%INCLUDE_DIRECTORIES\fP source property will not be combined
 into a unity source.
+.IP \(bu 2
+Any source file which is scanned for C++ module sources via
+\fI\%CXX_SCAN_FOR_MODULES\fP, \fI\%CXX_SCAN_FOR_MODULES\fP, or
+membership of a \fBCXX_MODULES\fP file set will not be combined into a unity
+source.  See \fI\%cmake\-cxxmodules(7)\fP for details.
 .IP \(bu 2
 Projects can prevent an individual source file from being combined into
 a unity source by setting its \fI\%SKIP_UNITY_BUILD_INCLUSION\fP
@@ -9010,6 +9836,9 @@ Otherwise, if C++ is enabled globally, the header is compiled as C++.
 Otherwise, if C is enabled globally, the header is compiled as C. Otherwise,
 the header file is not compiled.
 .sp
+If the header\(aqs \fI\%SKIP_LINTING\fP property is set to true, the file is
+not compiled.
+.sp
 If any verification targets are created, a top\-level target called
 \fBall_verify_interface_header_sets\fP is created which depends on all
 verification targets.
@@ -9022,16 +9851,32 @@ If the project wishes to control which header sets are verified by this
 property, it can set \fI\%INTERFACE_HEADER_SETS_TO_VERIFY\fP\&.
 .SS VERSION
 .sp
-What version number is this target.
+Version number of a shared library target.
 .sp
 For shared libraries \fBVERSION\fP and \fI\%SOVERSION\fP can be used
-to specify the build version and API version respectively.  When building or
+to specify the build version and ABI version respectively.  When building or
 installing appropriate symlinks are created if the platform supports
 symlinks and the linker supports so\-names.  If only one of both is
 specified the missing is assumed to have the same version number.  For
 executables \fBVERSION\fP can be used to specify the build version.  When
 building or installing appropriate symlinks are created if the
 platform supports symlinks.
+.sp
+A common convention is to specify both \fBVERSION\fP and \fBSOVERSION\fP
+such that \fBSOVERSION\fP matches the first component of \fBVERSION\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+set_target_properties(mylib PROPERTIES VERSION 1.2.3 SOVERSION 1)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+The idea is that breaking changes to the ABI increment both the
+\fBSOVERSION\fP and the major \fBVERSION\fP number.
 .SS Windows Versions
 .sp
 For shared libraries and executables on Windows the \fBVERSION\fP
@@ -9089,9 +9934,11 @@ Sets the local debugger command for Visual Studio C++ targets.
 The property value may use
 \fI\%generator expressions\fP\&.
 This is defined in \fB<LocalDebuggerCommand>\fP in the Visual Studio
-project file.
+project file.  This property is initialized by the value of the variable
+\fI\%CMAKE_VS_DEBUGGER_COMMAND\fP if it is set when a target is
+created.
 .sp
-This property only works for Visual Studio 11 2012 and above;
+This property only works for Visual Studio 12 2013 and above;
 it is ignored on other generators.
 .SS VS_DEBUGGER_COMMAND_ARGUMENTS
 .sp
@@ -9102,9 +9949,11 @@ Sets the local debugger command line arguments for Visual Studio C++ targets.
 The property value may use
 \fI\%generator expressions\fP\&.
 This is defined in \fB<LocalDebuggerCommandArguments>\fP in the Visual Studio
-project file.
+project file.  This property is initialized by the value of the variable
+\fI\%CMAKE_VS_DEBUGGER_COMMAND_ARGUMENTS\fP if it is set when a target is
+created.
 .sp
-This property only works for Visual Studio 11 2012 and above;
+This property only works for Visual Studio 12 2013 and above;
 it is ignored on other generators.
 .SS VS_DEBUGGER_ENVIRONMENT
 .sp
@@ -9115,9 +9964,11 @@ Sets the local debugger environment for Visual Studio C++ targets.
 The property value may use
 \fI\%generator expressions\fP\&.
 This is defined in \fB<LocalDebuggerEnvironment>\fP in the Visual Studio
-project file.
+project file.  This property is initialized by the value of the variable
+\fI\%CMAKE_VS_DEBUGGER_ENVIRONMENT\fP if it is set when a target is
+created.
 .sp
-This property only works for Visual Studio 11 2012 and above;
+This property only works for Visual Studio 12 2013 and above;
 it is ignored on other generators.
 .SS VS_DEBUGGER_WORKING_DIRECTORY
 .sp
@@ -9128,9 +9979,11 @@ Sets the local debugger working directory for Visual Studio C++ targets.
 The property value may use
 \fI\%generator expressions\fP\&.
 This is defined in \fB<LocalDebuggerWorkingDirectory>\fP in the Visual Studio
-project file.
+project file.  This property is initialized by the value of the variable
+\fI\%CMAKE_VS_DEBUGGER_WORKING_DIRECTORY\fP if it is set when a target is
+created.
 .sp
-This property only works for Visual Studio 11 2012 and above;
+This property only works for Visual Studio 12 2013 and above;
 it is ignored on other generators.
 .SS VS_DESKTOP_EXTENSIONS_VERSION
 .sp
@@ -9211,7 +10064,7 @@ If the property is unset, Visual Studio uses the first matching
 than one \fBMain()\fP method is available in the current project, the property
 becomes mandatory for building the project.
 .sp
-This property only works for Visual Studio 11 2012 and above;
+This property only works for Visual Studio 12 2013 and above;
 it is ignored on other generators.
 .INDENT 0.0
 .INDENT 3.5
@@ -9258,15 +10111,12 @@ set_property(TARGET myproject PROPERTY VS_DPI_AWARE \(dqPerMonitor\(dq)
 .UNINDENT
 .SS VS_GLOBAL_KEYWORD
 .sp
-Visual Studio project keyword for VS 10 (2010) and newer.
+Visual Studio project keyword.
 .sp
 Sets the \(dqkeyword\(dq attribute for a generated Visual Studio project.
 Defaults to \(dqWin32Proj\(dq.  You may wish to override this value with
 \(dqManagedCProj\(dq, for example, in a Visual Studio managed C++ unit test
 project.
-.sp
-Use the \fI\%VS_KEYWORD\fP target property to set the
-keyword for Visual Studio 9 (2008) and older.
 .SS VS_GLOBAL_PROJECT_TYPES
 .sp
 Visual Studio project type(s).
@@ -9336,13 +10186,12 @@ This property is initialized by the \fI\%CMAKE_VS_JUST_MY_CODE_DEBUGGING\fP
 variable if it is set when a target is created.
 .SS VS_KEYWORD
 .sp
-Visual Studio project keyword for VS 9 (2008) and older.
-.sp
-Can be set to change the visual studio keyword, for example Qt
-integration works better if this is set to Qt4VSv1.0.
+Removed.  This once specified the Visual Studio project keyword
+for the \fI\%Visual Studio 9 2008\fP generator, and older,
+but all of those generators have been removed.
 .sp
 Use the \fI\%VS_GLOBAL_KEYWORD\fP target property to set the
-keyword for Visual Studio 11 (2012) and newer.
+keyword for Visual Studio 12 (2013) and newer.
 .SS VS_MOBILE_EXTENSIONS_VERSION
 .sp
 New in version 3.4.
@@ -9584,6 +10433,54 @@ will set \fBKey\fP to \fBValue\fP and \fBKey2\fP to \fBValue2\fP for all
 non\-built files that use \fBFXCompile\fP\&.
 .sp
 \fI\%Generator expressions\fP are supported.
+.SS VS_USE_DEBUG_LIBRARIES
+.sp
+New in version 3.30.
+
+.sp
+Indicate to \fI\%Visual Studio Generators\fP what configurations are considered
+debug configurations.  This controls the \fBUseDebugLibraries\fP setting in
+each configuration of a \fB\&.vcxproj\fP file.
+.sp
+The \(dqUse Debug Libraries\(dq setting in Visual Studio projects, despite its
+specific\-sounding name, is a general\-purpose indicator of what configurations
+are considered debug configurations.  In standalone projects, this may affect
+MSBuild\(aqs default selection of MSVC runtime library, optimization flags,
+runtime checks, and similar settings.  In CMake projects those settings are
+typically generated explicitly based on the project\(aqs specification, e.g.,
+the MSVC runtime library is controlled by \fI\%MSVC_RUNTIME_LIBRARY\fP\&.  However,
+the \fBUseDebugLibraries\fP indicator is useful for reference by both humans
+and tools, and may also affect the behavior of platform\-specific SDKs.
+.sp
+Set \fBVS_USE_DEBUG_LIBRARIES\fP to a true or false value to indicate whether
+each configuration is considered a debug configuration.  The value may also
+be the empty string (\fB\(dq\(dq\fP) in which case no \fBUseDebugLibraries\fP will be
+added explicitly by CMake, and MSBuild will use its default value, \fBfalse\fP\&.
+.sp
+Use \fI\%generator expressions\fP
+for per\-configuration specification.  For example, the code:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_executable(foo foo.c)
+set_property(TARGET foo PROPERTY
+  VS_USE_DEBUG_LIBRARIES \(dq$<CONFIG:Debug,Custom>\(dq)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+indicates that target \fBfoo\fP considers its \(dqDebug\(dq and \(dqCustom\(dq
+configurations to be debug configurations, and its other configurations
+to be non\-debug configurations.
+.sp
+The property is initialized from the value of the
+\fI\%CMAKE_VS_USE_DEBUG_LIBRARIES\fP variable, if it is set.
+If the property is not set then CMake generates \fBUseDebugLibraries\fP using
+heuristics to determine which configurations are debug configurations.
+See policy \fI\%CMP0162\fP\&.
 .SS VS_USER_PROPS
 .sp
 New in version 3.8.
@@ -9598,6 +10495,16 @@ or \fB%LOCALAPPDATA%\e\eMicrosoft\e\eMSBuild\e\ev4.0\e\eMicrosoft.Cpp.x64.user.p
 .sp
 The \fB*.user.props\fP files can be used for Visual Studio wide
 configuration which is independent from cmake.
+.SS VS_FILTER_PROPS
+.sp
+New in version 3.30.
+
+.sp
+Sets the filter props file to be included in the visual studio
+C++ project filter file.
+.sp
+The \fB*.filter.props\fP files can be used for Visual Studio wide
+configuration which is independent from cmake.
 .SS VS_WINDOWS_TARGET_PLATFORM_MIN_VERSION
 .sp
 New in version 3.4.
@@ -9607,9 +10514,14 @@ Visual Studio Windows Target Platform Minimum Version
 .sp
 For Windows 10. Specifies the minimum version of the OS that is being
 targeted. For example \fB10.0.10240.0\fP\&. If the value is not specified, the
-value of \fI\%CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION\fP will be used on
-WindowsStore projects otherwise the target platform minimum version will not
-be specified for the project.
+value of the \fI\%CMAKE_VS_WINDOWS_TARGET_PLATFORM_VERSION\fP variable
+will be used on WindowsStore projects.  Otherwise the target platform
+minimum version will not be specified for the project.
+.sp
+New in version 3.27: This property is initialized by the value of the
+\fI\%CMAKE_VS_WINDOWS_TARGET_PLATFORM_MIN_VERSION\fP variable
+if it is set when a target is created.
+
 .SS VS_WINRT_COMPONENT
 .sp
 New in version 3.1.
@@ -9627,10 +10539,6 @@ Currently this is implemented only by Visual Studio generators.
 Support may be added to other generators in the future.
 .UNINDENT
 .UNINDENT
-.SS VS_WINRT_EXTENSIONS
-.sp
-Deprecated.  Use \fI\%VS_WINRT_COMPONENT\fP instead.
-This property was an experimental partial implementation of that one.
 .SS VS_WINRT_REFERENCES
 .sp
 Visual Studio project Windows Runtime Metadata references
@@ -9840,6 +10748,40 @@ New in version 3.23.
 .sp
 The specified items will be added to the \fBEmbed PlugIns\fP build phase.
 They must be CMake target names.
+.TP
+.B \fBRESOURCES\fP
+New in version 3.28.
+
+.sp
+The specified items will be added to the \fBEmbed Resources\fP build phase.
+They must be CMake target names or folder paths.
+.TP
+.B \fBXPC_SERVICES\fP
+New in version 3.29.
+
+.sp
+The specified items will be added to the \fBEmbed XPC Services\fP build phase.
+They must be CMake target names.
+.UNINDENT
+.sp
+When listing a target as any of the things to embed, Xcode must see that target
+as part of the same Xcode project, or a sub\-project of the one defining the
+bundle.  In order to satisfy this constraint, the CMake project must ensure
+at least one of the following:
+.INDENT 0.0
+.IP \(bu 2
+The \fI\%CMAKE_XCODE_GENERATE_TOP_LEVEL_PROJECT_ONLY\fP variable is set
+to true in the top level \fBCMakeLists.txt\fP file.  This is the simplest and
+most robust approach.
+.IP \(bu 2
+Define the target\-to\-embed in a subdirectory of the one that defines the
+target being embedded into.
+.IP \(bu 2
+If the target\-to\-embed and the target being embedded into are in separate,
+unrelated directories (i.e. they are siblings, not one a parent of the
+other), ensure they have a common \fI\%project()\fP call in a parent
+directory and no other \fI\%project()\fP calls between themselves and that
+common \fI\%project()\fP call.
 .UNINDENT
 .sp
 See also \fI\%XCODE_EMBED_<type>_PATH\fP,
@@ -9901,6 +10843,14 @@ New in version 3.26.
 .TP
 .B \fBPLUGINS\fP
 New in version 3.23.
+
+.TP
+.B \fBRESOURCES\fP
+New in version 3.28.
+
+.TP
+.B \fBXPC_SERVICES\fP
+New in version 3.29.
 
 .UNINDENT
 .SS XCODE_EMBED_<type>_REMOVE_HEADERS_ON_COPY
@@ -10634,17 +11584,24 @@ valid behavior of existing tests.
 The environment changes from this property do not affect other tests.
 .SS FAIL_REGULAR_EXPRESSION
 .sp
-If the output matches this regular expression the test will fail,
-regardless of the process exit code.
+If the test output (stdout or stderr) matches this regular expression the test
+will fail, regardless of the process exit code. Tests that exceed the timeout
+specified by \fI\%TIMEOUT\fP fail regardless of
+\fBFAIL_REGULAR_EXPRESSION\fP\&. Any non\-zero return code or system\-level test
+failures including segmentation faults, signal abort, or heap errors fail the
+test even if the regular expression does not match.
 .sp
-If set, if the output matches one of specified regular expressions,
-the test will fail.  Example:
+If set, if the output matches one of specified regular expressions, the test
+will fail.  Example:
 .INDENT 0.0
 .INDENT 3.5
 .sp
 .nf
 .ft C
-set_tests_properties(mytest PROPERTIES
+# test would pass, except for FAIL_REGULAR_EXPRESSION
+add_test(NAME mytest COMMAND ${CMAKE_COMMAND} \-E echo \(dqFailed\(dq)
+
+set_property(TEST mytest PROPERTY
   FAIL_REGULAR_EXPRESSION \(dq[^a\-z]Error;ERROR;Failed\(dq
 )
 .ft P
@@ -10878,6 +11835,12 @@ however, still be executed.
 .sp
 See \fI\%FIXTURES_REQUIRED\fP for a more complete discussion of how to use
 test fixtures.
+.SS GENERATED_RESOURCE_SPEC_FILE
+.sp
+New in version 3.28.
+
+.sp
+Path to the \fI\%dynamically\-generated resource spec file\fP generated by this test.
 .SS LABELS
 .sp
 Specify a list of text labels associated with a test.  The labels are
@@ -10896,19 +11859,23 @@ measurement with a value of \fB1\fP\&.  You may also specify a value by
 setting \fBMEASUREMENT\fP to \fBmeasurement=value\fP\&.
 .SS PASS_REGULAR_EXPRESSION
 .sp
-The output must match this regular expression for the test to pass.
-The process exit code is ignored.
+The test output (stdout or stderr) must match this regular expression
+for the test to pass. The process exit code is ignored. Tests that exceed
+the timeout specified by \fI\%TIMEOUT\fP still fail regardless of
+\fBPASS_REGULAR_EXPRESSION\fP\&. System\-level test failures including
+segmentation faults, signal abort, or heap errors may fail the test even
+if \fBPASS_REGULAR_EXPRESSION\fP is matched.
 .sp
-If set, the test output will be checked against the specified regular
-expressions and at least one of the regular expressions has to match,
-otherwise the test will fail.  Example:
+Example:
 .INDENT 0.0
 .INDENT 3.5
 .sp
 .nf
 .ft C
-set_tests_properties(mytest PROPERTIES
-  PASS_REGULAR_EXPRESSION \(dqTestPassed;All ok\(dq
+add_test(NAME mytest COMMAND ${CMAKE_COMMAND} \-E echo \(dqPassed this test\(dq)
+
+set_property(TEST mytest PROPERTY
+  PASS_REGULAR_EXPRESSION \(dqpass;Passed\(dq
 )
 .ft P
 .fi
@@ -10916,6 +11883,44 @@ set_tests_properties(mytest PROPERTIES
 .UNINDENT
 .sp
 \fBPASS_REGULAR_EXPRESSION\fP expects a list of regular expressions.
+.sp
+To run a test that may have a system\-level failure, but still pass if
+\fBPASS_REGULAR_EXPRESSION\fP matches, use a CMake command to wrap the
+executable run. Note that this will prevent automatic handling of the
+\fI\%CROSSCOMPILING_EMULATOR\fP and \fI\%TEST_LAUNCHER\fP
+target property.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_executable(main main.c)
+
+add_test(NAME sigabrt COMMAND ${CMAKE_COMMAND} \-E env $<TARGET_FILE:main>)
+
+set_property(TEST sigabrt PROPERTY PROPERTY_REGULAR_EXPRESSION \(dqpass;Passed\(dq)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+#include <signal.h>
+#include <stdio.h>
+
+int main(void){
+    fprintf(stdout, \(dqPassed\en\(dq);
+    fflush(stdout);  /* ensure the output buffer is seen */
+    raise(SIGABRT);
+    return 0;
+}
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 See also the \fI\%FAIL_REGULAR_EXPRESSION\fP and
 \fI\%SKIP_REGULAR_EXPRESSION\fP test properties.
@@ -11099,15 +12104,21 @@ any other tests.
 New in version 3.16.
 
 .sp
-If the output matches this regular expression the test will be marked as skipped.
+If the test output (stderr or stdout) matches this regular expression the test
+will be marked as skipped, regardless of the process exit code. Tests that
+exceed the timeout specified by \fI\%TIMEOUT\fP still fail regardless of
+\fBSKIP_REGULAR_EXPRESSION\fP\&. System\-level test failures including segmentation
+faults, signal abort, or heap errors may fail the test even if the regular
+expression matches.
 .sp
-If set, if the output matches one of specified regular expressions,
-the test will be marked as skipped.  Example:
+Example:
 .INDENT 0.0
 .INDENT 3.5
 .sp
 .nf
 .ft C
+add_test(NAME mytest COMMAND ${CMAKE_COMMAND} \-E echo \(dqSkipped this test\(dq)
+
 set_property(TEST mytest PROPERTY
   SKIP_REGULAR_EXPRESSION \(dq[^a\-z]Skip\(dq \(dqSKIP\(dq \(dqSkipped\(dq
 )
@@ -11117,6 +12128,38 @@ set_property(TEST mytest PROPERTY
 .UNINDENT
 .sp
 \fBSKIP_REGULAR_EXPRESSION\fP expects a list of regular expressions.
+.sp
+To run a test that may have a system\-level failure, but still skip if
+\fBSKIP_REGULAR_EXPRESSION\fP matches, use a CMake command to wrap the
+executable run. Note that this will prevent automatic handling of the
+\fI\%CROSSCOMPILING_EMULATOR\fP and \fI\%TEST_LAUNCHER\fP
+target property.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_executable(main main.c)
+
+add_test(NAME sigabrt COMMAND ${CMAKE_COMMAND} \-E env $<TARGET_FILE:main>)
+
+set_property(TEST sigabrt PROPERTY SKIP_REGULAR_EXPRESSION \(dqSIGABRT;[aA]bort\(dq)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+#include <signal.h>
+
+int main(void){ raise(SIGABRT); return 0; }
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .sp
 See also the \fI\%SKIP_RETURN_CODE\fP,
 \fI\%PASS_REGULAR_EXPRESSION\fP, and \fI\%FAIL_REGULAR_EXPRESSION\fP
@@ -11131,7 +12174,59 @@ a return code of the process can be specified that will mark the test as
 \fBNot Run\fP if it is encountered. Valid values are in the range of
 0 to 255, inclusive.
 .sp
-See also the \fI\%SKIP_REGULAR_EXPRESSION\fP property.
+Tests that exceed the timeout specified by \fI\%TIMEOUT\fP still fail
+regardless of \fBSKIP_RETURN_CODE\fP\&.
+System\-level test failures including segmentation faults,
+signal abort, or heap errors may fail the test even if the return code matches.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+# cmake (1) defines this to return code 1
+add_test(NAME r1 COMMAND ${CMAKE_COMMAND} \-E false)
+
+set_tests_properties(r1 PROPERTIES SKIP_RETURN_CODE 1)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+To run a test that may have a system\-level failure, but still skip if
+\fBSKIP_RETURN_CODE\fP matches, use a CMake command to wrap the executable run.
+Note that this will prevent automatic handling of the
+\fI\%CROSSCOMPILING_EMULATOR\fP and \fI\%TEST_LAUNCHER\fP target
+property.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_executable(main main.c)
+
+# cmake \-E env <command> returns 1 if the command fails in any way
+add_test(NAME sigabrt COMMAND ${CMAKE_COMMAND} \-E env $<TARGET_FILE:main>)
+
+set_property(TEST sigabrt PROPERTY SKIP_RETURN_CODE 1)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+#include <signal.h>
+
+int main(void){ raise(SIGABRT); return 0; }
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+To handle multiple types of cases that may need to be skipped, consider the
+\fI\%SKIP_REGULAR_EXPRESSION\fP property.
 .SS TIMEOUT
 .sp
 How many seconds to allow for this test.
@@ -11140,6 +12235,12 @@ This property if set will limit a test to not take more than the
 specified number of seconds to run.  If it exceeds that the test
 process will be killed and ctest will move to the next test.  This
 setting takes precedence over \fI\%CTEST_TEST_TIMEOUT\fP\&.
+.sp
+An explicit \fB0\fP value means the test has no timeout, except as
+necessary to honor \fI\%ctest \-\-stop\-time\fP\&.
+.sp
+See also \fI\%TIMEOUT_AFTER_MATCH\fP and
+\fI\%TIMEOUT_SIGNAL_NAME\fP\&.
 .SS TIMEOUT_AFTER_MATCH
 .sp
 New in version 3.6.
@@ -11183,12 +12284,125 @@ If the required resource can be controlled by CTest you should use
 \fI\%RESOURCE_LOCK\fP instead of \fBTIMEOUT_AFTER_MATCH\fP\&.
 This property should be used when only the test itself can determine
 when its required resources are available.
+.sp
+See also \fI\%TIMEOUT_SIGNAL_NAME\fP\&.
+.SS TIMEOUT_SIGNAL_GRACE_PERIOD
+.sp
+New in version 3.27.
+
+.sp
+If the \fI\%TIMEOUT_SIGNAL_NAME\fP test property is set, this property
+specifies the number of seconds to wait for a test process to terminate after
+sending the custom signal.  Otherwise, this property has no meaning.
+.sp
+The grace period may be any real value greater than \fB0.0\fP, but not greater
+than \fB60.0\fP\&.  If this property is not set, the default is \fB1.0\fP second.
+.sp
+This is available only on platforms supporting POSIX signals.
+It is not available on Windows.
+.SS TIMEOUT_SIGNAL_NAME
+.sp
+New in version 3.27.
+
+.sp
+Specify a custom signal to send to a test process when its timeout is reached.
+This is available only on platforms supporting POSIX signals.
+It is not available on Windows.
+.sp
+The name must be one of the following:
+.INDENT 0.0
+.INDENT 3.5
+.INDENT 0.0
+.TP
+.B \fBSIGINT\fP
+Interrupt.
+.TP
+.B \fBSIGQUIT\fP
+Quit.
+.TP
+.B \fBSIGTERM\fP
+Terminate.
+.TP
+.B \fBSIGUSR1\fP
+User defined signal 1.
+.TP
+.B \fBSIGUSR2\fP
+User defined signal 2.
+.UNINDENT
+.UNINDENT
+.UNINDENT
+.sp
+The custom signal is sent to the test process to give it a chance
+to exit gracefully during a grace period:
+.INDENT 0.0
+.IP \(bu 2
+If the test process created any children, it is responsible for
+terminating them too.
+.IP \(bu 2
+The grace period length is determined by the
+\fI\%TIMEOUT_SIGNAL_GRACE_PERIOD\fP test property.
+.IP \(bu 2
+If the test process does not terminate before the grace period ends,
+\fI\%ctest(1)\fP will force termination of its entire process tree
+via \fBSIGSTOP\fP and \fBSIGKILL\fP\&.
+.UNINDENT
+.sp
+See also \fI\%CTEST_TEST_TIMEOUT\fP,
+\fI\%TIMEOUT\fP, and \fI\%TIMEOUT_AFTER_MATCH\fP\&.
 .SS WILL_FAIL
 .sp
-If set to true, this will invert the pass/fail flag of the test.
+If \fBtrue\fP, inverts the pass / fail test criteria. Tests for which
+\fBWILL_FAIL\fP is \fBtrue\fP fail with return code 0 and pass with non\-zero
+return code. Tests that exceed the timeout specified by \fI\%TIMEOUT\fP
+still fail regardless of \fBWILL_FAIL\fP\&.
+System\-level test failures including segmentation faults,
+signal abort, or heap errors may fail the test even if \fBWILL_FAIL\fP is true.
 .sp
-This property can be used for tests that are expected to fail and
-return a non zero return code.
+Example of a test that would ordinarily pass, but fails because \fBWILL_FAIL\fP
+is \fBtrue\fP:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_test(NAME failed COMMAND ${CMAKE_COMMAND} \-E true)
+set_property(TEST failed PROPERTY WILL_FAIL true)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+To run a test that may have a system\-level failure, but still pass if
+\fBWILL_FAIL\fP is set, use a CMake command to wrap the executable run.
+Note that this will prevent automatic handling of the
+\fI\%CROSSCOMPILING_EMULATOR\fP and \fI\%TEST_LAUNCHER\fP
+target property.
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_executable(main main.c)
+
+add_test(NAME sigabrt COMMAND ${CMAKE_COMMAND} \-E env $<TARGET_FILE:main>)
+
+set_property(TEST sigabrt PROPERTY WILL_FAIL TRUE)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+#include <signal.h>
+
+int main(void){ raise(SIGABRT); return 0; }
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
 .SS WORKING_DIRECTORY
 .sp
 The directory from which the test executable will be called.
@@ -11319,8 +12533,7 @@ Additional flags to be added when compiling this source file.
 .sp
 The \fBCOMPILE_FLAGS\fP property, managed as a string, sets additional compiler
 flags used that will be added to the list of compile flags when this source
-file builds.  The flags will be added after target\-wide flags (except in
-some cases not supported by the \fI\%Visual Studio 9 2008\fP generator).
+file builds.  The flags will be added after target\-wide flags.
 .sp
 Use \fI\%COMPILE_DEFINITIONS\fP to pass additional preprocessor definitions.
 .sp
@@ -11346,8 +12559,7 @@ List of additional options to pass to the compiler.
 .sp
 This property holds a \fI\%semicolon\-separated list\fP
 of options and will be added to the list of compile flags when this source
-file builds.  The options will be added after target\-wide options (except in
-some cases not supported by the \fI\%Visual Studio 9 2008\fP generator).
+file builds.  The options will be added after target\-wide options.
 .sp
 Contents of \fBCOMPILE_OPTIONS\fP may use \(dqgenerator expressions\(dq with the
 syntax \fB$<...>\fP\&.  See the \fI\%cmake\-generator\-expressions(7)\fP manual
@@ -11387,7 +12599,7 @@ Related commands:
 .UNINDENT
 .SS CXX_SCAN_FOR_MODULES
 .sp
-New in version 3.26.
+New in version 3.28.
 
 .sp
 \fBCXX_SCAN_FOR_MODULES\fP is a boolean specifying whether CMake will scan the
@@ -11402,16 +12614,7 @@ consulted.
 .sp
 Note that scanning is only performed if C++20 or higher is enabled for the
 target and the source uses the \fBCXX\fP language.  Scanning for modules in
-sources belonging to file sets of type \fBCXX_MODULES\fP and
-\fBCXX_MODULES_HEADER_UNITS\fP is always performed.
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-This setting is meaningful only when experimental support for C++ modules
-has been enabled by the \fBCMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API\fP gate.
-.UNINDENT
-.UNINDENT
+sources belonging to file sets of type \fBCXX_MODULES\fP is always performed.
 .SS EXTERNAL_OBJECT
 .sp
 If set to true then this is an object file.
@@ -11458,7 +12661,16 @@ if all source files in a target need to be preprocessed.
 .sp
 Is this source file generated as part of the build or CMake process.
 .sp
-Changed in version 3.20: The GENERATED source file property is now visible in all directories.
+Changed in version 3.20: Turning on the \fBGENERATED\fP source file property in one directory allows
+the associated source file to be used across directories without the need
+to manually setting that property for other directory scopes, too.
+Additionally, it may now be set only to boolean values, and may not be
+turned off once turned on.  See policy \fI\%CMP0118\fP\&.
+
+.sp
+Changed in version 3.30: Whether or not a source file is generated is an all\-or\-nothing global
+property of the source.  Consequently, the \fBGENERATED\fP source file
+property is now visible in all directories.  See policy \fI\%CMP0163\fP\&.
 
 .sp
 Tells the internal CMake engine that a source file is generated by an outside
@@ -11470,7 +12682,7 @@ Any file that is
 .INDENT 0.0
 .IP \(bu 2
 created by the execution of commands such as
-\fI\%add_custom_command()\fP and \fI\%file(GENERATE)\fP
+\fI\%add_custom_command()\fP which run during the build
 .IP \(bu 2
 listed as one of the \fBBYPRODUCTS\fP of an \fI\%add_custom_command()\fP
 or \fI\%add_custom_target()\fP command, or
@@ -11497,17 +12709,6 @@ be shown. For the special case of sources generated by CMake\(aqs \fI\%AUTOMOC\f
 \fI\%AUTORCC_SOURCE_GROUP\fP and \fI\%AUTOUIC_SOURCE_GROUP\fP target
 properties may influence where the generated sources are grouped in the project\(aqs
 file lists.
-.sp
-\fBNOTE:\fP
-.INDENT 0.0
-.INDENT 3.5
-Starting with CMake 3.20 the \fBGENERATED\fP source file property can be set
-and retrieved from any directory scope. It is an all\-or\-nothing property.
-It also can no longer be removed or unset if it was set to \fBTRUE\fP\&. Policy
-\fI\%CMP0118\fP was introduced to allow supporting the \fBOLD\fP behavior
-for some time.
-.UNINDENT
-.UNINDENT
 .SS HEADER_FILE_ONLY
 .sp
 Is this source file only a header file.
@@ -11739,6 +12940,52 @@ set_property(SOURCE widget.ui PROPERTY SKIP_AUTOUIC ON)
 .fi
 .UNINDENT
 .UNINDENT
+.SS SKIP_LINTING
+.sp
+New in version 3.27.
+
+.sp
+This property allows you to exclude a specific source file
+from the linting process. The linting process involves running
+tools such as \fI\%<LANG>_CPPLINT\fP, \fI\%<LANG>_CLANG_TIDY\fP,
+\fI\%<LANG>_CPPCHECK\fP, and \fI\%<LANG>_INCLUDE_WHAT_YOU_USE\fP
+on the source files, as well as compiling header files as part of
+\fI\%VERIFY_INTERFACE_HEADER_SETS\fP\&. By setting \fBSKIP_LINTING\fP on a
+source file, the mentioned linting tools will not be executed for that
+particular file.
+.SS Example
+.sp
+Consider a C++ project that includes multiple source files,
+such as \fBmain.cpp\fP, \fBthings.cpp\fP, and \fBgeneratedBindings.cpp\fP\&.
+In this example, you want to exclude the \fBgeneratedBindings.cpp\fP
+file from the linting process. To achieve this, you can utilize
+the \fBSKIP_LINTING\fP property with the \fI\%set_source_files_properties()\fP
+command as shown below:
+.INDENT 0.0
+.INDENT 3.5
+.sp
+.nf
+.ft C
+add_executable(MyApp main.cpp things.cpp generatedBindings.cpp)
+
+set_source_files_properties(generatedBindings.cpp PROPERTIES
+    SKIP_LINTING ON
+)
+.ft P
+.fi
+.UNINDENT
+.UNINDENT
+.sp
+In the provided code snippet, the \fBSKIP_LINTING\fP property is set to true
+for the \fBgeneratedBindings.cpp\fP source file. As a result, when the linting
+tools specified by \fI\%<LANG>_CPPLINT\fP, \fI\%<LANG>_CLANG_TIDY\fP,
+\fI\%<LANG>_CPPCHECK\fP, or \fI\%<LANG>_INCLUDE_WHAT_YOU_USE\fP
+are executed, they will skip analyzing the \fBgeneratedBindings.cpp\fP file.
+.sp
+By using the \fBSKIP_LINTING\fP property, you can selectively exclude specific
+source files from the linting process. This allows you to focus the
+linting tools on the relevant parts of your project, enhancing the efficiency
+and effectiveness of the linting workflow.
 .SS SKIP_PRECOMPILE_HEADERS
 .sp
 New in version 3.16.
@@ -11767,6 +13014,10 @@ in the same way as it would with unity builds disabled.
 This property helps with \(dqODR (One definition rule)\(dq problems where combining
 a particular source file with others might lead to build errors or other
 unintended side effects.
+.sp
+Note that sources which are scanned for C++ modules (see
+\fI\%cmake\-cxxmodules(7)\fP) are not eligible for unity build inclusion and
+will automatically be excluded.
 .SS Swift_DEPENDENCIES_FILE
 .sp
 New in version 3.15.
@@ -12169,7 +13420,7 @@ each of which has to match the following format.
 .sp
 .nf
 .ft C
-http://wixtoolset.org/documentation/manual/v3/xsd/wix/permission.html
+https://wixtoolset.org/documentation/manual/v3/xsd/wix/permission.html
 .ft P
 .fi
 .UNINDENT
@@ -12244,6 +13495,79 @@ manual for available expressions.  See the \fI\%cmake\-buildsystem(7)\fP
 manual for more on defining buildsystem properties.
 .sp
 Generator expressions should be preferred instead of setting this property.
+.SS IMPORTED_NO_SYSTEM
+.sp
+New in version 3.23.
+
+.sp
+Deprecated since version 3.25: \fBIMPORTED_NO_SYSTEM\fP is deprecated. Please use the following alternatives
+instead:
+.INDENT 0.0
+.IP \(bu 2
+Set \fI\%SYSTEM\fP to false if you don\(aqt want a target\(aqs include
+directories to be treated as system directories when compiling consumers.
+.IP \(bu 2
+Set \fI\%EXPORT_NO_SYSTEM\fP to true if you don\(aqt want the include
+directories of the imported target generated by \fI\%install(EXPORT)\fP
+and \fI\%export()\fP commands to be treated as system directories when
+compiling consumers.
+.UNINDENT
+
+.sp
+Setting \fBIMPORTED_NO_SYSTEM\fP to true on an
+\fI\%imported target\fP specifies that it is not a
+system target.  This has the following effects:
+.INDENT 0.0
+.IP \(bu 2
+Entries of \fI\%INTERFACE_INCLUDE_DIRECTORIES\fP are not treated
+as system include directories when compiling consumers (regardless of
+the value of the consumed target\(aqs \fI\%SYSTEM\fP property), as they
+would be by default.   Entries of
+\fI\%INTERFACE_SYSTEM_INCLUDE_DIRECTORIES\fP are not affected,
+and will always be treated as system include directories.
+.IP \(bu 2
+On Apple platforms, when the target is a framework, it will not be treated as
+system.
+.UNINDENT
+.sp
+This property can also be enabled on a non\-imported target.  Doing so does
+not affect the build system, but does tell the \fI\%install(EXPORT)\fP and
+\fI\%export()\fP commands to enable it on the imported targets they generate.
+.sp
+See the \fI\%NO_SYSTEM_FROM_IMPORTED\fP target property to set this
+behavior on the target \fIconsuming\fP the include directories rather than
+the one \fIproviding\fP them.
+.SS IOS_INSTALL_COMBINED
+.sp
+New in version 3.5.
+
+.sp
+Deprecated since version 3.28: \fI\%IOS_INSTALL_COMBINED\fP was designed to make universal binaries
+containing iOS/arm* device code paired with iOS Simulator/x86_64 code
+(or similar for other Apple embedded platforms). Universal binaries can only
+differentiate code based on CPU type, so this only made sense before the
+days of arm64 macOS machines (i.e. iOS Simulator/arm64). Apple now
+recommends xcframeworks, which contain multiple binaries for different
+platforms, for this use case.
+
+.sp
+Build a combined (device and simulator) target when installing.
+.sp
+When this property is set to false, which is the default, then it will
+either be built with the device SDK or the simulator SDK depending on the SDK
+set. But if this property is set to true then the target will at install time
+also be built for the other SDK and combined into one library.
+.sp
+\fBNOTE:\fP
+.INDENT 0.0
+.INDENT 3.5
+If a selected architecture is available for both device SDK and simulator
+SDK it will be built for the SDK selected by \fI\%CMAKE_OSX_SYSROOT\fP
+and removed from the other SDK.
+.UNINDENT
+.UNINDENT
+.sp
+This feature requires at least Xcode version 6.
 .SS POST_INSTALL_SCRIPT
 .sp
 Deprecated install support.
@@ -12260,6 +13584,10 @@ The \fBPRE_INSTALL_SCRIPT\fP and \fI\%POST_INSTALL_SCRIPT\fP properties are
 the old way to specify CMake scripts to run before and after installing a
 target.  They are used only when the old \fBINSTALL_TARGETS\fP command is
 used to install the target.  Use the \fI\%install()\fP command instead.
+.SS VS_WINRT_EXTENSIONS
+.sp
+Deprecated.  Use \fI\%VS_WINRT_COMPONENT\fP instead.
+This property was an experimental partial implementation of that one.
 .SH DEPRECATED PROPERTIES ON SOURCE FILES
 .SS COMPILE_DEFINITIONS_<CONFIG>
 .sp
@@ -12271,6 +13599,6 @@ This is the configuration\-specific version of \fI\%COMPILE_DEFINITIONS\fP\&.
 Note that \fI\%Xcode\fP does not support per\-configuration source
 file flags so this property will be ignored by the \fI\%Xcode\fP generator.
 .SH COPYRIGHT
-2000-2023 Kitware, Inc. and Contributors
+2000-2024 Kitware, Inc. and Contributors
 .\" Generated by docutils manpage writer.
 .

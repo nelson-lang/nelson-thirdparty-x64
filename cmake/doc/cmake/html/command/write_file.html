@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>write_file &mdash; CMake 3.26.3 Documentation</title>
+  <title>write_file &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="cmake-compile-features(7)" href="../manual/cmake-compile-features.7.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,17 +57,17 @@
           <div class="body" role="main">
             
   <section id="write-file">
-<span id="command:write_file"></span><h1>write_file<a class="headerlink" href="#write-file" title="Permalink to this heading">¶</a></h1>
+<span id="command:write_file"></span><h1>write_file<a class="headerlink" href="#write-file" title="Link to this heading">¶</a></h1>
 <div class="deprecated">
-<p><span class="versionmodified deprecated">Deprecated since version 3.0: </span>Use the <span class="target" id="index-0-command:file"></span><a class="reference internal" href="file.html#command:file" title="file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">file(WRITE)</span></code></a> command instead.</p>
+<p><span class="versionmodified deprecated">Deprecated since version 3.0: </span>Use the <span class="target" id="index-0-command:file"></span><a class="reference internal" href="file.html#write" title="file(write)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">file(WRITE)</span></code></a> command instead.</p>
 </div>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">write_file(</span><span class="nb">filename</span><span class="w"> </span><span class="s">&quot;message to write&quot;</span><span class="p">...</span><span class="w"> </span><span class="p">[</span><span class="no">APPEND</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">write_file(</span><span class="nb">filename</span><span class="w"> </span><span class="s">&quot;message to write&quot;</span><span class="p">...</span><span class="w"> </span><span class="p">[</span><span class="no">APPEND</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>The first argument is the file name, the rest of the arguments are
 messages to write.  If the argument <code class="docutils literal notranslate"><span class="pre">APPEND</span></code> is specified, then the
 message will be appended.</p>
-<p>NOTE 1: <span class="target" id="index-1-command:file"></span><a class="reference internal" href="file.html#command:file" title="file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">file(WRITE)</span></code></a>  and <span class="target" id="index-2-command:file"></span><a class="reference internal" href="file.html#command:file" title="file"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">file(APPEND)</span></code></a>  do exactly
+<p>NOTE 1: <span class="target" id="index-1-command:file"></span><a class="reference internal" href="file.html#write" title="file(write)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">file(WRITE)</span></code></a>  and <span class="target" id="index-2-command:file"></span><a class="reference internal" href="file.html#append" title="file(append)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">file(APPEND)</span></code></a>  do exactly
 the same as this one but add some more functionality.</p>
 <p>NOTE 2: When using <code class="docutils literal notranslate"><span class="pre">write_file</span></code> the produced file cannot be used as an
 input to CMake (CONFIGURE_FILE, source file ...) because it will lead
@@ -136,7 +133,7 @@ generate input files to CMake.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -145,8 +142,8 @@ generate input files to CMake.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

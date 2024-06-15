@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>execute_process &mdash; CMake 3.26.3 Documentation</title>
+  <title>execute_process &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="file" href="file.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,28 +57,28 @@
           <div class="body" role="main">
             
   <section id="execute-process">
-<span id="command:execute_process"></span><h1>execute_process<a class="headerlink" href="#execute-process" title="Permalink to this heading">¶</a></h1>
+<span id="command:execute_process"></span><h1>execute_process<a class="headerlink" href="#execute-process" title="Link to this heading">¶</a></h1>
 <p>Execute one or more child processes.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">execute_process(</span><span class="no">COMMAND</span><span class="w"> </span><span class="nv">&lt;cmd1&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;arguments&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">COMMAND</span><span class="w"> </span><span class="nv">&lt;cmd2&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;arguments&gt;</span><span class="p">]]...</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">WORKING_DIRECTORY</span><span class="w"> </span><span class="nv">&lt;directory&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">TIMEOUT</span><span class="w"> </span><span class="nv">&lt;seconds&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">RESULT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;variable&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">RESULTS_VARIABLE</span><span class="w"> </span><span class="nv">&lt;variable&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;variable&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">ERROR_VARIABLE</span><span class="w"> </span><span class="nv">&lt;variable&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">INPUT_FILE</span><span class="w"> </span><span class="nv">&lt;file&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">OUTPUT_FILE</span><span class="w"> </span><span class="nv">&lt;file&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">ERROR_FILE</span><span class="w"> </span><span class="nv">&lt;file&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">OUTPUT_QUIET</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">ERROR_QUIET</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">COMMAND_ECHO</span><span class="w"> </span><span class="nv">&lt;where&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">OUTPUT_STRIP_TRAILING_WHITESPACE</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">ERROR_STRIP_TRAILING_WHITESPACE</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">ENCODING</span><span class="w"> </span><span class="nv">&lt;name&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">ECHO_OUTPUT_VARIABLE</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">ECHO_ERROR_VARIABLE</span><span class="p">]</span><span class="w"></span>
-<span class="w">                </span><span class="p">[</span><span class="no">COMMAND_ERROR_IS_FATAL</span><span class="w"> </span><span class="o">&lt;</span><span class="no">ANY</span><span class="p">|</span><span class="no">LAST</span><span class="o">&gt;</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">execute_process(</span><span class="no">COMMAND</span><span class="w"> </span><span class="nv">&lt;cmd1&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;arguments&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">COMMAND</span><span class="w"> </span><span class="nv">&lt;cmd2&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;arguments&gt;</span><span class="p">]]...</span>
+<span class="w">                </span><span class="p">[</span><span class="no">WORKING_DIRECTORY</span><span class="w"> </span><span class="nv">&lt;directory&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">TIMEOUT</span><span class="w"> </span><span class="nv">&lt;seconds&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">RESULT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;variable&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">RESULTS_VARIABLE</span><span class="w"> </span><span class="nv">&lt;variable&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">OUTPUT_VARIABLE</span><span class="w"> </span><span class="nv">&lt;variable&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">ERROR_VARIABLE</span><span class="w"> </span><span class="nv">&lt;variable&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">INPUT_FILE</span><span class="w"> </span><span class="nv">&lt;file&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">OUTPUT_FILE</span><span class="w"> </span><span class="nv">&lt;file&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">ERROR_FILE</span><span class="w"> </span><span class="nv">&lt;file&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">OUTPUT_QUIET</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">ERROR_QUIET</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">COMMAND_ECHO</span><span class="w"> </span><span class="nv">&lt;where&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">OUTPUT_STRIP_TRAILING_WHITESPACE</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">ERROR_STRIP_TRAILING_WHITESPACE</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">ENCODING</span><span class="w"> </span><span class="nv">&lt;name&gt;</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">ECHO_OUTPUT_VARIABLE</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">ECHO_ERROR_VARIABLE</span><span class="p">]</span>
+<span class="w">                </span><span class="p">[</span><span class="no">COMMAND_ERROR_IS_FATAL</span><span class="w"> </span><span class="o">&lt;</span><span class="no">ANY</span><span class="p">|</span><span class="no">LAST</span><span class="o">&gt;</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Runs the given sequence of one or more commands.</p>
@@ -279,7 +276,7 @@ list will not cause a fatal error.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -288,8 +285,8 @@ list will not cause a fatal error.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

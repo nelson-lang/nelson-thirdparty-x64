@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindProtobuf &mdash; CMake 3.26.3 Documentation</title>
+  <title>FindProtobuf &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindPython" href="FindPython.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="findprotobuf">
-<span id="module:FindProtobuf"></span><h1>FindProtobuf<a class="headerlink" href="#findprotobuf" title="Permalink to this heading">¶</a></h1>
+<span id="module:FindProtobuf"></span><h1>FindProtobuf<a class="headerlink" href="#findprotobuf" title="Link to this heading">¶</a></h1>
 <p>Locate and configure the Google Protocol Buffers library.</p>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.6: </span>Support for <span class="target" id="index-0-command:find_package"></span><a class="reference internal" href="../command/find_package.html#command:find_package" title="find_package"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">find_package()</span></code></a> version checks.</p>
@@ -146,15 +143,15 @@ Default is OFF.</p>
 </dd>
 </dl>
 <p>Example:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">Protobuf</span><span class="w"> </span><span class="no">REQUIRED</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">include_directories(</span><span class="o">${</span><span class="nt">Protobuf_INCLUDE_DIRS</span><span class="o">}</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">include_directories(</span><span class="o">${</span><span class="nt">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">protobuf_generate_cpp(</span><span class="no">PROTO_SRCS</span><span class="w"> </span><span class="no">PROTO_HDRS</span><span class="w"> </span><span class="nb">foo.proto</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">protobuf_generate_cpp(</span><span class="no">PROTO_SRCS</span><span class="w"> </span><span class="no">PROTO_HDRS</span><span class="w"> </span><span class="no">EXPORT_MACRO</span><span class="w"> </span><span class="no">DLL_EXPORT</span><span class="w"> </span><span class="nb">foo.proto</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">protobuf_generate_cpp(</span><span class="no">PROTO_SRCS</span><span class="w"> </span><span class="no">PROTO_HDRS</span><span class="w"> </span><span class="no">DESCRIPTORS</span><span class="w"> </span><span class="no">PROTO_DESCS</span><span class="w"> </span><span class="nb">foo.proto</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">protobuf_generate_python(</span><span class="no">PROTO_PY</span><span class="w"> </span><span class="nb">foo.proto</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_executable(</span><span class="nb">bar</span><span class="w"> </span><span class="nb">bar.cc</span><span class="w"> </span><span class="o">${</span><span class="nt">PROTO_SRCS</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nt">PROTO_HDRS</span><span class="o">}</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">target_link_libraries(</span><span class="nb">bar</span><span class="w"> </span><span class="o">${</span><span class="nt">Protobuf_LIBRARIES</span><span class="o">}</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">Protobuf</span><span class="w"> </span><span class="no">REQUIRED</span><span class="nf">)</span>
+<span class="nf">include_directories(</span><span class="o">${</span><span class="nt">Protobuf_INCLUDE_DIRS</span><span class="o">}</span><span class="nf">)</span>
+<span class="nf">include_directories(</span><span class="o">${</span><span class="nt">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="nf">)</span>
+<span class="nf">protobuf_generate_cpp(</span><span class="no">PROTO_SRCS</span><span class="w"> </span><span class="no">PROTO_HDRS</span><span class="w"> </span><span class="nb">foo.proto</span><span class="nf">)</span>
+<span class="nf">protobuf_generate_cpp(</span><span class="no">PROTO_SRCS</span><span class="w"> </span><span class="no">PROTO_HDRS</span><span class="w"> </span><span class="no">EXPORT_MACRO</span><span class="w"> </span><span class="no">DLL_EXPORT</span><span class="w"> </span><span class="nb">foo.proto</span><span class="nf">)</span>
+<span class="nf">protobuf_generate_cpp(</span><span class="no">PROTO_SRCS</span><span class="w"> </span><span class="no">PROTO_HDRS</span><span class="w"> </span><span class="no">DESCRIPTORS</span><span class="w"> </span><span class="no">PROTO_DESCS</span><span class="w"> </span><span class="nb">foo.proto</span><span class="nf">)</span>
+<span class="nf">protobuf_generate_python(</span><span class="no">PROTO_PY</span><span class="w"> </span><span class="nb">foo.proto</span><span class="nf">)</span>
+<span class="nf">add_executable(</span><span class="nb">bar</span><span class="w"> </span><span class="nb">bar.cc</span><span class="w"> </span><span class="o">${</span><span class="nt">PROTO_SRCS</span><span class="o">}</span><span class="w"> </span><span class="o">${</span><span class="nt">PROTO_HDRS</span><span class="o">}</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">bar</span><span class="w"> </span><span class="o">${</span><span class="nt">Protobuf_LIBRARIES</span><span class="o">}</span><span class="nf">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -165,7 +162,7 @@ calls only work properly within the same directory.</p>
 </div>
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:protobuf_generate_cpp">
-<span class="sig-name descname"><span class="pre">protobuf_generate_cpp</span></span><a class="headerlink" href="#command:protobuf_generate_cpp" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">protobuf_generate_cpp</span></span><a class="headerlink" href="#command:protobuf_generate_cpp" title="Link to this definition">¶</a></dt>
 <dd><p>Add custom commands to process <code class="docutils literal notranslate"><span class="pre">.proto</span></code> files to C++:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>protobuf_generate_cpp (&lt;SRCS&gt; &lt;HDRS&gt;
     [DESCRIPTORS &lt;DESC&gt;] [EXPORT_MACRO &lt;MACRO&gt;] [&lt;ARGN&gt;...])
@@ -190,7 +187,7 @@ calls only work properly within the same directory.</p>
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:protobuf_generate_python">
-<span class="sig-name descname"><span class="pre">protobuf_generate_python</span></span><a class="headerlink" href="#command:protobuf_generate_python" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">protobuf_generate_python</span></span><a class="headerlink" href="#command:protobuf_generate_python" title="Link to this definition">¶</a></dt>
 <dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.4.</span></p>
 </div>
@@ -204,6 +201,95 @@ calls only work properly within the same directory.</p>
 <dt><code class="docutils literal notranslate"><span class="pre">ARGN</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">.proto</span></code> files</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="cmake command">
+<dt class="sig sig-object cmake" id="command:protobuf_generate">
+<span class="sig-name descname"><span class="pre">protobuf_generate</span></span><a class="headerlink" href="#command:protobuf_generate" title="Link to this definition">¶</a></dt>
+<dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.13.</span></p>
+</div>
+<p>Automatically generate source files from <code class="docutils literal notranslate"><span class="pre">.proto</span></code> schema files at build time:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>protobuf_generate (
+    TARGET &lt;target&gt;
+    [LANGUAGE &lt;lang&gt;]
+    [OUT_VAR &lt;out_var&gt;]
+    [EXPORT_MACRO &lt;macro&gt;]
+    [PROTOC_OUT_DIR &lt;dir&gt;]
+    [PLUGIN &lt;plugin&gt;]
+    [PLUGIN_OPTIONS &lt;plugin_options&gt;]
+    [DEPENDENCIES &lt;depends]
+    [PROTOS &lt;protobuf_files&gt;]
+    [IMPORT_DIRS &lt;dirs&gt;]
+    [GENERATE_EXTENSIONS &lt;extensions&gt;]
+    [PROTOC_OPTIONS &lt;protoc_options&gt;]
+    [APPEND_PATH])
+</pre></div>
+</div>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">APPEND_PATH</span></code></dt><dd><p>A flag that causes the base path of all proto schema files to be added to
+<code class="docutils literal notranslate"><span class="pre">IMPORT_DIRS</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">LANGUAGE</span></code></dt><dd><p>A single value: cpp or python. Determines what kind of source files are
+being generated. Defaults to cpp.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">OUT_VAR</span></code></dt><dd><p>Name of a CMake variable that will be filled with the paths to the generated
+source files.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">EXPORT_MACRO</span></code></dt><dd><p>Name of a macro that is applied to all generated Protobuf message classes
+and extern variables. It can, for example, be used to declare DLL exports.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PROTOC_OUT_DIR</span></code></dt><dd><p>Output directory of generated source files. Defaults to <code class="docutils literal notranslate"><span class="pre">CMAKE_CURRENT_BINARY_DIR</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PLUGIN</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.21.</span></p>
+</div>
+<p>An optional plugin executable. This could, for example, be the path to
+<code class="docutils literal notranslate"><span class="pre">grpc_cpp_plugin</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PLUGIN_OPTIONS</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<p>Additional options provided to the plugin, such as <code class="docutils literal notranslate"><span class="pre">generate_mock_code=true</span></code>
+for the gRPC cpp plugin.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">DEPENDENCIES</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<p>Arguments forwarded to the <code class="docutils literal notranslate"><span class="pre">DEPENDS</span></code> of the underlying <code class="docutils literal notranslate"><span class="pre">add_custom_command</span></code>
+invocation.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">TARGET</span></code></dt><dd><p>CMake target that will have the generated files added as sources.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PROTOS</span></code></dt><dd><p>List of proto schema files. If omitted, then every source file ending in <em>proto</em> of <code class="docutils literal notranslate"><span class="pre">TARGET</span></code> will be used.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">IMPORT_DIRS</span></code></dt><dd><p>A common parent directory for the schema files. For example, if the schema file is
+<code class="docutils literal notranslate"><span class="pre">proto/helloworld/helloworld.proto</span></code> and the import directory <code class="docutils literal notranslate"><span class="pre">proto/</span></code> then the
+generated files are <code class="docutils literal notranslate"><span class="pre">${PROTOC_OUT_DIR}/helloworld/helloworld.pb.h</span></code> and
+<code class="docutils literal notranslate"><span class="pre">${PROTOC_OUT_DIR}/helloworld/helloworld.pb.cc</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">GENERATE_EXTENSIONS</span></code></dt><dd><p>If LANGUAGE is omitted then this must be set to the extensions that protoc generates.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PROTOC_OPTIONS</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<p>Additional arguments that are forwarded to protoc.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>find_package(gRPC CONFIG REQUIRED)
+find_package(Protobuf REQUIRED)
+add_library(ProtoTest Test.proto)
+target_link_libraries(ProtoTest PUBLIC gRPC::grpc++)
+protobuf_generate(TARGET ProtoTest)
+protobuf_generate(
+    TARGET ProtoTest
+    LANGUAGE grpc
+    PLUGIN protoc-gen-grpc=$&lt;TARGET_FILE:gRPC::grpc_cpp_plugin&gt;
+    PLUGIN_OPTIONS generate_mock_code=true
+    GENERATE_EXTENSIONS .grpc.pb.h .grpc.pb.cc)
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -266,7 +352,7 @@ calls only work properly within the same directory.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -275,8 +361,8 @@ calls only work properly within the same directory.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

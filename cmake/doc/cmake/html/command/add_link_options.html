@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>add_link_options &mdash; CMake 3.26.3 Documentation</title>
+  <title>add_link_options &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="add_subdirectory" href="add_subdirectory.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,14 +57,14 @@
           <div class="body" role="main">
             
   <section id="add-link-options">
-<span id="command:add_link_options"></span><h1>add_link_options<a class="headerlink" href="#add-link-options" title="Permalink to this heading">¶</a></h1>
+<span id="command:add_link_options"></span><h1>add_link_options<a class="headerlink" href="#add-link-options" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.13.</span></p>
 </div>
 <p>Add options to the link step for executable, shared library or module
 library targets in the current directory and below that are added after
 this command is invoked.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_link_options(</span><span class="nv">&lt;option&gt;</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_link_options(</span><span class="nv">&lt;option&gt;</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>This command can be used to add any link options, but alternative commands
@@ -86,7 +83,7 @@ with the syntax <code class="docutils literal notranslate"><span class="pre">$&l
 manual for available expressions.  See the <span class="target" id="index-1-manual:cmake-buildsystem(7)"></span><a class="reference internal" href="../manual/cmake-buildsystem.7.html#manual:cmake-buildsystem(7)" title="cmake-buildsystem(7)"><code class="xref cmake cmake-manual docutils literal notranslate"><span class="pre">cmake-buildsystem(7)</span></code></a> manual
 for more on defining buildsystem properties.</p>
 <section id="host-and-device-specific-link-options">
-<h2>Host And Device Specific Link Options<a class="headerlink" href="#host-and-device-specific-link-options" title="Permalink to this heading">¶</a></h2>
+<h2>Host And Device Specific Link Options<a class="headerlink" href="#host-and-device-specific-link-options" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.18: </span>When a device link step is involved, which is controlled by
 <span class="target" id="index-0-prop_tgt:CUDA_SEPARABLE_COMPILATION"></span><a class="reference internal" href="../prop_tgt/CUDA_SEPARABLE_COMPILATION.html#prop_tgt:CUDA_SEPARABLE_COMPILATION" title="CUDA_SEPARABLE_COMPILATION"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">CUDA_SEPARABLE_COMPILATION</span></code></a> and
@@ -99,7 +96,7 @@ generator expression will be used only for the host link step.</p>
 </div>
 </section>
 <section id="option-de-duplication">
-<h2>Option De-duplication<a class="headerlink" href="#option-de-duplication" title="Permalink to this heading">¶</a></h2>
+<h2>Option De-duplication<a class="headerlink" href="#option-de-duplication" title="Link to this heading">¶</a></h2>
 <p>The final set of options used for a target is constructed by
 accumulating options from the current target and the usage requirements of
 its dependencies.  The set of options is de-duplicated to avoid repetition.</p>
@@ -114,7 +111,7 @@ and the rest of the option string is parsed using the
 </div>
 </section>
 <section id="handling-compiler-driver-differences">
-<h2>Handling Compiler Driver Differences<a class="headerlink" href="#handling-compiler-driver-differences" title="Permalink to this heading">¶</a></h2>
+<h2>Handling Compiler Driver Differences<a class="headerlink" href="#handling-compiler-driver-differences" title="Link to this heading">¶</a></h2>
 <p>To pass options to the linker tool, each compiler driver has its own syntax.
 The <code class="docutils literal notranslate"><span class="pre">LINKER:</span></code> prefix and <code class="docutils literal notranslate"><span class="pre">,</span></code> separator can be used to specify, in a portable
 way, options to pass to the linker tool. <code class="docutils literal notranslate"><span class="pre">LINKER:</span></code> is replaced by the
@@ -136,11 +133,14 @@ example then becomes <code class="docutils literal notranslate"><span class="pre
 </div>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><span class="target" id="index-1-command:link_libraries"></span><a class="reference internal" href="link_libraries.html#command:link_libraries" title="link_libraries"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">link_libraries()</span></code></a></p></li>
 <li><p><span class="target" id="index-1-command:target_link_libraries"></span><a class="reference internal" href="target_link_libraries.html#command:target_link_libraries" title="target_link_libraries"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_link_libraries()</span></code></a></p></li>
 <li><p><span class="target" id="index-0-command:target_link_options"></span><a class="reference internal" href="target_link_options.html#command:target_link_options" title="target_link_options"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_link_options()</span></code></a></p></li>
+<li><p><span class="target" id="index-0-variable:CMAKE_&lt;LANG&gt;_FLAGS"></span><a class="reference internal" href="../variable/CMAKE_LANG_FLAGS.html#variable:CMAKE_&lt;LANG&gt;_FLAGS" title="CMAKE_&lt;LANG&gt;_FLAGS"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_&lt;LANG&gt;_FLAGS</span></code></a> and <span class="target" id="index-0-variable:CMAKE_&lt;LANG&gt;_FLAGS_&lt;CONFIG&gt;"></span><a class="reference internal" href="../variable/CMAKE_LANG_FLAGS_CONFIG.html#variable:CMAKE_&lt;LANG&gt;_FLAGS_&lt;CONFIG&gt;" title="CMAKE_&lt;LANG&gt;_FLAGS_&lt;CONFIG&gt;"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_&lt;LANG&gt;_FLAGS_&lt;CONFIG&gt;</span></code></a>
+add language-wide flags passed to all invocations of the compiler.
+This includes invocations that drive compiling and those that drive linking.</p></li>
 </ul>
 </section>
 </section>
@@ -216,7 +216,7 @@ example then becomes <code class="docutils literal notranslate"><span class="pre
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -225,8 +225,8 @@ example then becomes <code class="docutils literal notranslate"><span class="pre
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

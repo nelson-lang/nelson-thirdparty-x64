@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>LINK_LIBRARY_OVERRIDE &mdash; CMake 3.26.3 Documentation</title>
+  <title>LINK_LIBRARY_OVERRIDE &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="LINK_LIBRARY_OVERRIDE_&lt;LIBRARY&gt;" href="LINK_LIBRARY_OVERRIDE_LIBRARY.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="link-library-override">
-<span id="prop_tgt:LINK_LIBRARY_OVERRIDE"></span><h1>LINK_LIBRARY_OVERRIDE<a class="headerlink" href="#link-library-override" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:LINK_LIBRARY_OVERRIDE"></span><h1>LINK_LIBRARY_OVERRIDE<a class="headerlink" href="#link-library-override" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.24.</span></p>
 </div>
@@ -79,18 +76,18 @@ with it will be ignored for the target this property is set on.  The item
 will instead be associated with the specified <code class="docutils literal notranslate"><span class="pre">feature</span></code>.  Each <code class="docutils literal notranslate"><span class="pre">link-item</span></code>
 can be anything that would be accepted as part of a <code class="docutils literal notranslate"><span class="pre">library-list</span></code> in a
 <span class="target" id="index-2-genex:LINK_LIBRARY"></span><a class="reference internal" href="../manual/cmake-generator-expressions.7.html#genex:LINK_LIBRARY" title="LINK_LIBRARY"><code class="xref cmake cmake-genex docutils literal notranslate"><span class="pre">LINK_LIBRARY</span></code></a> generator expression.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">lib1</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_library(</span><span class="nb">lib2</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_library(</span><span class="nb">lib3</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">lib1</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
+<span class="nf">add_library(</span><span class="nb">lib2</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
+<span class="nf">add_library(</span><span class="nb">lib3</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
 
-<span class="nf">target_link_libraries(</span><span class="nb">lib1</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="s">&quot;$&lt;LINK_LIBRARY:feature1,external&gt;&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">target_link_libraries(</span><span class="nb">lib2</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="s">&quot;$&lt;LINK_LIBRARY:feature2,lib1&gt;&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">target_link_libraries(</span><span class="nb">lib3</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">lib1</span><span class="w"> </span><span class="nb">lib2</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">target_link_libraries(</span><span class="nb">lib1</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="s">&quot;$&lt;LINK_LIBRARY:feature1,external&gt;&quot;</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">lib2</span><span class="w"> </span><span class="no">PUBLIC</span><span class="w"> </span><span class="s">&quot;$&lt;LINK_LIBRARY:feature2,lib1&gt;&quot;</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">lib3</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">lib1</span><span class="w"> </span><span class="nb">lib2</span><span class="nf">)</span>
 
 <span class="c"># lib1 is associated with both feature2 and no feature. Without any override,</span>
 <span class="c"># this would result in a fatal error at generation time for lib3.</span>
 <span class="c"># Define an override to resolve the incompatible feature associations.</span>
-<span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">lib3</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">LINK_LIBRARY_OVERRIDE</span><span class="w"> </span><span class="s">&quot;feature2,lib1,external&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">lib3</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">LINK_LIBRARY_OVERRIDE</span><span class="w"> </span><span class="s">&quot;feature2,lib1,external&quot;</span><span class="nf">)</span>
 
 <span class="c"># lib1 and external will now be associated with feature2 instead when linking lib3</span>
 </pre></div>
@@ -99,10 +96,10 @@ can be anything that would be accepted as part of a <code class="docutils litera
 library feature.  This effectively discards any feature for that link item,
 for that target only (<code class="docutils literal notranslate"><span class="pre">lib3</span></code> in this example):</p>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># When linking lib3, discard any library feature for lib1, and use feature2 for external</span>
-<span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">lib3</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">LINK_LIBRARY_OVERRIDE</span><span class="w"></span>
-<span class="w">  </span><span class="s">&quot;DEFAULT,lib1&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="s">&quot;feature2,external&quot;</span><span class="w"></span>
-<span class="nf">)</span><span class="w"></span>
+<span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">lib3</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">LINK_LIBRARY_OVERRIDE</span>
+<span class="w">  </span><span class="s">&quot;DEFAULT,lib1&quot;</span>
+<span class="w">  </span><span class="s">&quot;feature2,external&quot;</span>
+<span class="nf">)</span>
 </pre></div>
 </div>
 <p>The above example also demonstrates how to specify different feature overrides
@@ -177,7 +174,7 @@ are defined and specify an override for the same link item,
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -186,8 +183,8 @@ are defined and specify an override for the same link item,
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

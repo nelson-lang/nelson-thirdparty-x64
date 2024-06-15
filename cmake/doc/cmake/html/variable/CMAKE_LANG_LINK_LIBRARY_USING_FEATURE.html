@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>CMAKE_&lt;LANG&gt;_LINK_LIBRARY_USING_&lt;FEATURE&gt; &mdash; CMake 3.26.3 Documentation</title>
+  <title>CMAKE_&lt;LANG&gt;_LINK_LIBRARY_USING_&lt;FEATURE&gt; &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CMAKE_&lt;LANG&gt;_LINK_LIBRARY_USING_&lt;FEATURE&gt;_SUPPORTED" href="CMAKE_LANG_LINK_LIBRARY_USING_FEATURE_SUPPORTED.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-variables.7.html" accesskey="U">cmake-variables(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="cmake-lang-link-library-using-feature">
-<span id="variable:CMAKE_<LANG>_LINK_LIBRARY_USING_<FEATURE>"></span><h1>CMAKE_&lt;LANG&gt;_LINK_LIBRARY_USING_&lt;FEATURE&gt;<a class="headerlink" href="#cmake-lang-link-library-using-feature" title="Permalink to this heading">¶</a></h1>
+<span id="variable:CMAKE_<LANG>_LINK_LIBRARY_USING_<FEATURE>"></span><h1>CMAKE_&lt;LANG&gt;_LINK_LIBRARY_USING_&lt;FEATURE&gt;<a class="headerlink" href="#cmake-lang-link-library-using-feature" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.24.</span></p>
 </div>
@@ -75,8 +72,11 @@ instead for features that are independent of the link language.</p>
 <p>Feature names are case-sensitive and may only contain letters, numbers
 and underscores.  Feature names defined in all uppercase are reserved for
 CMake's own built-in features (see <a class="reference internal" href="#predefined-features">Predefined Features</a> further below).</p>
+<p>The feature behavior can be described using the
+<span class="target" id="index-0-variable:CMAKE_&lt;LANG&gt;_LINK_LIBRARY_&lt;FEATURE&gt;_PROPERTIES"></span><a class="reference internal" href="CMAKE_LANG_LINK_LIBRARY_FEATURE_PROPERTIES.html#variable:CMAKE_&lt;LANG&gt;_LINK_LIBRARY_&lt;FEATURE&gt;_PROPERTIES" title="CMAKE_&lt;LANG&gt;_LINK_LIBRARY_&lt;FEATURE&gt;_PROPERTIES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_&lt;LANG&gt;_LINK_LIBRARY_&lt;FEATURE&gt;_PROPERTIES</span></code></a> or
+<span class="target" id="index-0-variable:CMAKE_LINK_LIBRARY_&lt;FEATURE&gt;_PROPERTIES"></span><a class="reference internal" href="CMAKE_LINK_LIBRARY_FEATURE_PROPERTIES.html#variable:CMAKE_LINK_LIBRARY_&lt;FEATURE&gt;_PROPERTIES" title="CMAKE_LINK_LIBRARY_&lt;FEATURE&gt;_PROPERTIES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_LINK_LIBRARY_&lt;FEATURE&gt;_PROPERTIES</span></code></a> variables.</p>
 <section id="feature-definitions">
-<h2>Feature Definitions<a class="headerlink" href="#feature-definitions" title="Permalink to this heading">¶</a></h2>
+<h2>Feature Definitions<a class="headerlink" href="#feature-definitions" title="Link to this heading">¶</a></h2>
 <p>A library feature definition is a list that contains one or three elements:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[&lt;PREFIX&gt;] &lt;LIBRARY_EXPRESSION&gt; [&lt;SUFFIX&gt;]
 </pre></div>
@@ -109,9 +109,9 @@ otherwise.</p></li>
 for other items specified by name only.  The <code class="docutils literal notranslate"><span class="pre">PATH{}</span></code> and <code class="docutils literal notranslate"><span class="pre">NAME{}</span></code> wrappers
 can be used to provide the expansion for those two cases, respectively.
 When wrappers are used, both must be present.  For example:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="nb">CMAKE_LINK_LIBRARY_USING_weak_library</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;PATH{-weak_library &lt;LIBRARY&gt;}NAME{LINKER:-weak-l&lt;LIB_ITEM&gt;}&quot;</span><span class="w"></span>
-<span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="nb">CMAKE_LINK_LIBRARY_USING_weak_library</span>
+<span class="w">    </span><span class="s">&quot;PATH{-weak_library &lt;LIBRARY&gt;}NAME{LINKER:-weak-l&lt;LIB_ITEM&gt;}&quot;</span>
+<span class="nf">)</span>
 </pre></div>
 </div>
 <p>For all three elements of this variable (<code class="docutils literal notranslate"><span class="pre">&lt;PREFIX&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;LIBRARY_EXPRESSION&gt;</span></code>,
@@ -137,45 +137,45 @@ example then becomes <code class="docutils literal notranslate"><span class="pre
 </div>
 </section>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
 <section id="loading-a-whole-static-library">
-<h3>Loading a whole static library<a class="headerlink" href="#loading-a-whole-static-library" title="Permalink to this heading">¶</a></h3>
+<h3>Loading a whole static library<a class="headerlink" href="#loading-a-whole-static-library" title="Link to this heading">¶</a></h3>
 <p>A common need is to prevent the linker from discarding any symbols from a
 static library.  Different linkers use different syntax for achieving this.
 The following example shows how this may be implemented for some linkers.
 Note that this is for illustration purposes only.  Projects should use the
 built-in <code class="docutils literal notranslate"><span class="pre">WHOLE_ARCHIVE</span></code> feature instead (see <a class="reference internal" href="#predefined-features">Predefined Features</a>), which
 provides a more complete and more robust implementation of this functionality.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive_SUPPORTED</span><span class="w"> </span><span class="no">TRUE</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">if(</span><span class="no">CMAKE_C_COMPILER_ID</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;AppleClang&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive</span><span class="w"> </span><span class="s">&quot;-force_load &lt;LIB_ITEM&gt;&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">elseif(</span><span class="no">CMAKE_C_COMPILER_ID</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;GNU&quot;</span><span class="w"> </span><span class="no">AND</span><span class="w"> </span><span class="no">CMAKE_SYSTEM_NAME</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;Linux&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;LINKER:--push-state,--whole-archive&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;&lt;LINK_ITEM&gt;&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;LINKER:--pop-state&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nf">)</span><span class="w"></span>
-<span class="nf">elseif(</span><span class="no">CMAKE_C_COMPILER_ID</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;MSVC&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive</span><span class="w"> </span><span class="s">&quot;/WHOLEARCHIVE:&lt;LIBRARY&gt;&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">else()</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive_SUPPORTED</span><span class="w"> </span><span class="no">TRUE</span><span class="nf">)</span>
+<span class="nf">if(</span><span class="no">CMAKE_C_COMPILER_ID</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;AppleClang&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive</span><span class="w"> </span><span class="s">&quot;-force_load &lt;LIB_ITEM&gt;&quot;</span><span class="nf">)</span>
+<span class="nf">elseif(</span><span class="no">CMAKE_C_COMPILER_ID</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;GNU&quot;</span><span class="w"> </span><span class="no">AND</span><span class="w"> </span><span class="no">CMAKE_SYSTEM_NAME</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;Linux&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive</span>
+<span class="w">    </span><span class="s">&quot;LINKER:--push-state,--whole-archive&quot;</span>
+<span class="w">    </span><span class="s">&quot;&lt;LINK_ITEM&gt;&quot;</span>
+<span class="w">    </span><span class="s">&quot;LINKER:--pop-state&quot;</span>
+<span class="w">  </span><span class="nf">)</span>
+<span class="nf">elseif(</span><span class="no">CMAKE_C_COMPILER_ID</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;MSVC&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive</span><span class="w"> </span><span class="s">&quot;/WHOLEARCHIVE:&lt;LIBRARY&gt;&quot;</span><span class="nf">)</span>
+<span class="nf">else()</span>
 <span class="w">  </span><span class="c"># feature not yet supported for the other environments</span>
-<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive_SUPPORTED</span><span class="w"> </span><span class="no">FALSE</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">endif()</span><span class="w"></span>
+<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive_SUPPORTED</span><span class="w"> </span><span class="no">FALSE</span><span class="nf">)</span>
+<span class="nf">endif()</span>
 
-<span class="nf">add_library(</span><span class="nb">lib1</span><span class="w"> </span><span class="no">STATIC</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_library(</span><span class="nb">lib2</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">add_library(</span><span class="nb">lib1</span><span class="w"> </span><span class="no">STATIC</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
+<span class="nf">add_library(</span><span class="nb">lib2</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
 
-<span class="nf">if(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive_SUPPORTED</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">if(</span><span class="nb">CMAKE_C_LINK_LIBRARY_USING_load_archive_SUPPORTED</span><span class="nf">)</span>
 <span class="w">  </span><span class="c"># The -force_load Apple linker option requires a file name</span>
-<span class="w">  </span><span class="nf">set(</span><span class="nb">external_lib</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;$&lt;IF:$&lt;LINK_LANG_AND_ID:C,AppleClang&gt;,libexternal.a,external&gt;&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">target_link_libraries(</span><span class="nb">lib2</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"></span>
-<span class="w">    </span><span class="s">&quot;$&lt;LINK_LIBRARY:load_archive,lib1,${external_lib}&gt;&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nf">)</span><span class="w"></span>
-<span class="nf">else()</span><span class="w"></span>
-<span class="w">  </span><span class="nf">target_link_libraries(</span><span class="nb">lib2</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">lib1</span><span class="w"> </span><span class="nb">external</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">endif()</span><span class="w"></span>
+<span class="w">  </span><span class="nf">set(</span><span class="nb">external_lib</span>
+<span class="w">    </span><span class="s">&quot;$&lt;IF:$&lt;LINK_LANG_AND_ID:C,AppleClang&gt;,libexternal.a,external&gt;&quot;</span>
+<span class="w">  </span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">target_link_libraries(</span><span class="nb">lib2</span><span class="w"> </span><span class="no">PRIVATE</span>
+<span class="w">    </span><span class="s">&quot;$&lt;LINK_LIBRARY:load_archive,lib1,${external_lib}&gt;&quot;</span>
+<span class="w">  </span><span class="nf">)</span>
+<span class="nf">else()</span>
+<span class="w">  </span><span class="nf">target_link_libraries(</span><span class="nb">lib2</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">lib1</span><span class="w"> </span><span class="nb">external</span><span class="nf">)</span>
+<span class="nf">endif()</span>
 </pre></div>
 </div>
 <p>CMake will generate the following link expressions:</p>
@@ -186,7 +186,7 @@ provides a more complete and more robust implementation of this functionality.</
 </ul>
 </section>
 <section id="linking-a-library-as-weak">
-<h3>Linking a library as weak<a class="headerlink" href="#linking-a-library-as-weak" title="Permalink to this heading">¶</a></h3>
+<h3>Linking a library as weak<a class="headerlink" href="#linking-a-library-as-weak" title="Link to this heading">¶</a></h3>
 <p>On macOS, it is possible to link a library in weak mode (the library and all
 references are marked as weak imports).  Different flags must be used for a
 library specified by file path compared to one specified by name.
@@ -196,20 +196,20 @@ linkers, but it is for illustration purposes only.  Projects should use the
 built-in <code class="docutils literal notranslate"><span class="pre">WEAK_FRAMEWORK</span></code> or <code class="docutils literal notranslate"><span class="pre">WEAK_LIBRARY</span></code> features instead (see
 <a class="reference internal" href="#predefined-features">Predefined Features</a>), which provide more complete and more robust
 implementations of this functionality.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">if</span> <span class="nf">(</span><span class="no">CMAKE_C_COMPILER_ID</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;AppleClang&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_LINK_LIBRARY_USING_weak_library</span><span class="w"></span>
-<span class="w">      </span><span class="s">&quot;PATH{-weak_library &lt;LIBRARY&gt;}NAME{LINKER:-weak-l&lt;LIB_ITEM&gt;}&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_LINK_LIBRARY_USING_weak_library_SUPPORTED</span><span class="w"> </span><span class="no">TRUE</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">endif()</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">if</span> <span class="nf">(</span><span class="no">CMAKE_C_COMPILER_ID</span><span class="w"> </span><span class="no">STREQUAL</span><span class="w"> </span><span class="s">&quot;AppleClang&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_LINK_LIBRARY_USING_weak_library</span>
+<span class="w">      </span><span class="s">&quot;PATH{-weak_library &lt;LIBRARY&gt;}NAME{LINKER:-weak-l&lt;LIB_ITEM&gt;}&quot;</span>
+<span class="w">  </span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">set(</span><span class="nb">CMAKE_LINK_LIBRARY_USING_weak_library_SUPPORTED</span><span class="w"> </span><span class="no">TRUE</span><span class="nf">)</span>
+<span class="nf">endif()</span>
 
-<span class="nf">add_library(</span><span class="nb">lib</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_executable(</span><span class="nb">main</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">if(</span><span class="nb">CMAKE_LINK_LIBRARY_USING_weak_library_SUPPORTED</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">target_link_libraries(</span><span class="nb">main</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="s">&quot;$&lt;LINK_LIBRARY:weak_library,lib,external&gt;&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">else()</span><span class="w"></span>
-<span class="w">  </span><span class="nf">target_link_libraries(</span><span class="nb">main</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">lib</span><span class="w"> </span><span class="nb">external</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">endif()</span><span class="w"></span>
+<span class="nf">add_library(</span><span class="nb">lib</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
+<span class="nf">add_executable(</span><span class="nb">main</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
+<span class="nf">if(</span><span class="nb">CMAKE_LINK_LIBRARY_USING_weak_library_SUPPORTED</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">target_link_libraries(</span><span class="nb">main</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="s">&quot;$&lt;LINK_LIBRARY:weak_library,lib,external&gt;&quot;</span><span class="nf">)</span>
+<span class="nf">else()</span>
+<span class="w">  </span><span class="nf">target_link_libraries(</span><span class="nb">main</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="nb">lib</span><span class="w"> </span><span class="nb">external</span><span class="nf">)</span>
+<span class="nf">endif()</span>
 </pre></div>
 </div>
 <p>CMake will generate the following linker command line fragment when linking
@@ -218,7 +218,7 @@ implementations of this functionality.</p>
 </section>
 </section>
 <section id="predefined-features">
-<h2>Predefined Features<a class="headerlink" href="#predefined-features" title="Permalink to this heading">¶</a></h2>
+<h2>Predefined Features<a class="headerlink" href="#predefined-features" title="Link to this heading">¶</a></h2>
 <p>The following built-in library features are pre-defined by CMake:</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">DEFAULT</span></code></dt><dd><p>This feature corresponds to standard linking, essentially equivalent to
@@ -252,8 +252,8 @@ name, or a file path.  If a target is given, that target must have the
 <span class="target" id="index-0-prop_tgt:FRAMEWORK"></span><a class="reference internal" href="../prop_tgt/FRAMEWORK.html#prop_tgt:FRAMEWORK" title="FRAMEWORK"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">FRAMEWORK</span></code></a> target property set to true.  For a file path, if it
 contains a directory part, that directory will be added as a framework
 search path.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">lib</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">target_link_libraries(</span><span class="nb">lib</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="s">&quot;$&lt;LINK_LIBRARY:FRAMEWORK,/path/to/my_framework&gt;&quot;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">lib</span><span class="w"> </span><span class="no">SHARED</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
+<span class="nf">target_link_libraries(</span><span class="nb">lib</span><span class="w"> </span><span class="no">PRIVATE</span><span class="w"> </span><span class="s">&quot;$&lt;LINK_LIBRARY:FRAMEWORK,/path/to/my_framework&gt;&quot;</span><span class="nf">)</span>
 
 <span class="c"># The constructed linker command line will contain:</span>
 <span class="c">#   -F/path/to -framework my_framework</span>
@@ -392,7 +392,7 @@ and has the same linker constraints as <code class="docutils literal notranslate
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-variables.7.html" >cmake-variables(7)</a> &#187;</li>
@@ -401,8 +401,8 @@ and has the same linker constraints as <code class="docutils literal notranslate
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

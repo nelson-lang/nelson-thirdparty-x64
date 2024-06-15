@@ -1,26 +1,23 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>CUDA_ARCHITECTURES &mdash; CMake 3.26.3 Documentation</title>
+  <title>CUDA_ARCHITECTURES &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CUDA_EXTENSIONS" href="CUDA_EXTENSIONS.html" />
+    <link rel="next" title="CUDA_CUBIN_COMPILATION" href="CUDA_CUBIN_COMPILATION.html" />
     <link rel="prev" title="CROSSCOMPILING_EMULATOR" href="CROSSCOMPILING_EMULATOR.html" />
  
 
@@ -33,7 +30,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="CUDA_EXTENSIONS.html" title="CUDA_EXTENSIONS"
+          <a href="CUDA_CUBIN_COMPILATION.html" title="CUDA_CUBIN_COMPILATION"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="CROSSCOMPILING_EMULATOR.html" title="CROSSCOMPILING_EMULATOR"
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="cuda-architectures">
-<span id="prop_tgt:CUDA_ARCHITECTURES"></span><h1>CUDA_ARCHITECTURES<a class="headerlink" href="#cuda-architectures" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:CUDA_ARCHITECTURES"></span><h1>CUDA_ARCHITECTURES<a class="headerlink" href="#cuda-architectures" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.18.</span></p>
 </div>
@@ -97,16 +94,16 @@ major virtual architecture.</p>
 </dd>
 </dl>
 <section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_target_properties(</span><span class="nb">tgt</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">CUDA_ARCHITECTURES</span><span class="w"> </span><span class="s">&quot;35;50;72&quot;</span><span class="nf">)</span><span class="w"></span>
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_target_properties(</span><span class="nb">tgt</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">CUDA_ARCHITECTURES</span><span class="w"> </span><span class="s">&quot;35;50;72&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Generates code for real and virtual architectures <code class="docutils literal notranslate"><span class="pre">30</span></code>, <code class="docutils literal notranslate"><span class="pre">50</span></code> and <code class="docutils literal notranslate"><span class="pre">72</span></code>.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">tgt</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">CUDA_ARCHITECTURES</span><span class="w"> </span><span class="m">70</span><span class="p">-</span><span class="nb">real</span><span class="w"> </span><span class="m">72</span><span class="p">-</span><span class="nb">virtual</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">tgt</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">CUDA_ARCHITECTURES</span><span class="w"> </span><span class="m">70</span><span class="p">-</span><span class="nb">real</span><span class="w"> </span><span class="m">72</span><span class="p">-</span><span class="nb">virtual</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Generates code for real architecture <code class="docutils literal notranslate"><span class="pre">70</span></code> and virtual architecture <code class="docutils literal notranslate"><span class="pre">72</span></code>.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">tgt</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">CUDA_ARCHITECTURES</span><span class="w"> </span><span class="no">OFF</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">set_property(</span><span class="no">TARGET</span><span class="w"> </span><span class="nb">tgt</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">CUDA_ARCHITECTURES</span><span class="w"> </span><span class="no">OFF</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>CMake will not pass any architecture flags to the compiler.</p>
@@ -137,8 +134,8 @@ major virtual architecture.</p>
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="CUDA_EXTENSIONS.html"
-                          title="next chapter">CUDA_EXTENSIONS</a></p>
+    <p class="topless"><a href="CUDA_CUBIN_COMPILATION.html"
+                          title="next chapter">CUDA_CUBIN_COMPILATION</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -168,7 +165,7 @@ major virtual architecture.</p>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="CUDA_EXTENSIONS.html" title="CUDA_EXTENSIONS"
+          <a href="CUDA_CUBIN_COMPILATION.html" title="CUDA_CUBIN_COMPILATION"
              >next</a> |</li>
         <li class="right" >
           <a href="CROSSCOMPILING_EMULATOR.html" title="CROSSCOMPILING_EMULATOR"
@@ -181,7 +178,7 @@ major virtual architecture.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -190,8 +187,8 @@ major virtual architecture.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

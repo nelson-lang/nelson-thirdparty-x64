@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>CMAKE_MESSAGE_CONTEXT &mdash; CMake 3.26.3 Documentation</title>
+  <title>CMAKE_MESSAGE_CONTEXT &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CMAKE_MESSAGE_CONTEXT_SHOW" href="CMAKE_MESSAGE_CONTEXT_SHOW.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-variables.7.html" accesskey="U">cmake-variables(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="cmake-message-context">
-<span id="variable:CMAKE_MESSAGE_CONTEXT"></span><h1>CMAKE_MESSAGE_CONTEXT<a class="headerlink" href="#cmake-message-context" title="Permalink to this heading">¶</a></h1>
+<span id="variable:CMAKE_MESSAGE_CONTEXT"></span><h1>CMAKE_MESSAGE_CONTEXT<a class="headerlink" href="#cmake-message-context" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.17.</span></p>
 </div>
@@ -83,30 +80,30 @@ or the string <code class="docutils literal notranslate"><span class="pre">cmake
 should not be used by projects.</p>
 </div>
 <p>Example:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">function(</span><span class="nb">bar</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_CONTEXT</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">message(</span><span class="no">VERBOSE</span><span class="w"> </span><span class="s">&quot;bar VERBOSE message&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">endfunction()</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">function(</span><span class="nb">bar</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_CONTEXT</span><span class="w"> </span><span class="s">&quot;bar&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">message(</span><span class="no">VERBOSE</span><span class="w"> </span><span class="s">&quot;bar VERBOSE message&quot;</span><span class="nf">)</span>
+<span class="nf">endfunction()</span>
 
-<span class="nf">function(</span><span class="nb">baz</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_CONTEXT</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">message(</span><span class="no">DEBUG</span><span class="w"> </span><span class="s">&quot;baz DEBUG message&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">endfunction()</span><span class="w"></span>
+<span class="nf">function(</span><span class="nb">baz</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_CONTEXT</span><span class="w"> </span><span class="s">&quot;baz&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">message(</span><span class="no">DEBUG</span><span class="w"> </span><span class="s">&quot;baz DEBUG message&quot;</span><span class="nf">)</span>
+<span class="nf">endfunction()</span>
 
-<span class="nf">function(</span><span class="nb">foo</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_CONTEXT</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">bar()</span><span class="w"></span>
-<span class="w">  </span><span class="nf">message(</span><span class="no">TRACE</span><span class="w"> </span><span class="s">&quot;foo TRACE message&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">baz()</span><span class="w"></span>
-<span class="nf">endfunction()</span><span class="w"></span>
+<span class="nf">function(</span><span class="nb">foo</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_CONTEXT</span><span class="w"> </span><span class="s">&quot;foo&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">bar()</span>
+<span class="w">  </span><span class="nf">message(</span><span class="no">TRACE</span><span class="w"> </span><span class="s">&quot;foo TRACE message&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">baz()</span>
+<span class="nf">endfunction()</span>
 
-<span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_CONTEXT</span><span class="w"> </span><span class="s">&quot;top&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">list(</span><span class="no">APPEND</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_CONTEXT</span><span class="w"> </span><span class="s">&quot;top&quot;</span><span class="nf">)</span>
 
-<span class="nf">message(</span><span class="no">VERBOSE</span><span class="w"> </span><span class="s">&quot;Before `foo`&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">foo()</span><span class="w"></span>
-<span class="nf">message(</span><span class="no">VERBOSE</span><span class="w"> </span><span class="s">&quot;After `foo`&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">message(</span><span class="no">VERBOSE</span><span class="w"> </span><span class="s">&quot;Before `foo`&quot;</span><span class="nf">)</span>
+<span class="nf">foo()</span>
+<span class="nf">message(</span><span class="no">VERBOSE</span><span class="w"> </span><span class="s">&quot;After `foo`&quot;</span><span class="nf">)</span>
 
-<span class="nf">list(</span><span class="no">POP_BACK</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_CONTEXT</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">list(</span><span class="no">POP_BACK</span><span class="w"> </span><span class="no">CMAKE_MESSAGE_CONTEXT</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Which results in the following output:</p>
@@ -177,7 +174,7 @@ should not be used by projects.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-variables.7.html" >cmake-variables(7)</a> &#187;</li>
@@ -186,8 +183,8 @@ should not be used by projects.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

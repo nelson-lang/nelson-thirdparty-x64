@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>LINK_LIBRARIES &mdash; CMake 3.26.3 Documentation</title>
+  <title>LINK_LIBRARIES &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="LINK_LIBRARIES_ONLY_TARGETS" href="LINK_LIBRARIES_ONLY_TARGETS.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="link-libraries">
-<span id="prop_tgt:LINK_LIBRARIES"></span><h1>LINK_LIBRARIES<a class="headerlink" href="#link-libraries" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:LINK_LIBRARIES"></span><h1>LINK_LIBRARIES<a class="headerlink" href="#link-libraries" title="Link to this heading">¶</a></h1>
 <p>List of direct link dependencies.</p>
 <p>This property specifies the list of libraries or targets which will be
 used for linking.  In addition to accepting values from the
@@ -79,7 +76,7 @@ syntax <code class="docutils literal notranslate"><span class="pre">$&lt;...&gt;
 buildsystem properties.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A call to <span class="target" id="index-1-command:target_link_libraries"></span><a class="reference internal" href="../command/target_link_libraries.html#command:target_link_libraries" title="target_link_libraries"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_link_libraries(&lt;target&gt;</span> <span class="pre">...)</span></code></a> may update this
+<p>A call to <span class="target" id="index-1-command:target_link_libraries"></span><a class="reference internal" href="../command/target_link_libraries.html#command:target_link_libraries" title="target_link_libraries(&lt;target&gt; ...)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_link_libraries(&lt;target&gt;</span> <span class="pre">...)</span></code></a> may update this
 property on <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code>.  If <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> was not created in the same
 directory as the call then <span class="target" id="index-2-command:target_link_libraries"></span><a class="reference internal" href="../command/target_link_libraries.html#command:target_link_libraries" title="target_link_libraries"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_link_libraries()</span></code></a> will wrap each
 entry with the form <code class="docutils literal notranslate"><span class="pre">::&#64;(directory-id);...;::&#64;</span></code>, where the <code class="docutils literal notranslate"><span class="pre">::&#64;</span></code> is
@@ -87,7 +84,7 @@ literal and the <code class="docutils literal notranslate"><span class="pre">(di
 This tells the generators that the named libraries must be looked up in
 the scope of the caller rather than in the scope in which the
 <code class="docutils literal notranslate"><span class="pre">&lt;target&gt;</span></code> was created.  Valid directory ids are stripped on export
-by the <span class="target" id="index-0-command:install"></span><a class="reference internal" href="../command/install.html#command:install" title="install"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> and <span class="target" id="index-0-command:export"></span><a class="reference internal" href="../command/export.html#command:export" title="export"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">export()</span></code></a> commands.</p>
+by the <span class="target" id="index-0-command:install"></span><a class="reference internal" href="../command/install.html#export" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> and <span class="target" id="index-0-command:export"></span><a class="reference internal" href="../command/export.html#command:export" title="export"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">export()</span></code></a> commands.</p>
 </div>
 <p>In advanced use cases, the list of direct link dependencies specified
 by this property may be updated by usage requirements from dependencies.
@@ -153,7 +150,7 @@ See the <span class="target" id="index-0-prop_tgt:INTERFACE_LINK_LIBRARIES_DIREC
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -162,8 +159,8 @@ See the <span class="target" id="index-0-prop_tgt:INTERFACE_LINK_LIBRARIES_DIREC
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

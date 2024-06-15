@@ -1,26 +1,23 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>SKIP_AUTOUIC &mdash; CMake 3.26.3 Documentation</title>
+  <title>SKIP_AUTOUIC &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="SKIP_PRECOMPILE_HEADERS" href="SKIP_PRECOMPILE_HEADERS.html" />
+    <link rel="next" title="SKIP_LINTING" href="SKIP_LINTING.html" />
     <link rel="prev" title="SKIP_AUTORCC" href="SKIP_AUTORCC.html" />
  
 
@@ -33,7 +30,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="SKIP_PRECOMPILE_HEADERS.html" title="SKIP_PRECOMPILE_HEADERS"
+          <a href="SKIP_LINTING.html" title="SKIP_LINTING"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="SKIP_AUTORCC.html" title="SKIP_AUTORCC"
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="skip-autouic">
-<span id="prop_sf:SKIP_AUTOUIC"></span><h1>SKIP_AUTOUIC<a class="headerlink" href="#skip-autouic" title="Permalink to this heading">¶</a></h1>
+<span id="prop_sf:SKIP_AUTOUIC"></span><h1>SKIP_AUTOUIC<a class="headerlink" href="#skip-autouic" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.8.</span></p>
 </div>
@@ -69,11 +66,11 @@
 <code class="docutils literal notranslate"><span class="pre">.ui</span></code> files.</p>
 <p>For broader exclusion control see <span class="target" id="index-0-prop_sf:SKIP_AUTOGEN"></span><a class="reference internal" href="SKIP_AUTOGEN.html#prop_sf:SKIP_AUTOGEN" title="SKIP_AUTOGEN"><code class="xref cmake cmake-prop_sf docutils literal notranslate"><span class="pre">SKIP_AUTOGEN</span></code></a>.</p>
 <section id="example">
-<h2>EXAMPLE<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<h2>EXAMPLE<a class="headerlink" href="#example" title="Link to this heading">¶</a></h2>
 <div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="c"># ...</span>
-<span class="nf">set_property(</span><span class="no">SOURCE</span><span class="w"> </span><span class="nb">file.h</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">SKIP_AUTOUIC</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_property(</span><span class="no">SOURCE</span><span class="w"> </span><span class="nb">file.cpp</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">SKIP_AUTOUIC</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_property(</span><span class="no">SOURCE</span><span class="w"> </span><span class="nb">widget.ui</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">SKIP_AUTOUIC</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_property(</span><span class="no">SOURCE</span><span class="w"> </span><span class="nb">file.h</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">SKIP_AUTOUIC</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span>
+<span class="nf">set_property(</span><span class="no">SOURCE</span><span class="w"> </span><span class="nb">file.cpp</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">SKIP_AUTOUIC</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span>
+<span class="nf">set_property(</span><span class="no">SOURCE</span><span class="w"> </span><span class="nb">widget.ui</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">SKIP_AUTOUIC</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span>
 <span class="c"># ...</span>
 </pre></div>
 </div>
@@ -104,8 +101,8 @@
   </div>
   <div>
     <h4>Next topic</h4>
-    <p class="topless"><a href="SKIP_PRECOMPILE_HEADERS.html"
-                          title="next chapter">SKIP_PRECOMPILE_HEADERS</a></p>
+    <p class="topless"><a href="SKIP_LINTING.html"
+                          title="next chapter">SKIP_LINTING</a></p>
   </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
@@ -135,7 +132,7 @@
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="SKIP_PRECOMPILE_HEADERS.html" title="SKIP_PRECOMPILE_HEADERS"
+          <a href="SKIP_LINTING.html" title="SKIP_LINTING"
              >next</a> |</li>
         <li class="right" >
           <a href="SKIP_AUTORCC.html" title="SKIP_AUTORCC"
@@ -148,7 +145,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -157,8 +154,8 @@
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

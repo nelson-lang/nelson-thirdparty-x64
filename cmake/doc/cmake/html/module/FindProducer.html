@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindProducer &mdash; CMake 3.26.3 Documentation</title>
+  <title>FindProducer &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindProtobuf" href="FindProtobuf.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="findproducer">
-<span id="module:FindProducer"></span><h1>FindProducer<a class="headerlink" href="#findproducer" title="Permalink to this heading">¶</a></h1>
+<span id="module:FindProducer"></span><h1>FindProducer<a class="headerlink" href="#findproducer" title="Link to this heading">¶</a></h1>
 <p>Though Producer isn't directly part of OpenSceneGraph, its primary
 user is OSG so I consider this part of the Findosg* suite used to find
 OpenSceneGraph components.  You'll notice that I accept OSGDIR as an
@@ -70,16 +67,23 @@ must also opt into OpenGL (and OpenThreads?) as these modules won't do
 it for you.  This is to allow you control over your own system piece
 by piece in case you need to opt out of certain components or change
 the Find behavior for a particular module (perhaps because the default
-FindOpenGL.cmake module doesn't work with your system as an example).
+<span class="target" id="index-0-module:FindOpenGL"></span><a class="reference internal" href="FindOpenGL.html#module:FindOpenGL" title="FindOpenGL"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FindOpenGL</span></code></a> module doesn't work with your system as an example).
 If you want to use a more convenient module that includes everything,
-use the FindOpenSceneGraph.cmake instead of the Findosg*.cmake
+use the <span class="target" id="index-0-module:FindOpenSceneGraph"></span><a class="reference internal" href="FindOpenSceneGraph.html#module:FindOpenSceneGraph" title="FindOpenSceneGraph"><code class="xref cmake cmake-module docutils literal notranslate"><span class="pre">FindOpenSceneGraph</span></code></a> instead of the Findosg*.cmake
 modules.</p>
-<p>Locate Producer This module defines PRODUCER_LIBRARY PRODUCER_FOUND,
-if false, do not try to link to Producer PRODUCER_INCLUDE_DIR, where
-to find the headers</p>
-<p>$PRODUCER_DIR is an environment variable that would correspond to the
-./configure --prefix=$PRODUCER_DIR used in building osg.</p>
-<p>Created by Eric Wing.</p>
+<p>Locate Producer This module defines:</p>
+<p><code class="docutils literal notranslate"><span class="pre">PRODUCER_LIBRARY</span></code></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">PRODUCER_FOUND</span></code></dt><dd><p>if false, do not try to link to Producer</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PRODUCER_INCLUDE_DIR</span></code></dt><dd><p>where to find the headers</p>
+</dd>
+</dl>
+<p><code class="docutils literal notranslate"><span class="pre">$PRODUCER_DIR</span></code> is an environment variable that would correspond to:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./configure --prefix=$PRODUCER_DIR
+</pre></div>
+</div>
+<p>used in building osg.</p>
 </section>
 
 
@@ -140,7 +144,7 @@ to find the headers</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -149,8 +153,8 @@ to find the headers</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

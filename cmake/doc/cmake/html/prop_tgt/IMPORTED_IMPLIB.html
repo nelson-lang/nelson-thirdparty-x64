@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>IMPORTED_IMPLIB &mdash; CMake 3.26.3 Documentation</title>
+  <title>IMPORTED_IMPLIB &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="IMPORTED_IMPLIB_&lt;CONFIG&gt;" href="IMPORTED_IMPLIB_CONFIG.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,12 +57,47 @@
           <div class="body" role="main">
             
   <section id="imported-implib">
-<span id="prop_tgt:IMPORTED_IMPLIB"></span><h1>IMPORTED_IMPLIB<a class="headerlink" href="#imported-implib" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:IMPORTED_IMPLIB"></span><h1>IMPORTED_IMPLIB<a class="headerlink" href="#imported-implib" title="Link to this heading">¶</a></h1>
 <p>Full path to the import library for an <code class="docutils literal notranslate"><span class="pre">IMPORTED</span></code> target.</p>
-<p>Set this to the location of the <code class="docutils literal notranslate"><span class="pre">.lib</span></code> part of a Windows DLL, or on
-AIX set it to an import file created for executables that export symbols
-(see the <span class="target" id="index-0-prop_tgt:ENABLE_EXPORTS"></span><a class="reference internal" href="ENABLE_EXPORTS.html#prop_tgt:ENABLE_EXPORTS" title="ENABLE_EXPORTS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">ENABLE_EXPORTS</span></code></a> target property).
-Ignored for non-imported targets.</p>
+<p>This property may be set:</p>
+<ul>
+<li><p>On DLL platforms, to the location of the <code class="docutils literal notranslate"><span class="pre">.lib</span></code> part of the DLL.</p></li>
+<li><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.16: </span>On AIX, to an import file (e.g. <code class="docutils literal notranslate"><span class="pre">.imp</span></code>) created for executables that
+export symbols (see the <span class="target" id="index-0-prop_tgt:ENABLE_EXPORTS"></span><a class="reference internal" href="ENABLE_EXPORTS.html#prop_tgt:ENABLE_EXPORTS" title="ENABLE_EXPORTS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">ENABLE_EXPORTS</span></code></a> target property).</p>
+</div>
+</li>
+<li><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.27: </span>On Apple platforms, to an import file (e.g. <code class="docutils literal notranslate"><span class="pre">.tbd</span></code>) created for shared
+libraries or frameworks (see the <span class="target" id="index-1-prop_tgt:ENABLE_EXPORTS"></span><a class="reference internal" href="ENABLE_EXPORTS.html#prop_tgt:ENABLE_EXPORTS" title="ENABLE_EXPORTS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">ENABLE_EXPORTS</span></code></a> target
+property).  For frameworks, this is the location of the <code class="docutils literal notranslate"><span class="pre">.tbd</span></code> file
+symlink just inside the framework folder.</p>
+</div>
+</li>
+<li><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28: </span>On non-DLL platforms, to the location of a shared library.
+When set without also specifying an <span class="target" id="index-0-prop_tgt:IMPORTED_LOCATION"></span><a class="reference internal" href="IMPORTED_LOCATION.html#prop_tgt:IMPORTED_LOCATION" title="IMPORTED_LOCATION"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED_LOCATION</span></code></a>,
+the library is considered to be a stub, and its location will not
+be added as a runtime search path to dependents that link it.</p>
+</div>
+</li>
+</ul>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 3.28: </span>If an imported target is an Apple framework or XCFramework, the preferred
+arrangement is to set <span class="target" id="index-1-prop_tgt:IMPORTED_LOCATION"></span><a class="reference internal" href="IMPORTED_LOCATION.html#prop_tgt:IMPORTED_LOCATION" title="IMPORTED_LOCATION"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED_LOCATION</span></code></a> to the <code class="docutils literal notranslate"><span class="pre">.framework</span></code>
+or <code class="docutils literal notranslate"><span class="pre">.xcframework</span></code> directory.  CMake will then find the relevant <code class="docutils literal notranslate"><span class="pre">.tbd</span></code>
+file inside that framework or XCFramework automatically without requiring
+<code class="docutils literal notranslate"><span class="pre">IMPORTED_IMPLIB</span></code> to be set.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">IMPORTED_IMPLIB</span></code> target property may be overridden for a
+given configuration <code class="docutils literal notranslate"><span class="pre">&lt;CONFIG&gt;</span></code> by the configuration-specific
+<span class="target" id="index-0-prop_tgt:IMPORTED_IMPLIB_&lt;CONFIG&gt;"></span><a class="reference internal" href="IMPORTED_IMPLIB_CONFIG.html#prop_tgt:IMPORTED_IMPLIB_&lt;CONFIG&gt;" title="IMPORTED_IMPLIB_&lt;CONFIG&gt;"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED_IMPLIB_&lt;CONFIG&gt;</span></code></a> target property.  Furthermore,
+the <span class="target" id="index-0-prop_tgt:MAP_IMPORTED_CONFIG_&lt;CONFIG&gt;"></span><a class="reference internal" href="MAP_IMPORTED_CONFIG_CONFIG.html#prop_tgt:MAP_IMPORTED_CONFIG_&lt;CONFIG&gt;" title="MAP_IMPORTED_CONFIG_&lt;CONFIG&gt;"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">MAP_IMPORTED_CONFIG_&lt;CONFIG&gt;</span></code></a> target property may be
+used to map between a project's configurations and those of an imported
+target.  If none of these is set then the name of any other configuration
+listed in the <span class="target" id="index-0-prop_tgt:IMPORTED_CONFIGURATIONS"></span><a class="reference internal" href="IMPORTED_CONFIGURATIONS.html#prop_tgt:IMPORTED_CONFIGURATIONS" title="IMPORTED_CONFIGURATIONS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED_CONFIGURATIONS</span></code></a> target property may be
+selected and its <span class="target" id="index-1-prop_tgt:IMPORTED_IMPLIB_&lt;CONFIG&gt;"></span><a class="reference internal" href="IMPORTED_IMPLIB_CONFIG.html#prop_tgt:IMPORTED_IMPLIB_&lt;CONFIG&gt;" title="IMPORTED_IMPLIB_&lt;CONFIG&gt;"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED_IMPLIB_&lt;CONFIG&gt;</span></code></a> value used.</p>
+<p>This property is ignored for non-imported targets.</p>
 </section>
 
 
@@ -126,7 +158,7 @@ Ignored for non-imported targets.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -135,8 +167,8 @@ Ignored for non-imported targets.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FeatureSummary &mdash; CMake 3.26.3 Documentation</title>
+  <title>FeatureSummary &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FetchContent" href="FetchContent.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="featuresummary">
-<span id="module:FeatureSummary"></span><h1>FeatureSummary<a class="headerlink" href="#featuresummary" title="Permalink to this heading">¶</a></h1>
+<span id="module:FeatureSummary"></span><h1>FeatureSummary<a class="headerlink" href="#featuresummary" title="Link to this heading">¶</a></h1>
 <p>Functions for generating a summary of enabled/disabled features.</p>
 <p>These functions can be used to generate a summary of enabled and disabled
 packages and/or feature for a build tree such as:</p>
@@ -71,16 +68,16 @@ LibXml2 (required version &gt;= 2.4), XML processing lib, &lt;http://xmlsoft.org
 PNG, A PNG image library., &lt;http://www.libpng.org/pub/png/&gt;
    * Enables saving screenshots
 -- The following OPTIONAL packages have not been found:
-Lua51, The Lua scripting language., &lt;http://www.lua.org&gt;
+Lua51, The Lua scripting language., &lt;https://www.lua.org&gt;
    * Enables macros in MyWordProcessor
 Foo, Foo provides cool stuff.
 </pre></div>
 </div>
 <section id="global-properties">
-<h2>Global Properties<a class="headerlink" href="#global-properties" title="Permalink to this heading">¶</a></h2>
+<h2>Global Properties<a class="headerlink" href="#global-properties" title="Link to this heading">¶</a></h2>
 <dl class="cmake variable">
 <dt class="sig sig-object cmake" id="variable:FeatureSummary_PKG_TYPES">
-<span class="sig-name descname"><span class="pre">FeatureSummary_PKG_TYPES</span></span><a class="headerlink" href="#variable:FeatureSummary_PKG_TYPES" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FeatureSummary_PKG_TYPES</span></span><a class="headerlink" href="#variable:FeatureSummary_PKG_TYPES" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>The global property <span class="target" id="index-0-variable:FeatureSummary_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_PKG_TYPES" title="FeatureSummary_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_PKG_TYPES</span></code></a> defines the type of
@@ -93,7 +90,7 @@ changed to higher types.</p>
 <code class="docutils literal notranslate"><span class="pre">RUNTIME</span> <span class="pre">&lt;</span> <span class="pre">OPTIONAL</span> <span class="pre">&lt;</span> <span class="pre">RECOMMENDED</span> <span class="pre">&lt;</span> <span class="pre">REQUIRED</span></code>.</p>
 <dl class="cmake variable">
 <dt class="sig sig-object cmake" id="variable:FeatureSummary_REQUIRED_PKG_TYPES">
-<span class="sig-name descname"><span class="pre">FeatureSummary_REQUIRED_PKG_TYPES</span></span><a class="headerlink" href="#variable:FeatureSummary_REQUIRED_PKG_TYPES" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FeatureSummary_REQUIRED_PKG_TYPES</span></span><a class="headerlink" href="#variable:FeatureSummary_REQUIRED_PKG_TYPES" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>The global property <span class="target" id="index-0-variable:FeatureSummary_REQUIRED_PKG_TYPES"></span><a class="reference internal" href="#variable:FeatureSummary_REQUIRED_PKG_TYPES" title="FeatureSummary_REQUIRED_PKG_TYPES"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_REQUIRED_PKG_TYPES</span></code></a> defines which
@@ -104,7 +101,7 @@ when calling <span class="target" id="index-0-command:feature_summary"></span><a
 <p>The default value for this global property is <code class="docutils literal notranslate"><span class="pre">REQUIRED</span></code>.</p>
 <dl class="cmake variable">
 <dt class="sig sig-object cmake" id="variable:FeatureSummary_DEFAULT_PKG_TYPE">
-<span class="sig-name descname"><span class="pre">FeatureSummary_DEFAULT_PKG_TYPE</span></span><a class="headerlink" href="#variable:FeatureSummary_DEFAULT_PKG_TYPE" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FeatureSummary_DEFAULT_PKG_TYPE</span></span><a class="headerlink" href="#variable:FeatureSummary_DEFAULT_PKG_TYPE" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>The global property <span class="target" id="index-0-variable:FeatureSummary_DEFAULT_PKG_TYPE"></span><a class="reference internal" href="#variable:FeatureSummary_DEFAULT_PKG_TYPE" title="FeatureSummary_DEFAULT_PKG_TYPE"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">FeatureSummary_DEFAULT_PKG_TYPE</span></code></a> defines which
@@ -117,7 +114,7 @@ is set for all the packages.</p>
 <p>The default value for this global property is <code class="docutils literal notranslate"><span class="pre">OPTIONAL</span></code>.</p>
 <dl class="cmake variable">
 <dt class="sig sig-object cmake" id="variable:FeatureSummary_&lt;TYPE&gt;_DESCRIPTION">
-<span class="sig-name descname"><span class="pre">FeatureSummary_&lt;TYPE&gt;_DESCRIPTION</span></span><a class="headerlink" href="#variable:FeatureSummary_<TYPE>_DESCRIPTION" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">FeatureSummary_&lt;TYPE&gt;_DESCRIPTION</span></span><a class="headerlink" href="#variable:FeatureSummary_<TYPE>_DESCRIPTION" title="Link to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="versionadded">
@@ -129,10 +126,10 @@ package type is used in an output string.</p>
 <p>If not set, the string &quot;<code class="docutils literal notranslate"><span class="pre">&lt;TYPE&gt;</span></code> packages&quot; is used.</p>
 </section>
 <section id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h2>
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading">¶</a></h2>
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:feature_summary">
-<span class="sig-name descname"><span class="pre">feature_summary</span></span><a class="headerlink" href="#command:feature_summary" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">feature_summary</span></span><a class="headerlink" href="#command:feature_summary" title="Link to this definition">¶</a></dt>
 <dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>feature_summary( [FILENAME &lt;file&gt;]
                  [APPEND]
                  [VAR &lt;variable_name&gt;]
@@ -179,7 +176,7 @@ information can also be used:</p>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 3.1: </span>With the exception of the <code class="docutils literal notranslate"><span class="pre">ALL</span></code> value, these values can be combined
 in order to customize the output. For example:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ENABLED_FEATURES</span><span class="w"> </span><span class="no">DISABLED_FEATURES</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ENABLED_FEATURES</span><span class="w"> </span><span class="no">DISABLED_FEATURES</span><span class="nf">)</span>
 </pre></div>
 </div>
 </div>
@@ -214,40 +211,40 @@ output (including the <code class="docutils literal notranslate"><span class="pr
 variable.</p>
 </div>
 <p>Example 1, append everything to a file:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ALL</span><span class="w"></span>
-<span class="w">                </span><span class="no">FILENAME</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_BINARY_DIR</span><span class="o">}</span><span class="na">/all.log</span><span class="w"> </span><span class="no">APPEND</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span>
+<span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ALL</span>
+<span class="w">                </span><span class="no">FILENAME</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_BINARY_DIR</span><span class="o">}</span><span class="na">/all.log</span><span class="w"> </span><span class="no">APPEND</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Example 2, print the enabled features into the variable
 enabledFeaturesText, including QUIET packages:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ENABLED_FEATURES</span><span class="w"></span>
-<span class="w">                </span><span class="no">INCLUDE_QUIET_PACKAGES</span><span class="w"></span>
-<span class="w">                </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Enabled Features:&quot;</span><span class="w"></span>
-<span class="w">                </span><span class="no">VAR</span><span class="w"> </span><span class="nb">enabledFeaturesText</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">message(</span><span class="no">STATUS</span><span class="w"> </span><span class="s">&quot;${enabledFeaturesText}&quot;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span>
+<span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ENABLED_FEATURES</span>
+<span class="w">                </span><span class="no">INCLUDE_QUIET_PACKAGES</span>
+<span class="w">                </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Enabled Features:&quot;</span>
+<span class="w">                </span><span class="no">VAR</span><span class="w"> </span><span class="nb">enabledFeaturesText</span><span class="nf">)</span>
+<span class="nf">message(</span><span class="no">STATUS</span><span class="w"> </span><span class="s">&quot;${enabledFeaturesText}&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Example 3, change default package types and print only the categories that
 are not empty:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_property(</span><span class="no">GLOBAL</span><span class="w"> </span><span class="no">APPEND</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="nb">FeatureSummary_PKG_TYPES</span><span class="w"> </span><span class="no">BUILD</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">find_package(</span><span class="no">FOO</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_package_properties(</span><span class="no">FOO</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">TYPE</span><span class="w"> </span><span class="no">BUILD</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">BUILD_PACKAGES_FOUND</span><span class="w"></span>
-<span class="w">                </span><span class="nb">Description</span><span class="w"> </span><span class="s">&quot;Build tools found:&quot;</span><span class="w"></span>
-<span class="w">                </span><span class="no">QUIET_ON_EMPTY</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">BUILD_PACKAGES_NOT_FOUND</span><span class="w"></span>
-<span class="w">                </span><span class="nb">Description</span><span class="w"> </span><span class="s">&quot;Build tools not found:&quot;</span><span class="w"></span>
-<span class="w">                </span><span class="no">QUIET_ON_EMPTY</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">include(</span><span class="nb">FeatureSummary</span><span class="nf">)</span>
+<span class="nf">set_property(</span><span class="no">GLOBAL</span><span class="w"> </span><span class="no">APPEND</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="nb">FeatureSummary_PKG_TYPES</span><span class="w"> </span><span class="no">BUILD</span><span class="nf">)</span>
+<span class="nf">find_package(</span><span class="no">FOO</span><span class="nf">)</span>
+<span class="nf">set_package_properties(</span><span class="no">FOO</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">TYPE</span><span class="w"> </span><span class="no">BUILD</span><span class="nf">)</span>
+<span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">BUILD_PACKAGES_FOUND</span>
+<span class="w">                </span><span class="nb">Description</span><span class="w"> </span><span class="s">&quot;Build tools found:&quot;</span>
+<span class="w">                </span><span class="no">QUIET_ON_EMPTY</span><span class="nf">)</span>
+<span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">BUILD_PACKAGES_NOT_FOUND</span>
+<span class="w">                </span><span class="nb">Description</span><span class="w"> </span><span class="s">&quot;Build tools not found:&quot;</span>
+<span class="w">                </span><span class="no">QUIET_ON_EMPTY</span><span class="nf">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:set_package_properties">
-<span class="sig-name descname"><span class="pre">set_package_properties</span></span><a class="headerlink" href="#command:set_package_properties" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_package_properties</span></span><a class="headerlink" href="#command:set_package_properties" title="Link to this definition">¶</a></dt>
 <dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>set_package_properties(&lt;name&gt; PROPERTIES
                        [ URL &lt;url&gt; ]
                        [ DESCRIPTION &lt;description&gt; ]
@@ -298,30 +295,30 @@ Find-module, but must be set in the project.</p>
 </dd>
 </dl>
 <p>Example for setting the info for a package:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">LibXml2</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_package_properties(</span><span class="nb">LibXml2</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"></span>
-<span class="w">                       </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;A XML processing library.&quot;</span><span class="w"></span>
-<span class="w">                       </span><span class="no">URL</span><span class="w"> </span><span class="s">&quot;http://xmlsoft.org/&quot;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="nb">LibXml2</span><span class="nf">)</span>
+<span class="nf">set_package_properties(</span><span class="nb">LibXml2</span><span class="w"> </span><span class="no">PROPERTIES</span>
+<span class="w">                       </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;A XML processing library.&quot;</span>
+<span class="w">                       </span><span class="no">URL</span><span class="w"> </span><span class="s">&quot;http://xmlsoft.org/&quot;</span><span class="nf">)</span>
 <span class="c"># or</span>
-<span class="nf">set_package_properties(</span><span class="nb">LibXml2</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"></span>
-<span class="w">                       </span><span class="no">TYPE</span><span class="w"> </span><span class="no">RECOMMENDED</span><span class="w"></span>
-<span class="w">                       </span><span class="no">PURPOSE</span><span class="w"> </span><span class="s">&quot;Enables HTML-import in MyWordProcessor&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_package_properties(</span><span class="nb">LibXml2</span><span class="w"> </span><span class="no">PROPERTIES</span>
+<span class="w">                       </span><span class="no">TYPE</span><span class="w"> </span><span class="no">RECOMMENDED</span>
+<span class="w">                       </span><span class="no">PURPOSE</span><span class="w"> </span><span class="s">&quot;Enables HTML-import in MyWordProcessor&quot;</span><span class="nf">)</span>
 <span class="c"># or</span>
-<span class="nf">set_package_properties(</span><span class="nb">LibXml2</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"></span>
-<span class="w">                       </span><span class="no">TYPE</span><span class="w"> </span><span class="no">OPTIONAL</span><span class="w"></span>
-<span class="w">                       </span><span class="no">PURPOSE</span><span class="w"> </span><span class="s">&quot;Enables odt-export in MyWordProcessor&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_package_properties(</span><span class="nb">LibXml2</span><span class="w"> </span><span class="no">PROPERTIES</span>
+<span class="w">                       </span><span class="no">TYPE</span><span class="w"> </span><span class="no">OPTIONAL</span>
+<span class="w">                       </span><span class="no">PURPOSE</span><span class="w"> </span><span class="s">&quot;Enables odt-export in MyWordProcessor&quot;</span><span class="nf">)</span>
 
-<span class="nf">find_package(</span><span class="no">DBUS</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_package_properties(</span><span class="no">DBUS</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"></span>
-<span class="w">  </span><span class="no">TYPE</span><span class="w"> </span><span class="no">RUNTIME</span><span class="w"></span>
-<span class="w">  </span><span class="no">PURPOSE</span><span class="w"> </span><span class="s">&quot;Necessary to disable the screensaver during a presentation&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">find_package(</span><span class="no">DBUS</span><span class="nf">)</span>
+<span class="nf">set_package_properties(</span><span class="no">DBUS</span><span class="w"> </span><span class="no">PROPERTIES</span>
+<span class="w">  </span><span class="no">TYPE</span><span class="w"> </span><span class="no">RUNTIME</span>
+<span class="w">  </span><span class="no">PURPOSE</span><span class="w"> </span><span class="s">&quot;Necessary to disable the screensaver during a presentation&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:add_feature_info">
-<span class="sig-name descname"><span class="pre">add_feature_info</span></span><a class="headerlink" href="#command:add_feature_info" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">add_feature_info</span></span><a class="headerlink" href="#command:add_feature_info" title="Link to this definition">¶</a></dt>
 <dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>add_feature_info(&lt;name&gt; &lt;enabled&gt; &lt;description&gt;)
 </pre></div>
 </div>
@@ -335,20 +332,20 @@ be displayed using <code class="docutils literal notranslate"><span class="pre">
 <p><span class="versionmodified changed">Changed in version 3.8: </span><code class="docutils literal notranslate"><span class="pre">&lt;enabled&gt;</span></code> can be a list of conditions.</p>
 </div>
 <p>Example for setting the info for a feature:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">option(</span><span class="no">WITH_FOO</span><span class="w"> </span><span class="s">&quot;Help for foo&quot;</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_feature_info(</span><span class="nb">Foo</span><span class="w"> </span><span class="no">WITH_FOO</span><span class="w"> </span><span class="s">&quot;The Foo feature provides very cool stuff.&quot;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">option(</span><span class="no">WITH_FOO</span><span class="w"> </span><span class="s">&quot;Help for foo&quot;</span><span class="w"> </span><span class="no">ON</span><span class="nf">)</span>
+<span class="nf">add_feature_info(</span><span class="nb">Foo</span><span class="w"> </span><span class="no">WITH_FOO</span><span class="w"> </span><span class="s">&quot;The Foo feature provides very cool stuff.&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 </section>
 <section id="legacy-macros">
-<h2>Legacy Macros<a class="headerlink" href="#legacy-macros" title="Permalink to this heading">¶</a></h2>
+<h2>Legacy Macros<a class="headerlink" href="#legacy-macros" title="Link to this heading">¶</a></h2>
 <p>The following macros are provided for compatibility with previous
 CMake versions:</p>
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:set_package_info">
-<span class="sig-name descname"><span class="pre">set_package_info</span></span><a class="headerlink" href="#command:set_package_info" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_package_info</span></span><a class="headerlink" href="#command:set_package_info" title="Link to this definition">¶</a></dt>
 <dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>set_package_info(&lt;name&gt; &lt;description&gt; [ &lt;url&gt; [&lt;purpose&gt;] ])
 </pre></div>
 </div>
@@ -361,7 +358,7 @@ can be set are added automatically by the <code class="docutils literal notransl
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:set_feature_info">
-<span class="sig-name descname"><span class="pre">set_feature_info</span></span><a class="headerlink" href="#command:set_feature_info" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_feature_info</span></span><a class="headerlink" href="#command:set_feature_info" title="Link to this definition">¶</a></dt>
 <dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>set_feature_info(&lt;name&gt; &lt;description&gt; [&lt;url&gt;])
 </pre></div>
 </div>
@@ -373,24 +370,24 @@ can be set are added automatically by the <code class="docutils literal notransl
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:print_enabled_features">
-<span class="sig-name descname"><span class="pre">print_enabled_features</span></span><a class="headerlink" href="#command:print_enabled_features" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">print_enabled_features</span></span><a class="headerlink" href="#command:print_enabled_features" title="Link to this definition">¶</a></dt>
 <dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print_enabled_features()
 </pre></div>
 </div>
 <p>Does the same as</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ENABLED_FEATURES</span><span class="w"> </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Enabled features:&quot;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">ENABLED_FEATURES</span><span class="w"> </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Enabled features:&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="cmake command">
 <dt class="sig sig-object cmake" id="command:print_disabled_features">
-<span class="sig-name descname"><span class="pre">print_disabled_features</span></span><a class="headerlink" href="#command:print_disabled_features" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">print_disabled_features</span></span><a class="headerlink" href="#command:print_disabled_features" title="Link to this definition">¶</a></dt>
 <dd><div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print_disabled_features()
 </pre></div>
 </div>
 <p>Does the same as</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">DISABLED_FEATURES</span><span class="w"> </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Disabled features:&quot;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">feature_summary(</span><span class="no">WHAT</span><span class="w"> </span><span class="no">DISABLED_FEATURES</span><span class="w"> </span><span class="no">DESCRIPTION</span><span class="w"> </span><span class="s">&quot;Disabled features:&quot;</span><span class="nf">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -468,7 +465,7 @@ can be set are added automatically by the <code class="docutils literal notransl
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -477,8 +474,8 @@ can be set are added automatically by the <code class="docutils literal notransl
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

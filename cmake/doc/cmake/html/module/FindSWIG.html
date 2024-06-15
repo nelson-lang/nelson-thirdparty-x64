@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindSWIG &mdash; CMake 3.26.3 Documentation</title>
+  <title>FindSWIG &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindTCL" href="FindTCL.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="findswig">
-<span id="module:FindSWIG"></span><h1>FindSWIG<a class="headerlink" href="#findswig" title="Permalink to this heading">¶</a></h1>
+<span id="module:FindSWIG"></span><h1>FindSWIG<a class="headerlink" href="#findswig" title="Link to this heading">¶</a></h1>
 <p>Find the Simplified Wrapper and Interface Generator (<a class="reference external" href="https://swig.org">SWIG</a>) executable.</p>
 <p>This module finds an installed SWIG and determines its version.</p>
 <div class="versionadded">
@@ -95,13 +92,13 @@ to be found can be changed from the command line by means of setting
 <code class="docutils literal notranslate"><span class="pre">SWIG_EXECUTABLE</span></code>.</p>
 <p>Example usage requiring SWIG 4.0 or higher and Python language support, with
 optional Fortran support:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="no">SWIG</span><span class="w"> </span><span class="m">4.0</span><span class="w"> </span><span class="no">COMPONENTS</span><span class="w"> </span><span class="nb">python</span><span class="w"> </span><span class="no">OPTIONAL_COMPONENTS</span><span class="w"> </span><span class="nb">fortran</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">if(</span><span class="no">SWIG_FOUND</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">message(</span><span class="s">&quot;SWIG found: ${SWIG_EXECUTABLE}&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">if(</span><span class="no">NOT</span><span class="w"> </span><span class="nb">SWIG_fortran_FOUND</span><span class="nf">)</span><span class="w"></span>
-<span class="w">    </span><span class="nf">message(</span><span class="no">WARNING</span><span class="w"> </span><span class="s">&quot;SWIG Fortran bindings cannot be generated&quot;</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nf">endif()</span><span class="w"></span>
-<span class="nf">endif()</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">find_package(</span><span class="no">SWIG</span><span class="w"> </span><span class="m">4.0</span><span class="w"> </span><span class="no">COMPONENTS</span><span class="w"> </span><span class="nb">python</span><span class="w"> </span><span class="no">OPTIONAL_COMPONENTS</span><span class="w"> </span><span class="nb">fortran</span><span class="nf">)</span>
+<span class="nf">if(</span><span class="no">SWIG_FOUND</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">message(</span><span class="s">&quot;SWIG found: ${SWIG_EXECUTABLE}&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">if(</span><span class="no">NOT</span><span class="w"> </span><span class="nb">SWIG_fortran_FOUND</span><span class="nf">)</span>
+<span class="w">    </span><span class="nf">message(</span><span class="no">WARNING</span><span class="w"> </span><span class="s">&quot;SWIG Fortran bindings cannot be generated&quot;</span><span class="nf">)</span>
+<span class="w">  </span><span class="nf">endif()</span>
+<span class="nf">endif()</span>
 </pre></div>
 </div>
 </section>
@@ -164,7 +161,7 @@ optional Fortran support:</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -173,8 +170,8 @@ optional Fortran support:</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

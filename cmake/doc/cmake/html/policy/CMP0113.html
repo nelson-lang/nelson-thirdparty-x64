@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>CMP0113 &mdash; CMake 3.26.3 Documentation</title>
+  <title>CMP0113 &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CMP0112" href="CMP0112.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-policies.7.html" accesskey="U">cmake-policies(7)</a> &#187;</li>
@@ -60,21 +57,21 @@
           <div class="body" role="main">
             
   <section id="cmp0113">
-<span id="policy:CMP0113"></span><h1>CMP0113<a class="headerlink" href="#cmp0113" title="Permalink to this heading">¶</a></h1>
+<span id="policy:CMP0113"></span><h1>CMP0113<a class="headerlink" href="#cmp0113" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.19.</span></p>
 </div>
 <p><a class="reference internal" href="../manual/cmake-generators.7.html#makefile-generators"><span class="std std-ref">Makefile Generators</span></a> do not repeat custom commands from target
 dependencies.</p>
 <p>Consider a chain of custom commands split across two dependent targets:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_custom_command(</span><span class="no">OUTPUT</span><span class="w"> </span><span class="nb">output-not-created</span><span class="w"></span>
-<span class="w">  </span><span class="no">COMMAND</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="no">DEPENDS</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_property(</span><span class="no">SOURCE</span><span class="w"> </span><span class="nb">output-not-created</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">SYMBOLIC</span><span class="w"> </span><span class="m">1</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_custom_command(</span><span class="no">OUTPUT</span><span class="w"> </span><span class="nb">output-created</span><span class="w"></span>
-<span class="w">  </span><span class="no">COMMAND</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="no">DEPENDS</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="na">/output-not-created</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_custom_target(</span><span class="nb">first</span><span class="w"> </span><span class="no">DEPENDS</span><span class="w"> </span><span class="nb">output-not-created</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_custom_target(</span><span class="nb">second</span><span class="w"> </span><span class="no">DEPENDS</span><span class="w"> </span><span class="nb">output-created</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_dependencies(</span><span class="nb">second</span><span class="w"> </span><span class="nb">first</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_custom_command(</span><span class="no">OUTPUT</span><span class="w"> </span><span class="nb">output-not-created</span>
+<span class="w">  </span><span class="no">COMMAND</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="no">DEPENDS</span><span class="w"> </span><span class="p">...</span><span class="nf">)</span>
+<span class="nf">set_property(</span><span class="no">SOURCE</span><span class="w"> </span><span class="nb">output-not-created</span><span class="w"> </span><span class="no">PROPERTY</span><span class="w"> </span><span class="no">SYMBOLIC</span><span class="w"> </span><span class="m">1</span><span class="nf">)</span>
+<span class="nf">add_custom_command(</span><span class="no">OUTPUT</span><span class="w"> </span><span class="nb">output-created</span>
+<span class="w">  </span><span class="no">COMMAND</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="no">DEPENDS</span><span class="w"> </span><span class="o">${</span><span class="nt">CMAKE_CURRENT_BINARY_DIR</span><span class="o">}</span><span class="na">/output-not-created</span><span class="nf">)</span>
+<span class="nf">add_custom_target(</span><span class="nb">first</span><span class="w"> </span><span class="no">DEPENDS</span><span class="w"> </span><span class="nb">output-not-created</span><span class="nf">)</span>
+<span class="nf">add_custom_target(</span><span class="nb">second</span><span class="w"> </span><span class="no">DEPENDS</span><span class="w"> </span><span class="nb">output-created</span><span class="nf">)</span>
+<span class="nf">add_dependencies(</span><span class="nb">second</span><span class="w"> </span><span class="nb">first</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>In CMake 3.18 and lower, the Makefile generators put a copy of both custom
@@ -91,9 +88,9 @@ source file property may be affected.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">OLD</span></code> behavior for this policy is to duplicate custom commands in
 dependent targets.  The <code class="docutils literal notranslate"><span class="pre">NEW</span></code> behavior of this policy is to not duplicate
 custom commands in dependent targets.</p>
-<p>This policy was introduced in CMake version 3.19.  Unlike many policies,
-CMake version 3.26.3 does <em>not</em> warn when this policy is not set and
-simply uses <code class="docutils literal notranslate"><span class="pre">OLD</span></code> behavior.</p>
+<p>This policy was introduced in CMake version 3.19.
+It may be set by <span class="target" id="index-0-command:cmake_policy"></span><a class="reference internal" href="../command/cmake_policy.html#command:cmake_policy" title="cmake_policy"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_policy()</span></code></a> or <span class="target" id="index-0-command:cmake_minimum_required"></span><a class="reference internal" href="../command/cmake_minimum_required.html#command:cmake_minimum_required" title="cmake_minimum_required"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_minimum_required()</span></code></a>.
+If it is not set, CMake does <em>not</em> warn, and uses <code class="docutils literal notranslate"><span class="pre">OLD</span></code> behavior.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">OLD</span></code> behavior of a policy is
@@ -160,7 +157,7 @@ and may be removed in a future version of CMake.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-policies.7.html" >cmake-policies(7)</a> &#187;</li>
@@ -169,8 +166,8 @@ and may be removed in a future version of CMake.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

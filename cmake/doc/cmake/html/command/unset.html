@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>unset &mdash; CMake 3.26.3 Documentation</title>
+  <title>unset &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="variable_watch" href="variable_watch.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,30 +57,33 @@
           <div class="body" role="main">
             
   <section id="unset">
-<span id="command:unset"></span><h1>unset<a class="headerlink" href="#unset" title="Permalink to this heading">¶</a></h1>
+<span id="command:unset"></span><h1>unset<a class="headerlink" href="#unset" title="Link to this heading">¶</a></h1>
 <p>Unset a variable, cache variable, or environment variable.</p>
 <section id="unset-normal-variable-or-cache-entry">
-<h2>Unset Normal Variable or Cache Entry<a class="headerlink" href="#unset-normal-variable-or-cache-entry" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">unset(</span><span class="nv">&lt;variable&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">CACHE</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="no">PARENT_SCOPE</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
+<h2>Unset Normal Variable or Cache Entry<a class="headerlink" href="#unset-normal-variable-or-cache-entry" title="Link to this heading">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">unset(</span><span class="nv">&lt;variable&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">CACHE</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="no">PARENT_SCOPE</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Removes a normal variable from the current scope, causing it
 to become undefined.  If <code class="docutils literal notranslate"><span class="pre">CACHE</span></code> is present, then a cache variable
-is removed instead of a normal variable.  Note that when evaluating
-<a class="reference internal" href="../manual/cmake-language.7.html#variable-references"><span class="std std-ref">Variable References</span></a> of the form <code class="docutils literal notranslate"><span class="pre">${VAR}</span></code>, CMake first searches
-for a normal variable with that name.  If no such normal variable exists,
-CMake will then search for a cache entry with that name.  Because of this
-unsetting a normal variable can expose a cache variable that was previously
-hidden.  To force a variable reference of the form <code class="docutils literal notranslate"><span class="pre">${VAR}</span></code> to return an
-empty string, use <code class="docutils literal notranslate"><span class="pre">set(&lt;variable&gt;</span> <span class="pre">&quot;&quot;)</span></code>, which clears the normal variable
-but leaves it defined.</p>
+is removed instead of a normal variable.</p>
 <p>If <code class="docutils literal notranslate"><span class="pre">PARENT_SCOPE</span></code> is present then the variable is removed from the scope
 above the current scope.  See the same option in the <span class="target" id="index-0-command:set"></span><a class="reference internal" href="set.html#command:set" title="set"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">set()</span></code></a> command
 for further details.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When evaluating <a class="reference internal" href="../manual/cmake-language.7.html#variable-references"><span class="std std-ref">Variable References</span></a> of the form <code class="docutils literal notranslate"><span class="pre">${VAR}</span></code>, CMake
+first searches for a normal variable with that name.  If no such normal
+variable exists, CMake will then search for a cache entry with that name.
+Because of this, <strong>unsetting a normal variable can expose a cache variable
+that was previously hidden</strong>.  To force a variable reference of the form
+<code class="docutils literal notranslate"><span class="pre">${VAR}</span></code> to return an empty string, use <code class="docutils literal notranslate"><span class="pre">set(&lt;variable&gt;</span> <span class="pre">&quot;&quot;)</span></code>, which
+clears the normal variable but leaves it defined.</p>
+</div>
 </section>
 <section id="unset-environment-variable">
-<h2>Unset Environment Variable<a class="headerlink" href="#unset-environment-variable" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">unset(</span><span class="o">ENV{</span><span class="nt">&lt;variable&gt;</span><span class="o">}</span><span class="nf">)</span><span class="w"></span>
+<h2>Unset Environment Variable<a class="headerlink" href="#unset-environment-variable" title="Link to this heading">¶</a></h2>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">unset(</span><span class="o">ENV{</span><span class="nt">&lt;variable&gt;</span><span class="o">}</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Removes <code class="docutils literal notranslate"><span class="pre">&lt;variable&gt;</span></code> from the currently available
@@ -94,7 +94,7 @@ from which CMake was called, nor the system environment at large,
 nor the environment of subsequent build or test processes.</p>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><span class="target" id="index-1-command:set"></span><a class="reference internal" href="set.html#command:set" title="set"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">set()</span></code></a></p></li>
 </ul>
@@ -171,7 +171,7 @@ nor the environment of subsequent build or test processes.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -180,8 +180,8 @@ nor the environment of subsequent build or test processes.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

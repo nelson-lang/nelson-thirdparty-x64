@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>XCODE_EMBED_&lt;type&gt; &mdash; CMake 3.26.3 Documentation</title>
+  <title>XCODE_EMBED_&lt;type&gt; &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="XCODE_EMBED_&lt;type&gt;_CODE_SIGN_ON_COPY" href="XCODE_EMBED_type_CODE_SIGN_ON_COPY.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="xcode-embed-type">
-<span id="prop_tgt:XCODE_EMBED_<type>"></span><h1>XCODE_EMBED_&lt;type&gt;<a class="headerlink" href="#xcode-embed-type" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:XCODE_EMBED_<type>"></span><h1>XCODE_EMBED_&lt;type&gt;<a class="headerlink" href="#xcode-embed-type" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.20.</span></p>
 </div>
@@ -96,7 +93,35 @@ as well as the  <code class="docutils literal notranslate"><span class="pre">XCO
 <p>The specified items will be added to the <code class="docutils literal notranslate"><span class="pre">Embed</span> <span class="pre">PlugIns</span></code> build phase.
 They must be CMake target names.</p>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">RESOURCES</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+<p>The specified items will be added to the <code class="docutils literal notranslate"><span class="pre">Embed</span> <span class="pre">Resources</span></code> build phase.
+They must be CMake target names or folder paths.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">XPC_SERVICES</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.29.</span></p>
+</div>
+<p>The specified items will be added to the <code class="docutils literal notranslate"><span class="pre">Embed</span> <span class="pre">XPC</span> <span class="pre">Services</span></code> build phase.
+They must be CMake target names.</p>
+</dd>
 </dl>
+<p>When listing a target as any of the things to embed, Xcode must see that target
+as part of the same Xcode project, or a sub-project of the one defining the
+bundle.  In order to satisfy this constraint, the CMake project must ensure
+at least one of the following:</p>
+<ul class="simple">
+<li><p>The <span class="target" id="index-0-variable:CMAKE_XCODE_GENERATE_TOP_LEVEL_PROJECT_ONLY"></span><a class="reference internal" href="../variable/CMAKE_XCODE_GENERATE_TOP_LEVEL_PROJECT_ONLY.html#variable:CMAKE_XCODE_GENERATE_TOP_LEVEL_PROJECT_ONLY" title="CMAKE_XCODE_GENERATE_TOP_LEVEL_PROJECT_ONLY"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_XCODE_GENERATE_TOP_LEVEL_PROJECT_ONLY</span></code></a> variable is set
+to true in the top level <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> file.  This is the simplest and
+most robust approach.</p></li>
+<li><p>Define the target-to-embed in a subdirectory of the one that defines the
+target being embedded into.</p></li>
+<li><p>If the target-to-embed and the target being embedded into are in separate,
+unrelated directories (i.e. they are siblings, not one a parent of the
+other), ensure they have a common <span class="target" id="index-0-command:project"></span><a class="reference internal" href="../command/project.html#command:project" title="project"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">project()</span></code></a> call in a parent
+directory and no other <span class="target" id="index-1-command:project"></span><a class="reference internal" href="../command/project.html#command:project" title="project"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">project()</span></code></a> calls between themselves and that
+common <span class="target" id="index-2-command:project"></span><a class="reference internal" href="../command/project.html#command:project" title="project"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">project()</span></code></a> call.</p></li>
+</ul>
 <p>See also <span class="target" id="index-0-prop_tgt:XCODE_EMBED_&lt;type&gt;_PATH"></span><a class="reference internal" href="XCODE_EMBED_type_PATH.html#prop_tgt:XCODE_EMBED_&lt;type&gt;_PATH" title="XCODE_EMBED_&lt;type&gt;_PATH"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">XCODE_EMBED_&lt;type&gt;_PATH</span></code></a>,
 <span class="target" id="index-0-prop_tgt:XCODE_EMBED_&lt;type&gt;_REMOVE_HEADERS_ON_COPY"></span><a class="reference internal" href="XCODE_EMBED_type_REMOVE_HEADERS_ON_COPY.html#prop_tgt:XCODE_EMBED_&lt;type&gt;_REMOVE_HEADERS_ON_COPY" title="XCODE_EMBED_&lt;type&gt;_REMOVE_HEADERS_ON_COPY"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">XCODE_EMBED_&lt;type&gt;_REMOVE_HEADERS_ON_COPY</span></code></a> and
 <span class="target" id="index-0-prop_tgt:XCODE_EMBED_&lt;type&gt;_CODE_SIGN_ON_COPY"></span><a class="reference internal" href="XCODE_EMBED_type_CODE_SIGN_ON_COPY.html#prop_tgt:XCODE_EMBED_&lt;type&gt;_CODE_SIGN_ON_COPY" title="XCODE_EMBED_&lt;type&gt;_CODE_SIGN_ON_COPY"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">XCODE_EMBED_&lt;type&gt;_CODE_SIGN_ON_COPY</span></code></a>.</p>
@@ -160,7 +185,7 @@ They must be CMake target names.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -169,8 +194,8 @@ They must be CMake target names.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

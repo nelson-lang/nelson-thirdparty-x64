@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>get_directory_property &mdash; CMake 3.26.3 Documentation</title>
+  <title>get_directory_property &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="get_filename_component" href="get_filename_component.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,9 +57,9 @@
           <div class="body" role="main">
             
   <section id="get-directory-property">
-<span id="command:get_directory_property"></span><h1>get_directory_property<a class="headerlink" href="#get-directory-property" title="Permalink to this heading">¶</a></h1>
+<span id="command:get_directory_property"></span><h1>get_directory_property<a class="headerlink" href="#get-directory-property" title="Link to this heading">¶</a></h1>
 <p>Get a property of <code class="docutils literal notranslate"><span class="pre">DIRECTORY</span></code> scope.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">get_directory_property(</span><span class="nv">&lt;variable&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">DIRECTORY</span><span class="w"> </span><span class="nv">&lt;dir&gt;</span><span class="p">]</span><span class="w"> </span><span class="nv">&lt;prop-name&gt;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">get_directory_property(</span><span class="nv">&lt;variable&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">DIRECTORY</span><span class="w"> </span><span class="nv">&lt;dir&gt;</span><span class="p">]</span><span class="w"> </span><span class="nv">&lt;prop-name&gt;</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Stores a property of directory scope in the named <code class="docutils literal notranslate"><span class="pre">&lt;variable&gt;</span></code>.</p>
@@ -80,14 +77,14 @@ an empty string is returned.  In the case of <code class="docutils literal notra
 if the property is not found for the nominated directory scope,
 the search will chain to a parent scope as described for the
 <span class="target" id="index-0-command:define_property"></span><a class="reference internal" href="define_property.html#command:define_property" title="define_property"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">define_property()</span></code></a> command.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">get_directory_property(</span><span class="nv">&lt;variable&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">DIRECTORY</span><span class="w"> </span><span class="nv">&lt;dir&gt;</span><span class="p">]</span><span class="w"></span>
-<span class="w">                       </span><span class="no">DEFINITION</span><span class="w"> </span><span class="nv">&lt;var-name&gt;</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">get_directory_property(</span><span class="nv">&lt;variable&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">DIRECTORY</span><span class="w"> </span><span class="nv">&lt;dir&gt;</span><span class="p">]</span>
+<span class="w">                       </span><span class="no">DEFINITION</span><span class="w"> </span><span class="nv">&lt;var-name&gt;</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Get a variable definition from a directory.  This form is useful to
 get a variable definition from another directory.</p>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><span class="target" id="index-1-command:define_property"></span><a class="reference internal" href="define_property.html#command:define_property" title="define_property"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">define_property()</span></code></a></p></li>
 <li><p>the more general <span class="target" id="index-0-command:get_property"></span><a class="reference internal" href="get_property.html#command:get_property" title="get_property"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">get_property()</span></code></a> command</p></li>
@@ -163,7 +160,7 @@ get a variable definition from another directory.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -172,8 +169,8 @@ get a variable definition from another directory.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

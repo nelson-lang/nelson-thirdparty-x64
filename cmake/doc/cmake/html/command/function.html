@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>function &mdash; CMake 3.26.3 Documentation</title>
+  <title>function &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="get_cmake_property" href="get_cmake_property.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,11 +57,11 @@
           <div class="body" role="main">
             
   <section id="function">
-<span id="command:function"></span><h1>function<a class="headerlink" href="#function" title="Permalink to this heading">¶</a></h1>
+<span id="command:function"></span><h1>function<a class="headerlink" href="#function" title="Link to this heading">¶</a></h1>
 <p>Start recording a function for later invocation as a command.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">function(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;arg1&gt;</span><span class="w"> </span><span class="p">...]</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nv">&lt;commands&gt;</span><span class="w"></span>
-<span class="nf">endfunction()</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">function(</span><span class="nv">&lt;name&gt;</span><span class="w"> </span><span class="p">[</span><span class="nv">&lt;arg1&gt;</span><span class="w"> </span><span class="p">...]</span><span class="nf">)</span>
+<span class="w">  </span><span class="nv">&lt;commands&gt;</span>
+<span class="nf">endfunction()</span>
 </pre></div>
 </div>
 <p>Defines a function named <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> that takes arguments named
@@ -73,37 +70,37 @@ are recorded; they are not executed until the function is invoked.</p>
 <p>Per legacy, the <span class="target" id="index-0-command:endfunction"></span><a class="reference internal" href="endfunction.html#command:endfunction" title="endfunction"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">endfunction()</span></code></a> command admits an optional
 <code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code> argument. If used, it must be a verbatim repeat of the
 argument of the opening <code class="docutils literal notranslate"><span class="pre">function</span></code> command.</p>
-<p>A function opens a new scope: see <span class="target" id="index-0-command:set"></span><a class="reference internal" href="set.html#command:set" title="set"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">set(var</span> <span class="pre">PARENT_SCOPE)</span></code></a> for
+<p>A function opens a new scope: see <span class="target" id="index-0-command:set"></span><a class="reference internal" href="set.html#command:set" title="set(var parent_scope)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">set(var</span> <span class="pre">PARENT_SCOPE)</span></code></a> for
 details.</p>
 <p>See the <span class="target" id="index-0-command:cmake_policy"></span><a class="reference internal" href="cmake_policy.html#command:cmake_policy" title="cmake_policy"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_policy()</span></code></a> command documentation for the behavior
 of policies inside functions.</p>
 <p>See the <span class="target" id="index-0-command:macro"></span><a class="reference internal" href="macro.html#command:macro" title="macro"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">macro()</span></code></a> command documentation for differences
 between CMake functions and macros.</p>
 <section id="invocation">
-<h2>Invocation<a class="headerlink" href="#invocation" title="Permalink to this heading">¶</a></h2>
+<h2>Invocation<a class="headerlink" href="#invocation" title="Link to this heading">¶</a></h2>
 <p>The function invocation is case-insensitive. A function defined as</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">function(</span><span class="nb">foo</span><span class="nf">)</span><span class="w"></span>
-<span class="w">  </span><span class="nv">&lt;commands&gt;</span><span class="w"></span>
-<span class="nf">endfunction()</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">function(</span><span class="nb">foo</span><span class="nf">)</span>
+<span class="w">  </span><span class="nv">&lt;commands&gt;</span>
+<span class="nf">endfunction()</span>
 </pre></div>
 </div>
 <p>can be invoked through any of</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">foo()</span><span class="w"></span>
-<span class="nf">Foo()</span><span class="w"></span>
-<span class="nf">FOO()</span><span class="w"></span>
-<span class="nf">cmake_language(</span><span class="no">CALL</span><span class="w"> </span><span class="nb">foo</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">foo()</span>
+<span class="nf">Foo()</span>
+<span class="nf">FOO()</span>
+<span class="nf">cmake_language(</span><span class="no">CALL</span><span class="w"> </span><span class="nb">foo</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>and so on. However, it is strongly recommended to stay with the
 case chosen in the function definition. Typically functions use
 all-lowercase names.</p>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.18: </span>The <span class="target" id="index-0-command:cmake_language"></span><a class="reference internal" href="cmake_language.html#command:cmake_language" title="cmake_language"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_language(CALL</span> <span class="pre">...)</span></code></a> command can also be used to
+<p><span class="versionmodified added">New in version 3.18: </span>The <span class="target" id="index-0-command:cmake_language"></span><a class="reference internal" href="cmake_language.html#command:cmake_language" title="cmake_language(call ...)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_language(CALL</span> <span class="pre">...)</span></code></a> command can also be used to
 invoke the function.</p>
 </div>
 </section>
 <section id="arguments">
-<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading">¶</a></h2>
+<h2>Arguments<a class="headerlink" href="#arguments" title="Link to this heading">¶</a></h2>
 <p>When the function is invoked, the recorded <code class="docutils literal notranslate"><span class="pre">&lt;commands&gt;</span></code> are first
 modified by replacing formal parameters (<code class="docutils literal notranslate"><span class="pre">${arg1}</span></code>, ...) with the
 arguments passed, and then invoked as normal commands.</p>
@@ -120,7 +117,7 @@ the only way to ensure that <code class="docutils literal notranslate"><span cla
 extra argument.</p>
 </section>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><span class="target" id="index-0-command:cmake_parse_arguments"></span><a class="reference internal" href="cmake_parse_arguments.html#command:cmake_parse_arguments" title="cmake_parse_arguments"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_parse_arguments()</span></code></a></p></li>
 <li><p><span class="target" id="index-1-command:endfunction"></span><a class="reference internal" href="endfunction.html#command:endfunction" title="endfunction"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">endfunction()</span></code></a></p></li>
@@ -199,7 +196,7 @@ extra argument.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -208,8 +205,8 @@ extra argument.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

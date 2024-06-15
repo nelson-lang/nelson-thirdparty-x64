@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>cmake-presets(7) &mdash; CMake 3.26.3 Documentation</title>
+  <title>cmake-presets(7) &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="cmake-properties(7)" href="cmake-properties.7.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
         <li class="nav-item nav-item-this"><a href="">cmake-presets(7)</a></li> 
@@ -59,7 +56,7 @@
           <div class="body" role="main">
             
   <span class="target" id="manual:cmake-presets(7)"></span><section id="cmake-presets-7">
-<h1><a class="toc-backref" href="#id2" role="doc-backlink">cmake-presets(7)</a><a class="headerlink" href="#cmake-presets-7" title="Permalink to this heading">¶</a></h1>
+<h1><a class="toc-backref" href="#id2" role="doc-backlink">cmake-presets(7)</a><a class="headerlink" href="#cmake-presets-7" title="Link to this heading">¶</a></h1>
 <nav class="contents" id="contents">
 <p class="topic-title">Contents</p>
 <ul class="simple">
@@ -84,7 +81,7 @@
 </ul>
 </nav>
 <section id="introduction">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Introduction</a><a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h2>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.19.</span></p>
 </div>
@@ -106,118 +103,126 @@ project is using Git, <code class="docutils literal notranslate"><span class="pr
 <code class="docutils literal notranslate"><span class="pre">CMakeUserPresets.json</span></code> should be added to the <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>.</p>
 </section>
 <section id="format">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Format</a><a class="headerlink" href="#format" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Format</a><a class="headerlink" href="#format" title="Link to this heading">¶</a></h2>
 <p>The files are a JSON document with an object as the root:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;cmakeMinimumRequired&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;patch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">  </span><span class="p">},</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;include&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;otherThings.json&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="s2">&quot;moreThings.json&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;configurePresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default Config&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default build using Ninja generator&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;generator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ninja&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;binaryDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${sourceDir}/build/default&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;cacheVariables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;FIRST_CACHE_VARIABLE&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BOOL&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OFF&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;SECOND_CACHE_VARIABLE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ON&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;environment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;MY_ENVIRONMENT_VARIABLE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;PATH&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$env{HOME}/ninja/bin:$penv{PATH}&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;vendor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;example.com/ExampleIDE/1.0&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;autoFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ninja-multi&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;inherits&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ninja Multi-Config&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default build using Ninja Multi-Config generator&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;generator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ninja Multi-Config&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">},</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;windows-only&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;inherits&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Windows-only configuration&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This build is only available on Windows&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;equals&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;lhs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${hostSystemName}&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">&quot;rhs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Windows&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;buildPresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;configurePreset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;testPresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;configurePreset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;output&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;outputOnFailure&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;execution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;noTestsAction&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;stopOnFailure&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;packagePresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;configurePreset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;generators&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="s2">&quot;TGZ&quot;</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;workflowPresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;steps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;configure&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">},</span><span class="w"></span>
-<span class="w">        </span><span class="p">{</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;package&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="w"></span>
-<span class="w">        </span><span class="p">}</span><span class="w"></span>
-<span class="w">      </span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">],</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;vendor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;example.com/ExampleIDE/1.0&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">      </span><span class="nt">&quot;autoFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
-<span class="w">    </span><span class="p">}</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;cmakeMinimumRequired&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;major&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;minor&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;patch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;include&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;otherThings.json&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;moreThings.json&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;configurePresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default Config&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default build using Ninja generator&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;generator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ninja&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;binaryDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${sourceDir}/build/default&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;cacheVariables&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;FIRST_CACHE_VARIABLE&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BOOL&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OFF&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;SECOND_CACHE_VARIABLE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ON&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;environment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;MY_ENVIRONMENT_VARIABLE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PATH&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;$env{HOME}/ninja/bin:$penv{PATH}&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;vendor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;example.com/ExampleIDE/1.0&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;autoFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ninja-multi&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;inherits&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ninja Multi-Config&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Default build using Ninja Multi-Config generator&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;generator&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ninja Multi-Config&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;windows-only&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;inherits&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;displayName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Windows-only configuration&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This build is only available on Windows&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;equals&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;lhs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${hostSystemName}&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;rhs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Windows&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;buildPresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;configurePreset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;testPresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;configurePreset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;output&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;outputOnFailure&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;execution&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;noTestsAction&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;stopOnFailure&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;packagePresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;configurePreset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;generators&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;TGZ&quot;</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;workflowPresets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;steps&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;configure&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;build&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;package&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;vendor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;example.com/ExampleIDE/1.0&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;autoFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>The root object recognizes the following fields:</p>
 <dl>
+<dt><code class="docutils literal notranslate"><span class="pre">$schema</span></code></dt><dd><p>An optional string that provides a URI to the JSON schema that describes the
+structure of this JSON document. This field is used for validation and
+autocompletion in editors that support JSON schema. It doesn't affect the
+behavior of the document itself. If this field is not specified, the JSON
+document will still be valid, but tools that use JSON schema for validation
+and autocompletion may not function correctly.
+This is allowed in preset files specifying version <code class="docutils literal notranslate"><span class="pre">8</span></code> or above.</p>
+</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">version</span></code></dt><dd><p>A required integer representing the version of the JSON schema.
 The supported versions are:</p>
 <dl>
@@ -243,6 +248,18 @@ The supported versions are:</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">6</span></code></dt><dd><div class="versionadded">
 <p><span class="versionmodified added">New in version 3.25.</span></p>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">7</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.27.</span></p>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">8</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.28.</span></p>
+</div>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">9</span></code></dt><dd><div class="versionadded">
+<p><span class="versionmodified added">New in version 3.30.</span></p>
 </div>
 </dd>
 </dl>
@@ -287,7 +304,7 @@ This is allowed in preset files specifying version <code class="docutils literal
 </dd>
 </dl>
 <section id="includes">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Includes</a><a class="headerlink" href="#includes" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Includes</a><a class="headerlink" href="#includes" title="Link to this heading">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">CMakePresets.json</span></code> and <code class="docutils literal notranslate"><span class="pre">CMakeUserPresets.json</span></code> can include other files
 with the <code class="docutils literal notranslate"><span class="pre">include</span></code> field in file version <code class="docutils literal notranslate"><span class="pre">4</span></code> and later. Files included
 by these files can also include other files. If <code class="docutils literal notranslate"><span class="pre">CMakePresets.json</span></code> and
@@ -302,9 +319,14 @@ included multiple times from the same file or from different files.</p>
 <p>Files directly or indirectly included from <code class="docutils literal notranslate"><span class="pre">CMakePresets.json</span></code> should be
 guaranteed to be provided by the project. <code class="docutils literal notranslate"><span class="pre">CMakeUserPresets.json</span></code> may
 include files from anywhere.</p>
+<p>Starting from version <code class="docutils literal notranslate"><span class="pre">7</span></code>, the <code class="docutils literal notranslate"><span class="pre">include</span></code> field supports
+<a class="reference internal" href="#macro-expansion">macro expansion</a>, but only <code class="docutils literal notranslate"><span class="pre">$penv{}</span></code> macro expansion. Starting from version
+<code class="docutils literal notranslate"><span class="pre">9</span></code>, other macro expansions are also available, except for <code class="docutils literal notranslate"><span class="pre">$env{}</span></code> and
+preset-specific macros, i.e., those derived from the fields inside a preset's
+definition like <code class="docutils literal notranslate"><span class="pre">presetName</span></code>.</p>
 </section>
 <section id="configure-preset">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">Configure Preset</a><a class="headerlink" href="#configure-preset" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Configure Preset</a><a class="headerlink" href="#configure-preset" title="Link to this heading">¶</a></h3>
 <p>Each entry of the <code class="docutils literal notranslate"><span class="pre">configurePresets</span></code> array is a JSON object
 that may contain the following fields:</p>
 <dl>
@@ -501,10 +523,52 @@ line.</p>
 </dd>
 </dl>
 </dd>
+<dt><code class="docutils literal notranslate"><span class="pre">trace</span></code></dt><dd><p>An optional object specifying trace options. This is allowed in preset
+files specifying version <code class="docutils literal notranslate"><span class="pre">7</span></code>. The object may contain the following fields:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">mode</span></code></dt><dd><p>An optional string that specifies the trace mode. Valid values are:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">on</span></code></dt><dd><p>Causes a trace of all calls made and from where to be printed.
+Equivalent to passing <a class="reference internal" href="cmake.1.html#cmdoption-cmake-trace"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trace</span></code></a> on the command
+line.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">off</span></code></dt><dd><p>A trace of all calls will not be printed.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">expand</span></code></dt><dd><p>Causes a trace with variables expanded of all calls made and from where
+to be printed. Equivalent to passing <a class="reference internal" href="cmake.1.html#cmdoption-cmake-trace-expand"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trace-expand</span></code></a>
+on the command line.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">format</span></code></dt><dd><p>An optional string that specifies the format output of the trace.
+Valid values are:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">human</span></code></dt><dd><p>Prints each trace line in a human-readable format.
+This is the default format.  Equivalent to passing
+<a class="reference internal" href="cmake.1.html#cmdoption-cmake-trace-format"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trace-format=human</span></code></a>
+on the command line.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">json-v1</span></code></dt><dd><p>Prints each line as a separate JSON document.  Equivalent to passing
+<a class="reference internal" href="cmake.1.html#cmdoption-cmake-trace-format"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trace-format=json-v1</span></code></a>
+on the command line.</p>
+</dd>
+</dl>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">source</span></code></dt><dd><p>An optional array of strings representing the paths of source files to
+be traced.  This field can also be a string, which is equivalent to an
+array containing one string.  Equivalent to passing
+<a class="reference internal" href="cmake.1.html#cmdoption-cmake-trace-source"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trace-source</span></code></a> on the command line.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">redirect</span></code></dt><dd><p>An optional string specifying a path to a trace output file.  Equivalent
+to passing <a class="reference internal" href="cmake.1.html#cmdoption-cmake-trace-redirect"><code class="xref std std-option docutils literal notranslate"><span class="pre">--trace-redirect</span></code></a>
+on the command line.</p>
+</dd>
+</dl>
+</dd>
 </dl>
 </section>
 <section id="build-preset">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">Build Preset</a><a class="headerlink" href="#build-preset" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">Build Preset</a><a class="headerlink" href="#build-preset" title="Link to this heading">¶</a></h3>
 <p>Each entry of the <code class="docutils literal notranslate"><span class="pre">buildPresets</span></code> array is a JSON object
 that may contain the following fields:</p>
 <dl>
@@ -644,7 +708,7 @@ on the command line. The array values support macro expansion.</p>
 </dl>
 </section>
 <section id="test-preset">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">Test Preset</a><a class="headerlink" href="#test-preset" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Test Preset</a><a class="headerlink" href="#test-preset" title="Link to this heading">¶</a></h3>
 <p>Each entry of the <code class="docutils literal notranslate"><span class="pre">testPresets</span></code> array is a JSON object
 that may contain the following fields:</p>
 <dl>
@@ -935,7 +999,7 @@ on the command line.</p>
 </dl>
 </section>
 <section id="package-preset">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">Package Preset</a><a class="headerlink" href="#package-preset" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Package Preset</a><a class="headerlink" href="#package-preset" title="Link to this heading">¶</a></h3>
 <p>Package presets may be used in schema version <code class="docutils literal notranslate"><span class="pre">6</span></code> or above. Each entry of
 the <code class="docutils literal notranslate"><span class="pre">packagePresets</span></code> array is a JSON object that may contain the following
 fields:</p>
@@ -1042,7 +1106,7 @@ on the command line.</p>
 </dl>
 </section>
 <section id="workflow-preset">
-<span id="id1"></span><h3><a class="toc-backref" href="#id10" role="doc-backlink">Workflow Preset</a><a class="headerlink" href="#workflow-preset" title="Permalink to this heading">¶</a></h3>
+<span id="id1"></span><h3><a class="toc-backref" href="#id10" role="doc-backlink">Workflow Preset</a><a class="headerlink" href="#workflow-preset" title="Link to this heading">¶</a></h3>
 <p>Workflow presets may be used in schema version <code class="docutils literal notranslate"><span class="pre">6</span></code> or above. Each entry of
 the <code class="docutils literal notranslate"><span class="pre">workflowPresets</span></code> array is a JSON object that may contain the following
 fields:</p>
@@ -1054,6 +1118,11 @@ two workflow presets in the union of <code class="docutils literal notranslate">
 <code class="docutils literal notranslate"><span class="pre">CMakeUserPresets.json</span></code> in the same directory with the same name. However,
 a workflow preset may have the same name as a configure, build, test, or
 package preset.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">vendor</span></code></dt><dd><p>An optional map containing vendor-specific information. CMake does not
+interpret the contents of this field except to verify that it is a map
+if it does exist. However, it should follow the same conventions as the
+root-level <code class="docutils literal notranslate"><span class="pre">vendor</span></code> field.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">displayName</span></code></dt><dd><p>An optional string with a human-friendly name of the preset.</p>
 </dd>
@@ -1075,7 +1144,7 @@ package preset to run as this workflow step.</p>
 </dl>
 </section>
 <section id="condition">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">Condition</a><a class="headerlink" href="#condition" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Condition</a><a class="headerlink" href="#condition" title="Link to this heading">¶</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">condition</span></code> field of a preset, allowed in preset files specifying version
 <code class="docutils literal notranslate"><span class="pre">3</span></code> or above, is used to determine whether or not the preset is enabled. For
 example, this can be used to disable a preset on platforms other than Windows.
@@ -1161,7 +1230,7 @@ condition object will have the following additional fields:</p>
 </dl>
 </section>
 <section id="macro-expansion">
-<h3><a class="toc-backref" href="#id12" role="doc-backlink">Macro Expansion</a><a class="headerlink" href="#macro-expansion" title="Permalink to this heading">¶</a></h3>
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Macro Expansion</a><a class="headerlink" href="#macro-expansion" title="Link to this heading">¶</a></h3>
 <p>As mentioned above, some fields support macro expansion. Macros are
 recognized in the form <code class="docutils literal notranslate"><span class="pre">$&lt;macro-namespace&gt;{&lt;macro-name&gt;}</span></code>. All macros are
 evaluated in the context of the preset being used, even if the macro is in a
@@ -1184,10 +1253,12 @@ interpreted as a literal dollar sign.</p>
 <code class="docutils literal notranslate"><span class="pre">${sourceDir}</span></code> is <code class="docutils literal notranslate"><span class="pre">/path/to/source</span></code>, this would be <code class="docutils literal notranslate"><span class="pre">source</span></code>.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">${presetName}</span></code></dt><dd><p>Name specified in the preset's <code class="docutils literal notranslate"><span class="pre">name</span></code> field.</p>
+<p>This is a preset-specific macro.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">${generator}</span></code></dt><dd><p>Generator specified in the preset's <code class="docutils literal notranslate"><span class="pre">generator</span></code> field. For build and
 test presets, this will evaluate to the generator specified by
 <code class="docutils literal notranslate"><span class="pre">configurePreset</span></code>.</p>
+<p>This is a preset-specific macro.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">${hostSystemName}</span></code></dt><dd><p>The name of the host operating system. Contains the same value as
 <span class="target" id="index-0-variable:CMAKE_HOST_SYSTEM_NAME"></span><a class="reference internal" href="../variable/CMAKE_HOST_SYSTEM_NAME.html#variable:CMAKE_HOST_SYSTEM_NAME" title="CMAKE_HOST_SYSTEM_NAME"><code class="xref cmake cmake-variable docutils literal notranslate"><span class="pre">CMAKE_HOST_SYSTEM_NAME</span></code></a>. This is allowed in preset files
@@ -1237,7 +1308,7 @@ example, the Example IDE could have <code class="docutils literal notranslate"><
 </section>
 </section>
 <section id="schema">
-<h2><a class="toc-backref" href="#id13" role="doc-backlink">Schema</a><a class="headerlink" href="#schema" title="Permalink to this heading">¶</a></h2>
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Schema</a><a class="headerlink" href="#schema" title="Link to this heading">¶</a></h2>
 <p><a class="reference download internal" download="" href="../_downloads/3e2d73bff478d88a7de0de736ba5e361/schema.json"><code class="xref download docutils literal notranslate"><span class="pre">This</span> <span class="pre">file</span></code></a> provides a machine-readable
 JSON schema for the <code class="docutils literal notranslate"><span class="pre">CMakePresets.json</span></code> format.</p>
 </section>
@@ -1323,7 +1394,7 @@ JSON schema for the <code class="docutils literal notranslate"><span class="pre"
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
         <li class="nav-item nav-item-this"><a href="">cmake-presets(7)</a></li> 
@@ -1331,8 +1402,8 @@ JSON schema for the <code class="docutils literal notranslate"><span class="pre"
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

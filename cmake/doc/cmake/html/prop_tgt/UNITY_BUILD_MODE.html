@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>UNITY_BUILD_MODE &mdash; CMake 3.26.3 Documentation</title>
+  <title>UNITY_BUILD_MODE &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="UNITY_BUILD_UNIQUE_ID" href="UNITY_BUILD_UNIQUE_ID.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="unity-build-mode">
-<span id="prop_tgt:UNITY_BUILD_MODE"></span><h1>UNITY_BUILD_MODE<a class="headerlink" href="#unity-build-mode" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:UNITY_BUILD_MODE"></span><h1>UNITY_BUILD_MODE<a class="headerlink" href="#unity-build-mode" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.18.</span></p>
 </div>
@@ -72,16 +69,16 @@ which has the following acceptable values:</p>
 The <span class="target" id="index-0-prop_tgt:UNITY_BUILD_BATCH_SIZE"></span><a class="reference internal" href="UNITY_BUILD_BATCH_SIZE.html#prop_tgt:UNITY_BUILD_BATCH_SIZE" title="UNITY_BUILD_BATCH_SIZE"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">UNITY_BUILD_BATCH_SIZE</span></code></a> property controls the upper limit on
 how many sources can be combined per unity source file.</p>
 <p>Example usage:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">example_library</span><span class="w"></span>
-<span class="w">            </span><span class="nb">source1.cxx</span><span class="w"></span>
-<span class="w">            </span><span class="nb">source2.cxx</span><span class="w"></span>
-<span class="w">            </span><span class="nb">source3.cxx</span><span class="w"></span>
-<span class="w">            </span><span class="nb">source4.cxx</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">example_library</span>
+<span class="w">            </span><span class="nb">source1.cxx</span>
+<span class="w">            </span><span class="nb">source2.cxx</span>
+<span class="w">            </span><span class="nb">source3.cxx</span>
+<span class="w">            </span><span class="nb">source4.cxx</span><span class="nf">)</span>
 
-<span class="nf">set_target_properties(</span><span class="nb">example_library</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"></span>
-<span class="w">                      </span><span class="no">UNITY_BUILD_MODE</span><span class="w"> </span><span class="no">BATCH</span><span class="w"></span>
-<span class="w">                      </span><span class="no">UNITY_BUILD_BATCH_SIZE</span><span class="w"> </span><span class="m">2</span><span class="w"></span>
-<span class="w">                      </span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_target_properties(</span><span class="nb">example_library</span><span class="w"> </span><span class="no">PROPERTIES</span>
+<span class="w">                      </span><span class="no">UNITY_BUILD_MODE</span><span class="w"> </span><span class="no">BATCH</span>
+<span class="w">                      </span><span class="no">UNITY_BUILD_BATCH_SIZE</span><span class="w"> </span><span class="m">2</span>
+<span class="w">                      </span><span class="nf">)</span>
 </pre></div>
 </div>
 </dd>
@@ -92,22 +89,22 @@ that don't have this property will be compiled individually. The
 <span class="target" id="index-1-prop_tgt:UNITY_BUILD_BATCH_SIZE"></span><a class="reference internal" href="UNITY_BUILD_BATCH_SIZE.html#prop_tgt:UNITY_BUILD_BATCH_SIZE" title="UNITY_BUILD_BATCH_SIZE"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">UNITY_BUILD_BATCH_SIZE</span></code></a> property is ignored when using
 this mode.</p>
 <p>Example usage:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">example_library</span><span class="w"></span>
-<span class="w">            </span><span class="nb">source1.cxx</span><span class="w"></span>
-<span class="w">            </span><span class="nb">source2.cxx</span><span class="w"></span>
-<span class="w">            </span><span class="nb">source3.cxx</span><span class="w"></span>
-<span class="w">            </span><span class="nb">source4.cxx</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_library(</span><span class="nb">example_library</span>
+<span class="w">            </span><span class="nb">source1.cxx</span>
+<span class="w">            </span><span class="nb">source2.cxx</span>
+<span class="w">            </span><span class="nb">source3.cxx</span>
+<span class="w">            </span><span class="nb">source4.cxx</span><span class="nf">)</span>
 
-<span class="nf">set_target_properties(</span><span class="nb">example_library</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"></span>
-<span class="w">                      </span><span class="no">UNITY_BUILD_MODE</span><span class="w"> </span><span class="no">GROUP</span><span class="w"></span>
-<span class="w">                      </span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_target_properties(</span><span class="nb">example_library</span><span class="w"> </span><span class="no">PROPERTIES</span>
+<span class="w">                      </span><span class="no">UNITY_BUILD_MODE</span><span class="w"> </span><span class="no">GROUP</span>
+<span class="w">                      </span><span class="nf">)</span>
 
-<span class="nf">set_source_files_properties(</span><span class="nb">source1.cxx</span><span class="w"> </span><span class="nb">source2.cxx</span><span class="w"> </span><span class="nb">source3.cxx</span><span class="w"></span>
-<span class="w">                            </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">UNITY_GROUP</span><span class="w"> </span><span class="s">&quot;bucket1&quot;</span><span class="w"></span>
-<span class="w">                            </span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_source_files_properties(</span><span class="nb">source4.cxx</span><span class="w"></span>
-<span class="w">                            </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">UNITY_GROUP</span><span class="w"> </span><span class="s">&quot;bucket2&quot;</span><span class="w"></span>
-<span class="w">                            </span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_source_files_properties(</span><span class="nb">source1.cxx</span><span class="w"> </span><span class="nb">source2.cxx</span><span class="w"> </span><span class="nb">source3.cxx</span>
+<span class="w">                            </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">UNITY_GROUP</span><span class="w"> </span><span class="s">&quot;bucket1&quot;</span>
+<span class="w">                            </span><span class="nf">)</span>
+<span class="nf">set_source_files_properties(</span><span class="nb">source4.cxx</span>
+<span class="w">                            </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">UNITY_GROUP</span><span class="w"> </span><span class="s">&quot;bucket2&quot;</span>
+<span class="w">                            </span><span class="nf">)</span>
 </pre></div>
 </div>
 </dd>
@@ -174,7 +171,7 @@ default to <code class="docutils literal notranslate"><span class="pre">BATCH</s
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -183,8 +180,8 @@ default to <code class="docutils literal notranslate"><span class="pre">BATCH</s
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

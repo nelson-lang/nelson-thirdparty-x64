@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>get_filename_component &mdash; CMake 3.26.3 Documentation</title>
+  <title>get_filename_component &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="get_property" href="get_property.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" accesskey="U">cmake-commands(7)</a> &#187;</li>
@@ -60,12 +57,12 @@
           <div class="body" role="main">
             
   <section id="get-filename-component">
-<span id="command:get_filename_component"></span><h1>get_filename_component<a class="headerlink" href="#get-filename-component" title="Permalink to this heading">¶</a></h1>
+<span id="command:get_filename_component"></span><h1>get_filename_component<a class="headerlink" href="#get-filename-component" title="Link to this heading">¶</a></h1>
 <p>Get a specific component of a full filename.</p>
 <div class="versionchanged">
-<p><span class="versionmodified changed">Changed in version 3.20: </span>This command has been superseded by <span class="target" id="index-0-command:cmake_path"></span><a class="reference internal" href="cmake_path.html#command:cmake_path" title="cmake_path"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_path()</span></code></a> command, except
-<code class="docutils literal notranslate"><span class="pre">REALPATH</span></code> now offered by <a class="reference internal" href="file.html#real-path"><span class="std std-ref">file(REAL_PATH)</span></a> command and
-<code class="docutils literal notranslate"><span class="pre">PROGRAM</span></code> now available in <span class="target" id="index-0-command:separate_arguments"></span><a class="reference internal" href="separate_arguments.html#command:separate_arguments" title="separate_arguments"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">separate_arguments(PROGRAM)</span></code></a> command.</p>
+<p><span class="versionmodified changed">Changed in version 3.20: </span>This command has been superseded by the <span class="target" id="index-0-command:cmake_path"></span><a class="reference internal" href="cmake_path.html#command:cmake_path" title="cmake_path"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_path()</span></code></a> command, except
+for <code class="docutils literal notranslate"><span class="pre">REALPATH</span></code>, which is now offered by <span class="target" id="index-0-command:file"></span><a class="reference internal" href="file.html#real-path" title="file(real_path)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">file(REAL_PATH)</span></code></a>, and
+<code class="docutils literal notranslate"><span class="pre">PROGRAM</span></code>, now available in <span class="target" id="index-0-command:separate_arguments"></span><a class="reference internal" href="separate_arguments.html#command:separate_arguments" title="separate_arguments(program)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">separate_arguments(PROGRAM)</span></code></a>.</p>
 </div>
 <div class="versionchanged">
 <p><span class="versionmodified changed">Changed in version 3.24: </span>The undocumented feature offering the capability to query the <code class="docutils literal notranslate"><span class="pre">Windows</span></code>
@@ -73,7 +70,7 @@ registry is superseded by
 <a class="reference internal" href="cmake_host_system_information.html#query-windows-registry"><span class="std std-ref">cmake_host_system_information(QUERY WINDOWS_REGISTRY)</span></a>
 command.</p>
 </div>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">get_filename_component(</span><span class="nv">&lt;var&gt;</span><span class="w"> </span><span class="nv">&lt;FileName&gt;</span><span class="w"> </span><span class="nv">&lt;mode&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">CACHE</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">get_filename_component(</span><span class="nv">&lt;var&gt;</span><span class="w"> </span><span class="nv">&lt;FileName&gt;</span><span class="w"> </span><span class="nv">&lt;mode&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">CACHE</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Sets <code class="docutils literal notranslate"><span class="pre">&lt;var&gt;</span></code> to a component of <code class="docutils literal notranslate"><span class="pre">&lt;FileName&gt;</span></code>, where <code class="docutils literal notranslate"><span class="pre">&lt;mode&gt;</span></code> is one of:</p>
@@ -92,7 +89,7 @@ PATH      = Legacy alias for DIRECTORY (use for CMake &lt;= 2.8.11)
 <p>Paths are returned with forward slashes and have no trailing slashes.
 If the optional <code class="docutils literal notranslate"><span class="pre">CACHE</span></code> argument is specified, the result variable is
 added to the cache.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">get_filename_component(</span><span class="nv">&lt;var&gt;</span><span class="w"> </span><span class="nv">&lt;FileName&gt;</span><span class="w"> </span><span class="nv">&lt;mode&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">BASE_DIR</span><span class="w"> </span><span class="nv">&lt;dir&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">CACHE</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">get_filename_component(</span><span class="nv">&lt;var&gt;</span><span class="w"> </span><span class="nv">&lt;FileName&gt;</span><span class="w"> </span><span class="nv">&lt;mode&gt;</span><span class="w"> </span><span class="p">[</span><span class="no">BASE_DIR</span><span class="w"> </span><span class="nv">&lt;dir&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">CACHE</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <div class="versionadded">
@@ -111,7 +108,7 @@ provided, the default base directory will be
 <p>Paths are returned with forward slashes and have no trailing slashes.  If the
 optional <code class="docutils literal notranslate"><span class="pre">CACHE</span></code> argument is specified, the result variable is added to the
 cache.</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">get_filename_component(</span><span class="nv">&lt;var&gt;</span><span class="w"> </span><span class="nv">&lt;FileName&gt;</span><span class="w"> </span><span class="no">PROGRAM</span><span class="w"> </span><span class="p">[</span><span class="no">PROGRAM_ARGS</span><span class="w"> </span><span class="nv">&lt;arg_var&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">CACHE</span><span class="p">]</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">get_filename_component(</span><span class="nv">&lt;var&gt;</span><span class="w"> </span><span class="nv">&lt;FileName&gt;</span><span class="w"> </span><span class="no">PROGRAM</span><span class="w"> </span><span class="p">[</span><span class="no">PROGRAM_ARGS</span><span class="w"> </span><span class="nv">&lt;arg_var&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="no">CACHE</span><span class="p">]</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>The program in <code class="docutils literal notranslate"><span class="pre">&lt;FileName&gt;</span></code> will be found in the system search path or
@@ -120,7 +117,7 @@ any command-line arguments present in the <code class="docutils literal notransl
 from the program name and stored in <code class="docutils literal notranslate"><span class="pre">&lt;arg_var&gt;</span></code>.  This is used to
 separate a program name from its arguments in a command line string.</p>
 <section id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this heading">¶</a></h2>
+<h2>See Also<a class="headerlink" href="#see-also" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><span class="target" id="index-1-command:cmake_path"></span><a class="reference internal" href="cmake_path.html#command:cmake_path" title="cmake_path"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">cmake_path()</span></code></a></p></li>
 </ul>
@@ -195,7 +192,7 @@ separate a program name from its arguments in a command line string.</p>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-commands.7.html" >cmake-commands(7)</a> &#187;</li>
@@ -204,8 +201,8 @@ separate a program name from its arguments in a command line string.</p>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

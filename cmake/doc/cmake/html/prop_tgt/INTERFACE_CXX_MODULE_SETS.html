@@ -1,27 +1,24 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>INTERFACE_CXX_MODULE_SETS &mdash; CMake 3.26.3 Documentation</title>
+  <title>INTERFACE_CXX_MODULE_SETS &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="INTERFACE_HEADER_SETS" href="INTERFACE_HEADER_SETS.html" />
-    <link rel="prev" title="INTERFACE_CXX_MODULE_HEADER_UNIT_SETS" href="INTERFACE_CXX_MODULE_HEADER_UNIT_SETS.html" />
+    <link rel="prev" title="INTERFACE_COMPILE_OPTIONS" href="INTERFACE_COMPILE_OPTIONS.html" />
  
 
   </head><body>
@@ -36,7 +33,7 @@
           <a href="INTERFACE_HEADER_SETS.html" title="INTERFACE_HEADER_SETS"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="INTERFACE_CXX_MODULE_HEADER_UNIT_SETS.html" title="INTERFACE_CXX_MODULE_HEADER_UNIT_SETS"
+          <a href="INTERFACE_COMPILE_OPTIONS.html" title="INTERFACE_COMPILE_OPTIONS"
              accesskey="P">previous</a> |</li>
   <li>
     <img src="../_static/cmake-logo-16.png" alt=""
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,18 +57,14 @@
           <div class="body" role="main">
             
   <section id="interface-cxx-module-sets">
-<span id="prop_tgt:INTERFACE_CXX_MODULE_SETS"></span><h1>INTERFACE_CXX_MODULE_SETS<a class="headerlink" href="#interface-cxx-module-sets" title="Permalink to this heading">¶</a></h1>
+<span id="prop_tgt:INTERFACE_CXX_MODULE_SETS"></span><h1>INTERFACE_CXX_MODULE_SETS<a class="headerlink" href="#interface-cxx-module-sets" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
-<p><span class="versionmodified added">New in version 3.25.</span></p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Experimental. Gated by <code class="docutils literal notranslate"><span class="pre">CMAKE_EXPERIMENTAL_CXX_MODULE_CMAKE_API</span></code></p>
+<p><span class="versionmodified added">New in version 3.28.</span></p>
 </div>
 <p>Read-only list of the target's <code class="docutils literal notranslate"><span class="pre">PUBLIC</span></code> C++ module sets (i.e. all file sets
 with the type <code class="docutils literal notranslate"><span class="pre">CXX_MODULES</span></code>). Files listed in these C++ module sets can be
-installed with <span class="target" id="index-0-command:install"></span><a class="reference internal" href="../command/install.html#command:install" title="install"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(TARGETS)</span></code></a> and exported with
-<span class="target" id="index-1-command:install"></span><a class="reference internal" href="../command/install.html#command:install" title="install"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> and <span class="target" id="index-0-command:export"></span><a class="reference internal" href="../command/export.html#command:export" title="export"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">export()</span></code></a>.</p>
+installed with <span class="target" id="index-0-command:install"></span><a class="reference internal" href="../command/install.html#targets" title="install(targets)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(TARGETS)</span></code></a> and exported with
+<span class="target" id="index-1-command:install"></span><a class="reference internal" href="../command/install.html#export" title="install(export)"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">install(EXPORT)</span></code></a> and <span class="target" id="index-0-command:export"></span><a class="reference internal" href="../command/export.html#command:export" title="export"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">export()</span></code></a>.</p>
 <p>C++ module sets may be defined using the <span class="target" id="index-0-command:target_sources"></span><a class="reference internal" href="../command/target_sources.html#command:target_sources" title="target_sources"><code class="xref cmake cmake-command docutils literal notranslate"><span class="pre">target_sources()</span></code></a> command
 <code class="docutils literal notranslate"><span class="pre">FILE_SET</span></code> option with type <code class="docutils literal notranslate"><span class="pre">CXX_MODULES</span></code>.</p>
 <p>See also <span class="target" id="index-0-prop_tgt:CXX_MODULE_SETS"></span><a class="reference internal" href="CXX_MODULE_SETS.html#prop_tgt:CXX_MODULE_SETS" title="CXX_MODULE_SETS"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">CXX_MODULE_SETS</span></code></a>.</p>
@@ -86,8 +79,8 @@ installed with <span class="target" id="index-0-command:install"></span><a class
         <div class="sphinxsidebarwrapper">
   <div>
     <h4>Previous topic</h4>
-    <p class="topless"><a href="INTERFACE_CXX_MODULE_HEADER_UNIT_SETS.html"
-                          title="previous chapter">INTERFACE_CXX_MODULE_HEADER_UNIT_SETS</a></p>
+    <p class="topless"><a href="INTERFACE_COMPILE_OPTIONS.html"
+                          title="previous chapter">INTERFACE_COMPILE_OPTIONS</a></p>
   </div>
   <div>
     <h4>Next topic</h4>
@@ -125,7 +118,7 @@ installed with <span class="target" id="index-0-command:install"></span><a class
           <a href="INTERFACE_HEADER_SETS.html" title="INTERFACE_HEADER_SETS"
              >next</a> |</li>
         <li class="right" >
-          <a href="INTERFACE_CXX_MODULE_HEADER_UNIT_SETS.html" title="INTERFACE_CXX_MODULE_HEADER_UNIT_SETS"
+          <a href="INTERFACE_COMPILE_OPTIONS.html" title="INTERFACE_COMPILE_OPTIONS"
              >previous</a> |</li>
   <li>
     <img src="../_static/cmake-logo-16.png" alt=""
@@ -135,7 +128,7 @@ installed with <span class="target" id="index-0-command:install"></span><a class
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -144,8 +137,8 @@ installed with <span class="target" id="index-0-command:install"></span><a class
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

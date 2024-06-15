@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FindGSL &mdash; CMake 3.26.3 Documentation</title>
+  <title>FindGSL &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FindGTest" href="FindGTest.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" accesskey="U">cmake-modules(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="findgsl">
-<span id="module:FindGSL"></span><h1>FindGSL<a class="headerlink" href="#findgsl" title="Permalink to this heading">¶</a></h1>
+<span id="module:FindGSL"></span><h1>FindGSL<a class="headerlink" href="#findgsl" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.2.</span></p>
 </div>
@@ -69,7 +66,7 @@
 programmers. It is free software under the GNU General Public
 License.</p>
 <section id="imported-targets">
-<h2>Imported Targets<a class="headerlink" href="#imported-targets" title="Permalink to this heading">¶</a></h2>
+<h2>Imported Targets<a class="headerlink" href="#imported-targets" title="Link to this heading">¶</a></h2>
 <p>If GSL is found, this module defines the following <span class="target" id="index-0-prop_tgt:IMPORTED"></span><a class="reference internal" href="../prop_tgt/IMPORTED.html#prop_tgt:IMPORTED" title="IMPORTED"><code class="xref cmake cmake-prop_tgt docutils literal notranslate"><span class="pre">IMPORTED</span></code></a>
 targets:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GSL::gsl      - The main GSL library.
@@ -78,7 +75,7 @@ GSL::gslcblas - The CBLAS support library used by GSL.
 </div>
 </section>
 <section id="result-variables">
-<h2>Result Variables<a class="headerlink" href="#result-variables" title="Permalink to this heading">¶</a></h2>
+<h2>Result Variables<a class="headerlink" href="#result-variables" title="Link to this heading">¶</a></h2>
 <p>This module will set the following variables in your project:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>GSL_FOUND          - True if GSL found on the local system
 GSL_INCLUDE_DIRS   - Location of GSL header files.
@@ -88,7 +85,7 @@ GSL_VERSION        - The version of the discovered GSL install.
 </div>
 </section>
 <section id="hints">
-<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this heading">¶</a></h2>
+<h2>Hints<a class="headerlink" href="#hints" title="Link to this heading">¶</a></h2>
 <p>Set <code class="docutils literal notranslate"><span class="pre">GSL_ROOT_DIR</span></code> to a directory that contains a GSL installation.</p>
 <p>This script expects to find libraries at <code class="docutils literal notranslate"><span class="pre">$GSL_ROOT_DIR/lib</span></code> and the GSL
 headers at <code class="docutils literal notranslate"><span class="pre">$GSL_ROOT_DIR/include/gsl</span></code>.  The library directory may
@@ -98,7 +95,7 @@ For Unix-like systems, this script will use <code class="docutils literal notran
 (if found) to aid in the discovery of GSL.</p>
 </section>
 <section id="cache-variables">
-<h2>Cache Variables<a class="headerlink" href="#cache-variables" title="Permalink to this heading">¶</a></h2>
+<h2>Cache Variables<a class="headerlink" href="#cache-variables" title="Link to this heading">¶</a></h2>
 <p>This module may set the following variables depending on platform and type
 of GSL installation discovered.  These variables may optionally be set to
 help this module find the correct files:</p>
@@ -183,7 +180,7 @@ GSL_LIBRARY_DEBUG       - Location of the debug GSL library (if any).
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-modules.7.html" >cmake-modules(7)</a> &#187;</li>
@@ -192,8 +189,8 @@ GSL_LIBRARY_DEBUG       - Location of the debug GSL library (if any).
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

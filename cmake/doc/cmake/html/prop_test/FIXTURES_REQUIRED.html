@@ -1,23 +1,20 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>FIXTURES_REQUIRED &mdash; CMake 3.26.3 Documentation</title>
+  <title>FIXTURES_REQUIRED &mdash; CMake 3.30.0-rc3 Documentation</title>
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/cmake.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a2c47e09" />
+    <link rel="stylesheet" type="text/css" href="../_static/cmake.css?v=3e562cf9" />
     
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
+    <script src="../_static/documentation_options.js?v=42997c5a"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     
-    <link rel="shortcut icon" href="../_static/cmake-favicon.ico"/>
+    <link rel="icon" href="../_static/cmake-favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="FIXTURES_SETUP" href="FIXTURES_SETUP.html" />
@@ -46,7 +43,7 @@
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" accesskey="U">cmake-properties(7)</a> &#187;</li>
@@ -60,7 +57,7 @@
           <div class="body" role="main">
             
   <section id="fixtures-required">
-<span id="prop_test:FIXTURES_REQUIRED"></span><h1>FIXTURES_REQUIRED<a class="headerlink" href="#fixtures-required" title="Permalink to this heading">¶</a></h1>
+<span id="prop_test:FIXTURES_REQUIRED"></span><h1>FIXTURES_REQUIRED<a class="headerlink" href="#fixtures-required" title="Link to this heading">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified added">New in version 3.7.</span></p>
 </div>
@@ -100,29 +97,29 @@ end. For such cases, tests would populate both <code class="docutils literal not
 that a resource lock does not imply a fixture and vice versa.</p>
 <p>Consider the following example which represents a database test scenario
 similar to that mentioned above:</p>
-<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">testsDone</span><span class="w">   </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">emailResults</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">fooOnly</span><span class="w">     </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">testFoo</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">dbOnly</span><span class="w">      </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">testDb</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">dbWithFoo</span><span class="w">   </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">testDbWithFoo</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">createDB</span><span class="w">    </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">initDB</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">setupUsers</span><span class="w">  </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">userCreation</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">cleanupDB</span><span class="w">   </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">deleteDB</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">cleanupFoo</span><span class="w">  </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">removeFoos</span><span class="nf">)</span><span class="w"></span>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">testsDone</span><span class="w">   </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">emailResults</span><span class="nf">)</span>
+<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">fooOnly</span><span class="w">     </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">testFoo</span><span class="nf">)</span>
+<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">dbOnly</span><span class="w">      </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">testDb</span><span class="nf">)</span>
+<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">dbWithFoo</span><span class="w">   </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">testDbWithFoo</span><span class="nf">)</span>
+<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">createDB</span><span class="w">    </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">initDB</span><span class="nf">)</span>
+<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">setupUsers</span><span class="w">  </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">userCreation</span><span class="nf">)</span>
+<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">cleanupDB</span><span class="w">   </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">deleteDB</span><span class="nf">)</span>
+<span class="nf">add_test(</span><span class="no">NAME</span><span class="w"> </span><span class="nb">cleanupFoo</span><span class="w">  </span><span class="no">COMMAND</span><span class="w"> </span><span class="nb">removeFoos</span><span class="nf">)</span>
 
-<span class="nf">set_tests_properties(</span><span class="nb">setupUsers</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">DEPENDS</span><span class="w"> </span><span class="nb">createDB</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_tests_properties(</span><span class="nb">setupUsers</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">DEPENDS</span><span class="w"> </span><span class="nb">createDB</span><span class="nf">)</span>
 
-<span class="nf">set_tests_properties(</span><span class="nb">createDB</span><span class="w">   </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_SETUP</span><span class="w">    </span><span class="no">DB</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_tests_properties(</span><span class="nb">setupUsers</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_SETUP</span><span class="w">    </span><span class="no">DB</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_tests_properties(</span><span class="nb">cleanupDB</span><span class="w">  </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_CLEANUP</span><span class="w">  </span><span class="no">DB</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_tests_properties(</span><span class="nb">cleanupFoo</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_CLEANUP</span><span class="w">  </span><span class="nb">Foo</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_tests_properties(</span><span class="nb">testsDone</span><span class="w">  </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_CLEANUP</span><span class="w">  </span><span class="s">&quot;DB;Foo&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_tests_properties(</span><span class="nb">createDB</span><span class="w">   </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_SETUP</span><span class="w">    </span><span class="no">DB</span><span class="nf">)</span>
+<span class="nf">set_tests_properties(</span><span class="nb">setupUsers</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_SETUP</span><span class="w">    </span><span class="no">DB</span><span class="nf">)</span>
+<span class="nf">set_tests_properties(</span><span class="nb">cleanupDB</span><span class="w">  </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_CLEANUP</span><span class="w">  </span><span class="no">DB</span><span class="nf">)</span>
+<span class="nf">set_tests_properties(</span><span class="nb">cleanupFoo</span><span class="w"> </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_CLEANUP</span><span class="w">  </span><span class="nb">Foo</span><span class="nf">)</span>
+<span class="nf">set_tests_properties(</span><span class="nb">testsDone</span><span class="w">  </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_CLEANUP</span><span class="w">  </span><span class="s">&quot;DB;Foo&quot;</span><span class="nf">)</span>
 
-<span class="nf">set_tests_properties(</span><span class="nb">fooOnly</span><span class="w">    </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_REQUIRED</span><span class="w"> </span><span class="nb">Foo</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_tests_properties(</span><span class="nb">dbOnly</span><span class="w">     </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_REQUIRED</span><span class="w"> </span><span class="no">DB</span><span class="nf">)</span><span class="w"></span>
-<span class="nf">set_tests_properties(</span><span class="nb">dbWithFoo</span><span class="w">  </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_REQUIRED</span><span class="w"> </span><span class="s">&quot;DB;Foo&quot;</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_tests_properties(</span><span class="nb">fooOnly</span><span class="w">    </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_REQUIRED</span><span class="w"> </span><span class="nb">Foo</span><span class="nf">)</span>
+<span class="nf">set_tests_properties(</span><span class="nb">dbOnly</span><span class="w">     </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_REQUIRED</span><span class="w"> </span><span class="no">DB</span><span class="nf">)</span>
+<span class="nf">set_tests_properties(</span><span class="nb">dbWithFoo</span><span class="w">  </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">FIXTURES_REQUIRED</span><span class="w"> </span><span class="s">&quot;DB;Foo&quot;</span><span class="nf">)</span>
 
-<span class="nf">set_tests_properties(</span><span class="nb">dbOnly</span><span class="w"> </span><span class="nb">dbWithFoo</span><span class="w"> </span><span class="nb">createDB</span><span class="w"> </span><span class="nb">setupUsers</span><span class="w"> </span><span class="nb">cleanupDB</span><span class="w"></span>
-<span class="w">                     </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">RESOURCE_LOCK</span><span class="w"> </span><span class="nb">DbAccess</span><span class="nf">)</span><span class="w"></span>
+<span class="nf">set_tests_properties(</span><span class="nb">dbOnly</span><span class="w"> </span><span class="nb">dbWithFoo</span><span class="w"> </span><span class="nb">createDB</span><span class="w"> </span><span class="nb">setupUsers</span><span class="w"> </span><span class="nb">cleanupDB</span>
+<span class="w">                     </span><span class="no">PROPERTIES</span><span class="w"> </span><span class="no">RESOURCE_LOCK</span><span class="w"> </span><span class="nb">DbAccess</span><span class="nf">)</span>
 </pre></div>
 </div>
 <p>Key points from this example:</p>
@@ -207,7 +204,7 @@ themselves and be considered an error.</p></li>
     <a href="https://cmake.org/">CMake</a> &#187;
   </li>
   <li>
-    <a href="../index.html">3.26.3 Documentation</a> &#187;
+    <a href="../index.html">3.30.0-rc3 Documentation</a> &#187;
   </li>
 
           <li class="nav-item nav-item-1"><a href="../manual/cmake-properties.7.html" >cmake-properties(7)</a> &#187;</li>
@@ -216,8 +213,8 @@ themselves and be considered an error.</p></li>
     </div>
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2000-2023 Kitware, Inc. and Contributors.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    &#169; Copyright 2000-2024 Kitware, Inc. and Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>
