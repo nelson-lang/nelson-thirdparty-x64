@@ -1,12 +1,10 @@
 Package: libgit2
-Version: 1.3.0
-Port-Version: 2
+Version: 1.8.0
 Depends: http-parser, vcpkg-cmake, vcpkg-cmake-config, zlib
 Architecture: x64-windows
 Multi-Arch: same
-Abi: 97a3bd2701b422162a2778baf6f5db20095928526c9d29df340bd61e1c17f0ff
-Description: Git linkable library
-Type: Port
+Abi: 0ff6bfa0e4bc4d78a81474a529695087302d4634f006035d7143f97f19cf4d5d
+Description: A C library implementing the Git core methods with a solid API
 Default-Features: pcre, ssl
 
 Package: libgit2
@@ -15,7 +13,6 @@ Depends: pcre
 Architecture: x64-windows
 Multi-Arch: same
 Description: Build against external libpcre
-Type: Port
 
 Package: libgit2
 Feature: ssl
@@ -23,11 +20,9 @@ Depends: libgit2
 Architecture: x64-windows
 Multi-Arch: same
 Description: Default SSL backend
-Type: Port
 
 Package: libgit2
 Feature: winhttp
 Architecture: x64-windows
 Multi-Arch: same
 Description: SSL support (WinHTTP)
-Type: Port
