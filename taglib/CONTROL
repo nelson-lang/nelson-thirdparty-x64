@@ -1,9 +1,8 @@
 Package: taglib
-Version: 1.12.0
+Version: 2.0
 Port-Version: 1
-Depends: zlib
+Depends: utfcpp, vcpkg-cmake, vcpkg-cmake-config, zlib
 Architecture: x64-windows
 Multi-Arch: same
-Abi: bd758ee42dc75cf8046625f04ae987e080ce0787e6f725a7e0664a5151395fdd
+Abi: 6a0398f7d99a1d9ffb96eab926e9dbf4db5e555719b6848ba0e8fbf74d35e879
 Description: TagLib Audio Meta-Data Library
-Type: Port
