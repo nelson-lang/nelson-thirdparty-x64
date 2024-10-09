@@ -114,13 +114,19 @@ copy %QTDIR%\bin\Qt?QmlModels?.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2Impls?.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2Impl.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2Impld.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
+
 rem QT 6 required
 copy %QTDIR%\bin\Qt?QuickLayouts.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
+
 rem QT 6.7 required
 copy %QTDIR%\bin\Qt?QuickControls2Basic?.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2Fusion?.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2FusionStyleImpl.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2FusionStyleImpld.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
+
+rem QT 6.8 required
+copy %QTDIR%\bin\Qt?QmlMetad.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
+copy %QTDIR%\bin\Qt?QmlMeta.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 
 rem vc runtime
 copy .\vc14.3-runtime\*.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\*.dll
