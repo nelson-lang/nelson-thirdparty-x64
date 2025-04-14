@@ -1,8 +1,8 @@
 rem .\boost\boost\config\user.hpp
 rem BOOST_ALL_DYN_LINK and BOOST_ALL_NO_LIB must be enabled
 set VC_VERSION=vc143
-set BOOST_VERSION=x64-1_86
-set SRC=D:\boost_1_86_0-64\lib64-msvc-14.3
+set BOOST_VERSION=x64-1_88
+set SRC=D:\boost_1_88_0-64\lib64-msvc-14.3
 set DST=D:\Developpements\Github\nelson-lang\nelson-thirdparty-x64\boost\lib
 mkdir %DST%
 copy %SRC%\boost_chrono-%VC_VERSION%-mt-%BOOST_VERSION%.dll %DST%
@@ -69,3 +69,8 @@ copy %SRC%\boost_serialization-%VC_VERSION%-mt-%BOOST_VERSION%.dll %DST%
 copy %SRC%\boost_serialization-%VC_VERSION%-mt-%BOOST_VERSION%.lib %DST%
 copy %SRC%\boost_serialization-%VC_VERSION%-mt-gd-%BOOST_VERSION%.dll %DST%
 copy %SRC%\boost_serialization-%VC_VERSION%-mt-gd-%BOOST_VERSION%.lib %DST%
+
+copy %SRC%\boost_process-%VC_VERSION%-mt-%BOOST_VERSION%.dll %DST%
+copy %SRC%\boost_process-%VC_VERSION%-mt-%BOOST_VERSION%.lib %DST%
+copy %SRC%\boost_process-%VC_VERSION%-mt-gd-%BOOST_VERSION%.dll %DST%
+copy %SRC%\boost_process-%VC_VERSION%-mt-gd-%BOOST_VERSION%.lib %DST%

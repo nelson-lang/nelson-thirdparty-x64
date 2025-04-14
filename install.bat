@@ -1,5 +1,5 @@
 set PLATFORM_NELSON=x64
-set BOOST_NELSON=x64-1_86
+set BOOST_NELSON=x64-1_88
 set VC_VERSION=vc143
 set QTDIR=%QTDIR64%
 set NELSON_DIR=..\nelson
@@ -33,6 +33,7 @@ copy boost\lib\boost_random-%VC_VERSION%-mt-gd-%BOOST_NELSON%.dll %NELSON_DIR%\b
 copy boost\lib\boost_bzip2-%VC_VERSION%-mt-gd-%BOOST_NELSON%.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\boost_bzip2-%VC_VERSION%-mt-gd-%BOOST_NELSON%.dll
 copy boost\lib\boost_zlib-%VC_VERSION%-mt-gd-%BOOST_NELSON%.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\boost_zlib-%VC_VERSION%-mt-gd-%BOOST_NELSON%.dll
 copy boost\lib\boost_serialization-%VC_VERSION%-mt-gd-%BOOST_NELSON%.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\boost_serialization-%VC_VERSION%-mt-gd-%BOOST_NELSON%.dll
+copy boost\lib\boost_process-%VC_VERSION%-mt-gd-%BOOST_NELSON%.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\boost_process-%VC_VERSION%-mt-gd-%BOOST_NELSON%.dll
 
 copy boost\LICENSE_1_0.txt %NELSON_DIR%\bin\%PLATFORM_NELSON%\LICENSE_1_0.txt
 
