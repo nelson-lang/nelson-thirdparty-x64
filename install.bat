@@ -116,6 +116,10 @@ copy %QTDIR%\bin\Qt?QmlModels?.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2Impls?.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2Impl.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 copy %QTDIR%\bin\Qt?QuickControls2Impld.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
+copy %QTDIR%\bin\Qt?QuickControls2WindowsStyleImpl.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
+copy %QTDIR%\bin\Qt?QuickControls2WindowsStyleImpld.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
+copy %QTDIR%\bin\Qt?QuickEffects.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
+copy %QTDIR%\bin\Qt?QuickEffectsd.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
 
 rem QT 6 required
 copy %QTDIR%\bin\Qt?QuickLayouts.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\
