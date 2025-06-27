@@ -1,0 +1,22 @@
+Package: matio
+Version: 1.5.28
+Depends: vcpkg-cmake
+Architecture: x64-windows
+Multi-Arch: same
+Abi: f737fd00a64d82d5905cafabefa9a7352569ba21769b9788800735207e6b57c3
+Description: MATLAB MAT File I/O Library
+Default-Features: mat73, zlib
+
+Package: matio
+Feature: mat73
+Depends: hdf5, matio
+Architecture: x64-windows
+Multi-Arch: same
+Description: Enable support for version 7.3 MAT files using the HDF5 library
+
+Package: matio
+Feature: zlib
+Depends: zlib
+Architecture: x64-windows
+Multi-Arch: same
+Description: Check for zlib library
