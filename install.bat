@@ -205,6 +205,9 @@ copy .\libsndfile\bin\*.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\*.dll
 rem libxml2
 copy .\libxml2\bin\*.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\*.dll
 
+rem libxslt
+copy .\libxslt\bin\*.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\*.dll
+
 rem matio
 copy .\matio\bin\*.dll %NELSON_DIR%\bin\%PLATFORM_NELSON%\*.dll
 
