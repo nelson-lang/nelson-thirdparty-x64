@@ -1,1 +1,1 @@
-http://sourceforge.net/projects/boost/files/boost-binaries/1.88/
+http://sourceforge.net/projects/boost/files/boost-binaries/1.89/
