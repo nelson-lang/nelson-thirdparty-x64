@@ -1,10 +1,9 @@
 Package: icu
-Version: 74.2
-Port-Version: 2
-Depends: icu
+Version: 78.1
+Depends: icu, vcpkg-cmake-get-vars, vcpkg-make
 Architecture: x64-windows
 Multi-Arch: same
-Abi: aea89075d526a589931edf149679197b14e4b7b89553c5e93ce1527f455f6ded
+Abi: e552b88c7ce8fbc904072981099be8f09cbdca975a93d75ccfdab3e40cb715dd
 Description: Mature and widely used Unicode and localization library.
 
 Package: icu
