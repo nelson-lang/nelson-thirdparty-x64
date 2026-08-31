@@ -1,0 +1,6 @@
+Microsoft.Web.WebView2 1.0.4078.44
+Source: https://api.nuget.org/v3-flatcontainer/microsoft.web.webview2/1.0.4078.44/microsoft.web.webview2.1.0.4078.44.nupkg
+Layout: bin/WebView2Loader.dll (x64), lib/*.lib, include/*.h
+Note: WebView2Loader.dll must be deployed next to the Nelson binaries; WebUI
+loads it with LoadLibraryA("WebView2Loader.dll") at runtime. The WebView2
+Runtime being installed system-wide is NOT sufficient on its own.

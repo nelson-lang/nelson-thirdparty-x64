@@ -415,6 +415,8 @@ syn keyword cmakeProperty contained
             \ Swift_LANGUAGE_VERSION
             \ Swift_MODULE_DIRECTORY
             \ Swift_MODULE_NAME
+            \ Swift_PACKAGE_NAME
+            \ Swift_SEPARATE_MODULE_EMISSION
             \ TARGET_ARCHIVES_MAY_BE_SHARED_LIBS
             \ TARGET_MESSAGES
             \ TARGET_SUPPORTS_SHARED_LIBS
@@ -2037,6 +2039,7 @@ syn keyword cmakeVariable contained
             \ CMAKE_Swift_NUM_THREADS
             \ CMAKE_Swift_OUTPUT_EXTENSION
             \ CMAKE_Swift_PLATFORM_ID
+            \ CMAKE_Swift_SEPARATE_MODULE_EMISSION
             \ CMAKE_Swift_SIMULATE_ID
             \ CMAKE_Swift_SIMULATE_VERSION
             \ CMAKE_Swift_SIZEOF_DATA_PTR
@@ -3539,7 +3542,6 @@ syn keyword cmakeKWexport contained
             \ APPENDIX
             \ AUTO
             \ CMAKE_EXPERIMENTAL_EXPORT_PACKAGE_DEPENDENCIES
-            \ CMAKE_EXPERIMENTAL_EXPORT_PACKAGE_INFO
             \ CMAKE_MAP_IMPORTED_CONFIG_
             \ COMPAT_VERSION
             \ CONFIG
@@ -3835,7 +3837,6 @@ syn keyword cmakeKWfind_package contained
             \ BYPASS_PROVIDER
             \ CATEGORY
             \ CMAKE_DISABLE_FIND_PACKAGE_
-            \ CMAKE_EXPERIMENTAL_FIND_CPS_PACKAGES
             \ CMAKE_FIND_ROOT_PATH_BOTH
             \ CMAKE_FIND_USE_
             \ CMAKE_REQUIRE_FIND_PACKAGE_
@@ -4149,7 +4150,6 @@ syn keyword cmakeKWinstall contained
             \ BUILD_TYPE
             \ BUNDLE_EXECUTABLE
             \ CMAKE_EXPERIMENTAL_EXPORT_PACKAGE_DEPENDENCIES
-            \ CMAKE_EXPERIMENTAL_EXPORT_PACKAGE_INFO
             \ CMAKE_INSTALL_BINDIR
             \ CMAKE_INSTALL_DATADIR
             \ CMAKE_INSTALL_DATAROOTDIR
@@ -4417,7 +4417,6 @@ syn keyword cmakeKWproject contained
             \ ASM_MASM
             \ ASM_NASM
             \ ATT
-            \ CMAKE_EXPERIMENTAL_EXPORT_PACKAGE_INFO
             \ CMAKE_PROJECT_
             \ COMPAT_VERSION
             \ CPS

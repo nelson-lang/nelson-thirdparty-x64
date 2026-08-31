@@ -2,7 +2,7 @@
  * @file libaec.h
  *
  * @section LICENSE
- * Copyright 2024 Mathis Rosenhauer, Moritz Hanke, Joerg Behrens, Luis Kornblueh
+ * Copyright 2026 Mathis Rosenhauer, Moritz Hanke, Joerg Behrens, Luis Kornblueh
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,8 +40,8 @@
 
 #define AEC_VERSION_MAJOR 1
 #define AEC_VERSION_MINOR 1
-#define AEC_VERSION_PATCH 3
-#define AEC_VERSION_STR "1.1.3"
+#define AEC_VERSION_PATCH 6
+#define AEC_VERSION_STR "1.1.6"
 
 #include <stddef.h>
 
@@ -49,13 +49,24 @@
 extern "C"{
 #endif
 
-#if defined LIBAEC_BUILD && HAVE_VISIBILITY
-#  define LIBAEC_DLL_EXPORTED __attribute__((__visibility__("default")))
-#elif (defined _WIN32 && !defined __CYGWIN__) && defined LIBAEC_SHARED
-#  if defined LIBAEC_BUILD
-#    define LIBAEC_DLL_EXPORTED __declspec(dllexport)
+#if defined _WIN32 || defined __CYGWIN__
+#  define LIBAEC_HELPER_DLL_IMPORT __declspec(dllimport)
+#  define LIBAEC_HELPER_DLL_EXPORT __declspec(dllexport)
+#else
+#  if __GNUC__ >= 4
+#    define LIBAEC_HELPER_DLL_IMPORT
+#    define LIBAEC_HELPER_DLL_EXPORT __attribute__ ((visibility ("default")))
 #  else
-#    define LIBAEC_DLL_EXPORTED __declspec(dllimport)
+#    define LIBAEC_HELPER_DLL_IMPORT
+#    define LIBAEC_HELPER_DLL_EXPORT
+#  endif
+#endif
+
+#ifdef LIBAEC_SHARED
+#  ifdef LIBAEC_BUILD
+#    define LIBAEC_DLL_EXPORTED LIBAEC_HELPER_DLL_EXPORT
+#  else
+#    define LIBAEC_DLL_EXPORTED LIBAEC_HELPER_DLL_IMPORT
 #  endif
 #else
 #  define LIBAEC_DLL_EXPORTED

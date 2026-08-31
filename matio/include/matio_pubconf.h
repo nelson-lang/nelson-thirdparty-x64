@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015-2024, The matio contributors
+ * Copyright (c) 2015-2026, The matio contributors
  * Copyright (c) 2010-2014, Christopher C. Hulbert
  * All rights reserved.
  *
@@ -35,13 +35,13 @@
 #define MATIO_MINOR_VERSION 5
 
 /* Matio release level number */
-#define MATIO_RELEASE_LEVEL 28
+#define MATIO_RELEASE_LEVEL 30
 
 /* Matio version number */
-#define MATIO_VERSION 1528
+#define MATIO_VERSION 1530
 
 /* Matio version string */
-#define MATIO_VERSION_STR "1.5.28"
+#define MATIO_VERSION_STR "1.5.30"
 
 /* Default file format */
 #define MAT_FT_DEFAULT MAT_FT_MAT5
@@ -182,6 +182,18 @@
 #define MATIO_FORMATATTR_PRINTF1
 #define MATIO_FORMATATTR_PRINTF2
 #define MATIO_FORMATATTR_VPRINTF
+#endif
+
+/*
+  The following macro handles the deprecated attribute.
+*/
+
+#if defined(__GNUC__) || defined(__clang__)
+#define MATIO_DEPRECATED __attribute__((deprecated))
+#elif defined(_MSC_VER)
+#define MATIO_DEPRECATED __declspec(deprecated)
+#else
+#define MATIO_DEPRECATED
 #endif
 
 #endif /* MATIO_PUBCONF_H */

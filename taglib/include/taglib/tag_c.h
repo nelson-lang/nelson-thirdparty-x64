@@ -43,6 +43,7 @@ extern "C" {
 #define TAGLIB_C_EXPORT
 #endif
 
+#include <wchar.h>
 #ifdef _MSC_VER
 /* minwindef.h contains typedef int BOOL */
 #include <windows.h>
@@ -130,7 +131,9 @@ typedef enum {
   TagLib_File_XM,
   TagLib_File_Opus,
   TagLib_File_DSF,
-  TagLib_File_DSDIFF
+  TagLib_File_DSDIFF,
+  TagLib_File_SHORTEN,
+  TagLib_File_MATROSKA
 } TagLib_File_Type;
 
 /*!
@@ -141,12 +144,18 @@ typedef enum {
  * be opened.
  */
 TAGLIB_C_EXPORT TagLib_File *taglib_file_new(const char *filename);
+#ifdef _WIN32
+TAGLIB_C_EXPORT TagLib_File *taglib_file_new_wchar(const wchar_t *filename);
+#endif
 
 /*!
  * Creates a TagLib file based on \a filename.  Rather than attempting to guess
  * the type, it will use the one specified by \a type.
  */
 TAGLIB_C_EXPORT TagLib_File *taglib_file_new_type(const char *filename, TagLib_File_Type type);
+#ifdef _WIN32
+TAGLIB_C_EXPORT TagLib_File *taglib_file_new_type_wchar(const wchar_t *filename, TagLib_File_Type type);
+#endif
 
 /*!
  * Creates a TagLib file from a \a stream.

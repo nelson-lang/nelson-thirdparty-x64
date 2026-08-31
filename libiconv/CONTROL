@@ -1,8 +1,0 @@
-Package: libiconv
-Version: 1.18
-Port-Version: 1
-Architecture: x64-windows
-Multi-Arch: same
-Abi: aab8ce086040ad58c514c72bafde327d946da1f53a6d59f3f6107354ea08404c
-Description: iconv() text conversion.
-    This port installs GNU libiconv if the system C runtime doesn't provide a suitable iconv() implementation.

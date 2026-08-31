@@ -29,6 +29,7 @@
 #include "tstringlist.h"
 #include "taglib_export.h"
 #include "mp4coverart.h"
+#include "mp4stem.h"
 
 namespace TagLib {
   namespace MP4 {
@@ -36,6 +37,23 @@ namespace TagLib {
     class TAGLIB_EXPORT Item
     {
     public:
+      /*!
+       * The data type stored in the item.
+       */
+      enum class Type : unsigned char {
+        Void,
+        Bool,
+        Int,
+        IntPair,
+        Byte,
+        UInt,
+        LongLong,
+        StringList,
+        ByteVectorList,
+        CoverArtList,
+        Stem,
+      };
+
       struct IntPair {
         int first, second;
       };
@@ -64,6 +82,7 @@ namespace TagLib {
       Item(const StringList &value);
       Item(const ByteVectorList &value);
       Item(const CoverArtList &value);
+      Item(const Stem &value);
 
       void setAtomDataType(AtomDataType type);
       AtomDataType atomDataType() const;
@@ -77,8 +96,22 @@ namespace TagLib {
       StringList toStringList() const;
       ByteVectorList toByteVectorList() const;
       CoverArtList toCoverArtList() const;
+      Stem toStem() const;
 
       bool isValid() const;
+
+      Type type() const;
+
+      /*!
+       * Returns \c true if the Item and \a other are of the same type and
+       * contain the same value.
+       */
+      bool operator==(const Item &other) const;
+
+      /*!
+       * Returns \c true if the Item and \a other  differ in type or value.
+       */
+      bool operator!=(const Item &other) const;
 
     private:
       class ItemPrivate;
