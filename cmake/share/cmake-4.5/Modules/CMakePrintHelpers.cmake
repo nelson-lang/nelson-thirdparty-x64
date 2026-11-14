@@ -1,0 +1,210 @@
+# Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
+# file LICENSE.rst or https://cmake.org/licensing for details.
+
+#[=======================================================================[.rst:
+CMakePrintHelpers
+-----------------
+
+This module provides convenience commands, primarily intended for debugging,
+to print the values of properties and variables.
+
+Load this module in CMake with:
+
+.. code-block:: cmake
+
+  include(CMakePrintHelpers)
+
+Commands
+^^^^^^^^
+
+This module provides the following commands:
+
+.. command:: cmake_print_properties
+
+  .. deprecated:: 4.5
+
+    Use :command:`cmake_language(PRINT_PROPERTIES)` instead.
+
+  Prints the values of properties for the specified targets, source files,
+  directories, tests, or cache entries:
+
+  .. code-block:: cmake
+
+    cmake_print_properties(
+      <TARGETS       [<targets>...] |
+       SOURCES       [<sources>...] |
+       DIRECTORIES   [<dirs>...]    |
+       TESTS         [<tests>...]   |
+       CACHE_ENTRIES [<entries>...] >
+      PROPERTIES [<properties>...]
+    )
+
+  Exactly one of the scope keywords must be specified.  The scope keyword
+  and its arguments must appear before the ``PROPERTIES`` keyword in the
+  argument list.
+
+.. command:: cmake_print_variables
+
+  .. deprecated:: 4.5
+
+    Use :command:`cmake_language(PRINT_VARIABLES)` instead.
+
+  Prints each variable name followed by its value:
+
+  .. code-block:: cmake
+
+    cmake_print_variables([<vars>...])
+
+Examples
+^^^^^^^^
+
+Printing the ``LOCATION`` and ``INTERFACE_INCLUDE_DIRECTORIES`` properties for
+both targets ``foo`` and ``bar``:
+
+.. code-block:: cmake
+
+  include(CMakePrintHelpers)
+
+  cmake_print_properties(
+    TARGETS foo bar
+    PROPERTIES LOCATION INTERFACE_INCLUDE_DIRECTORIES
+  )
+
+Gives::
+
+  --
+   Properties for TARGET foo:
+     foo.LOCATION = "/usr/lib/libfoo.so"
+     foo.INTERFACE_INCLUDE_DIRECTORIES = "/usr/include;/usr/include/foo"
+   Properties for TARGET bar:
+     bar.LOCATION = "/usr/lib/libbar.so"
+     bar.INTERFACE_INCLUDE_DIRECTORIES = "/usr/include;/usr/include/bar"
+
+Printing given variables:
+
+.. code-block:: cmake
+
+  include(CMakePrintHelpers)
+
+  cmake_print_variables(CMAKE_C_COMPILER CMAKE_MAJOR_VERSION NOT_EXISTS)
+
+Gives::
+
+  -- CMAKE_C_COMPILER="/usr/bin/cc" ; CMAKE_MAJOR_VERSION="3" ; NOT_EXISTS=""
+#]=======================================================================]
+
+function(cmake_print_variables)
+  message(DEPRECATION
+    "cmake_print_variables() is deprecated. Use cmake_language(PRINT_VARIABLES) instead.")
+
+  set(_cpvmode_reserved_keywords
+    ALL NAMED NAME_REGEX VALUE_REGEX IGNORE_CASE __CMAKE_PRINT_VARIABLES)
+  foreach(_arg IN LISTS ARGV)
+    if(_arg IN_LIST _cpvmode_reserved_keywords)
+      message(FATAL_ERROR
+        "cmake_print_variables() got \"${_arg}\", which is a reserved "
+        "keyword in cmake_language(PRINT_VARIABLES).  If you wish to use "
+        "it as a keyword to the command, use cmake_language(PRINT_VARIABLES) "
+        "directly.")
+      return()
+    endif()
+  endforeach()
+
+  cmake_language(PRINT_VARIABLES NAMED ${ARGN} __CMAKE_PRINT_VARIABLES)
+endfunction()
+
+
+function(cmake_print_properties)
+  message(DEPRECATION
+    "cmake_print_properties() is deprecated. Use cmake_language(PRINT_PROPERTIES) instead.")
+
+  set(_cppmode_reserved_keywords
+    ALL NAMED PROPERTY_NAME_REGEX PROPERTY_VALUE_REGEX
+    DEFERRED FOLLOW_DEPENDENCIES __CMAKE_PRINT_PROPERTIES)
+  foreach(_arg IN LISTS ARGV)
+    if(_arg IN_LIST _cppmode_reserved_keywords)
+      message(FATAL_ERROR
+        "cmake_print_properties() got \"${_arg}\", which is a reserved "
+        "keyword in cmake_language(PRINT_PROPERTIES).  If you wish to use "
+        "it as a keyword to the command, use cmake_language(PRINT_PROPERTIES) "
+        "directly.")
+      return()
+    endif()
+  endforeach()
+
+  set(options )
+  set(oneValueArgs )
+  set(cpp_multiValueArgs PROPERTIES )
+  set(cppmode_multiValueArgs TARGETS SOURCES TESTS DIRECTORIES CACHE_ENTRIES )
+
+  string(JOIN " " _mode_names ${cppmode_multiValueArgs})
+  set(_missing_mode_message
+    "Mode keyword missing in cmake_print_properties() call, there must be exactly one of ${_mode_names}")
+
+  cmake_parse_arguments(
+    CPP "${options}" "${oneValueArgs}" "${cpp_multiValueArgs}" ${ARGN})
+
+  if(NOT CPP_PROPERTIES)
+    message(FATAL_ERROR
+      "Required argument PROPERTIES missing in cmake_print_properties() call")
+    return()
+  endif()
+
+  if(NOT CPP_UNPARSED_ARGUMENTS)
+    message(FATAL_ERROR "${_missing_mode_message}")
+    return()
+  endif()
+
+  cmake_parse_arguments(
+    CPPMODE "${options}" "${oneValueArgs}" "${cppmode_multiValueArgs}"
+    ${CPP_UNPARSED_ARGUMENTS})
+
+  if(CPPMODE_UNPARSED_ARGUMENTS)
+    message(FATAL_ERROR
+      "Unknown keywords given to cmake_print_properties(): \"${CPPMODE_UNPARSED_ARGUMENTS}\"")
+    return()
+  endif()
+
+  set(mode)
+  set(items)
+
+  if(CPPMODE_TARGETS)
+    set(items ${CPPMODE_TARGETS})
+    set(mode ${mode} TARGETS)
+  endif()
+
+  if(CPPMODE_SOURCES)
+    set(items ${CPPMODE_SOURCES})
+    set(mode ${mode} SOURCES)
+  endif()
+
+  if(CPPMODE_TESTS)
+    set(items ${CPPMODE_TESTS})
+    set(mode ${mode} TESTS)
+  endif()
+
+  if(CPPMODE_DIRECTORIES)
+    set(items ${CPPMODE_DIRECTORIES})
+    set(mode ${mode} DIRECTORIES)
+  endif()
+
+  if(CPPMODE_CACHE_ENTRIES)
+    set(items ${CPPMODE_CACHE_ENTRIES})
+    set(mode ${mode} CACHE_ENTRIES)
+  endif()
+
+  if(NOT mode)
+    message(FATAL_ERROR "${_missing_mode_message}")
+    return()
+  endif()
+
+  list(LENGTH mode modeLength)
+  if("${modeLength}" GREATER 1)
+    message(FATAL_ERROR
+      "Multiple mode keywords used in cmake_print_properties() call, there must be exactly one of ${_mode_names}.")
+    return()
+  endif()
+
+  cmake_language(PRINT_PROPERTIES ${mode} ${items} NAMED ${CPP_PROPERTIES}
+                 __CMAKE_PRINT_PROPERTIES)
+endfunction()
